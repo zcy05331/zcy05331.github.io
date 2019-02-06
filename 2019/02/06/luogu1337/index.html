@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="二分,">
+  <meta name="keywords" content="模拟退火,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="为什么我的做法跟别人如此不一样啊qwq思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657# include &amp;lt;b">
-<meta name="keywords" content="二分">
+<meta name="description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子   123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include &amp;">
+<meta name="keywords" content="模拟退火">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 CF550A 【Two Substrings】">
-<meta property="og:url" content="http://zcy05331.github.io/2019/02/06/CF550A/index.html">
+<meta property="og:title" content="题解 P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
+<meta property="og:url" content="http://zcy05331.github.io/2019/02/06/luogu1337/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="为什么我的做法跟别人如此不一样啊qwq思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657# include &amp;lt;b">
+<meta property="og:description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子   123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include &amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-06T04:31:34.290Z">
+<meta property="og:updated_time" content="2019-02-06T07:43:24.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="题解 CF550A 【Two Substrings】">
-<meta name="twitter:description" content="为什么我的做法跟别人如此不一样啊qwq思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657# include &amp;lt;b">
+<meta name="twitter:title" content="题解 P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
+<meta name="twitter:description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子   123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include &amp;">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zcy05331.github.io/2019/02/06/CF550A/">
+  <link rel="canonical" href="http://zcy05331.github.io/2019/02/06/luogu1337/">
 
 
 
 
 
-  <title>题解 CF550A 【Two Substrings】 | little_sun's blog</title>
+  <title>题解 P1337 [JSOI2004]平衡点 / 吊打XXX | little_sun's blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zcy05331.github.io/2019/02/06/CF550A/">
+    <link itemprop="mainEntityOfPage" href="http://zcy05331.github.io/2019/02/06/luogu1337/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="little_sun">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">题解 CF550A 【Two Substrings】</h1>
+          <h1 class="post-title" itemprop="name headline">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</h1>
         
 
         <div class="post-meta">
@@ -282,7 +282,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T12:14:25+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T15:39:30+08:00">
                 2019-02-06
               </time>
             
@@ -342,8 +342,17 @@
       
 
       
-        <h3 id="为什么我的做法跟别人如此不一样啊qwq"><a href="#为什么我的做法跟别人如此不一样啊qwq" class="headerlink" title="为什么我的做法跟别人如此不一样啊qwq"></a>为什么我的做法跟别人如此不一样啊qwq</h3><p>思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, b;<span class="comment">//存下标</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">upper</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//二分后面的位置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = a.size();</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[mid] &gt; x)</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lower</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//二分前面的位置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">-1</span>, r = a.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[mid] &lt; x)</span><br><span class="line">            l = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> len = s.length();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> tmp = s.substr(i, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(tmp == <span class="string">"AB"</span>)</span><br><span class="line">            a.push_back(i);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tmp == <span class="string">"BA"</span>)</span><br><span class="line">            b.push_back(i);</span><br><span class="line">    &#125;<span class="comment">//查找"AB"和"BA"出现的位置</span></span><br><span class="line">    <span class="keyword">if</span>(a.size() == <span class="number">0</span> || b.size() == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> * <span class="built_in">printf</span>(<span class="string">"NO"</span>);<span class="comment">//特判</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x = lower(b[i] - <span class="number">1</span>);<span class="comment">//防重</span></span><br><span class="line">        <span class="keyword">int</span> y = upper(b[i] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(x != <span class="number">-1</span> || y != a.size())</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span> * <span class="built_in">printf</span>(<span class="string">"YES"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"NO"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>讲一下一些模拟退火的注意事项</p>
+<ul>
+<li><p>开始温度要设到比较高</p>
+</li>
+<li><p>在不超时的情况下多随几次</p>
+</li>
+<li><p>最好确定一个随机种子</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> delta = <span class="number">0.993</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y, w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">node a[MaxN];</span><br><span class="line"><span class="keyword">double</span> ansx, ansy;</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">1e18</span>, t;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'-'</span>)</span><br><span class="line">            f = <span class="literal">true</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> (!f) ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calc</span><span class="params">(<span class="keyword">double</span> nx, <span class="keyword">double</span> ny)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> x = nx - a[i].x;</span><br><span class="line">        <span class="keyword">double</span> y = ny - a[i].y;</span><br><span class="line">        sum += <span class="built_in">sqrt</span>(x * x + y * y) * a[i].w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> nowx = ansx, nowy = ansy;</span><br><span class="line">    t = <span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">while</span> (t &gt; <span class="number">1e-14</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> tmpx = ansx + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="keyword">double</span> tmpy = ansy + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="keyword">double</span> tmp = calc(tmpx, tmpy);</span><br><span class="line">        <span class="keyword">if</span> (tmp - ans &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">            ansx = tmpx;</span><br><span class="line">            ansy = tmpy;</span><br><span class="line">            ans = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">exp</span>((ans - tmp) / t) * RAND_MAX &gt; rand())</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">        &#125;</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    srand(<span class="number">19260817</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i].x = read(), a[i].y = read(), a[i].w = read();</span><br><span class="line">    sa();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.3lf %.3lf"</span>, ansx, ansy);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -360,7 +369,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二分/" rel="tag"># 二分</a>
+            <a href="/tags/模拟退火/" rel="tag"># 模拟退火</a>
           
         </div>
       
@@ -373,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/06/luogu2485/" rel="next" title="题解 P2485 【[SDOI2011]计算器】">
-                <i class="fa fa-chevron-left"></i> 题解 P2485 【[SDOI2011]计算器】
+              <a href="/2019/02/06/CF1063B/" rel="next" title="题解 CF1063B 【Labyrinth】">
+                <i class="fa fa-chevron-left"></i> 题解 CF1063B 【Labyrinth】
               </a>
             
           </div>
@@ -382,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/06/luogu5018/" rel="prev" title="题解 P5018 【对称二叉树】">
-                题解 P5018 【对称二叉树】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -437,17 +442,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -509,22 +505,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么我的做法跟别人如此不一样啊qwq"><span class="nav-number">1.</span> <span class="nav-text">为什么我的做法跟别人如此不一样啊qwq</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
