@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="二分,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="A super spicy chicken">
+<meta name="description" content="为什么我的做法跟别人如此不一样啊qwq思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657# include &amp;lt;b">
+<meta name="keywords" content="二分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="little_sun&#39;s blog">
+<meta property="og:title" content="题解 CF550A 【Two Substrings】">
 <meta property="og:url" content="http://zcy05331.github.io/2019/02/06/CF550A/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="A super spicy chicken">
+<meta property="og:description" content="为什么我的做法跟别人如此不一样啊qwq思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657# include &amp;lt;b">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-06T04:16:09.136Z">
+<meta property="og:updated_time" content="2019-02-06T04:31:34.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="little_sun&#39;s blog">
-<meta name="twitter:description" content="A super spicy chicken">
+<meta name="twitter:title" content="题解 CF550A 【Two Substrings】">
+<meta name="twitter:description" content="为什么我的做法跟别人如此不一样啊qwq思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657# include &amp;lt;b">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title> | little_sun's blog</title>
+  <title>题解 CF550A 【Two Substrings】 | little_sun's blog</title>
   
 
 
@@ -269,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">题解 CF550A 【Two Substrings】</h1>
         
 
         <div class="post-meta">
@@ -291,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -319,7 +342,8 @@
       
 
       
-        
+        <h3 id="为什么我的做法跟别人如此不一样啊qwq"><a href="#为什么我的做法跟别人如此不一样啊qwq" class="headerlink" title="为什么我的做法跟别人如此不一样啊qwq"></a>为什么我的做法跟别人如此不一样啊qwq</h3><p>思路：暴力判每一个”BA”出现的位置，二分查找他前/后有没有满足条件的”AB”,时间复杂度$O(n\log_{2}n)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, b;<span class="comment">//存下标</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">upper</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//二分后面的位置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = a.size();</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[mid] &gt; x)</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lower</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//二分前面的位置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">-1</span>, r = a.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[mid] &lt; x)</span><br><span class="line">            l = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> len = s.length();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> tmp = s.substr(i, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(tmp == <span class="string">"AB"</span>)</span><br><span class="line">            a.push_back(i);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tmp == <span class="string">"BA"</span>)</span><br><span class="line">            b.push_back(i);</span><br><span class="line">    &#125;<span class="comment">//查找"AB"和"BA"出现的位置</span></span><br><span class="line">    <span class="keyword">if</span>(a.size() == <span class="number">0</span> || b.size() == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> * <span class="built_in">printf</span>(<span class="string">"NO"</span>);<span class="comment">//特判</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x = lower(b[i] - <span class="number">1</span>);<span class="comment">//防重</span></span><br><span class="line">        <span class="keyword">int</span> y = upper(b[i] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(x != <span class="number">-1</span> || y != a.size())</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span> * <span class="built_in">printf</span>(<span class="string">"YES"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"NO"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -333,6 +357,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/二分/" rel="tag"># 二分</a>
+          
+        </div>
       
 
       
@@ -407,8 +437,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -436,7 +475,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -447,7 +486,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -470,6 +509,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么我的做法跟别人如此不一样啊qwq"><span class="nav-number">1.</span> <span class="nav-text">为什么我的做法跟别人如此不一样啊qwq</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -552,6 +607,8 @@
   
 
 
+  
+
 
 
 
@@ -590,6 +647,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
