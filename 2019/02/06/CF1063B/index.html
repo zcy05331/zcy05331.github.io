@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数论,">
+  <meta name="keywords" content="search,bfs,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="题解 CF900D 【Unusual Sequences】可以发现如果$x$不整除$y$那么肯定无解 不然我们可以发现其实求的就是和为$y/x$且$gcd(a_1,a_2,\cdots,a_n)=1$的序列个数 容易发现所有和为$y$的序列个数为$2^{n-1}$ 而所有$gcd$不为$1$的序列，把每个数除以$gcd$,就又回到原题了 所以枚举每个可能的$gcd$(约数)，递归计算即可。 123">
-<meta name="keywords" content="数论">
+<meta name="description" content="题解 CF1063B 【Labyrinth】完了我发现我做CF的题大部分思路都和别人不一样qwq 这道题其实很水，不至于到紫题 我们只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？） 是一道锻炼代码能力的好题 Code： 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta name="keywords" content="search,bfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 CF900D 【Unusual Sequences】">
-<meta property="og:url" content="http://zcy05331.github.io/2019/02/06/CF900D/index.html">
+<meta property="og:title" content="题解 CF1063B 【Labyrinth】">
+<meta property="og:url" content="http://zcy05331.github.io/2019/02/06/CF1063B/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="题解 CF900D 【Unusual Sequences】可以发现如果$x$不整除$y$那么肯定无解 不然我们可以发现其实求的就是和为$y/x$且$gcd(a_1,a_2,\cdots,a_n)=1$的序列个数 容易发现所有和为$y$的序列个数为$2^{n-1}$ 而所有$gcd$不为$1$的序列，把每个数除以$gcd$,就又回到原题了 所以枚举每个可能的$gcd$(约数)，递归计算即可。 123">
+<meta property="og:description" content="题解 CF1063B 【Labyrinth】完了我发现我做CF的题大部分思路都和别人不一样qwq 这道题其实很水，不至于到紫题 我们只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？） 是一道锻炼代码能力的好题 Code： 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-06T03:56:02.242Z">
+<meta property="og:updated_time" content="2019-02-06T04:27:46.527Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="题解 CF900D 【Unusual Sequences】">
-<meta name="twitter:description" content="题解 CF900D 【Unusual Sequences】可以发现如果$x$不整除$y$那么肯定无解 不然我们可以发现其实求的就是和为$y/x$且$gcd(a_1,a_2,\cdots,a_n)=1$的序列个数 容易发现所有和为$y$的序列个数为$2^{n-1}$ 而所有$gcd$不为$1$的序列，把每个数除以$gcd$,就又回到原题了 所以枚举每个可能的$gcd$(约数)，递归计算即可。 123">
+<meta name="twitter:title" content="题解 CF1063B 【Labyrinth】">
+<meta name="twitter:description" content="题解 CF1063B 【Labyrinth】完了我发现我做CF的题大部分思路都和别人不一样qwq 这道题其实很水，不至于到紫题 我们只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？） 是一道锻炼代码能力的好题 Code： 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zcy05331.github.io/2019/02/06/CF900D/">
+  <link rel="canonical" href="http://zcy05331.github.io/2019/02/06/CF1063B/">
 
 
 
 
 
-  <title>题解 CF900D 【Unusual Sequences】 | little_sun's blog</title>
+  <title>题解 CF1063B 【Labyrinth】 | little_sun's blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zcy05331.github.io/2019/02/06/CF900D/">
+    <link itemprop="mainEntityOfPage" href="http://zcy05331.github.io/2019/02/06/CF1063B/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="little_sun">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">题解 CF900D 【Unusual Sequences】</h1>
+          <h1 class="post-title" itemprop="name headline">题解 CF1063B 【Labyrinth】</h1>
         
 
         <div class="post-meta">
@@ -282,7 +282,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T11:44:54+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T12:25:24+08:00">
                 2019-02-06
               </time>
             
@@ -292,28 +292,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -342,12 +320,12 @@
       
 
       
-        <h1 id="题解-CF900D-【Unusual-Sequences】"><a href="#题解-CF900D-【Unusual-Sequences】" class="headerlink" title="题解 CF900D 【Unusual Sequences】"></a>题解 CF900D 【Unusual Sequences】</h1><p>可以发现如果$x$不整除$y$那么肯定无解</p>
-<p>不然我们可以发现其实求的就是和为$y/x$且$gcd(a_1,a_2,\cdots,a_n)=1$的序列个数</p>
-<p>容易发现所有和为$y$的序列个数为$2^{n-1}$</p>
-<p>而所有$gcd$不为$1$的序列，把每个数除以$gcd$,就又回到原题了</p>
-<p>所以枚举每个可能的$gcd$(约数)，递归计算即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v, vec;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fast_pow</span><span class="params">(ll a, ll n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>)</span><br><span class="line">            ret = (<span class="number">1l</span>l * ret * a) % mod;</span><br><span class="line">        a = (<span class="number">1l</span>l * a * a) % mod;</span><br><span class="line">        n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m[x])</span><br><span class="line">        <span class="keyword">return</span> m[x];</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        m[x] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="built_in">sqrt</span>(x);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> || i * i == x)</span><br><span class="line">                sum = (sum + solve(i)) % mod;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                sum = (sum + solve(i) % mod + solve(x / i) % mod) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sum = (fast_pow(<span class="number">2</span>, x - <span class="number">1</span>) - sum + mod) % mod;</span><br><span class="line">    m[x] = sum;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">    <span class="keyword">if</span> (y % x != <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> * <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">    y /= x;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; solve(y);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="题解-CF1063B-【Labyrinth】"><a href="#题解-CF1063B-【Labyrinth】" class="headerlink" title="题解 CF1063B 【Labyrinth】"></a>题解 CF1063B 【Labyrinth】</h1><p>完了我发现我做CF的题大部分思路都和别人不一样qwq</p>
+<p>这道题其实很水，不至于到紫题</p>
+<p>我们只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？）</p>
+<p>是一道锻炼代码能力的好题</p>
+<p><strong>Code：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> check(x, y) (x &gt;= 0 &amp;&amp; x <span class="meta-string">&lt; n &amp;&amp; y &gt;= 0 &amp;&amp; y &lt; m)//判断是否越界</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">2010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;, dy[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;<span class="comment">//bfs方向数组</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">p</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">int</span> cntx, cnty;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, x, y, limx, limy;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> s[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> vis[MaxN][MaxN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> disx[MaxN][MaxN], disy[MaxN][MaxN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(disx, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(disx));</span><br><span class="line">    <span class="built_in">memset</span>(disy, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(disy) );</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">queue</span>&lt;p&gt; q;</span><br><span class="line">    q.push((p)&#123;x, y, <span class="number">0</span>, <span class="number">0</span>&#125;);</span><br><span class="line">    disx[x][y] = disy[x][y] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        p tmp = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        x = tmp.x, y = tmp.y;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = x + dx[i], ny = y + dy[i];</span><br><span class="line">            <span class="keyword">if</span> (!check(nx, ny) || s[nx][ny] == <span class="string">'*'</span>)<span class="comment">//当前位置是否合法</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> cntx = tmp.cntx + <span class="keyword">bool</span>(dy[i] == <span class="number">-1</span>), cnty = tmp.cnty + <span class="keyword">bool</span>(dy[i] == <span class="number">1</span>);<span class="comment">//计算向左/右走步数</span></span><br><span class="line">            <span class="keyword">if</span> (cntx &lt; <span class="built_in">std</span>::min(disx[nx][ny], limx + <span class="number">1</span>) || cnty &lt; <span class="built_in">std</span>::min(disy[nx][ny], limy + <span class="number">1</span>))<span class="comment">//判断，剪枝</span></span><br><span class="line">            &#123;</span><br><span class="line">                disx[nx][ny] = cntx;</span><br><span class="line">                disy[nx][ny] = cnty;<span class="comment">//更新向左/右走步数</span></span><br><span class="line">                q.push((p)&#123;nx, ny, cntx, cnty&#125;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y), --x, --y;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;limx, &amp;limy);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; s[i];</span><br><span class="line">    bfs(x, y);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">            <span class="keyword">if</span> (disx[i][j] &lt;= limx &amp;&amp; disy[i][j] &lt;= limy)</span><br><span class="line">                ++ans;<span class="comment">//统计答案</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -364,7 +342,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数论/" rel="tag"># 数论</a>
+            <a href="/tags/search/" rel="tag"># search</a>
+          
+            <a href="/tags/bfs/" rel="tag"># bfs</a>
           
         </div>
       
@@ -377,8 +357,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/06/luogu4867/" rel="next" title="题解 P4867 【Gty的二逼妹子序列】">
-                <i class="fa fa-chevron-left"></i> 题解 P4867 【Gty的二逼妹子序列】
+              <a href="/2019/02/06/luogu5018/" rel="next" title="题解 P5018 【对称二叉树】">
+                <i class="fa fa-chevron-left"></i> 题解 P5018 【对称二叉树】
               </a>
             
           </div>
@@ -386,10 +366,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/06/luogu2485/" rel="prev" title="题解 P2485 【[SDOI2011]计算器】">
-                题解 P2485 【[SDOI2011]计算器】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,7 +499,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题解-CF900D-【Unusual-Sequences】"><span class="nav-number">1.</span> <span class="nav-text">题解 CF900D 【Unusual Sequences】</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题解-CF1063B-【Labyrinth】"><span class="nav-number">1.</span> <span class="nav-text">题解 CF1063B 【Labyrinth】</span></a></li></ol></div>
             
 
           </div>
