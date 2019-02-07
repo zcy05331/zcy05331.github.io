@@ -2,23 +2,21 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>题解 P1337 [JSOI2004]平衡点 / 吊打XXX - little_sun&#39;s blog</title>
+<title>little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
-<meta name="keywords" content="模拟退火">
-<meta property="og:type" content="article">
-<meta property="og:title" content="题解 P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
-<meta property="og:url" content="http://www.zcysky.com/2019/02/06/luogu1337/index.html">
+    <meta name="description" content="A super spicy chicken">
+<meta property="og:type" content="website">
+<meta property="og:title" content="little_sun&#39;s blog">
+<meta property="og:url" content="http://www.zcysky.com/page/2/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
+<meta property="og:description" content="A super spicy chicken">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-07T01:49:28.168Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="题解 P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
-<meta name="twitter:description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
+<meta name="twitter:title" content="little_sun&#39;s blog">
+<meta name="twitter:description" content="A super spicy chicken">
 
 
 
@@ -90,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="题解 P1337 [JSOI2004]平衡点 / 吊打XXX" height="28">
+                <img src="/images/logo.svg" alt="little_sun&#39;s blog" height="28">
             
             </a>
         </div>
@@ -135,23 +133,24 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T07:39:30.000Z">2019-02-06</time>
+                <time class="level-item has-text-grey" datetime="2019-02-06T00:03:18.000Z">2019-02-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 230 个字)
+                    8 分钟 读完 (大约 1143 个字)
                 </span>
                 
                 
@@ -160,35 +159,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                题解 P1337 [JSOI2004]平衡点 / 吊打XXX
+                <a class="has-link-black-ter" href="/2019/02/06/dijkstra/">Introduce to Dijkstra</a>
             
         </h1>
         <div class="content">
-            <p>讲一下一些模拟退火的注意事项</p>
-<ul>
-<li><p>开始温度要设到比较高</p>
-</li>
-<li><p>在不超时的情况下多随几次</p>
-</li>
-<li><p>最好确定一个随机种子</p>
-<a id="more"></a>
-</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> delta = <span class="number">0.993</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y, w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">node a[MaxN];</span><br><span class="line"><span class="keyword">double</span> ansx, ansy;</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">1e18</span>, t;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'-'</span>)</span><br><span class="line">            f = <span class="literal">true</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> (!f) ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calc</span><span class="params">(<span class="keyword">double</span> nx, <span class="keyword">double</span> ny)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> x = nx - a[i].x;</span><br><span class="line">        <span class="keyword">double</span> y = ny - a[i].y;</span><br><span class="line">        sum += <span class="built_in">sqrt</span>(x * x + y * y) * a[i].w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> nowx = ansx, nowy = ansy;</span><br><span class="line">    t = <span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">while</span> (t &gt; <span class="number">1e-14</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> tmpx = ansx + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="keyword">double</span> tmpy = ansy + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="keyword">double</span> tmp = calc(tmpx, tmpy);</span><br><span class="line">        <span class="keyword">if</span> (tmp - ans &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">            ansx = tmpx;</span><br><span class="line">            ansy = tmpy;</span><br><span class="line">            ans = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">exp</span>((ans - tmp) / t) * RAND_MAX &gt; rand())</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">        &#125;</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    srand(<span class="number">19260817</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i].x = read(), a[i].y = read(), a[i].w = read();</span><br><span class="line">    sa();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.3lf %.3lf"</span>, ansx, ansy);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        </div>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>$SPFA​$算法由于它上限 $O(NM) = O(VE)​$的时间复杂度,被卡掉的几率很大.在算法竞赛中,我们需要一个更稳定的算法:$dijkstra​$.
+        </li></ul></div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/模拟退火/">模拟退火</a>
+                <a class="button is-size-7 is-light" href="/2019/02/06/dijkstra/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -196,28 +184,28 @@
 
 
 
+
+
+
+
+    
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/07/luogu2503/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">题解P2503 [HAOI2006]均分数据</span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/">上一页</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/06/CF1063B/">
-                <span class="level-item">题解 CF1063B 【Labyrinth】</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/3/">下一页</a>
         </div>
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
 </div>
                 
 
@@ -719,7 +707,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="题解 P1337 [JSOI2004]平衡点 / 吊打XXX" height="28">
+                    <img src="/images/logo.svg" alt="little_sun&#39;s blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
