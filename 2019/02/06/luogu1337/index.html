@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="search,bfs,">
+  <meta name="keywords" content="模拟退火,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？） 是一道锻炼代码能力的好题">
-<meta name="keywords" content="search,bfs">
+<meta name="description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
+<meta name="keywords" content="模拟退火">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 CF1063B 【Labyrinth】">
-<meta property="og:url" content="http://www.zcysky.com/2019/02/06/CF1063B/index.html">
+<meta property="og:title" content="题解 P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
+<meta property="og:url" content="http://www.zcysky.com/2019/02/06/luogu1337/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？） 是一道锻炼代码能力的好题">
+<meta property="og:description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-07T01:54:18.324Z">
+<meta property="og:updated_time" content="2019-02-07T01:49:28.168Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="题解 CF1063B 【Labyrinth】">
-<meta name="twitter:description" content="只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？） 是一道锻炼代码能力的好题">
+<meta name="twitter:title" content="题解 P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
+<meta name="twitter:description" content="讲一下一些模拟退火的注意事项  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zcysky.com/2019/02/06/CF1063B/">
+  <link rel="canonical" href="http://www.zcysky.com/2019/02/06/luogu1337/">
 
 
 
 
 
-  <title>题解 CF1063B 【Labyrinth】 | little_sun's blog</title>
+  <title>题解 P1337 [JSOI2004]平衡点 / 吊打XXX | little_sun's blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zcysky.com/2019/02/06/CF1063B/">
+    <link itemprop="mainEntityOfPage" href="http://www.zcysky.com/2019/02/06/luogu1337/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="little_sun">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">题解 CF1063B 【Labyrinth】</h1>
+          <h1 class="post-title" itemprop="name headline">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</h1>
         
 
         <div class="post-meta">
@@ -282,7 +282,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-06T12:25:24+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-06T15:39:30+08:00">
                 2019-02-06
               </time>
             
@@ -336,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  380 字
+                  288 字
                 </span>
               
 
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -373,11 +373,18 @@
       
 
       
-        <p>只要bfs一下，向四个方向搜索，剪下枝，就A了（好像还跑的蛮快？）</p>
-<p>是一道锻炼代码能力的好题</p>
+        <p>讲一下一些模拟退火的注意事项</p>
+<ul>
+<li><p>开始温度要设到比较高</p>
+</li>
+<li><p>在不超时的情况下多随几次</p>
+</li>
+<li><p>最好确定一个随机种子</p>
 <a id="more"></a>
-<p><strong>Code：</strong></p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> check(x, y) (x &gt;= 0 &amp;&amp; x <span class="hljs-meta-string">&lt; n &amp;&amp; y &gt;= 0 &amp;&amp; y &lt; m)//判断是否越界</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">2010</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> dx[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;, dy[] = &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;;<span class="hljs-comment">//bfs方向数组</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">p</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> x, y;</span><br><span class="line">    <span class="hljs-keyword">int</span> cntx, cnty;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, x, y, limx, limy;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> s[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> vis[MaxN][MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> disx[MaxN][MaxN], disy[MaxN][MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(disx, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(disx));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(disy, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(disy) );</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;p&gt; q;</span><br><span class="line">    q.push((p)&#123;x, y, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;);</span><br><span class="line">    disx[x][y] = disy[x][y] = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        p tmp = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        x = tmp.x, y = tmp.y;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">3</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> nx = x + dx[i], ny = y + dy[i];</span><br><span class="line">            <span class="hljs-keyword">if</span> (!check(nx, ny) || s[nx][ny] == <span class="hljs-string">'*'</span>)<span class="hljs-comment">//当前位置是否合法</span></span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> cntx = tmp.cntx + <span class="hljs-keyword">bool</span>(dy[i] == <span class="hljs-number">-1</span>), cnty = tmp.cnty + <span class="hljs-keyword">bool</span>(dy[i] == <span class="hljs-number">1</span>);<span class="hljs-comment">//计算向左/右走步数</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (cntx &lt; <span class="hljs-built_in">std</span>::min(disx[nx][ny], limx + <span class="hljs-number">1</span>) || cnty &lt; <span class="hljs-built_in">std</span>::min(disy[nx][ny], limy + <span class="hljs-number">1</span>))<span class="hljs-comment">//判断，剪枝</span></span><br><span class="line">            &#123;</span><br><span class="line">                disx[nx][ny] = cntx;</span><br><span class="line">                disy[nx][ny] = cnty;<span class="hljs-comment">//更新向左/右走步数</span></span><br><span class="line">                q.push((p)&#123;nx, ny, cntx, cnty&#125;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;x, &amp;y), --x, --y;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;limx, &amp;limy);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; s[i];</span><br><span class="line">    bfs(x, y);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (disx[i][j] &lt;= limx &amp;&amp; disy[i][j] &lt;= limy)</span><br><span class="line">                ++ans;<span class="hljs-comment">//统计答案</span></span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> delta = <span class="number">0.993</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y, w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">node a[MaxN];</span><br><span class="line"><span class="keyword">double</span> ansx, ansy;</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">1e18</span>, t;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'-'</span>)</span><br><span class="line">            f = <span class="literal">true</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> (!f) ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calc</span><span class="params">(<span class="keyword">double</span> nx, <span class="keyword">double</span> ny)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> x = nx - a[i].x;</span><br><span class="line">        <span class="keyword">double</span> y = ny - a[i].y;</span><br><span class="line">        sum += <span class="built_in">sqrt</span>(x * x + y * y) * a[i].w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> nowx = ansx, nowy = ansy;</span><br><span class="line">    t = <span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">while</span> (t &gt; <span class="number">1e-14</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> tmpx = ansx + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="keyword">double</span> tmpy = ansy + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="keyword">double</span> tmp = calc(tmpx, tmpy);</span><br><span class="line">        <span class="keyword">if</span> (tmp - ans &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">            ansx = tmpx;</span><br><span class="line">            ansy = tmpy;</span><br><span class="line">            ans = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">exp</span>((ans - tmp) / t) * RAND_MAX &gt; rand())</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">        &#125;</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    srand(<span class="number">19260817</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i].x = read(), a[i].y = read(), a[i].w = read();</span><br><span class="line">    sa();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.3lf %.3lf"</span>, ansx, ansy);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -394,9 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/search/" rel="tag"># search</a>
-          
-            <a href="/tags/bfs/" rel="tag"># bfs</a>
+            <a href="/tags/模拟退火/" rel="tag"># 模拟退火</a>
           
         </div>
       
@@ -409,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/06/luogu5018/" rel="next" title="题解 P5018 【对称二叉树】">
-                <i class="fa fa-chevron-left"></i> 题解 P5018 【对称二叉树】
+              <a href="/2019/02/06/CF1063B/" rel="next" title="题解 CF1063B 【Labyrinth】">
+                <i class="fa fa-chevron-left"></i> 题解 CF1063B 【Labyrinth】
               </a>
             
           </div>
@@ -418,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/06/luogu1337/" rel="prev" title="题解 P1337 [JSOI2004]平衡点 / 吊打XXX">
-                题解 P1337 [JSOI2004]平衡点 / 吊打XXX <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
