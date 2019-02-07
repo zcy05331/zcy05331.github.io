@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 数论 - little_sun&#39;s blog</title>
+<title>标签: 模拟退火 - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -10,7 +10,7 @@
     <meta name="description" content="A super spicy chicken">
 <meta property="og:type" content="website">
 <meta property="og:title" content="little_sun&#39;s blog">
-<meta property="og:url" content="http://zcy05331.github.io/tags/数论/index.html">
+<meta property="og:url" content="http://zcy05331.github.io/tags/模拟退火/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="A super spicy chicken">
 <meta property="og:locale" content="zh-CN">
@@ -138,7 +138,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">数论</a></li>
+            <li class="is-active"><a href="#" aria-current="page">模拟退火</a></li>
         </ul>
         </nav>
     </div>
@@ -150,7 +150,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T04:03:04.000Z">2019-02-06</time>
+                <time class="level-item has-text-grey" datetime="2019-02-06T07:39:30.000Z">2019-02-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/题解/">题解</a>
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 412 个字)
+                    2 分钟 读完 (大约 230 个字)
                 </span>
                 
                 
@@ -169,80 +169,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/02/06/luogu2485/">题解 P2485 【[SDOI2011]计算器】</a>
+                <a class="has-link-black-ter" href="/2019/02/06/luogu1337/">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</a>
             
         </h1>
         <div class="content">
-            <p>第一问快速幂不讲了</p>
-<p>第二问要你求的是$x*y \equiv z \mod p$</p>
-<p>即  $xy - kp = z$</p>
-<p>即 $xy + p*(-k) = z$</p>
-<p>就转换为$exgcd$的标准形式了（这个相信大家都会吧）</p>
-<p>第三问BSGS模板题</p>
-<p>有兴趣可以看P4195 exBSGS模板<br></p>
+            <p>讲一下一些模拟退火的注意事项</p>
+<ul>
+<li><p>开始温度要设到比较高</p>
+</li>
+<li><p>在不超时的情况下多随几次</p>
+</li>
+<li><p>最好确定一个随机种子</p></li></ul>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/luogu2485/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T03:44:54.000Z">2019-02-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 236 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/06/CF900D/">题解 CF900D 【Unusual Sequences】</a>
-            
-        </h1>
-        <div class="content">
-            <p>可以发现如果$x$不整除$y$那么肯定无解</p>
-<p>不然我们可以发现其实求的就是和为$y/x$且$gcd(a_1,a_2,\cdots,a_n)=1$的序列个数</p>
-<p>容易发现所有和为$y$的序列个数为$2^{n-1}$</p>
-<p>而所有$gcd$不为$1$的序列，把每个数除以$gcd$,就又回到原题了</p>
-<p>所以枚举每个可能的$gcd$(约数)，递归计算即可。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/CF900D/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2019/02/06/luogu1337/#more">阅读更多</a>
                 </div>
             </div>
         </div>
