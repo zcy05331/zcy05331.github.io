@@ -2,12 +2,14 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>题解 UVA10228 A Star not a Tree? - little_sun&#39;s blog</title>
+<title>
+    题解 UVA10228 A Star not a Tree? - little_sun&#39;s blog
+</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目大意给定$n$个点，求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数） 题解">
+<meta name="description" content="题目大意给定$n$个点，求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数） 题解">
 <meta name="keywords" content="模拟退火,随机化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解 UVA10228 A Star not a Tree?">
@@ -24,84 +26,98 @@
 
 
 
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/images/favicon.svg">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
-    
-    
+
+
     
     <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
     
 
-    
-    
+
+
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
     
 
-    
-    
+
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
 
-    
-    
-    
-    
+
+
+
+
 
 <link rel="stylesheet" href="/css/back-to-top.css">
 
 
-    
-    
 
-    
-    
-    
-    
 
-    
-    
+
+
+
+
+
+
+
+
 <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
+
+
     
+
+
+
+
 
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-2-column">
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
-            
-                <!-- <img src="/images/logo.png" alt="题解 UVA10228 A Star not a Tree?" height="28"> -->
+                
+                <!-- <img src="/images/logo.svg" alt="题解 UVA10228 A Star not a Tree?" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
-            
+                
             </a>
         </div>
         <div class="navbar-menu">
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/categories">分类</a>
+                <a class="navbar-item" href="/">
+                    主页</a>
                 
-                <a class="navbar-item" href="/archives">归档</a>
+                <a class="navbar-item" href="/archives">
+                    归档</a>
                 
-                <a class="navbar-item" href="/tags">标签</a>
+                <a class="navbar-item" href="/categories">
+                    分类</a>
                 
-                <a class="navbar-item" href="/friends">友链</a>
+                <a class="navbar-item" href="/tags">
+                    标签</a>
                 
-                <a class="navbar-item" href="/about">关于</a>
+                <a class="navbar-item" href="/about">
+                    关于</a>
+                
+                <a class="navbar-item" href="/friends">
+                    友链</a>
                 
             </div>
             
@@ -121,40 +137,34 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-content article
-         
-    ">
+    <div class="card-content article ">
         
-        <div class="my-title  my-post-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-08T08:21:50.000Z">2019-02-08</time>
                 
-                    题解 UVA10228 A Star not a Tree?
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-08T08:21:50.000Z">
-                        2019-02-08
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            302 Words
-                        </span>
-                    
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                 </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 302 个字)
+                </span>
+                
+                
             </div>
         </div>
         
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                题解 UVA10228 A Star not a Tree?
+            
+        </h1>
         <div class="content">
             <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$n$个点，求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数）</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><a id="more"></a>
@@ -165,11 +175,11 @@
 
         </div>
         
-        <div class="level is-size-7 is-uppercase my-post-tags">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/模拟退火/">模拟退火</a>, <a class="my-post-tag has-link-grey -link" href="/tags/随机化/">随机化</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/模拟退火/">模拟退火</a>, <a class="has-link-grey -link" href="/tags/随机化/">随机化</a>
                 </div>
             </div>
         </div>
@@ -178,6 +188,9 @@
         
     </div>
 </div>
+
+
+
 
 
 <div class="card card-transparent">
@@ -198,11 +211,11 @@
 
 <div class="card">
     <div class="card-content">
-        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <div id="valine-thread"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -218,12 +231,11 @@
 </div>
 </div>
                 
-                
 
 
 
 
-<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget" id="my-id-sidebar-profile">
@@ -238,14 +250,11 @@
                     </p>
                     
                     
-                    <p class="is-size-6 is-block">
-                        A blog of little_sun
-                    </p>
-                    
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Solar System</span>
+                        <span>
+                            Solar System</span>
                     </p>
                     
                 </div>
@@ -294,32 +303,8 @@
 </div>
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意">
-        <span class="has-mr-6">1</span>
-        <span>题目大意</span>
-        </a></li><li>
-        <a class="is-flex" href="#题解">
-        <span class="has-mr-6">2</span>
-        <span>题解</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-<!-- <script type="text/javascript">
-function myHideElement(name) {
-    document.getElementById(name).style.display = 'none';
-}
-</script> -->
-
     
-        	
+        
 <div class="card widget">
     <div class="card-content">
         <div class="menu">
@@ -350,42 +335,206 @@ function myHideElement(name) {
 </div>
     
     
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-08T08:21:50.000Z">2019-02-08</time></div>
+                    <a href="/2019/02/08/uva10228/" class="has-link-black-ter is-size-6">题解 UVA10228 A Star not a Tree?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T10:13:53.000Z">2019-02-07</time></div>
+                    <a href="/2019/02/07/luogu3950/" class="has-link-black-ter is-size-6">题解 P3950 部落冲突</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T06:23:11.000Z">2019-02-07</time></div>
+                    <a href="/2019/02/07/luogu2503/" class="has-link-black-ter is-size-6">题解 P2503 [HAOI2006]均分数据</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:39:30.000Z">2019-02-06</time></div>
+                    <a href="/2019/02/06/luogu1337/" class="has-link-black-ter is-size-6">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T04:25:24.000Z">2019-02-06</time></div>
+                    <a href="/2019/02/06/CF1063B/" class="has-link-black-ter is-size-6">题解 CF1063B 【Labyrinth】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-08T08:21:50.000Z">2019-02-08</time></div>
+                    <a href="/2019/02/08/uva10228/" class="has-link-black-ter is-size-6">题解 UVA10228 A Star not a Tree?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T10:13:53.000Z">2019-02-07</time></div>
+                    <a href="/2019/02/07/luogu3950/" class="has-link-black-ter is-size-6">题解 P3950 部落冲突</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T06:23:11.000Z">2019-02-07</time></div>
+                    <a href="/2019/02/07/luogu2503/" class="has-link-black-ter is-size-6">题解 P2503 [HAOI2006]均分数据</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:39:30.000Z">2019-02-06</time></div>
+                    <a href="/2019/02/06/luogu1337/" class="has-link-black-ter is-size-6">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T04:25:24.000Z">2019-02-06</time></div>
+                    <a href="/2019/02/06/CF1063B/" class="has-link-black-ter is-size-6">题解 CF1063B 【Labyrinth】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+    
 </div>
 
             </div>
         </div>
     </section>
-    <!-- <script type="text/javascript">
-        myHideElement('my-id-sidebar-profile');
-        myHideElement('my-id-sidebar-category');
-    </script> -->
     <footer class="footer">
     <div class="container">
         <div class="level">
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
-                <!-- 
-                    <img src="/images/logo.png" alt="题解 UVA10228 A Star not a Tree?" height="28">
+                    <!-- 
+                    <img src="/images/logo.svg" alt="题解 UVA10228 A Star not a Tree?" height="28">
                     memset0's blog
                  -->
                 </a>
                 <p class="is-size-7">
-                    &copy; 2019 - 2019
+                    &copy; 2019 -
+                    2019
                     <i class="fa fa-heart"></i>
                     little_sun
                 </p>
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>6.8k</span> Words
+                        <span>
+                            6.8k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
-                    <span class="division">|</span>
-                    <span id="busuanzi_value_site_pv"></span> Views
+                        <span class="division">|</span>
+                        <span id="busuanzi_value_site_pv"></span> Views
                     </span>
                     <span id="busuanzi_container_site_uv" style="display:none">
-                    <span class="division">|</span>
-                    <span id="busuanzi_value_site_uv"></span> Visitors
+                        <span class="division">|</span>
+                        <span id="busuanzi_value_site_uv"></span> Visitors
                     </span>
                 </p>
                 <p class="is-size-7">
@@ -393,7 +542,36 @@ function myHideElement(name) {
                 </p>
             </div>
             <div class="level-end">
-            
+                
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                    
+                    
+                    <p class="control">
+                        <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                            
+                            <i class="fab fa-creative-commons"></i>
+                            
+                        </a>
+                    </p>
+                    
+                    <p class="control">
+                        <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                            
+                            <i class="fab fa-creative-commons-by"></i>
+                            
+                        </a>
+                    </p>
+                    
+                    <p class="control">
+                        <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                    </p>
+                    
+                </div>
+                
             </div>
         </div>
     </div>
@@ -440,25 +618,28 @@ function myHideElement(name) {
 
     
     
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
 });
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-
 </script>
-
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     
     
@@ -475,6 +656,15 @@ MathJax.Hub.Queue(function() {
     
     
     
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
     
 
     
