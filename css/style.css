@@ -12,7 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  font-family: Lato, -apple-system, 'PingFang SC', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft Yahei', 'Lantinghei SC', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -50,10 +50,8 @@ textarea {
     top: 1.5rem;
   }
 }
-.tag.is-grey {
-  background: #e7e7e7;
-}
 .card {
+  overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
 }
@@ -62,13 +60,9 @@ textarea {
   margin-top: 1.5rem;
 }
 .card.card-transparent {
+  overflow: visible;
   box-shadow: none;
   background: transparent;
-}
-.card .card-image {
-  overflow: hidden;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
 }
 img.thumbnail {
   object-fit: cover;
@@ -88,7 +82,6 @@ img.thumbnail {
   align-items: stretch;
   display: flex;
   padding: 0;
-  flex-shrink: 0;
 }
 .navbar-main .navbar-menu {
   flex-grow: 1;
@@ -214,32 +207,6 @@ img.thumbnail {
   margin-left: 0.75rem;
   margin-right: 0;
 }
-.donate {
-  position: relative;
-}
-.donate .qrcode {
-  display: none;
-  position: absolute;
-  z-index: 99;
-  bottom: 2.5em;
-  line-height: 0;
-  overflow: hidden;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 1px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-.donate .qrcode img {
-  max-width: 280px;
-}
-.donate:hover .qrcode {
-  display: block;
-}
-.donate:first-child:not(:last-child) .qrcode {
-  left: -0.75rem;
-}
-.donate:last-child:not(:first-child) .qrcode {
-  right: -0.75rem;
-}
 @media screen and (max-width: 768px) {
   #toc {
     display: none;
@@ -270,9 +237,6 @@ img.thumbnail {
 /* ---------------------------------
  *         Custom modifiers
  * --------------------------------- */
-.is-borderless {
-  border: none;
-}
 .is-size-7 {
   font-size: 0.85rem !important;
 }
@@ -386,7 +350,7 @@ img.thumbnail {
 .content code,
 .content pre {
   font-size: 0.85em;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Fira Mono", "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
 }
 .content code {
   color: #ff3860;
@@ -401,9 +365,9 @@ img.thumbnail {
  * --------------------------------- */
 figure.highlight {
   padding: 0;
-  width: 100%;
-  position: relative;
-  margin: 1em 0 1em !important;
+  min-width: calc(100% + 42px);
+  margin: 0 -21px !important;
+  margin-bottom: 1em !important;
 }
 figure.highlight pre,
 figure.highlight table tr:hover {
@@ -432,7 +396,7 @@ figure.highlight figcaption {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Fira Mono", "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
 }
 figure.highlight figcaption a {
   float: right;
@@ -456,17 +420,6 @@ figure.highlight .section {
   min-width: inherit;
   border-radius: inherit;
 }
-figure.highlight .copy {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  color: #fff;
-  background: rgba(0,0,0,0.5);
-}
-figure.highlight:hover .copy {
-  display: block;
-}
 /* ---------------------------------
  *        Fix Gist Snippet
  * --------------------------------- */
@@ -478,4 +431,173 @@ figure.highlight:hover .copy {
 }
 .gist .file {
   all: initial;
+}
+/* 修改内容样式 */
+* {
+  tab-size: 4 !important;
+}
+code {
+  color: #3273dc !important;
+  margin: 0 5px;
+}
+/* 修改页面布局 */
+.my-content {
+  width: 77.5% !important;
+}
+.my-sidebar {
+  width: 22.5% !important;
+}
+@media screen and (max-width: 1000px) {
+  .my-content {
+    width: 100% !important;
+  }
+  .my-sidebar {
+    display: none;
+  }
+}
+.my-post-tags {
+  color: #fff !important;
+}
+.my-post-tags .my-post-tag {
+  font-size: 13px;
+  margin-right: 10px;
+  color: #666 !important;
+}
+.my-post-tags .my-post-tag:hover {
+  color: #3273dc !important;
+}
+.my-post-tags .my-post-tag:before {
+  content: '#';
+}
+.navbar .navbar-title {
+  font-size: 18px;
+}
+.navbar .navbar-item {
+  font-size: 15px;
+  padding: 0.75em 1em;
+}
+/* 修改内容样式 */
+.card-content .title {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.card-content .article-meta {
+  margin-bottom: 30px !important;
+  text-transform: capitalize !important;
+}
+.card-content .article-meta i {
+  margin-right: 5px;
+}
+.card-content .my-title h1 {
+  font-size: 22px !important;
+}
+.card-content .my-post-title {
+  text-align: center;
+}
+.card-content .my-post-title h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 26px !important;
+}
+/* 动画管理 */
+.card-content .my-post-title h1 {
+  transition: 0.5s 0.1s;
+}
+.card-content .my-post-title h1:hover {
+  letter-spacing: 3px;
+}
+.level {
+  transition: 0.2s;
+}
+/* 修改阴影和圆角 */
+.card {
+  border-radius: 2px;
+}
+/* 设置鼠标样式 */
+* {
+  cursor: url("/cur/default.cur"), default !important;
+}
+a:hover,
+button {
+  cursor: url("/cur/pointer.cur"), pointer !important;
+}
+/* 为自己的博文中对歌词的引用而特殊准备的 */
+.lyrics {
+  color: #888;
+  margin-bottom: 40px;
+  width: 100% !important;
+  font-size: 15px;
+  text-align: center !important;
+  transition: 0.5s 0.1s ease-out;
+}
+.lyrics:hover {
+  color: #222;
+  letter-spacing: 6px;
+}
+/* Valine 评论样式 */
+.v a {
+  color: #000 !important;
+}
+.v a:hover {
+  color: #3273dc !important;
+}
+.v a:before {
+  background: #3273dc !important;
+}
+.v .info {
+  display: none !important;
+}
+.v .vwrap {
+  border: none !important;
+}
+.v .vwrap .vcontrol .col svg {
+  display: none !important;
+}
+.v .vwrap .vcontrol .col.col-80 {
+  width: 100% !important;
+}
+.v .vwrap .vcontrol .col.col-80 button {
+  height: 30px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  border-radius: 20040725px !important;
+  border-color: #3273dc !important;
+  color: #3273dc !important;
+  background-color: #fff !important;
+  width: 100% !important;
+}
+.v .vwrap .vcontrol .col.col-80 button:hover {
+  color: #fff !important;
+  background-color: #3273dc !important;
+}
+.v .vwrap .vheader .vinput:hover {
+  border-bottom: 1px dashed #3273dc !important;
+}
+.v .vlist .vcard .vquote {
+  border: none !important;
+}
+.v .vlist .vcard .vh {
+  border: none !important;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+  color: #000 !important;
+}
+.v .vlist .vcard .vh .vmeta .vat:hover {
+  color: #3273dc !important;
+}
+.v .vlist .vcard .vhead .vsys {
+  display: none !important;
+}
+.v .vlist .vcard .vhead .vnick {
+  color: #3273dc !important;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+  color: #3273dc !important;
+}
+.v .vlist .vcard .vhead .vnick:before {
+  background: #3273dc !important;
+}
+.emoji {
+  max-width: 20px !important;
 }
