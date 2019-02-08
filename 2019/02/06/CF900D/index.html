@@ -2,14 +2,12 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>
-    题解 CF900D 【Unusual Sequences】 - little_sun&#39;s blog
-</title>
+<title>题解 CF900D 【Unusual Sequences】 - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta name="description" content="数论好题">
+    <meta name="description" content="数论好题">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解 CF900D 【Unusual Sequences】">
@@ -26,98 +24,84 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/favicon.ico">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
-
-
+    
+    
     
     <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
     
 
-
-
+    
+    
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
     
 
-
-
+    
+    
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
 
-
-
-
-
+    
+    
+    
+    
 
 <link rel="stylesheet" href="/css/back-to-top.css">
 
 
+    
+    
 
+    
+    
+    
+    
 
-
-
-
-
-
-
-
-
+    
+    
 <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-
 
     
 
 
-
-
-
-
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-3-column">
+<body class="is-2-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
-                
-                <!-- <img src="/images/logo.svg" alt="题解 CF900D 【Unusual Sequences】" height="28"> -->
+            
+                <!-- <img src="/images/logo.png" alt="题解 CF900D 【Unusual Sequences】" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
-                
+            
             </a>
         </div>
         <div class="navbar-menu">
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">
-                    主页</a>
+                <a class="navbar-item" href="/categories">分类</a>
                 
-                <a class="navbar-item" href="/archives">
-                    归档</a>
+                <a class="navbar-item" href="/archives">归档</a>
                 
-                <a class="navbar-item" href="/categories">
-                    分类</a>
+                <a class="navbar-item" href="/tags">标签</a>
                 
-                <a class="navbar-item" href="/tags">
-                    标签</a>
+                <a class="navbar-item" href="/friends">友链</a>
                 
-                <a class="navbar-item" href="/about">
-                    关于</a>
-                
-                <a class="navbar-item" href="/friends">
-                    友链</a>
+                <a class="navbar-item" href="/about">关于</a>
                 
             </div>
             
@@ -137,34 +121,40 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-content article ">
+    <div class="card-content article
+         
+    ">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T03:44:54.000Z">2019-02-06</time>
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    题解 CF900D 【Unusual Sequences】
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-02-06T03:44:54.000Z">
+                        2019-02-06
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            240 Words
+                        </span>
+                    
                 </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 240 个字)
-                </span>
-                
-                
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                题解 CF900D 【Unusual Sequences】
-            
-        </h1>
         <div class="content">
             <p>数论好题<br><a id="more"></a></p>
 <p>可以发现如果$x$不整除$y$那么肯定无解</p>
@@ -175,11 +165,11 @@
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-keyword">const</span> ll mod = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; m;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v, vec;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fast_pow</span><span class="hljs-params">(ll a, ll n)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ret = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>)</span><br><span class="line">            ret = (<span class="hljs-number">1l</span>l * ret * a) % mod;</span><br><span class="line">        a = (<span class="hljs-number">1l</span>l * a * a) % mod;</span><br><span class="line">        n &gt;&gt;= <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (m[x])</span><br><span class="line">        <span class="hljs-keyword">return</span> m[x];</span><br><span class="line">    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        m[x] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> s = <span class="hljs-built_in">sqrt</span>(x);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= s; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x % i == <span class="hljs-number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">1</span> || i * i == x)</span><br><span class="line">                sum = (sum + solve(i)) % mod;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                sum = (sum + solve(i) % mod + solve(x / i) % mod) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sum = (fast_pow(<span class="hljs-number">2</span>, x - <span class="hljs-number">1</span>) - sum + mod) % mod;</span><br><span class="line">    m[x] = sum;</span><br><span class="line">    <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">    <span class="hljs-keyword">if</span> (y % x != <span class="hljs-number">0</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> * <span class="hljs-built_in">printf</span>(<span class="hljs-string">"0"</span>);</span><br><span class="line">    y /= x;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; solve(y);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        <div class="level is-size-7 is-uppercase my-post-tags">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/数论/">数论</a>
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/数论/">数论</a>
                 </div>
             </div>
         </div>
@@ -188,9 +178,6 @@
         
     </div>
 </div>
-
-
-
 
 
 <div class="card card-transparent">
@@ -218,11 +205,11 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
         
 <div id="valine-thread"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -238,11 +225,12 @@
 </div>
 </div>
                 
+                
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
     
         
 <div class="card widget" id="my-id-sidebar-profile">
@@ -257,11 +245,14 @@
                     </p>
                     
                     
+                    <p class="is-size-6 is-block">
+                        A blog of little_sun
+                    </p>
+                    
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>
-                            Solar System</span>
+                        <span>Solar System</span>
                     </p>
                     
                 </div>
@@ -310,8 +301,14 @@
 </div>
     
         
+<!-- <script type="text/javascript">
+    function myHideElement(name) {
+        return;
+    }
+</script> -->
+
     
-        
+        	
 <div class="card widget">
     <div class="card-content">
         <div class="menu">
@@ -342,206 +339,42 @@
 </div>
     
     
-        <div class="column-right-shadow is-hidden-widescreen ">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-08T08:21:50.000Z">2019-02-08</time></div>
-                    <a href="/2019/02/08/uva10228/" class="has-link-black-ter is-size-6">题解 UVA10228 A Star not a Tree?</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T10:13:53.000Z">2019-02-07</time></div>
-                    <a href="/2019/02/07/luogu3950/" class="has-link-black-ter is-size-6">题解 P3950 部落冲突</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T06:23:11.000Z">2019-02-07</time></div>
-                    <a href="/2019/02/07/luogu2503/" class="has-link-black-ter is-size-6">题解 P2503 [HAOI2006]均分数据</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:39:30.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/luogu1337/" class="has-link-black-ter is-size-6">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T04:25:24.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/CF1063B/" class="has-link-black-ter is-size-6">题解 CF1063B 【Labyrinth】</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-08T08:21:50.000Z">2019-02-08</time></div>
-                    <a href="/2019/02/08/uva10228/" class="has-link-black-ter is-size-6">题解 UVA10228 A Star not a Tree?</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T10:13:53.000Z">2019-02-07</time></div>
-                    <a href="/2019/02/07/luogu3950/" class="has-link-black-ter is-size-6">题解 P3950 部落冲突</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-07T06:23:11.000Z">2019-02-07</time></div>
-                    <a href="/2019/02/07/luogu2503/" class="has-link-black-ter is-size-6">题解 P2503 [HAOI2006]均分数据</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:39:30.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/luogu1337/" class="has-link-black-ter is-size-6">题解 P1337 [JSOI2004]平衡点 / 吊打XXX</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T04:25:24.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/CF1063B/" class="has-link-black-ter is-size-6">题解 CF1063B 【Labyrinth】</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-    
 </div>
 
             </div>
         </div>
     </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
     <footer class="footer">
     <div class="container">
         <div class="level">
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
-                    <!-- 
-                    <img src="/images/logo.svg" alt="题解 CF900D 【Unusual Sequences】" height="28">
+                <!-- 
+                    <img src="/images/logo.png" alt="题解 CF900D 【Unusual Sequences】" height="28">
                     memset0's blog
                  -->
                 </a>
                 <p class="is-size-7">
-                    &copy; 2019 -
-                    2019
+                    &copy; 2019 - 2019
                     <i class="fa fa-heart"></i>
                     little_sun
                 </p>
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>
-                            6.8k</span> Words
+                        <span>6.8k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
-                        <span class="division">|</span>
-                        <span id="busuanzi_value_site_pv"></span> Views
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
                     </span>
                     <span id="busuanzi_container_site_uv" style="display:none">
-                        <span class="division">|</span>
-                        <span id="busuanzi_value_site_uv"></span> Visitors
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
                     </span>
                 </p>
                 <p class="is-size-7">
@@ -549,36 +382,7 @@
                 </p>
             </div>
             <div class="level-end">
-                
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                    
-                    
-                    <p class="control">
-                        <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
-                            
-                            <i class="fab fa-creative-commons"></i>
-                            
-                        </a>
-                    </p>
-                    
-                    <p class="control">
-                        <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                            
-                            <i class="fab fa-creative-commons-by"></i>
-                            
-                        </a>
-                    </p>
-                    
-                    <p class="control">
-                        <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
-                            
-                            <i class="fab fa-github"></i>
-                            
-                        </a>
-                    </p>
-                    
-                </div>
-                
+            
             </div>
         </div>
     </div>
@@ -625,28 +429,25 @@
 
     
     
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
 });
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
 </script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     
     
@@ -663,15 +464,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
     
 
     
