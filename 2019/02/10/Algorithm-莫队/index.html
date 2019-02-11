@@ -8,14 +8,14 @@
 
 
     <meta name="description" content="前言莫队，可是传说中能够解决所有离线区间问题的神奇算法">
-<meta name="keywords" content="莫队,Data Structures">
+<meta name="keywords" content="莫队,Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法笔记-莫队">
 <meta property="og:url" content="http://www.zcysky.com/2019/02/10/Algorithm-莫队/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="前言莫队，可是传说中能够解决所有离线区间问题的神奇算法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-10T13:35:52.042Z">
+<meta property="og:updated_time" content="2019-02-11T04:15:23.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法笔记-莫队">
 <meta name="twitter:description" content="前言莫队，可是传说中能够解决所有离线区间问题的神奇算法">
@@ -150,7 +150,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            852 Words
+                            1213 Words
                         </span>
                     
                 </div>
@@ -178,7 +178,25 @@
 <p>我们可以把询问分块，把询问依照左端点分成$O(\sqrt n)$块,块内再按右端点排序。</p>
 <p>这样子算法的总复杂度就是$O(n \sqrt n)$的</p>
 <p>但是，这个复杂度要怎么证明呢？</p>
-<h3 id="莫队的复杂度证明"><a href="#莫队的复杂度证明" class="headerlink" title="莫队的复杂度证明"></a>莫队的复杂度证明</h3><h3 id="范例代码"><a href="#范例代码" class="headerlink" title="范例代码"></a>范例代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">500010</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">query</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> l, r, id, pos;</span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> query &amp;x) <span class="hljs-keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (pos == x.pos)</span><br><span class="line">            <span class="hljs-keyword">return</span> r &lt; x.r;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-keyword">return</span> pos &lt; x.pos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">query q[MaxN];</span><br><span class="line"><span class="hljs-keyword">int</span> a[MaxN], n, m, k;</span><br><span class="line"><span class="hljs-keyword">int</span> cnt[MaxN &lt;&lt; <span class="hljs-number">1</span>], ans[MaxN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>) </span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = read();</span><br><span class="line">    m = read();</span><br><span class="line">    <span class="hljs-keyword">int</span> size = (<span class="hljs-keyword">int</span>)<span class="hljs-built_in">pow</span>(n, <span class="hljs-number">0.55</span>); <span class="hljs-comment">//莫队的块大小不一定要根号n,可以视题目而定</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        q[i].l = read(), q[i].r = read();</span><br><span class="line">        q[i].id = i, q[i].pos = (q[i].l - <span class="hljs-number">1</span>) / size + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(q + <span class="hljs-number">1</span>, q + m + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &gt; q[i].l)</span><br><span class="line">            l--, cnt[a[l]]++, sum += ((cnt[a[l]] == <span class="hljs-number">1</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &lt; q[i].r)</span><br><span class="line">            r++, cnt[a[r]]++, sum += ((cnt[a[r]] == <span class="hljs-number">1</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &lt; q[i].l)</span><br><span class="line">            cnt[a[l]]--, sum -= ((cnt[a[l]] == <span class="hljs-number">0</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>), l++;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &gt; q[i].r)</span><br><span class="line">            cnt[a[r]]--, sum -= ((cnt[a[r]] == <span class="hljs-number">0</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>), r--;</span><br><span class="line">        ans[q[i].id] = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans[i]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="莫队的复杂度分析"><a href="#莫队的复杂度分析" class="headerlink" title="莫队的复杂度分析"></a>莫队的复杂度分析</h3><h4 id="块内转移"><a href="#块内转移" class="headerlink" title="块内转移"></a>块内转移</h4><ul>
+<li><h5 id="左端点"><a href="#左端点" class="headerlink" title="左端点"></a>左端点</h5></li>
+</ul>
+<p>在同一个块里面，由于左端点都在一个长度为$O(\sqrt n)$的区间里面<br>所以在同一块里面移动一次，左端点最多变化$O(\sqrt n)$<br>总共有$m$个询问，那么同一个块里面的左端点变化最多是$O(m\sqrt n)$的</p>
+<ul>
+<li><h5 id="右端点"><a href="#右端点" class="headerlink" title="右端点"></a>右端点</h5></li>
+</ul>
+<p>由于每个块里面的询问都按右端点排序<br>所以右端点在一个块里面最多变化$n$<br>有 $\sqrt n$个块，那么右端点移动最多就是$O(n\sqrt n)$</p>
+<h4 id="跨块转移"><a href="#跨块转移" class="headerlink" title="跨块转移"></a>跨块转移</h4><p>容易发现这样的转移总共会发生$\sqrt n$次</p>
+<ul>
+<li><h5 id="左端点-1"><a href="#左端点-1" class="headerlink" title="左端点"></a>左端点</h5></li>
+</ul>
+<p>单次跨块转移的复杂度为$O(\sqrt n)$,总复杂度为$O(\sqrt n * \sqrt n)=O(n)$</p>
+<ul>
+<li><h5 id="右端点-1"><a href="#右端点-1" class="headerlink" title="右端点"></a>右端点</h5></li>
+</ul>
+<p>由于跨块时，右端点是无序的，所以在最坏情况下右端点单次转移的复杂度为$O(n)$,总复杂度为$O(n * \sqrt n)=O(n \sqrt n)$</p>
+<p><strong>综上所述，莫队算法的复杂度是$O(n\sqrt n)$</strong>(由于$m$与$n$在同一个数量级，所以统一一下就成了$O(n\sqrt n)$了，毕竟这是渐进时间复杂度)</p>
+<h3 id="范例代码"><a href="#范例代码" class="headerlink" title="范例代码"></a>范例代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">500010</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">query</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> l, r, id, pos;</span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> query &amp;x) <span class="hljs-keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (pos == x.pos)</span><br><span class="line">            <span class="hljs-keyword">return</span> r &lt; x.r;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-keyword">return</span> pos &lt; x.pos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">query q[MaxN];</span><br><span class="line"><span class="hljs-keyword">int</span> a[MaxN], n, m, k;</span><br><span class="line"><span class="hljs-keyword">int</span> cnt[MaxN &lt;&lt; <span class="hljs-number">1</span>], ans[MaxN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>) </span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = read();</span><br><span class="line">    m = read();</span><br><span class="line">    <span class="hljs-keyword">int</span> size = (<span class="hljs-keyword">int</span>)<span class="hljs-built_in">pow</span>(n, <span class="hljs-number">0.55</span>); <span class="hljs-comment">//莫队的块大小不一定要根号n,可以视题目而定</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        q[i].l = read(), q[i].r = read();</span><br><span class="line">        q[i].id = i, q[i].pos = (q[i].l - <span class="hljs-number">1</span>) / size + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(q + <span class="hljs-number">1</span>, q + m + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &gt; q[i].l)</span><br><span class="line">            l--, cnt[a[l]]++, sum += ((cnt[a[l]] == <span class="hljs-number">1</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &lt; q[i].r)</span><br><span class="line">            r++, cnt[a[r]]++, sum += ((cnt[a[r]] == <span class="hljs-number">1</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &lt; q[i].l)</span><br><span class="line">            cnt[a[l]]--, sum -= ((cnt[a[l]] == <span class="hljs-number">0</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>), l++;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &gt; q[i].r)</span><br><span class="line">            cnt[a[r]]--, sum -= ((cnt[a[r]] == <span class="hljs-number">0</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>), r--;</span><br><span class="line">        ans[q[i].id] = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans[i]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><ul>
 <li>P2709 小B的询问<blockquote>
 <p>普通莫队模板题，建议初学者从这道题入手</p>
@@ -221,6 +239,11 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h3><p>留坑待填</p>
+<h3 id="树上莫队"><a href="#树上莫队" class="headerlink" title="树上莫队"></a>树上莫队</h3><p>留坑待填</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>本文参考了网上的一些博客</p>
+<p>本文作者学习莫队时的代码是参考@zcysky大佬的代码</p>
+<p>在此感谢</p>
 
         </div>
         
@@ -228,7 +251,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/Data-Structures/">Data Structures</a>, <a class="my-post-tag has-link-grey -link" href="/tags/莫队/">莫队</a>
+                    <a class="my-post-tag has-link-grey -link" href="/tags/Data-Structure/">Data Structure</a>, <a class="my-post-tag has-link-grey -link" href="/tags/莫队/">莫队</a>
                 </div>
             </div>
         </div>
@@ -344,7 +367,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        15
                     </p>
                 </div>
             </div>
@@ -409,10 +432,34 @@
         <span class="has-mr-6">2</span>
         <span>引子</span>
         </a></li><li>
-        <a class="is-flex" href="#莫队的复杂度证明">
+        <a class="is-flex" href="#莫队的复杂度分析">
         <span class="has-mr-6">3</span>
-        <span>莫队的复杂度证明</span>
+        <span>莫队的复杂度分析</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#块内转移">
+        <span class="has-mr-6">3.1</span>
+        <span>块内转移</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#左端点">
+        <span class="has-mr-6">3.1.1</span>
+        <span>左端点</span>
         </a></li><li>
+        <a class="is-flex" href="#右端点">
+        <span class="has-mr-6">3.1.2</span>
+        <span>右端点</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#跨块转移">
+        <span class="has-mr-6">3.2</span>
+        <span>跨块转移</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#左端点-1">
+        <span class="has-mr-6">3.2.1</span>
+        <span>左端点</span>
+        </a></li><li>
+        <a class="is-flex" href="#右端点-1">
+        <span class="has-mr-6">3.2.2</span>
+        <span>右端点</span>
+        </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#范例代码">
         <span class="has-mr-6">4</span>
         <span>范例代码</span>
@@ -420,6 +467,18 @@
         <a class="is-flex" href="#习题">
         <span class="has-mr-6">5</span>
         <span>习题</span>
+        </a></li><li>
+        <a class="is-flex" href="#带修莫队">
+        <span class="has-mr-6">6</span>
+        <span>带修莫队</span>
+        </a></li><li>
+        <a class="is-flex" href="#树上莫队">
+        <span class="has-mr-6">7</span>
+        <span>树上莫队</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考文献">
+        <span class="has-mr-6">8</span>
+        <span>参考文献</span>
         </a></li></ul>
         </div>
     </div>
@@ -489,7 +548,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>8.5k</span> Words
+                        <span>8.9k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
