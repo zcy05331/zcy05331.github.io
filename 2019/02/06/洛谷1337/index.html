@@ -2,21 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: Graph - little_sun&#39;s blog</title>
+<title>洛谷P1337 [JSOI2004]平衡点 / 吊打XXX - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A super spicy chicken">
-<meta property="og:type" content="website">
-<meta property="og:title" content="little_sun&#39;s blog">
-<meta property="og:url" content="http://www.zcysky.com/tags/Graph/index.html">
+    <meta name="description" content="一些模拟退火的注意事项：  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
+<meta name="keywords" content="模拟退火,随机化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
+<meta property="og:url" content="http://www.zcysky.com/2019/02/06/洛谷1337/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="A super spicy chicken">
+<meta property="og:description" content="一些模拟退火的注意事项：  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-11T15:35:28.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="little_sun&#39;s blog">
-<meta name="twitter:description" content="A super spicy chicken">
+<meta name="twitter:title" content="洛谷P1337 [JSOI2004]平衡点 &#x2F; 吊打XXX">
+<meta name="twitter:description" content="一些模拟退火的注意事项：  开始温度要设到比较高  在不超时的情况下多随几次  最好确定一个随机种子">
 
 
 
@@ -82,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28"> -->
+                <!-- <img src="/images/logo.png" alt="洛谷P1337 [JSOI2004]平衡点 / 吊打XXX" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
             
             </a>
@@ -122,44 +124,33 @@
         <div class="container">
             <div class="columns">
                 <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Graph</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article
          
     ">
         
-        <div class="my-title ">
+        <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    <a class="has-link-black-ter" href="/2019/02/06/Algorithm-Dijkstra/">「算法笔记」Dijkstra</a>
+                    洛谷P1337 [JSOI2004]平衡点 / 吊打XXX
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-06T00:03:18.000Z">
+                    <time class="level-item has-text-grey" datetime="2019-02-06T07:39:30.000Z">
                         2019-02-06
                     </time>
                     <i class="far fa-folder"></i>
                     
                         <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/算法笔记/">算法笔记</a>
+                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                         </div>
                     
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            1120 Words
+                            228 Words
                         </span>
                     
                 </div>
@@ -167,27 +158,78 @@
         </div>
         
         <div class="content">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li>$SPFA​$算法由于它上限 $O(NM) = O(VE)​$的时间复杂度,被卡掉的几率很大.在算法竞赛中,我们需要一个更稳定的算法:$dijkstra​$.</li></ul>
+            <p>一些模拟退火的注意事项：</p>
+<ul>
+<li><p>开始温度要设到比较高</p>
+</li>
+<li><p>在不超时的情况下多随几次</p>
+</li>
+<li><p>最好确定一个随机种子</p>
+<a id="more"></a>
+</li>
+</ul>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">1010</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> delta = <span class="hljs-number">0.993</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> x, y, w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line">node a[MaxN];</span><br><span class="line"><span class="hljs-keyword">double</span> ansx, ansy;</span><br><span class="line"><span class="hljs-keyword">double</span> ans = <span class="hljs-number">1e18</span>, t;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">bool</span> f = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt; <span class="hljs-string">'0'</span> || ch &gt; <span class="hljs-string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'-'</span>)</span><br><span class="line">            f = <span class="hljs-literal">true</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt;= <span class="hljs-string">'0'</span> &amp;&amp; ch &lt;= <span class="hljs-string">'9'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + ch - <span class="hljs-string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> (!f) ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">double</span> nx, <span class="hljs-keyword">double</span> ny)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">double</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">double</span> x = nx - a[i].x;</span><br><span class="line">        <span class="hljs-keyword">double</span> y = ny - a[i].y;</span><br><span class="line">        sum += <span class="hljs-built_in">sqrt</span>(x * x + y * y) * a[i].w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sa</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">double</span> nowx = ansx, nowy = ansy;</span><br><span class="line">    t = <span class="hljs-number">1000000</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t &gt; <span class="hljs-number">1e-14</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">double</span> tmpx = ansx + (rand() * <span class="hljs-number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="hljs-keyword">double</span> tmpy = ansy + (rand() * <span class="hljs-number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="hljs-keyword">double</span> tmp = calc(tmpx, tmpy);</span><br><span class="line">        <span class="hljs-keyword">if</span> (tmp - ans &lt; <span class="hljs-number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">            ansx = tmpx;</span><br><span class="line">            ansy = tmpy;</span><br><span class="line">            ans = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>((ans - tmp) / t) * RAND_MAX &gt; rand())</span><br><span class="line">        &#123;</span><br><span class="line">            nowx = tmpx;</span><br><span class="line">            nowy = tmpy;</span><br><span class="line">        &#125;</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    srand(<span class="hljs-number">19260817</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i].x = read(), a[i].y = read(), a[i].w = read();</span><br><span class="line">    sa();</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.3lf %.3lf"</span>, ansx, ansy);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase my-post-tags">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/Algorithm-Dijkstra/#more">阅读更多</a>
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/模拟退火/">模拟退火</a>, <a class="my-post-tag has-link-grey -link" href="/tags/随机化/">随机化</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/07/洛谷2503/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">洛谷 P2503 [HAOI2006]均分数据</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/06/CF1063B/">
+                <span class="level-item">CF1063B 【Labyrinth】</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: true,
+        app_id: '3uPArX2yfadxvmrzeQoLh3pv-gzGzoHsz',
+        app_key: 'uPpAdYJ2hCBAuYo4y0VazuXw',
+        placeholder: '留下你的脚印~'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
                 
@@ -300,6 +342,12 @@
 </div>
     
         
+<!-- <script type="text/javascript">
+    function myHideElement(name) {
+        return;
+    }
+</script> -->
+
     
         	
 <div class="card widget">
@@ -355,7 +403,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 <!-- 
-                    <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28">
+                    <img src="/images/logo.png" alt="洛谷P1337 [JSOI2004]平衡点 / 吊打XXX" height="28">
                     memset0's blog
                  -->
                 </a>

@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>UVA10228 A Star not a Tree? - little_sun&#39;s blog</title>
+<title>洛谷 P3936 Coloring - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目大意给定$n$个点, 求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数）">
+    <meta name="description" content="思路其实很容易想到，只是调参有那么”一点点”恶心">
 <meta name="keywords" content="模拟退火,随机化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UVA10228 A Star not a Tree?">
-<meta property="og:url" content="http://www.zcysky.com/2019/02/08/uva10228/index.html">
+<meta property="og:title" content="洛谷 P3936 Coloring">
+<meta property="og:url" content="http://www.zcysky.com/2019/02/09/洛谷3936/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="题目大意给定$n$个点, 求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数）">
+<meta property="og:description" content="思路其实很容易想到，只是调参有那么”一点点”恶心">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T15:36:21.407Z">
+<meta property="og:updated_time" content="2019-02-11T15:35:50.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UVA10228 A Star not a Tree?">
-<meta name="twitter:description" content="题目大意给定$n$个点, 求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数）">
+<meta name="twitter:title" content="洛谷 P3936 Coloring">
+<meta name="twitter:description" content="思路其实很容易想到，只是调参有那么”一点点”恶心">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/images/logo.png" alt="UVA10228 A Star not a Tree?" height="28"> -->
+                <!-- <img src="/images/logo.png" alt="洛谷 P3936 Coloring" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
             
             </a>
@@ -132,14 +132,14 @@
         <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    UVA10228 A Star not a Tree?
+                    洛谷 P3936 Coloring
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-08T08:21:50.000Z">
-                        2019-02-08
+                    <time class="level-item has-text-grey" datetime="2019-02-09T13:13:51.000Z">
+                        2019-02-09
                     </time>
                     <i class="far fa-folder"></i>
                     
@@ -150,7 +150,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            303 Words
+                            395 Words
                         </span>
                     
                 </div>
@@ -158,12 +158,12 @@
         </div>
         
         <div class="content">
-            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$n$个点, 求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数）</p>
+            <p>思路其实很容易想到，只是调参有那么”一点点”恶心</p>
 <a id="more"></a>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>计算几何什么的我不会o((⊙﹏⊙))o</p>
-<p>那我们就来随机化吧(￣▽￣)~*</p>
-<p>按照模拟退火的套路来：每次随机一个点，判他是不是比答案更优，如果更优的话就更新，否则就以一定的几率接受该解。直到稳定在最优解为止。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">200</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> delta = <span class="hljs-number">0.995</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-keyword">int</span> x[MaxN], y[MaxN];</span><br><span class="line"><span class="hljs-keyword">double</span> ansx, ansy;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">double</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">double</span> nx, <span class="hljs-keyword">double</span> ny)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">double</span> tmp = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        tmp += <span class="hljs-built_in">sqrt</span>((nx - x[i]) * (nx - x[i]) + (ny - y[i]) * (ny - y[i]));</span><br><span class="line">    <span class="hljs-keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sa</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">double</span> t = <span class="hljs-number">10000000</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t &gt; <span class="hljs-number">1e-14</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">double</span> nowx = ansx + (rand() * <span class="hljs-number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="hljs-keyword">double</span> nowy = ansy + (rand() * <span class="hljs-number">2</span> - RAND_MAX) * t;</span><br><span class="line">        <span class="hljs-keyword">double</span> tmp = calc(nowx, nowy) - calc(ansx, ansy);</span><br><span class="line">        <span class="hljs-keyword">if</span> (tmp &lt; <span class="hljs-number">0</span>)</span><br><span class="line">            ansx = nowx, ansy = nowy;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>(-tmp / t) * RAND_MAX &gt; rand())</span><br><span class="line">            ansx = nowx, ansy = nowy;</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    srand(time(<span class="hljs-literal">NULL</span>));</span><br><span class="line">    <span class="hljs-keyword">int</span> T = read();</span><br><span class="line">    <span class="hljs-keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        ansx = ansy = <span class="hljs-number">0</span>;</span><br><span class="line">        n = read();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            x[i] = read(), y[i] = read();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; i++)</span><br><span class="line">            sa();</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.0lf\n"</span>, calc(ansx, ansy));</span><br><span class="line">        <span class="hljs-keyword">if</span>(T)</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先按顺序把$1-c$这$c$种数全部填进表格里</p>
+<p>然后每次随机选两个颜色不同的块交换，然后计算原方案与现方案的差距，并按几率更新</p>
+<p>代码五分钟，调参两百年:C</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> GCC optimize(3)</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">30</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> dx[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;, dy[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">int</span> n, m, c;</span><br><span class="line"><span class="hljs-keyword">int</span> p[<span class="hljs-number">51</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> a[MaxN][MaxN], tmp[MaxN][MaxN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[<span class="hljs-number">30</span>][<span class="hljs-number">30</span>])</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ret = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= <span class="hljs-number">3</span>; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> nx = i + dx[k], ny = j + dy[k];</span><br><span class="line">                <span class="hljs-keyword">if</span> (A[nx][ny] &amp;&amp; (A[nx][ny] != A[i][j]))</span><br><span class="line">                    ++ret;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ret / <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> now = <span class="hljs-number">1</span>, cnt = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i][j] = now;</span><br><span class="line">            ++cnt;</span><br><span class="line">            <span class="hljs-keyword">if</span> (cnt == p[now])</span><br><span class="line">                cnt = <span class="hljs-number">0</span>, now++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sa</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">double</span> t = <span class="hljs-number">1.0</span>, delta;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n * m &lt;= <span class="hljs-number">400</span>)</span><br><span class="line">        delta = <span class="hljs-number">0.9999900001</span>;</span><br><span class="line">    <span class="hljs-built_in">memcpy</span>(tmp, a, <span class="hljs-keyword">sizeof</span>(a));</span><br><span class="line">    <span class="hljs-keyword">while</span> (t &gt; <span class="hljs-number">1e-5</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; pos1, pos2;</span><br><span class="line">        pos1.first = rand() % n + <span class="hljs-number">1</span>;</span><br><span class="line">        pos2.first = rand() % n + <span class="hljs-number">1</span>;</span><br><span class="line">        pos1.second = rand() % m + <span class="hljs-number">1</span>;</span><br><span class="line">        pos2.second = rand() % m + <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (tmp[pos1.first][pos1.second] == tmp[pos2.first][pos2.second])</span><br><span class="line">        &#123;</span><br><span class="line">            pos1.first = rand() % n + <span class="hljs-number">1</span>;</span><br><span class="line">            pos2.first = rand() % n + <span class="hljs-number">1</span>;</span><br><span class="line">            pos1.second = rand() % m + <span class="hljs-number">1</span>;</span><br><span class="line">            pos2.second = rand() % m + <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">std</span>::swap(tmp[pos1.first][pos1.second], tmp[pos2.first][pos2.second]);</span><br><span class="line">        <span class="hljs-keyword">int</span> num = calc(tmp) - calc(a);</span><br><span class="line">        <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-built_in">std</span>::swap(a[pos1.first][pos1.second], a[pos2.first][pos2.second]);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>(-num / t) * RAND_MAX &gt; rand())</span><br><span class="line">            <span class="hljs-built_in">std</span>::swap(a[pos1.first][pos1.second], a[pos2.first][pos2.second]);</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-built_in">std</span>::swap(tmp[pos1.first][pos1.second], tmp[pos2.first][pos2.second]);</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    srand(<span class="hljs-number">107</span>);</span><br><span class="line">    n = read(), m = read(), c = read();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= c; i++)</span><br><span class="line">        p[i] = read();</span><br><span class="line">    init();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span>; i++)</span><br><span class="line">        sa();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, a[i][j]);</span><br><span class="line">        <span class="hljs-built_in">puts</span>(<span class="hljs-string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -186,16 +186,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/09/洛谷3936/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/10/洛谷3878/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">洛谷 P3936 Coloring</span>
+                <span class="level-item">洛谷 P3878 [TJOI2010]分金币</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/07/洛谷3950/">
-                <span class="level-item">洛谷 P3950 部落冲突</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/08/uva10228/">
+                <span class="level-item">UVA10228 A Star not a Tree?</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -337,32 +337,10 @@
 </div>
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意">
-        <span class="has-mr-6">1</span>
-        <span>题目大意</span>
-        </a></li><li>
-        <a class="is-flex" href="#题解">
-        <span class="has-mr-6">2</span>
-        <span>题解</span>
-        </a></li><li>
-        <a class="is-flex" href="#代码">
-        <span class="has-mr-6">3</span>
-        <span>代码</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
 <!-- <script type="text/javascript">
-function myHideElement(name) {
-    document.getElementById(name).style.display = 'none';
-}
+    function myHideElement(name) {
+        return;
+    }
 </script> -->
 
     
@@ -420,7 +398,7 @@ function myHideElement(name) {
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 <!-- 
-                    <img src="/images/logo.png" alt="UVA10228 A Star not a Tree?" height="28">
+                    <img src="/images/logo.png" alt="洛谷 P3936 Coloring" height="28">
                     memset0's blog
                  -->
                 </a>
