@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>「20190219」赛后总结 - little_sun&#39;s blog</title>
+<title>little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="总的来说">
+    <meta name="description" content="总的来说这场比赛打完感触还是蛮深的. 深切体会到了背模板的意义">
 <meta name="keywords" content="总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「20190219」赛后总结">
+<meta property="og:title" content="little_sun&#39;s blog">
 <meta property="og:url" content="http://www.zcysky.com/2019/02/19/20190219/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="总的来说">
+<meta property="og:description" content="总的来说这场比赛打完感触还是蛮深的. 深切体会到了背模板的意义">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-19T12:02:10.758Z">
+<meta property="og:updated_time" content="2019-02-19T12:41:40.778Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「20190219」赛后总结">
-<meta name="twitter:description" content="总的来说">
+<meta name="twitter:title" content="little_sun&#39;s blog">
+<meta name="twitter:description" content="总的来说这场比赛打完感触还是蛮深的. 深切体会到了背模板的意义">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/images/logo.png" alt="「20190219」赛后总结" height="28"> -->
+                <!-- <img src="/images/logo.png" alt="" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
             
             </a>
@@ -132,7 +132,7 @@
         <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    「20190219」赛后总结
+                    
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
@@ -150,7 +150,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            5 Words
+                            389 Words
                         </span>
                     
                 </div>
@@ -158,8 +158,29 @@
         </div>
         
         <div class="content">
-            <p>总的来说</p>
+            <p>总的来说这场比赛打完感触还是蛮深的.</p>
+<p>深切体会到了背模板的意义</p>
 <a id="more"></a>
+<p>$T1$</p>
+<blockquote>
+<p> $s$到$t$的路径上所有点显然一定会走到，以$s$为根时$t$子树中的点显然走不到，而其它点都有$\frac{1}{2}$的概率会走到。</p>
+<p>时间复杂度$O(n log_2{n} +m)$</p>
+</blockquote>
+<p>$T2​$</p>
+<blockquote>
+<p>n较小时，我们可以直接用线性筛/埃氏筛法求出每个数的最小质因数。</p>
+<p>考虑进行容斥。对于每个质数x，我们需要求出1~n/x中不被比x小的质数整除的数的个数。一种简单的思路是，对于x&lt;=k的情况，我们进行常见的枚举子集容斥；对于x&gt;k的情况，n/x较小，我们就在n/k的范围内进行线性筛/埃氏筛法。</p>
+<p>注意到进行子集容斥时，枚举子集后贡献形如(-1)i(n/S)，而n/S只有O(sqrt(n))种取值，可以对这个进行记忆化。</p>
+<p>$\frac{n^{\frac{3}{4}}}{\sqrt{log_2 n}}$</p>
+</blockquote>
+<p>$T3​$</p>
+<blockquote>
+<p> 点分治统计树上的情况，然后单独考虑经过剩下那条边的答案。</p>
+<p>在环上按顺序枚举一个端点，用树状数组维护另一个端点到这条边的距离。</p>
+<p>时间复杂度O(nlogn)</p>
+</blockquote>
+<p>总的来说，T1T3的思路基本都有，但是因为代码能力有限，写的题太少，没写出来。。。</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase my-post-tags">
@@ -390,7 +411,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 <!-- 
-                    <img src="/images/logo.png" alt="「20190219」赛后总结" height="28">
+                    <img src="/images/logo.png" alt="" height="28">
                     memset0's blog
                  -->
                 </a>
@@ -402,7 +423,7 @@
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>10.7k</span> Words
+                        <span>11.1k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
