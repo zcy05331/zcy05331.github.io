@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>「模板」Miller_Rabin - little_sun&#39;s blog</title>
+<title>CF86D Powerful array - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="提交地址: LOJ #143. 质数判定">
-<meta name="keywords" content="数论,MillerRabin">
+    <meta name="description" content="怎么2700的题这么简单啊QAQ">
+<meta name="keywords" content="莫队,Data Structure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「模板」Miller_Rabin">
-<meta property="og:url" content="http://www.zcysky.com/2019/02/11/模板-MillerRabin/index.html">
+<meta property="og:title" content="CF86D Powerful array">
+<meta property="og:url" content="http://www.zcysky.com/2019/02/28/CF86D/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="提交地址: LOJ #143. 质数判定">
+<meta property="og:description" content="怎么2700的题这么简单啊QAQ">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-19T11:57:03.771Z">
+<meta property="og:updated_time" content="2019-02-28T14:44:08.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「模板」Miller_Rabin">
-<meta name="twitter:description" content="提交地址: LOJ #143. 质数判定">
+<meta name="twitter:title" content="CF86D Powerful array">
+<meta name="twitter:description" content="怎么2700的题这么简单啊QAQ">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/images/logo.png" alt="「模板」Miller_Rabin" height="28"> -->
+                <!-- <img src="/images/logo.png" alt="CF86D Powerful array" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
             
             </a>
@@ -132,25 +132,25 @@
         <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    「模板」Miller_Rabin
+                    CF86D Powerful array
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-11T15:20:21.000Z">
-                        2019-02-11
+                    <time class="level-item has-text-grey" datetime="2019-02-28T14:37:38.000Z">
+                        2019-02-28
                     </time>
                     <i class="far fa-folder"></i>
                     
                         <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Template/">Template</a>
+                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                         </div>
                     
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            173 Words
+                            261 Words
                         </span>
                     
                 </div>
@@ -158,9 +158,11 @@
         </div>
         
         <div class="content">
-            <p>提交地址: <a href="https://loj.ac/problem/143" target="_blank" rel="noopener">LOJ #143. 质数判定</a></p>
-<a id="more"></a>          
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">2500</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod[] = &#123;<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">17</span>, <span class="hljs-number">19</span>, <span class="hljs-number">23</span>, <span class="hljs-number">29</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">fast_mul</span><span class="hljs-params">(ll a, ll b, ll m)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll d = ((<span class="hljs-keyword">long</span> <span class="hljs-keyword">double</span>)a / m * b + <span class="hljs-number">0.5</span>);</span><br><span class="line">    ll r = a * b - d * m;</span><br><span class="line">    <span class="hljs-keyword">return</span> r &lt; <span class="hljs-number">0</span> ? r + m : r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">fast_pow</span><span class="hljs-params">(ll a, ll m, ll n)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll ret = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (m &amp; <span class="hljs-number">1</span>)</span><br><span class="line">            ret = fast_mul(ret, a, n);</span><br><span class="line">        a = fast_mul(a, a, n);</span><br><span class="line">        m &gt;&gt;= <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(ll k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (k &lt;= <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (k == <span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!(k &amp; <span class="hljs-number">1</span>))</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">    ll t = k - <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> now = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!(t &amp; <span class="hljs-number">1</span>))</span><br><span class="line">        t &gt;&gt;= <span class="hljs-number">1</span>, ++now;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (mod[i] == k)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">        ll x = fast_pow(mod[i], t, k), y = x;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= now; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            x = fast_mul(x, x, k);</span><br><span class="line">            <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span> &amp;&amp; !(y == <span class="hljs-number">1</span> || y == k - <span class="hljs-number">1</span>))</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">            y = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x != <span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    srand(time(<span class="hljs-literal">NULL</span>));</span><br><span class="line">    ll k;</span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%llu"</span>, &amp;k) == <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-built_in">printf</span>(check(k) ? <span class="hljs-string">"Y\n"</span> : <span class="hljs-string">"N\n"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>怎么2700的题这么简单啊QAQ</p>
+<a id="more"></a>
+<p>长得非常像<a href="https://www.luogu.org/problemnew/show/P2709" target="_blank" rel="noopener">P2709 小B的询问</a>，做法也一样</p>
+<p>莫队离线乱搞做完了</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">1000010</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">query</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> l, r, id, pos;</span><br><span class="line">&#125;;</span><br><span class="line">query q[MaxN];</span><br><span class="line"><span class="hljs-keyword">int</span> n, t, size;</span><br><span class="line"><span class="hljs-keyword">int</span> ans[MaxN], sum;</span><br><span class="line"><span class="hljs-keyword">int</span> a[MaxN], cnt[MaxN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">cmp</span><span class="hljs-params">(query a, query b)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a.pos != b.pos)</span><br><span class="line">        <span class="hljs-keyword">return</span> a.pos &lt; b.pos;</span><br><span class="line">    <span class="hljs-keyword">return</span> a.r &lt; b.r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    sum += a[x] * (<span class="hljs-number">2</span> * cnt[a[x]] + <span class="hljs-number">1</span>);</span><br><span class="line">    cnt[a[x]]++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">del</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    sum -= a[x] * (<span class="hljs-number">2</span> * cnt[a[x]] - <span class="hljs-number">1</span>);</span><br><span class="line">    cnt[a[x]]--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &gt; q[i].l)</span><br><span class="line">            --l, add(l);</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &lt; q[i].r)</span><br><span class="line">            ++r, add(r);</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &lt; q[i].l)</span><br><span class="line">            del(l), ++l;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &gt; q[i].r)</span><br><span class="line">            del(r), --r;</span><br><span class="line">        ans[q[i].id] = sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read(), t = read();</span><br><span class="line">    size = <span class="hljs-built_in">pow</span>(n, <span class="hljs-number">0.55</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = read();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        q[i].l = read(), q[i].r = read();</span><br><span class="line">        q[i].id = i, q[i].pos = (q[i].l - <span class="hljs-number">1</span>) / size + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(q + <span class="hljs-number">1</span>, q + t + <span class="hljs-number">1</span>, cmp);</span><br><span class="line">    solve();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; i++)</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans[i]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -168,7 +170,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/MillerRabin/">MillerRabin</a>, <a class="my-post-tag has-link-grey -link" href="/tags/数论/">数论</a>
+                    <a class="my-post-tag has-link-grey -link" href="/tags/Data-Structure/">Data Structure</a>, <a class="my-post-tag has-link-grey -link" href="/tags/莫队/">莫队</a>
                 </div>
             </div>
         </div>
@@ -182,17 +184,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/12/洛谷3674/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">「洛谷 P3674」 小清新人渣的本愿</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/11/LOJ-144/">
-                <span class="level-item">「LOJ 144」 DFS序1</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/24/洛谷1156/">
+                <span class="level-item">洛谷1156 垃圾陷阱</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -407,7 +402,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 <!-- 
-                    <img src="/images/logo.png" alt="「模板」Miller_Rabin" height="28">
+                    <img src="/images/logo.png" alt="CF86D Powerful array" height="28">
                     memset0's blog
                  -->
                 </a>
