@@ -2,23 +2,21 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>洛谷2210 Haywire - little_sun&#39;s blog</title>
+<title>分类: Solution - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="模拟退火模板题…">
-<meta name="keywords" content="模拟退火">
-<meta property="og:type" content="article">
-<meta property="og:title" content="洛谷2210 Haywire">
-<meta property="og:url" content="http://www.zcysky.com/2019/03/30/洛谷2210/index.html">
+    <meta name="description" content="A super spicy chicken">
+<meta property="og:type" content="website">
+<meta property="og:title" content="little_sun&#39;s blog">
+<meta property="og:url" content="http://www.zcysky.com/categories/Solution/page/4/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="模拟退火模板题…">
+<meta property="og:description" content="A super spicy chicken">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-30T12:39:03.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷2210 Haywire">
-<meta name="twitter:description" content="模拟退火模板题…">
+<meta name="twitter:title" content="little_sun&#39;s blog">
+<meta name="twitter:description" content="A super spicy chicken">
 
 
 
@@ -84,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/images/logo.png" alt="洛谷2210 Haywire" height="28"> -->
+                <!-- <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
             
             </a>
@@ -124,22 +122,34 @@
         <div class="container">
             <div class="columns">
                 <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Solution</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article
          
     ">
         
-        <div class="my-title  my-post-title ">
+        <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    洛谷2210 Haywire
+                    <a class="has-link-black-ter" href="/2019/02/06/CF375D/">CF375D 【Tree and Queries】</a>
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-03-30T12:21:05.000Z">
-                        2019-03-30
+                    <time class="level-item has-text-grey" datetime="2019-02-06T03:16:31.000Z">
+                        2019-02-06
                     </time>
                     <i class="far fa-folder"></i>
                     
@@ -150,7 +160,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            287 Words
+                            426 Words
                         </span>
                     
                 </div>
@@ -158,75 +168,48 @@
         </div>
         
         <div class="content">
-            <p>模拟退火模板题…</p>
-<a id="more"></a>
-<p>每次随机将两个位置上的奶牛交换位置</p>
-<p>然后算出现在所需的干草数量</p>
-<p>如果比答案少就更新</p>
-<p>否则就以一定概率接受这个解</p>
-<p>然后。。多随机几次就做完了</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> cmin(a, b) ((a &lt; b) ? a : b)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> cmax(a, b) ((a &lt; b) ? b : a)</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> delta = <span class="hljs-number">0.999</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">20</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n, ans = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="hljs-keyword">double</span> t = <span class="hljs-number">10000000.0</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> pos[MaxN], fri[MaxN][<span class="hljs-number">4</span>], g[MaxN][MaxN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ret = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ret += <span class="hljs-built_in">abs</span>(pos[i] - pos[fri[i][<span class="hljs-number">1</span>]]);</span><br><span class="line">        ret += <span class="hljs-built_in">abs</span>(pos[i] - pos[fri[i][<span class="hljs-number">2</span>]]);</span><br><span class="line">        ret += <span class="hljs-built_in">abs</span>(pos[i] - pos[fri[i][<span class="hljs-number">3</span>]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ret / <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SA</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    t = <span class="hljs-number">1.0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t &gt; <span class="hljs-number">1e-10</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = rand() % n + <span class="hljs-number">1</span>, y = rand() % n + <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-built_in">std</span>::swap(pos[x], pos[y]);</span><br><span class="line">        <span class="hljs-keyword">int</span> tmp = calc();</span><br><span class="line">        <span class="hljs-keyword">int</span> del = tmp - ans;</span><br><span class="line">        <span class="hljs-keyword">if</span> (del &lt; <span class="hljs-number">0</span>)</span><br><span class="line">            ans = tmp;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>(-del / t) * RAND_MAX &lt;= rand())</span><br><span class="line">            <span class="hljs-built_in">std</span>::swap(pos[x], pos[y]);</span><br><span class="line">        t *= delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    srand(time(<span class="hljs-literal">NULL</span>));</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        pos[i] = i;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">3</span>; j++)</span><br><span class="line">            fri[i][j] = read(), g[i][fri[i][j]] = <span class="hljs-number">1</span>, g[fri[i][j]][i] = <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; i++)</span><br><span class="line">        SA();</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><del>不要问我为什么这么久没更博客</del></p>
-
+            <p>子树上的查询问题可以通过$DFS$序转换为序列问题</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase my-post-tags">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/模拟退火/">模拟退火</a>
+                <a class="button is-size-7 is-light" href="/2019/02/06/CF375D/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
 
+
+
+
+
+    
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/02/Codeforces-Round-550/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Codeforces Round 550 (Div.3) 题解</span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Solution/page/3/">上一页</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/21/CF1141E/">
-                <span class="level-item">CF1141E Superhero Battle</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Solution/page/5/">下一页</a>
         </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
-        
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: false,
-        verify: true,
-        app_id: '3uPArX2yfadxvmrzeQoLh3pv-gzGzoHsz',
-        app_key: 'uPpAdYJ2hCBAuYo4y0VazuXw',
-        placeholder: '留下你的脚印~'
-    });
-</script>
-
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Solution/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Solution/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Solution/page/3/">3</a></li>
+            
+            <li><a class="pagination-link is-current" href="/categories/Solution/page/4/">4</a></li>
+            
+        </ul>
+    </nav>
 </div>
 </div>
                 
@@ -336,12 +319,6 @@
 </div>
     
         
-<!-- <script type="text/javascript">
-    function myHideElement(name) {
-        return;
-    }
-</script> -->
-
     
         	
 <div class="card widget">
@@ -405,7 +382,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 <!-- 
-                    <img src="/images/logo.png" alt="洛谷2210 Haywire" height="28">
+                    <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28">
                     memset0's blog
                  -->
                 </a>
