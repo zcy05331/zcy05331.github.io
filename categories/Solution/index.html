@@ -142,6 +142,59 @@
         <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
+                    <a class="has-link-black-ter" href="/2019/10/07/洛谷4314/">洛谷4314</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-10-07T09:25:22.000Z">
+                        2019-10-07
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            773 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>首先我们可以想到一个显而易见的思路：每个节点维护$\mathrm{add,set}$的$tag$,维护最大值$max$和历史最大值$Max$,然后像正常的线段树一样维护</p>
+<p>然后你惊讶的发现你只拿到二十分（只有$Q$的部分分）</p>
+<p>为什么呢？我们发现有些$tag$，他还没有来得及被更新就被覆盖了..而这些$tag$本来能<del>改变世界</del>更新答案</p>
+<p>所以我们可以维护两个$tag$:$\mathrm{Add,Set}$表示该节点从上次下放到目前的最大$add$和$set$值</p>
+<p>然后我们就可以快乐的用这些$tag$来维护答案了</p>
+<p><code>Code:</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) ((a + b) % mod)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> checkmax(a, b) ((a) = ((a) &lt; (b)) ? (b) : (a))</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">1e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> inf = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> l, r;</span><br><span class="line">    <span class="hljs-keyword">int</span> Max, Add, Set;</span><br><span class="line">    <span class="hljs-keyword">int</span> max, add, <span class="hljs-built_in">set</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, a[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SegmentTree</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    node t[MaxN &lt;&lt; <span class="hljs-number">2</span>];</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pushup</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        t[id].max = <span class="hljs-built_in">std</span>::max(t[id &lt;&lt; <span class="hljs-number">1</span>].max, t[id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>].max);</span><br><span class="line">        t[id].Max = <span class="hljs-built_in">std</span>::max(t[id &lt;&lt; <span class="hljs-number">1</span>].Max, t[id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>].Max);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        t[id].l = l, t[id].r = r, t[id].<span class="hljs-built_in">set</span> = t[id].Set = -inf;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l == r)</span><br><span class="line">        &#123;</span><br><span class="line">            t[id].max = t[id].Max = a[(l + r) &gt;&gt; <span class="hljs-number">1</span>];</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">        build(id &lt;&lt; <span class="hljs-number">1</span>, l, mid);</span><br><span class="line">        build(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r);</span><br><span class="line">        pushup(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checksum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> add, <span class="hljs-keyword">int</span> Add)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (t[id].<span class="hljs-built_in">set</span> != -inf)</span><br><span class="line">        &#123;</span><br><span class="line">            checkmax(t[id].Set, t[id].<span class="hljs-built_in">set</span> + Add);</span><br><span class="line">            checkmax(t[id].Max, t[id].max + Add);</span><br><span class="line">            t[id].<span class="hljs-built_in">set</span> += add, t[id].max += add;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            checkmax(t[id].Add, t[id].add + Add);</span><br><span class="line">            checkmax(t[id].Max, t[id].max + Add);</span><br><span class="line">            t[id].add += add, t[id].max += add;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkset</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> <span class="hljs-built_in">set</span>, <span class="hljs-keyword">int</span> Set)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        checkmax(t[id].Set, Set);</span><br><span class="line">        checkmax(t[id].Max, Set);</span><br><span class="line">        t[id].<span class="hljs-built_in">set</span> = <span class="hljs-built_in">set</span>, t[id].max = <span class="hljs-built_in">set</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pushdown</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        checksum(id &lt;&lt; <span class="hljs-number">1</span>, t[id].add, t[id].Add), checksum(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, t[id].add, t[id].Add), t[id].add = t[id].Add = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (t[id].<span class="hljs-built_in">set</span> != -inf)</span><br><span class="line">        &#123;</span><br><span class="line">            checkset(id &lt;&lt; <span class="hljs-number">1</span>, t[id].<span class="hljs-built_in">set</span>, t[id].Set), checkset(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, t[id].<span class="hljs-built_in">set</span>, t[id].Set);</span><br><span class="line">            t[id].<span class="hljs-built_in">set</span> = t[id].Set = -inf;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> val)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (t[id].l &gt; r || t[id].r &lt; l)</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l &lt;= t[id].l &amp;&amp; t[id].r &lt;= r)</span><br><span class="line">        &#123;</span><br><span class="line">            checksum(id, val, val);</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pushdown(id), add(id &lt;&lt; <span class="hljs-number">1</span>, l, r, val), add(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, l, r, val), pushup(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> val)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (t[id].l &gt; r || t[id].r &lt; l)</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l &lt;= t[id].l &amp;&amp; t[id].r &lt;= r)</span><br><span class="line">        &#123;</span><br><span class="line">            checkset(id, val, val);</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pushdown(id), <span class="hljs-built_in">set</span>(id &lt;&lt; <span class="hljs-number">1</span>, l, r, val), <span class="hljs-built_in">set</span>(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, l, r, val), pushup(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query_max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (t[id].l &gt; r || t[id].r &lt; l)</span><br><span class="line">            <span class="hljs-keyword">return</span> -inf;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l &lt;= t[id].l &amp;&amp; t[id].r &lt;= r)</span><br><span class="line">            <span class="hljs-keyword">return</span> t[id].max;</span><br><span class="line">        pushdown(id);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::max(query_max(id &lt;&lt; <span class="hljs-number">1</span>, l, r), query_max(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, l, r));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query_Max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span></span></span><br><span class="line"><span class="hljs-function">    </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (t[id].l &gt; r || t[id].r &lt; l)</span><br><span class="line">            <span class="hljs-keyword">return</span> -inf;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l &lt;= t[id].l &amp;&amp; t[id].r &lt;= r)</span><br><span class="line">            <span class="hljs-keyword">return</span> t[id].Max;</span><br><span class="line">        pushdown(id);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::max(query_Max(id &lt;&lt; <span class="hljs-number">1</span>, l, r), query_Max(id &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>, l, r));</span><br><span class="line">    &#125;</span><br><span class="line">&#125; T;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">get</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'Z'</span> || ch &lt; <span class="hljs-string">'A'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>, f = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'-'</span>)</span><br><span class="line">            f = <span class="hljs-number">0</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? x : (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    T.build(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, n);</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m);</span><br><span class="line">    <span class="hljs-keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">char</span> ch = get();</span><br><span class="line">        <span class="hljs-keyword">int</span> x = read(), y = read(), z;</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'Q'</span>)</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, T.query_max(<span class="hljs-number">1</span>, x, y));</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'A'</span>)</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, T.query_Max(<span class="hljs-number">1</span>, x, y));</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'P'</span>)</span><br><span class="line">            z = read(), T.add(<span class="hljs-number">1</span>, x, y, z);</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            z = read(), T.<span class="hljs-built_in">set</span>(<span class="hljs-number">1</span>, x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
                     <a class="has-link-black-ter" href="/2019/05/21/LOJ-6012/">LOJ 6012「网络流 24 题」分配问题</a>
                 
             </h1>
@@ -658,64 +711,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/03/10/洛谷4114/">洛谷4114 QTree1</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-03-10T15:06:38.000Z">
-                        2019-03-10
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            718 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>很明显这是一道树剖题</p>
-<p>但是，树剖是在点上进行的操作，如何把它转化到边上呢？</p>
-<p>不难发现，每一个点与他的父亲节点之间仅有唯一的一条边</p>
-<p>于是我们可以把这条边的边权转化为这个儿子节点的点权。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/10/洛谷4114/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -777,7 +772,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        37
+                        38
                     </p>
                 </div>
             </div>
@@ -797,7 +792,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -878,7 +873,7 @@
                 <span class="level-item">Solution</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">32</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Template/">
@@ -922,7 +917,7 @@
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>21.6k</span> Words
+                        <span>22.5k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
