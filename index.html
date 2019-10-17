@@ -131,6 +131,66 @@
         <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
+                    <a class="has-link-black-ter" href="/2019/10/17/洛谷4284/">洛谷4284 [SHOI2014]概率充电器</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-10-17T06:45:16.000Z">
+                        2019-10-17
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/solution/">solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            508 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>设$f_u$表示$u$不被以$u$为根的子树内点(包括$u$)通上电的概率，则有:</p>
+<p>$$f_u=(1-p_u) \times \prod_{v \in subtree \; u}e(u, v) \times f_v$$</p>
+<p>为什么是这个式子呢？</p>
+<p>我们发现，一个节点$u$不被通电当且仅当$u$不自己通电（废话）且$u$的子树内所有节点不能导电给$u$</p>
+<p>这个式子还有问题:他处理不了给$u$导电的点在$u$子树外的情况</p>
+<p>因此我们可以采取一个换根的思路</p>
+<p>设$g_u$表示$u$不通电的概率，则$g_u$可以通过$u$的子树和剩余部分计算，子树部分我们已经处理过，而剩余部分可以通过$u$的父亲计算，设$h_u$表示非$u$子树里的点导电给$u$的概率，我们有:</p>
+<p>$$h_u = \frac{g_{fa}}{1 - e(fa, u) + e(fa, u) \times f_u}$$</p>
+<p>$$g_u=f_u<em>(1-e(fa, u) + e(fa, u) </em> h[u])$$</p>
+<p>原理与$f$相似</p>
+<p>于是$ans=\sum_{i=1}^n (1-g_i)$</p>
+<p>代码:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) ((a + b) % mod)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">5e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">double</span> d;</span><br><span class="line">    <span class="hljs-keyword">int</span> next, to;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">edge e[MaxN &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n, cnt;</span><br><span class="line"><span class="hljs-keyword">int</span> head[MaxN];</span><br><span class="line"><span class="hljs-keyword">double</span> p[MaxN], f[MaxN], g[MaxN], h[u];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">double</span> d)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ++cnt;</span><br><span class="line">    e[cnt].to = v;</span><br><span class="line">    e[cnt].d = d;</span><br><span class="line">    e[cnt].next = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> fa)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    f[u] = <span class="hljs-number">1</span> - p[u];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v == fa)</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(v, u), f[u] *= (<span class="hljs-number">1</span> - e[i].d + (e[i].d * f[v]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> fa, <span class="hljs-keyword">int</span> id)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (u == <span class="hljs-number">1</span>)</span><br><span class="line">        g[u] = f[u];</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        h[u] = g[fa] / (<span class="hljs-number">1</span> - e[id].d + e[id].d * f[u]);</span><br><span class="line">        g[u] = f[u] * (<span class="hljs-number">1</span> - e[id].d + e[id].d * h[u]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v == fa)</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs1(v, u, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u, v;</span><br><span class="line">        <span class="hljs-keyword">double</span> d;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%lf"</span>, &amp;u, &amp;v, &amp;d), d *= <span class="hljs-number">0.01</span>;</span><br><span class="line">        add_edge(u, v, d), add_edge(v, u, d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf"</span>, &amp;p[i]), p[i] *= <span class="hljs-number">0.01</span>;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), dfs1(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">double</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        ans += <span class="hljs-number">1.00</span> - g[i];</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.6lf"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
                     <a class="has-link-black-ter" href="/2019/10/07/洛谷4314/">洛谷4314 cpu监控</a>
                 
             </h1>
@@ -645,61 +705,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/04/02/Codeforces-Round-550/">Codeforces Round 550 (Div.3) 题解</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-04-02T14:02:09.000Z">
-                        2019-04-02
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Contest/">Contest</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            1277 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>Codeforces Round #550 (Div.3) 题解</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/02/Codeforces-Round-550/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -761,7 +766,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        38
+                        39
                     </p>
                 </div>
             </div>
@@ -771,7 +776,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        5
                     </p>
                 </div>
             </div>
@@ -781,7 +786,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        26
+                        28
                     </p>
                 </div>
             </div>
@@ -872,6 +877,14 @@
             <span class="level-end">
                 <span class="level-item tag">2</span>
             </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/solution/">
+            <span class="level-start">
+                <span class="level-item">solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
         </a></li>
             </ul>
         </div>
@@ -906,7 +919,7 @@
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>22.5k</span> Words
+                        <span>23.1k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>

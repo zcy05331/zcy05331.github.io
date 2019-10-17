@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 模拟退火 - little_sun&#39;s blog</title>
+<title>标签: 概率期望 - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -10,7 +10,7 @@
     <meta name="description" content="A super spicy chicken">
 <meta property="og:type" content="website">
 <meta property="og:title" content="little_sun&#39;s blog">
-<meta property="og:url" content="http://www.zcysky.com/tags/模拟退火/index.html">
+<meta property="og:url" content="http://www.zcysky.com/tags/概率期望/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="A super spicy chicken">
 <meta property="og:locale" content="zh-CN">
@@ -126,7 +126,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">模拟退火</a></li>
+            <li class="is-active"><a href="#" aria-current="page">概率期望</a></li>
         </ul>
         </nav>
     </div>
@@ -141,25 +141,25 @@
         <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    <a class="has-link-black-ter" href="/2019/03/30/洛谷2210/">洛谷2210 Haywire</a>
+                    <a class="has-link-black-ter" href="/2019/10/17/洛谷4284/">洛谷4284 [SHOI2014]概率充电器</a>
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-03-30T12:21:05.000Z">
-                        2019-03-30
+                    <time class="level-item has-text-grey" datetime="2019-10-17T06:45:16.000Z">
+                        2019-10-17
                     </time>
                     <i class="far fa-folder"></i>
                     
                         <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                            <a class="has-link-grey -link" href="/categories/solution/">solution</a>
                         </div>
                     
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            287 Words
+                            508 Words
                         </span>
                     
                 </div>
@@ -167,298 +167,22 @@
         </div>
         
         <div class="content">
-            <p>模拟退火模板题…</p>
+            <p>设$f_u$表示$u$不被以$u$为根的子树内点(包括$u$)通上电的概率，则有:</p>
+<p>$$f_u=(1-p_u) \times \prod_{v \in subtree \; u}e(u, v) \times f_v$$</p>
+<p>为什么是这个式子呢？</p>
+<p>我们发现，一个节点$u$不被通电当且仅当$u$不自己通电（废话）且$u$的子树内所有节点不能导电给$u$</p>
+<p>这个式子还有问题:他处理不了给$u$导电的点在$u$子树外的情况</p>
+<p>因此我们可以采取一个换根的思路</p>
+<p>设$g_u$表示$u$不通电的概率，则$g_u$可以通过$u$的子树和剩余部分计算，子树部分我们已经处理过，而剩余部分可以通过$u$的父亲计算，设$h_u$表示非$u$子树里的点导电给$u$的概率，我们有:</p>
+<p>$$h_u = \frac{g_{fa}}{1 - e(fa, u) + e(fa, u) \times f_u}$$</p>
+<p>$$g_u=f_u<em>(1-e(fa, u) + e(fa, u) </em> h[u])$$</p>
+<p>原理与$f$相似</p>
+<p>于是$ans=\sum_{i=1}^n (1-g_i)$</p>
+<p>代码:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) ((a + b) % mod)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">5e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">double</span> d;</span><br><span class="line">    <span class="hljs-keyword">int</span> next, to;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">edge e[MaxN &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n, cnt;</span><br><span class="line"><span class="hljs-keyword">int</span> head[MaxN];</span><br><span class="line"><span class="hljs-keyword">double</span> p[MaxN], f[MaxN], g[MaxN], h[u];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">double</span> d)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ++cnt;</span><br><span class="line">    e[cnt].to = v;</span><br><span class="line">    e[cnt].d = d;</span><br><span class="line">    e[cnt].next = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> fa)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    f[u] = <span class="hljs-number">1</span> - p[u];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v == fa)</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(v, u), f[u] *= (<span class="hljs-number">1</span> - e[i].d + (e[i].d * f[v]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> fa, <span class="hljs-keyword">int</span> id)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (u == <span class="hljs-number">1</span>)</span><br><span class="line">        g[u] = f[u];</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        h[u] = g[fa] / (<span class="hljs-number">1</span> - e[id].d + e[id].d * f[u]);</span><br><span class="line">        g[u] = f[u] * (<span class="hljs-number">1</span> - e[id].d + e[id].d * h[u]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v == fa)</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs1(v, u, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u, v;</span><br><span class="line">        <span class="hljs-keyword">double</span> d;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%lf"</span>, &amp;u, &amp;v, &amp;d), d *= <span class="hljs-number">0.01</span>;</span><br><span class="line">        add_edge(u, v, d), add_edge(v, u, d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf"</span>, &amp;p[i]), p[i] *= <span class="hljs-number">0.01</span>;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), dfs1(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">double</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        ans += <span class="hljs-number">1.00</span> - g[i];</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.6lf"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/30/洛谷2210/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/02/10/洛谷3878/">洛谷 P3878 [TJOI2010]分金币</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-10T12:13:34.000Z">
-                        2019-02-10
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            257 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>将$n$个数分成两半，使得这两半的差尽量小</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/10/洛谷3878/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/02/09/洛谷3936/">洛谷 P3936 Coloring</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-09T13:13:51.000Z">
-                        2019-02-09
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            395 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>思路其实很容易想到，只是调参有那么”一点点”恶心</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/09/洛谷3936/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/02/08/uva10228/">UVA10228 A Star not a Tree?</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-08T08:21:50.000Z">
-                        2019-02-08
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            303 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$n$个点, 求一个点使得这个点到所有$n$个点的距离最小，输出距离（保留整数）</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/08/uva10228/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/02/07/洛谷2503/">洛谷 P2503 [HAOI2006]均分数据</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-07T06:23:11.000Z">
-                        2019-02-07
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            308 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>模拟退火写起来真舒服喵~</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/07/洛谷2503/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/02/06/洛谷1337/">洛谷 P1337 [JSOI2004]平衡点 / 吊打XXX</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-06T07:39:30.000Z">
-                        2019-02-06
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            228 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>一些模拟退火的注意事项：</p>
-<ul>
-<li><p>开始温度要设到比较高</p>
-</li>
-<li><p>在不超时的情况下多随几次</p>
-</li>
-<li><p>最好确定一个随机种子</p></li></ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/洛谷1337/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
