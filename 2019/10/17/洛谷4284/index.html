@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="设$f_u$表示$u$不被以$u$为根的子树内点(包括$u$)通上电的概率，则有: $$f_u=(1-p_u) \times \prod_{v \in subtree \; u}e(u, v) \times f_v$$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-17T07:15:55.213Z">
+<meta property="og:updated_time" content="2019-10-17T07:18:04.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷4284 [SHOI2014]概率充电器">
 <meta name="twitter:description" content="设$f_u$表示$u$不被以$u$为根的子树内点(包括$u$)通上电的概率，则有: $$f_u=(1-p_u) \times \prod_{v \in subtree \; u}e(u, v) \times f_v$$">
@@ -150,7 +150,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            515 Words
+                            516 Words
                         </span>
                     
                 </div>
@@ -168,7 +168,7 @@
 <p>设$g_u$表示$u$不通电的概率，则$g_u$可以通过$u$的子树和剩余部分计算，子树部分我们已经处理过，而剩余部分可以通过$u$的父亲计算，设$h_u$表示非$u$子树里的点导电给$u$的概率，我们有:</p>
 <p>$$h_u = \frac{g_{fa}}{1 - e(fa, u) + e(fa, u) \times f_u}$$</p>
 <p>通过$h$计算$g$</p>
-<p>$$g_u=f_u<em>(1-e(fa, u) + e(fa, u) </em> h_u)$$</p>
+<p>$$g_u=f_u \times (1-e(fa, u) + e(fa, u) * h_u)$$</p>
 <p>原理与$f$相似</p>
 <p>于是$ans=\sum_{i=1}^n (1-g_i)$</p>
 <p>代码:</p>
