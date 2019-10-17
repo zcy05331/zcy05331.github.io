@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: solution - little_sun&#39;s blog</title>
+<title>分类: Solution - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -10,7 +10,7 @@
     <meta name="description" content="A super spicy chicken">
 <meta property="og:type" content="website">
 <meta property="og:title" content="little_sun&#39;s blog">
-<meta property="og:url" content="http://www.zcysky.com/categories/solution/index.html">
+<meta property="og:url" content="http://www.zcysky.com/categories/Solution/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="A super spicy chicken">
 <meta property="og:locale" content="zh-CN">
@@ -127,7 +127,7 @@
         <ul>
             <li><a href="/categories">分类</a></li>
             
-            <li class="is-active"><a href="#" aria-current="page">solution</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Solution</a></li>
         </ul>
         </nav>
     </div>
@@ -154,7 +154,7 @@
                     <i class="far fa-folder"></i>
                     
                         <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/solution/">solution</a>
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
                         </div>
                     
                     <i class="far fa-edit"></i>
@@ -189,6 +189,554 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/10/07/洛谷4314/">洛谷4314 cpu监控</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-10-07T09:25:22.000Z">
+                        2019-10-07
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            774 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>首先我们可以想到一个显而易见的思路：每个节点维护$\mathrm{add,set}$的$tag$,维护最大值$max$和历史最大值$Max$,然后像正常的线段树一样维护</p>
+<p>然后你惊讶的发现你只拿到二十分（只有$Q$的部分分）</p>
+<p>为什么呢？我们发现有些$tag$，他还没有来得及被更新就被覆盖了..而这些$tag$本来能<del>改变世界</del>更新答案</p>
+<p>所以我们可以维护两个$tag$:$\mathrm{Add,Set}$表示该节点从上次下放到目前的最大$add$和$set$值</p>
+<p>然后我们就可以快乐的用这些$tag$来维护答案了</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/07/洛谷4314/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/05/21/LOJ-6012/">LOJ 6012「网络流 24 题」分配问题</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-05-21T14:32:11.000Z">
+                        2019-05-21
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            504 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>zcy费用流第一题！ </p>
+<p>建模：</p>
+<p>1.从$s$向人$1-n$连边，容量为$1$,费用为$0$</p>
+<p>2.从工作$1-n$向$t$连边，容量为$1$,费用为$0$</p>
+<p>3.从人$1-n$向工作$1-n$连边，容量为$1$，费用为$c_{i,j}$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/21/LOJ-6012/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/05/12/LOJ-6003/">LOJ 6003「网络流 24 题」魔术球</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-05-12T14:48:10.000Z">
+                        2019-05-12
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            391 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>枚举答案，对于$(i,j)(i&lt;j)$,若$i&lt;j$且$i+j$是完全平方数，则从$i$向$j$连一条边</p>
+<p>然后跑最小路径覆盖(可以参照<a href="https://loj.ac/problem/6002" target="_blank" rel="noopener">LOJ 6002</a>)</p>
+<p>方案输出也类似上一题</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/12/LOJ-6003/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/05/12/LOJ-6002/">LOJ 6002「网络流 24 题」最小路径覆盖</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-05-12T14:26:07.000Z">
+                        2019-05-12
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            448 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>1.建立两个集合$x$和$y$</p>
+<p>2.如果有一条边$&lt;u,v&gt;$,则从$x$集合中的$u$点连向$y$集合的$v$点，容量为$inf$</p>
+<p>3.从$s$向$x$中每一个点连边，从$y$中每一个点向$t$连边，容量为$1$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/12/LOJ-6002/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/05/11/LOJ-6006/">LOJ 6006「网络流 24 题」试题库</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-05-11T14:57:54.000Z">
+                        2019-05-11
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            521 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>和LOJ #6004圆桌聚餐很像</p>
+<p>建模：</p>
+<p>1.从源点向每道试题$x_i$连一条容量为$1$的边</p>
+<p>2.从每种类型$y_i$向汇点连一条容量为该类型需求数量的边</p>
+<p>3.如果试题$x_i$属于类型$y_i$则从$x_i$向$y_i$连一条容量为$1$的边</p>
+<p>然后跑裸的网络最大流，如果最大流$\not=$需求试题总数则无解</p>
+<p>方案：</p>
+<p>对于每种类型，它连出的所有满流量边即为该类型所对应的试题</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/11/LOJ-6006/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/05/09/LOJ-6004/">LOJ 6004「网络流 24 题」圆桌聚餐</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-05-09T14:25:25.000Z">
+                        2019-05-09
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            524 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>建模：</p>
+<p>1.从源点向每个单位$x_i$连边，容量是该单位的人数</p>
+<p>2.从每张餐桌$y_i$向汇点连边，容量是该餐桌能容纳的人数</p>
+<p>3.从每个单位$x_i$向每张餐桌$y_j$连边，容量为$1$</p>
+<p>如果最大流量等于所有单位人数之和，则有解，否则无解。</p>
+<p>方案：</p>
+<p>对于每个单位$x_i$，该单位向$y$集合连出的所有满流量边即为该单位人员的安排情况（证明显然</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/09/LOJ-6004/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/05/09/LOJ-6000/">LOJ 6000「网络流 24 题」搭配飞行员</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-05-09T13:06:13.000Z">
+                        2019-05-09
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            428 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>很简单的网络流</p>
+<p>对于每个正飞行员，从源点向它连一条容量为$1$的边</p>
+<p>对于每个副飞行员，从它向汇点连一条容量为$1$的边</p>
+<p>对于每一对可以配对的正/副飞行员，从正飞行员向副飞行员连一条容量为$1$的边</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/09/LOJ-6000/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/03/30/洛谷2210/">洛谷2210 Haywire</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-03-30T12:21:05.000Z">
+                        2019-03-30
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            287 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>模拟退火模板题…</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/30/洛谷2210/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/03/21/CF1141E/">CF1141E Superhero Battle</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-03-21T14:50:09.000Z">
+                        2019-03-21
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            289 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有一个有着$h$点血量的boss,<br>你的每一个回合有$n$种攻击</p>
+<p>第$i$种攻击可以对boss造成$-d[i]$的伤害($h=h+d[i]$)</p>
+<p>求最早在什么时候能击败boss(即boss血量$\leq0$)</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/21/CF1141E/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Solution/page/0/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Solution/page/2/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/categories/Solution/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Solution/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Solution/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Solution/page/4/">4</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
                 
@@ -237,7 +785,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        4
                     </p>
                 </div>
             </div>
@@ -328,7 +876,7 @@
                 <span class="level-item">Solution</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">32</span>
+                <span class="level-item tag">33</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Template/">
@@ -337,14 +885,6 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/solution/">
-            <span class="level-start">
-                <span class="level-item">solution</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
             </span>
         </a></li>
             </ul>
