@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="题目大意给你$n,f_1,f_2,f_3,c$,让你求$f_n=c^{2n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-18T10:46:30.243Z">
+<meta property="og:image" content="https://i.loli.net/2019/10/18/34HNXTQDpyAFO8G.png">
+<meta property="og:updated_time" content="2019-10-18T10:52:13.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1182E Product Oriented Recurrence">
 <meta name="twitter:description" content="题目大意给你$n,f_1,f_2,f_3,c$,让你求$f_n=c^{2n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}$">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/18/34HNXTQDpyAFO8G.png">
 
 
 
@@ -150,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            609 Words
+                            593 Words
                         </span>
                     
                 </div>
@@ -161,15 +163,14 @@
             <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你$n,f_1,f_2,f_3,c$,让你求$f_n=c^{2n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}$</p>
 <a id="more"></a>
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>首先我们可以发现:</p>
-<p>$$<br>f_n \times c^n</p>
-<p> = c^{3n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}</p>
-<p> = c^{n-1} \times f_{n-1} \times c^{n-2} \times f_{n-2} \times c^{n-3} \times f_{n-3}<br>$$<br>设$g_n=f_n*c_n$，则有$g_n=g_{n-1} \times g_{n-2} \times g_{n-3}$</p>
+<p>$f_n \times c^n = c^{3n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}= c^{n-1} \times f_{n-1} \times c^{n-2} \times f_{n-2} \times c^{n-3} \times f_{n-3}$</p>
+<p>设 $g_n=f_n*c_n$，则有$g_n=g_{n-1} \times g_{n-2} \times g_{n-3}$</p>
 <p>把它展开，发现<br>$$<br>g_n=g_{n-1} \times g_{n-2} \times g_{n-3}=g_{n-2}^2 \times g_{n-3}^2 \times g_{n-4} = g_{n-3}^4 \times g_{n-4}^3 \times g_{n-5}^2 = \cdots = g_3^{h_{2n-5}} \times g_2^{h_{2n-6}} \times g_1^{h_{2n-7}}<br>$$</p>
 <p>于是我们的工作就变成了求$h_n$</p>
 <p>观察<del>oeis</del>一下这个式子我们可以发现：</p>
 <p>$$h_{2n}=h_{2n-1}+h_{2n-3},h_{2n+1}=h_{2n-1}+h_{2n-2},$$</p>
 <p>我们设$a_n=h_{2n+1},b_n=h_{2n}$，则可以得出如下矩阵</p>
-<p>$$<br>\left[<br> \begin{matrix}<br>   a_n \<br>   a_{n-1} \<br>   b_n \<br>  \end{matrix}<br>\right]<br>=<br>\left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 1 \<br>   1 &amp; 0 &amp; 0 \<br>   1 &amp; 1 &amp; 0 \<br>  \end{matrix}<br>\right]<br>\times<br>\left[<br> \begin{matrix}<br>   a_{n-1} \<br>   a_{n-2} \<br>   b_{n-1} \<br>  \end{matrix}<br>\right]<br>$$</p>
+<p><img src="https://i.loli.net/2019/10/18/34HNXTQDpyAFO8G.png" alt="TZXNM`YV~1Q1W3MI626M44P.png"></p>
 <p>我们又注意到$mod=10^9+7$,于是我们可以把次数模上$\phi(mod)=10^9+6$(欧拉定理)</p>
 <p>于是我们就可以快乐的用矩快计算次数啦</p>
 <p>注意最后的$f_n=\frac{g_n}{c^n}$哦</p>
