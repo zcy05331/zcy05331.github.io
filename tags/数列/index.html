@@ -2,23 +2,21 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>洛谷1156 垃圾陷阱 - little_sun&#39;s blog</title>
+<title>标签: 数列 - little_sun&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="一道简单的动态规划">
-<meta name="keywords" content="动态规划">
-<meta property="og:type" content="article">
-<meta property="og:title" content="洛谷1156 垃圾陷阱">
-<meta property="og:url" content="http://www.zcysky.com/2019/02/24/洛谷1156/index.html">
+    <meta name="description" content="A super spicy chicken">
+<meta property="og:type" content="website">
+<meta property="og:title" content="little_sun&#39;s blog">
+<meta property="og:url" content="http://www.zcysky.com/tags/数列/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="一道简单的动态规划">
+<meta property="og:description" content="A super spicy chicken">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-24T14:16:17.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷1156 垃圾陷阱">
-<meta name="twitter:description" content="一道简单的动态规划">
+<meta name="twitter:title" content="little_sun&#39;s blog">
+<meta name="twitter:description" content="A super spicy chicken">
 
 
 
@@ -84,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/images/logo.png" alt="洛谷1156 垃圾陷阱" height="28"> -->
+                <!-- <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28"> -->
                 <span class="navbar-title"> little_sun's blog </span>
             
             </a>
@@ -124,22 +122,33 @@
         <div class="container">
             <div class="columns">
                 <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">数列</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article
          
     ">
         
-        <div class="my-title  my-post-title ">
+        <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    洛谷1156 垃圾陷阱
+                    <a class="has-link-black-ter" href="/2019/10/18/CF1182E/">CF1182E Product Oriented Recurrence</a>
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-24T14:10:40.000Z">
-                        2019-02-24
+                    <time class="level-item has-text-grey" datetime="2019-10-18T10:12:24.000Z">
+                        2019-10-18
                     </time>
                     <i class="far fa-folder"></i>
                     
@@ -150,7 +159,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            214 Words
+                            609 Words
                         </span>
                     
                 </div>
@@ -158,71 +167,26 @@
         </div>
         
         <div class="content">
-            <p>一道简单的动态规划</p>
-<a id="more"></a>
-<p>将每个垃圾按扔下来的时间从小到大排序</p>
-<p>每次扔下来一个垃圾时，如果能靠这个垃圾爬出来就<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">不然就继续</span><br><span class="line"></span><br><span class="line">最后如果挂了的话算一下他能撑多久</span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">const int MaxN = 100010;</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int t, f, h;</span><br><span class="line">&#125;;</span><br><span class="line">node a[MaxN];</span><br><span class="line">int d, g, f[MaxN];</span><br><span class="line">inline int cmp(node a, node b)</span><br><span class="line">&#123;</span><br><span class="line">    return a.t &lt; b.t;</span><br><span class="line">&#125;</span><br><span class="line">inline int read()</span><br><span class="line">&#123;</span><br><span class="line">    int x = 0;</span><br><span class="line">    char ch = getchar();</span><br><span class="line">    while (ch &gt; &apos;9&apos; || ch &lt; &apos;0&apos;)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    while (ch &lt;= &apos;9&apos; &amp;&amp; ch &gt;= &apos;0&apos;)</span><br><span class="line">        x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ 48), ch = getchar();</span><br><span class="line">    return x;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    d = read(), g = read();</span><br><span class="line">    for (int i = 1; i &lt;= g; i++)</span><br><span class="line">        a[i].t = read(), a[i].f = read(), a[i].h = read();</span><br><span class="line">    std::sort(a + 1, a + g + 1, cmp);</span><br><span class="line">    f[0] = 10;</span><br><span class="line">    for (int i = 1; i &lt;= g; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = d; j &gt;= 0; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            if (f[j] &gt;= a[i].t)</span><br><span class="line">            &#123;</span><br><span class="line">                if (j + a[i].h &gt;= d)</span><br><span class="line">                    return 0 * printf(&quot;%d\n&quot;, a[i].t);</span><br><span class="line">                f[j + a[i].h] = std::max(f[j], f[j + a[i].h]);</span><br><span class="line">                f[j] += a[i].f;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, f[0]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你$n,f_1,f_2,f_3,c$,让你求$f_n=c^{2n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}$</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase my-post-tags">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/动态规划/">动态规划</a>
+                <a class="button is-size-7 is-light" href="/2019/10/18/CF1182E/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
-    </div>
-</div>
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/28/CF86D/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">CF86D Powerful array</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/22/洛谷3178/">
-                <span class="level-item">洛谷3178 [HAOI2015] 树上操作</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
-        
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: false,
-        verify: true,
-        app_id: '3uPArX2yfadxvmrzeQoLh3pv-gzGzoHsz',
-        app_key: 'uPpAdYJ2hCBAuYo4y0VazuXw',
-        placeholder: '留下你的脚印~'
-    });
-</script>
 
-    </div>
-</div>
+
 </div>
                 
                 
@@ -331,12 +295,6 @@
 </div>
     
         
-<!-- <script type="text/javascript">
-    function myHideElement(name) {
-        return;
-    }
-</script> -->
-
     
         	
 <div class="card widget">
@@ -400,7 +358,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 <!-- 
-                    <img src="/images/logo.png" alt="洛谷1156 垃圾陷阱" height="28">
+                    <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28">
                     memset0's blog
                  -->
                 </a>
