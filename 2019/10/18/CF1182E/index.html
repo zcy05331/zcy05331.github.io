@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="题目大意给你$n,f_1,f_2,f_3,c$,让你求$f_n=c^{2n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-18T10:41:05.265Z">
+<meta property="og:updated_time" content="2019-10-18T10:46:30.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1182E Product Oriented Recurrence">
 <meta name="twitter:description" content="题目大意给你$n,f_1,f_2,f_3,c$,让你求$f_n=c^{2n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}$">
@@ -164,7 +164,7 @@
 <p>$$<br>f_n \times c^n</p>
 <p> = c^{3n-6} \times f_{n-1} \times f_{n-2} \times f_{n-3}</p>
 <p> = c^{n-1} \times f_{n-1} \times c^{n-2} \times f_{n-2} \times c^{n-3} \times f_{n-3}<br>$$<br>设$g_n=f_n*c_n$，则有$g_n=g_{n-1} \times g_{n-2} \times g_{n-3}$</p>
-<p>把它展开，发现<br>$$<br>g_n=g_{n-1} \times g_{n-2} \times g_{n-3}=g_{n-2}^2 \times g_{n-3}^2 \times g_{n-4} = g_{n-3}^4 \times g_{n-4}^3 \times g_{n-5}^2 = \cdots = g_3^{h_{2n-5}} \times g_2^{h{2n-6}} \times g_1^{h{2n-7}}<br>$$</p>
+<p>把它展开，发现<br>$$<br>g_n=g_{n-1} \times g_{n-2} \times g_{n-3}=g_{n-2}^2 \times g_{n-3}^2 \times g_{n-4} = g_{n-3}^4 \times g_{n-4}^3 \times g_{n-5}^2 = \cdots = g_3^{h_{2n-5}} \times g_2^{h_{2n-6}} \times g_1^{h_{2n-7}}<br>$$</p>
 <p>于是我们的工作就变成了求$h_n$</p>
 <p>观察<del>oeis</del>一下这个式子我们可以发现：</p>
 <p>$$h_{2n}=h_{2n-1}+h_{2n-3},h_{2n+1}=h_{2n-1}+h_{2n-2},$$</p>
