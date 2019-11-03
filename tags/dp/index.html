@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>标签: dp - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="A super spicy chicken">
+<meta property="og:type" content="website">
+<meta property="og:title" content="little_sun&#39;s blog">
+<meta property="og:url" content="http://www.zcysky.com/tags/dp/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="A super spicy chicken">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="little_sun&#39;s blog">
+<meta name="twitter:description" content="A super spicy chicken">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">dp</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/11/03/洛谷3959/">洛谷3959 [NOIP2017]宝藏</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-11-03T13:46:08.000Z">
+                        2019-11-03
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            518 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你$n$个点,$m$条边,要你选一个点作为根建一棵生成树满足代价最小</p>
+<p>一棵生成树的代价是$\Sigma \; dep[i] * dis[fa_i][i]$, 其中$dep_i$表示$i$节点在这棵生成树中的深度（根节点深度为$0$,$dis[fa_i][i]$表示$i$节点到他父亲节点的距离</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/03/洛谷3959/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/10/17/洛谷4284/">洛谷4284 [SHOI2014]概率充电器</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-10-17T06:45:16.000Z">
+                        2019-10-17
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            516 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>设$f_u$表示$u$不被以$u$为根的子树内点(包括$u$)通上电的概率，则有:</p>
+<p>$$f_u=(1-p_u) \times \prod_{v \in subtree \; u}e(u, v) \times f_v$$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/17/洛谷4284/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        41
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">35</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2019
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>24.4k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
