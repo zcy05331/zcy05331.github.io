@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="题目大意你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多 eg. [1,2], [3,5], [3, 7]的并是[1,2], [3, 7]">
+    <meta name="description" content="题目大意你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多 eg. [1,2], [3,5], [3,7]的并是[1,2], [3,7]">
 <meta name="keywords" content="差分,前缀和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF1285E Delete a Segment">
 <meta property="og:url" content="http://www.zcysky.com/2020/01/13/CF1285E/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="题目大意你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多 eg. [1,2], [3,5], [3, 7]的并是[1,2], [3, 7]">
+<meta property="og:description" content="题目大意你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多 eg. [1,2], [3,5], [3,7]的并是[1,2], [3,7]">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-13T01:11:37.278Z">
+<meta property="og:updated_time" content="2020-01-13T01:19:39.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1285E Delete a Segment">
-<meta name="twitter:description" content="题目大意你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多 eg. [1,2], [3,5], [3, 7]的并是[1,2], [3, 7]">
+<meta name="twitter:description" content="题目大意你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多 eg. [1,2], [3,5], [3,7]的并是[1,2], [3,7]">
 
 
 
@@ -159,7 +159,7 @@
         
         <div class="content">
             <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>你有$n$个区间$[l_i, r_i]$， 你要恰好删掉一个区间，使得剩下的$n-1$个区间的并的总和最多</p>
-<p>eg. [1,2], [3,5], [3, 7]的并是[1,2], [3, 7]</p>
+<p>eg. [1,2], [3,5], [3,7]的并是[1,2], [3,7]</p>
 <a id="more"></a>
 <h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>首先我们将给定的区间进行离散化</p>
 <p>由于区间端点相邻的区间并不算相交，所以离散化时要进行特殊处理$(x=x*2-1)$</p>
