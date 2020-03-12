@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>AGC034E Complete Compress - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="题目大意有一棵有$n$个节点的树，每个节点上有$0/1$枚棋子，每次可以选择两个棋子并移动到它们的路径上的相邻节点（满足路径长度至少为$2$），求把所有棋子移到同一个节点的最小花费（无解输出$-1$）。 $n \leq 2 \times 10 ^ 3$">
+<meta name="keywords" content="dp,集训队作业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AGC034E Complete Compress">
+<meta property="og:url" content="http://www.zcysky.com/2020/03/09/AGC034E/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="题目大意有一棵有$n$个节点的树，每个节点上有$0/1$枚棋子，每次可以选择两个棋子并移动到它们的路径上的相邻节点（满足路径长度至少为$2$），求把所有棋子移到同一个节点的最小花费（无解输出$-1$）。 $n \leq 2 \times 10 ^ 3$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-11T05:26:46.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AGC034E Complete Compress">
+<meta name="twitter:description" content="题目大意有一棵有$n$个节点的树，每个节点上有$0/1$枚棋子，每次可以选择两个棋子并移动到它们的路径上的相邻节点（满足路径长度至少为$2$），求把所有棋子移到同一个节点的最小花费（无解输出$-1$）。 $n \leq 2 \times 10 ^ 3$">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="AGC034E Complete Compress" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+                <a class="navbar-item" href="/plan">刷题计划</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    AGC034E Complete Compress
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2020-03-09T13:11:36.000Z">
+                        2020-03-09
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            768 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有一棵有$n$个节点的树，每个节点上有$0/1$枚棋子，每次可以选择两个棋子并移动到它们的路径上的相邻节点（满足路径长度至少为$2$），求把所有棋子移到同一个节点的最小花费（无解输出$-1$）。</p>
+<p>$n \leq 2 \times 10 ^ 3$</p>
+<a id="more"></a>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>枚举最后汇聚到的点$\texttt{root}$，并以$\texttt{root}$为根建树</p>
+<p>我们可以发现，如果存在一个合法的方案，则必然是每次选择不存在祖先关系的两枚棋子，同时向着他们的$\texttt{lca}$处跳一格，重复若干步，直到所有棋子都在$\texttt{root}$</p>
+<p>由此我们联想到一个经典模型：有$\texttt{sum}$个节点被分成了若干个集合，每次要找到不在同一集合的两个节点匹配并抵消。</p>
+<p>设$\texttt{max}$为最大的集合的大小，则当$sum - max \geq max$时，刚好可以消去$\lfloor \frac{sum}{2} \rfloor$对节点</p>
+<p>否则剩下$2 \times max - sum$个来自最大集合的节点，消去了$sum - max$对</p>
+<p>现在我们回到原问题，考虑在$u$处做这个操作，设$f_u$表示在$u$的子树里最多消去了多少对。</p>
+<p>我们把所有$u$的子树内的有棋子的节点$v$拆成$dis(v, \; u)$个节点，则我们有如下转移（仍然设$\texttt{sum}$为总结点个数，$\texttt{max}$为最大的集合的大小）</p>
+<ul>
+<li><p>$sum - max \geq max$ ，此时$f_u=\lfloor \frac{sum}{2} \rfloor$</p>
+</li>
+<li><p>$sum - max &lt; max$，此时需要最大子树$v$内的节点来抵消，此时$f_u=sum-max+ \min (f_v, \lfloor \frac{2 \times max - sum}{2} \rfloor )$</p>
+</li>
+</ul>
+<p>以$\texttt{root}$为根的情况合法当且仅当$f_{root} = \frac{\Sigma_u dis(u, root)}{2}$，同时这也是以$\texttt{root}$为根的答案</p>
+<p>对$\texttt{root}=1 - n$重复这个$\texttt{dp}$过程，时间复杂度$\texttt{O(}n^2\texttt{)}$</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) (((a) + (b)) % mod)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">1e4</span> + <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> inf = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> next, to;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">char</span> s[MaxN];</span><br><span class="line">edge e[MaxN];</span><br><span class="line"><span class="hljs-keyword">int</span> n, ans, cnt;</span><br><span class="line"><span class="hljs-keyword">int</span> a[MaxN], head[MaxN], dis[MaxN], size[MaxN], f[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        dis[i] = size[i] = f[i] = <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ++cnt;</span><br><span class="line">    e[cnt].to = v;</span><br><span class="line">    e[cnt].next = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> fa)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    size[u] = a[u];</span><br><span class="line">    <span class="hljs-keyword">int</span> maxp = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(v, u), size[u] += size[v], dis[v] += size[v];</span><br><span class="line">        dis[u] += dis[v], maxp = ((dis[maxp] &gt; dis[v]) ? maxp : v);</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="hljs-keyword">if</span>(!maxp) <span class="hljs-keyword">return</span> (<span class="hljs-keyword">void</span>) (f[u] = <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">if</span>(dis[u] &gt;= <span class="hljs-number">2</span> * (dis[maxp])) f[u] = (dis[u] / <span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">else</span> f[u] = dis[u] - dis[maxp] + <span class="hljs-built_in">std</span>::min(f[maxp], (<span class="hljs-number">2</span> * dis[maxp] - dis[u]) / <span class="hljs-number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ans = inf;</span><br><span class="line">    n = read(), <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>, s + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = s[i] - <span class="hljs-string">'0'</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u = read(), v = read();</span><br><span class="line">        add_edge(u, v), add_edge(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        init(), dfs(i, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span>(dis[i] &amp; <span class="hljs-number">1</span>) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (f[i] * <span class="hljs-number">2</span> &gt;= dis[i]) ans = <span class="hljs-built_in">std</span>::min(ans, dis[i] / <span class="hljs-number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, (ans == inf) ? <span class="hljs-number">-1</span> : ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/dp/">dp</a>, <a class="my-post-tag has-link-grey -link" href="/tags/集训队作业/">集训队作业</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/11/AGC022E/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">AGC022E Median Replace</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/09/洛谷2048/">
+                <span class="level-item">洛谷2048 [NOI2010] 超级钢琴</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '3uPArX2yfadxvmrzeQoLh3pv-gzGzoHsz',
+        app_key: 'uPpAdYJ2hCBAuYo4y0VazuXw',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        48
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目大意">
+        <span class="has-mr-6">1</span>
+        <span>题目大意</span>
+        </a></li><li>
+        <a class="is-flex" href="#分析">
+        <span class="has-mr-6">2</span>
+        <span>分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#代码">
+        <span class="has-mr-6">3</span>
+        <span>代码</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">45</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="AGC034E Complete Compress" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2020
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>34.5k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

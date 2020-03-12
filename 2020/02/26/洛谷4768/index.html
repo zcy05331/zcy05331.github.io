@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>洛谷4768 [NOI2018] 归程 - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="题目大意有一个$n$个点$m$条边的无向联通图， 每条边有两个属性：长度$d$，海拔$h$ 有$q$个询问，每个询问给定两个数$v$, $p$，你要找到一个节点$u$，其中$u$要满足$v$到$u$存在一条路径使得这条路径上的边海拔全部大于$p$，求所有可能的$u$到$1$的最短路长度的最小值">
+<meta name="keywords" content="dijkstra,倍增,kruskal重构树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷4768 [NOI2018] 归程">
+<meta property="og:url" content="http://www.zcysky.com/2020/02/26/洛谷4768/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="题目大意有一个$n$个点$m$条边的无向联通图， 每条边有两个属性：长度$d$，海拔$h$ 有$q$个询问，每个询问给定两个数$v$, $p$，你要找到一个节点$u$，其中$u$要满足$v$到$u$存在一条路径使得这条路径上的边海拔全部大于$p$，求所有可能的$u$到$1$的最短路长度的最小值">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-07T10:54:59.990Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="洛谷4768 [NOI2018] 归程">
+<meta name="twitter:description" content="题目大意有一个$n$个点$m$条边的无向联通图， 每条边有两个属性：长度$d$，海拔$h$ 有$q$个询问，每个询问给定两个数$v$, $p$，你要找到一个节点$u$，其中$u$要满足$v$到$u$存在一条路径使得这条路径上的边海拔全部大于$p$，求所有可能的$u$到$1$的最短路长度的最小值">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="洛谷4768 [NOI2018] 归程" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+                <a class="navbar-item" href="/plan">刷题计划</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    洛谷4768 [NOI2018] 归程
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2020-02-26T12:58:09.000Z">
+                        2020-02-26
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1070 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有一个$n$个点$m$条边的无向联通图， 每条边有两个属性：长度$d$，海拔$h$</p>
+<p>有$q$个询问，每个询问给定两个数$v$, $p$，你要找到一个节点$u$，其中$u$要满足$v$到$u$存在一条路径使得这条路径上的边海拔全部大于$p$，求所有可能的$u$到$1$的最短路长度的最小值</p>
+<a id="more"></a>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>显然，我们发现$v$到$u$的路径一定在$u$到$v$的最大生成树上。（例：货车运输）</p>
+<p>把边按照海拔降序排列，建出该图的$\texttt{kruskal}$重构树，则对于一个节点$s$， 若$s$的点权$val \leq p$则该子树里的所有节点都互相连通（即能开车抵达）。</p>
+<p>我们通过$\texttt{dijkstra}$预处理出每个点到$1$的最短路$dis_i$， 并在建出$\texttt{kruskal}$重构树之后在重构树上$\texttt{dfs}$求出每个节点的子树里$dis$的最小值$mind_i$。询问时只要找到$v$最大的点权$\leq p$的祖先$x$，则$mind_x$就是本题的答案。</p>
+<p>$x$的寻找可以使用树上倍增算法，（在满足条件的情况下）逐级往上跳</p>
+<p>时间复杂度$O(m \log m)$</p>
+<h3 id="一些额外的东西"><a href="#一些额外的东西" class="headerlink" title="一些额外的东西"></a>一些额外的东西</h3><p>这里补充讲一下$\texttt{kruskal}$重构树是怎么建出来的：</p>
+<p>1.像正常的$\texttt{kruskal}$重构树那样把所有边按照边权降序/升序排序</p>
+<p>2.在合并一条边的两个端点$u, \; v$时，我们不像原来那样把$v$联通块的根节点$fv$设为$fu$，而是新建一个节点$new$并把$new$设为$fu, \; fv$的父亲，并在图中连上$(new, \; fu)$和$(new, \; fv)$两条边，此时该新点的点权就是$u$, $v$最大/小生成树路径上最小/大值</p>
+<p>3.重复步骤$2$直到所有边都被遍历一遍</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) (((a) + (b)) % mod)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">8e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxM = <span class="hljs-number">1e6</span> + <span class="hljs-number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> next, to, dis;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> u, v, ht;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> pos, dis;</span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(node x) <span class="hljs-keyword">const</span> &#123; <span class="hljs-keyword">return</span> dis &gt; x.dis; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">edge e[MaxM];</span><br><span class="line">Edge t[MaxN];</span><br><span class="line"><span class="hljs-keyword">int</span> n, m, q, k, s, cnt, num;</span><br><span class="line"><span class="hljs-keyword">int</span> head[MaxM], dep[MaxM], f[MaxM], val[MaxM], mind[MaxN];</span><br><span class="line"><span class="hljs-keyword">int</span> u[MaxN], v[MaxN], l[MaxN], a[MaxN], dis[MaxN], vis[MaxN], fa[MaxN][<span class="hljs-number">21</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">cmp</span><span class="hljs-params">(Edge a, Edge b)</span> </span>&#123; <span class="hljs-keyword">return</span> a.ht &gt; b.ht; &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">link</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> a)</span> </span>&#123; ++cnt, t[cnt].u = u, t[cnt].v = v, t[cnt].ht = a; &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getf</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x != f[x])</span><br><span class="line">        f[x] = getf(f[x]);</span><br><span class="line">    <span class="hljs-keyword">return</span> f[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rebuild</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    cnt = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        link(u[i], v[i], a[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">jump</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">20</span>; ~i; i--)</span><br><span class="line">        <span class="hljs-keyword">if</span> (val[fa[u][i]] &gt; k)</span><br><span class="line">            u = fa[u][i];</span><br><span class="line">    <span class="hljs-keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> d)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ++cnt;</span><br><span class="line">    e[cnt].to = v;</span><br><span class="line">    e[cnt].dis = d;</span><br><span class="line">    e[cnt].next = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = m = cnt = num = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(fa));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(fa, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(fa));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(dep, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(dep));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(vis));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(val, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(val));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">    <span class="hljs-built_in">memset</span>(mind, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(mind));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> fa)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    dep[u] = dep[fa] + <span class="hljs-number">1</span>, ::fa[u][<span class="hljs-number">0</span>] = fa;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">20</span>; i++)</span><br><span class="line">        ::fa[u][i] = ::fa[::fa[u][i - <span class="hljs-number">1</span>]][i - <span class="hljs-number">1</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v == fa)</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(v, u), mind[u] = <span class="hljs-built_in">std</span>::min(mind[u], mind[v]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">kruskal</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    num = n, cnt = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(t + <span class="hljs-number">1</span>, t + m + <span class="hljs-number">1</span>, cmp);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        f[i] = i;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> fu = getf(t[i].u), fv = getf(t[i].v);</span><br><span class="line">        <span class="hljs-keyword">if</span> (fu != fv)</span><br><span class="line">        &#123;</span><br><span class="line">            val[++num] = t[i].ht;</span><br><span class="line">            f[num] = f[fu] = f[fv] = num;</span><br><span class="line">            add_edge(fu, num, <span class="hljs-number">0</span>), add_edge(num, fu, <span class="hljs-number">0</span>);</span><br><span class="line">            add_edge(fv, num, <span class="hljs-number">0</span>), add_edge(num, fv, <span class="hljs-number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(num, <span class="hljs-number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">std</span>::priority_queue&lt;node&gt; q;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(dis));</span><br><span class="line">    dis[u] = <span class="hljs-number">0</span>, q.push((node)&#123;u, <span class="hljs-number">0</span>&#125;);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        node x = q.top();</span><br><span class="line">        q.pop(), u = x.pos;</span><br><span class="line">        <span class="hljs-keyword">if</span> (vis[u])</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        vis[u] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].next)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span> (dis[u] + e[i].dis &lt; dis[v])</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v] = dis[u] + e[i].dis;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!vis[v])</span><br><span class="line">                    q.push((node)&#123;v, dis[v]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        mind[i] = dis[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> T = read();</span><br><span class="line">    <span class="hljs-keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> lastans = <span class="hljs-number">0</span>;</span><br><span class="line">        init(), n = read(), m = read();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            u[i] = read(), v[i] = read(), l[i] = read(), a[i] = read();</span><br><span class="line">            add_edge(u[i], v[i], l[i]), add_edge(v[i], u[i], l[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        dijkstra(<span class="hljs-number">1</span>), rebuild(), kruskal();</span><br><span class="line">        q = read(), k = read(), s = read();</span><br><span class="line">        <span class="hljs-keyword">while</span> (q--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> v = (read() + k * lastans - <span class="hljs-number">1</span>) % n + <span class="hljs-number">1</span>, p = (read() + k * lastans) % (s + <span class="hljs-number">1</span>);</span><br><span class="line">            lastans = mind[jump(v, p)], <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, lastans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/dijkstra/">dijkstra</a>, <a class="my-post-tag has-link-grey -link" href="/tags/kruskal重构树/">kruskal重构树</a>, <a class="my-post-tag has-link-grey -link" href="/tags/倍增/">倍增</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/26/CodeChef TANDEM/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">CodeChef TANDEM</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/11/CF1299C/">
+                <span class="level-item">CF1299C Water Balance</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '3uPArX2yfadxvmrzeQoLh3pv-gzGzoHsz',
+        app_key: 'uPpAdYJ2hCBAuYo4y0VazuXw',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        48
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目大意">
+        <span class="has-mr-6">1</span>
+        <span>题目大意</span>
+        </a></li><li>
+        <a class="is-flex" href="#分析">
+        <span class="has-mr-6">2</span>
+        <span>分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#一些额外的东西">
+        <span class="has-mr-6">3</span>
+        <span>一些额外的东西</span>
+        </a></li><li>
+        <a class="is-flex" href="#代码">
+        <span class="has-mr-6">4</span>
+        <span>代码</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">45</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="洛谷4768 [NOI2018] 归程" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2020
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>34.5k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
