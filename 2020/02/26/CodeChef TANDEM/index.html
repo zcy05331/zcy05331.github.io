@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l  s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现在，你需要">
+    <meta name="description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现">
 <meta name="keywords" content="hash,字符串,SA,SAM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CodeChef TANDEM">
 <meta property="og:url" content="http://www.zcysky.com/2020/02/26/CodeChef TANDEM/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l  s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现在，你需要">
+<meta property="og:description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-01T13:13:40.905Z">
+<meta property="og:updated_time" content="2020-03-17T09:55:17.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodeChef TANDEM">
-<meta name="twitter:description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l  s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现在，你需要">
+<meta name="twitter:description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现">
 
 
 
@@ -152,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            362 Words
+                            687 Words
                         </span>
                     
                 </div>
@@ -161,7 +161,7 @@
         
         <div class="content">
             <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果</p>
-<p>对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l  s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$</p>
+<p>对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$</p>
 <p>现在，你需要统计有趣的和无聊的$\texttt{tandem}$的数量</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><h4 id="O-n-3-方法"><a href="#O-n-3-方法" class="headerlink" title="$O(n^3)$方法"></a>$O(n^3)$方法</h4><p>不说了，大家都会</p>
@@ -170,6 +170,24 @@
 <p>不难发现这些子串的起始位置$a \in [i - L + 1, i]$， 如果这个子串是一个$\texttt{tandem}$， 则有$s_{[a, a+L-1]}=s_{[a+L, a+2L-1]}=s_{[a+2L, a+3L-1]}$</p>
 <p>由于$a \in [i - L + 1, i]$，所以我们有$a \leq i \leq a + L - 1$, $a + L \leq j \leq a +  2L - 1$, $a + 2L \leq k \leq a + 3L - 1$，所以我们可以把上述条件转化为如下条件：<br>$$<br>s_{[a,i]}=s_{[a+L,j]}=s_{[a+2L,k]} \<br>$$</p>
 <p>$$<br>s_{[i,a+L-1]}=s_{[j,a+2L-1]}=s_{[k,a+2L-1]}<br>$$</p>
+<p>上面两个条件可以表示为：子串$s[0,i],\;s[0,j],\;s[0,k]$有一个长度为$i-a+1$的相同后缀，子串$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$有一个长度为$a+L-i$的相同前缀。</p>
+<p>设$\texttt{LCP(i,j,k)}$表示$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$的后缀长度，$\texttt{LCS(i,j,k)}$表示$s[0,i],\;s[0,j],\;s[0,k]$的后缀长度，则有$\max( i−LCS(i , j , k )+1, i − L +1)≤ a ≤ \min( LCP ( i , j , k )− L + i , i )$</p>
+<p>合法的$a$共有$\min(0,\min(LCP(i,j,k)−L+i,i)−\max(i−LCS(i,j,k)+1,i−L+1)+1)$个</p>
+<p>化简一下得到$\min(LCP(i,j,k),L)+\min(LCS(i,j,k),L)−1$，我们设这个值为$V$</p>
+<p>可以发现:</p>
+<ul>
+<li><p>当$V &lt; L$时不存在$\texttt{tandem}$</p>
+</li>
+<li><p>当$V \ge L$时存在$V-L+1$个$\texttt{tandem}$，此时：</p>
+<ul>
+<li>如果$LCP \le L$，则存在$1$个有趣的$\texttt{tandem}$</li>
+<li>否则不存在有趣的$\texttt{tandem}$。</li>
+</ul>
+</li>
+</ul>
+<p>如果朴素的去求$\texttt{LCP,LCS}$的话，时间复杂度$\mathcal{O}(n^2)$</p>
+<h4 id="正解方法"><a href="#正解方法" class="headerlink" title="正解方法"></a>正解方法</h4><p>可以使用字符串哈希，后缀数组$+$线段树，后缀数组$+$$\texttt{ST}$表的方法优化求$\texttt{LCP,LCS}$的过程。</p>
+<p>总时间复杂度$\mathcal{O}(n \; \log^2 n)$或$\mathcal{O}(n \; \log n)$（取决于写法）</p>
 
         </div>
         
@@ -361,6 +379,10 @@
         <a class="is-flex" href="#O-n-2-方法">
         <span class="has-mr-6">2.2</span>
         <span>$O(n^2)$方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#正解方法">
+        <span class="has-mr-6">2.3</span>
+        <span>正解方法</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -446,7 +468,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>36.6k</span> Words
+                        <span>36.9k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
