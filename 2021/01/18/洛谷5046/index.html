@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="提供一种理论复杂度正确($O(n\sqrt n)$)的做法 我们维护以下几个东西: pre[i]：$i$到它的块首这段序列的逆序对数量 suf[i]：$i$到它的块尾这段序列的逆序对数量 cnt[i][j]：前$i$个块中小于$j$的数的个数 f[i][j]：第$i$个块到第$j$块的逆序对个数 v[i] 第$i$个块中数从小到大排序的结果 pre和suf可以用树状数组在$O(n \log n)$">
+    <meta name="description" content="提供一种理论复杂度正确($O(n\sqrt n)$)的做法">
 <meta name="keywords" content="分块,Ynoi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷5046">
 <meta property="og:url" content="http://www.zcysky.com/2021/01/18/洛谷5046/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="提供一种理论复杂度正确($O(n\sqrt n)$)的做法 我们维护以下几个东西: pre[i]：$i$到它的块首这段序列的逆序对数量 suf[i]：$i$到它的块尾这段序列的逆序对数量 cnt[i][j]：前$i$个块中小于$j$的数的个数 f[i][j]：第$i$个块到第$j$块的逆序对个数 v[i] 第$i$个块中数从小到大排序的结果 pre和suf可以用树状数组在$O(n \log n)$">
+<meta property="og:description" content="提供一种理论复杂度正确($O(n\sqrt n)$)的做法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-18T13:18:59.804Z">
+<meta property="og:updated_time" content="2021-01-18T13:26:30.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷5046">
-<meta name="twitter:description" content="提供一种理论复杂度正确($O(n\sqrt n)$)的做法 我们维护以下几个东西: pre[i]：$i$到它的块首这段序列的逆序对数量 suf[i]：$i$到它的块尾这段序列的逆序对数量 cnt[i][j]：前$i$个块中小于$j$的数的个数 f[i][j]：第$i$个块到第$j$块的逆序对个数 v[i] 第$i$个块中数从小到大排序的结果 pre和suf可以用树状数组在$O(n \log n)$">
+<meta name="twitter:description" content="提供一种理论复杂度正确($O(n\sqrt n)$)的做法">
 
 
 
@@ -152,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            1224 Words
+                            1225 Words
                         </span>
                     
                 </div>
@@ -161,6 +161,7 @@
         
         <div class="content">
             <p>提供一种理论复杂度正确($O(n\sqrt n)$)的做法</p>
+<a id="more"></a>
 <p>我们维护以下几个东西:</p>
 <p><code>pre[i]</code>：$i$到它的块首这段序列的逆序对数量</p>
 <p><code>suf[i]</code>：$i$到它的块尾这段序列的逆序对数量</p>

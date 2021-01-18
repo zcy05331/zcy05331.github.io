@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="显然这题答案具有单调性性，现在我们考虑给定一个$T$怎么check 首先我们可以把所有不通过新点就可以互达的点合并成一个联通块。 容易发现当联通块个数$=1$时肯定有解，$&amp;gt;4$时无解，剩下情况我们进行分类讨论 1. 有两个联通块如果我们能找到两个点位于不同的联通块，并且他们在一条直线上且曼哈顿距离&amp;lt;=2T 或 两点的x,y坐标绝对值之差均小于T则有解 2. 有三个联通块首先我们把所有">
+    <meta name="description" content="显然这题答案具有单调性，现在我们考虑给定一个$T$怎么check">
 <meta name="keywords" content="图论,二分,分类讨论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF1419F">
 <meta property="og:url" content="http://www.zcysky.com/2021/01/18/CF1419F/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="显然这题答案具有单调性性，现在我们考虑给定一个$T$怎么check 首先我们可以把所有不通过新点就可以互达的点合并成一个联通块。 容易发现当联通块个数$=1$时肯定有解，$&amp;gt;4$时无解，剩下情况我们进行分类讨论 1. 有两个联通块如果我们能找到两个点位于不同的联通块，并且他们在一条直线上且曼哈顿距离&amp;lt;=2T 或 两点的x,y坐标绝对值之差均小于T则有解 2. 有三个联通块首先我们把所有">
+<meta property="og:description" content="显然这题答案具有单调性，现在我们考虑给定一个$T$怎么check">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-18T13:20:21.864Z">
+<meta property="og:updated_time" content="2021-01-18T13:26:15.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1419F">
-<meta name="twitter:description" content="显然这题答案具有单调性性，现在我们考虑给定一个$T$怎么check 首先我们可以把所有不通过新点就可以互达的点合并成一个联通块。 容易发现当联通块个数$=1$时肯定有解，$&amp;gt;4$时无解，剩下情况我们进行分类讨论 1. 有两个联通块如果我们能找到两个点位于不同的联通块，并且他们在一条直线上且曼哈顿距离&amp;lt;=2T 或 两点的x,y坐标绝对值之差均小于T则有解 2. 有三个联通块首先我们把所有">
+<meta name="twitter:description" content="显然这题答案具有单调性，现在我们考虑给定一个$T$怎么check">
 
 
 
@@ -160,7 +160,8 @@
         </div>
         
         <div class="content">
-            <p>显然这题答案具有单调性性，现在我们考虑给定一个$T$怎么check</p>
+            <p>显然这题答案具有单调性，现在我们考虑给定一个$T$怎么check</p>
+<a id="more"></a>
 <p>首先我们可以把所有不通过新点就可以互达的点合并成一个联通块。</p>
 <p>容易发现当联通块个数$=1$时肯定有解，$&gt;4$时无解，剩下情况我们进行分类讨论</p>
 <h4 id="1-有两个联通块"><a href="#1-有两个联通块" class="headerlink" title="1. 有两个联通块"></a>1. 有两个联通块</h4><pre><code>如果我们能找到两个点位于不同的联通块，并且他们在一条直线上且曼哈顿距离&lt;=2T 或 两点的x,y坐标绝对值之差均小于T则有解
