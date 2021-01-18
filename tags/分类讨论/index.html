@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>标签: 分类讨论 - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="A super spicy chicken">
+<meta property="og:type" content="website">
+<meta property="og:title" content="little_sun&#39;s blog">
+<meta property="og:url" content="http://www.zcysky.com/tags/分类讨论/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="A super spicy chicken">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="little_sun&#39;s blog">
+<meta name="twitter:description" content="A super spicy chicken">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/plan">刷题计划</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">分类讨论</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2021/01/18/CF1419F/">CF1419F</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2021-01-18T13:19:40.000Z">
+                        2021-01-18
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1048 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>显然这题答案具有单调性性，现在我们考虑给定一个$T$怎么check</p>
+<p>首先我们可以把所有不通过新点就可以互达的点合并成一个联通块。</p>
+<p>容易发现当联通块个数$=1$时肯定有解，$&gt;4$时无解，剩下情况我们进行分类讨论</p>
+<h4 id="1-有两个联通块"><a href="#1-有两个联通块" class="headerlink" title="1. 有两个联通块"></a>1. 有两个联通块</h4><pre><code>如果我们能找到两个点位于不同的联通块，并且他们在一条直线上且曼哈顿距离&lt;=2T 或 两点的x,y坐标绝对值之差均小于T则有解
+</code></pre><h4 id="2-有三个联通块"><a href="#2-有三个联通块" class="headerlink" title="2. 有三个联通块"></a>2. 有三个联通块</h4><pre><code>首先我们把所有在一条直线上相邻并且不属于一个联通块的点对(a, b)处理出来，对于每个点对可以找到点c与这两个点所属联通块都不同，若c到直线距离，a、b到c在线段上的投影距离均小于T，则合法
+</code></pre><h4 id="3-有四个联通块"><a href="#3-有四个联通块" class="headerlink" title="3. 有四个联通块"></a>3. 有四个联通块</h4><pre><code>将找点c换成找点对(c,d)满足线段(a,b),(c,d)垂直，且a,b,c,d分属四个不同的联通块，接下来做法与3个联通块类似
+</code></pre><p>时间复杂度O($n^2\log_2{2\times 10^9}$)</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pir std::pair<span class="hljs-meta-string">&lt;ll, ll&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> mp(i, j) std::make_pair(i, j)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) (((a) + (b)) % mod)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> It std::map<span class="hljs-meta-string">&lt;ll, std::vector&lt;ll&gt;&gt;::iterator</span></span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">const</span> ll MaxN = <span class="hljs-number">1e3</span> + <span class="hljs-number">10</span>;</span><br><span class="line"> </span><br><span class="line">ll n, x[MaxN], y[MaxN], f[MaxN];</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">unordered_map</span>&lt;ll, ll&gt; trash;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">map</span>&lt;ll, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt;&gt; lx, ly;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::pair&lt;ll, ll&gt;&gt; X, Y, line;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">Abs</span><span class="hljs-params">(ll x)</span> </span>&#123; <span class="hljs-keyword">return</span> (x &lt; <span class="hljs-number">0</span>) ? (-x) : x; &#125;</span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">cmpx</span><span class="hljs-params">(ll a, ll b)</span> </span>&#123; <span class="hljs-keyword">return</span> x[a] &lt; x[b]; &#125;</span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">cmpy</span><span class="hljs-params">(ll a, ll b)</span> </span>&#123; <span class="hljs-keyword">return</span> y[a] &lt; y[b]; &#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">getf</span><span class="hljs-params">(ll x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x != f[x])</span><br><span class="line">        f[x] = getf(f[x]);</span><br><span class="line">    <span class="hljs-keyword">return</span> f[x];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(ll x, ll y)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll fx = getf(x), fy = getf(y);</span><br><span class="line">    <span class="hljs-keyword">if</span> (fx != fy) f[fx] = fy;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> ll <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll x = <span class="hljs-number">0</span>, f = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'-'</span>)</span><br><span class="line">            f = <span class="hljs-number">0</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? x : (-x);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">check</span><span class="hljs-params">(ll mid)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    trash.clear();</span><br><span class="line">    <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        f[i] = i;</span><br><span class="line">    <span class="hljs-keyword">for</span> (It it = lx.begin(); it != lx.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">        <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt; v.size(); i++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (Abs(y[v[i]] - y[v[i - <span class="hljs-number">1</span>]]) &lt;= mid)</span><br><span class="line">                merge(v[i], v[i - <span class="hljs-number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (It it = ly.begin(); it != ly.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">        <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt; v.size(); i++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (Abs(x[v[i]] - x[v[i - <span class="hljs-number">1</span>]]) &lt;= mid)</span><br><span class="line">                merge(v[i], v[i - <span class="hljs-number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    ll siz = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-comment">// getf(i), printf("%lld ", f[i]),</span></span><br><span class="line">        siz += (trash[getf(i)] == <span class="hljs-number">0</span>), trash[getf(i)] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-comment">// printf("# %lld %lld\n", mid, siz);</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (siz == <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (siz == <span class="hljs-number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll j = i + <span class="hljs-number">1</span>; j &lt;= n; j++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[i] != f[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (Abs(x[i] - x[j]) == <span class="hljs-number">0</span> &amp;&amp; Abs(y[i] - y[j]) &lt;= <span class="hljs-number">2</span> * mid)</span><br><span class="line">                            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (Abs(y[i] - y[j]) == <span class="hljs-number">0</span> &amp;&amp; Abs(x[i] - x[j]) &lt;= <span class="hljs-number">2</span> * mid)</span><br><span class="line">                            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (Abs(x[i] - x[j]) &lt;= mid &amp;&amp; Abs(y[i] - y[j]) &lt;= mid)</span><br><span class="line">                            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (siz == <span class="hljs-number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        line.clear();</span><br><span class="line">        <span class="hljs-keyword">for</span> (It it = lx.begin(); it != lx.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt; v.size(); i++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[v[i]] != f[v[i - <span class="hljs-number">1</span>]])</span><br><span class="line">                    line.push_back(mp(v[i], v[i - <span class="hljs-number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (It it = ly.begin(); it != ly.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt; v.size(); i++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[v[i]] != f[v[i - <span class="hljs-number">1</span>]])</span><br><span class="line">                    line.push_back(mp(v[i], v[i - <span class="hljs-number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> li : line)</span><br><span class="line">        &#123;</span><br><span class="line">            ll l = li.first, r = li.second;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[l] != f[i] &amp;&amp; f[i] != f[r])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (x[l] == x[r])</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="hljs-keyword">if</span> (Abs(y[l] - y[i]) &lt;= mid &amp;&amp; Abs(y[r] - y[i]) &lt;= mid)</span><br><span class="line">                            <span class="hljs-keyword">if</span> (Abs(x[l] - x[i]) &lt;= mid)</span><br><span class="line">                                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Abs(x[l] - x[i]) &lt;= mid &amp;&amp; Abs(x[r] - x[i]) &lt;= mid)</span><br><span class="line">                        <span class="hljs-keyword">if</span> (Abs(y[l] - y[i]) &lt;= mid)</span><br><span class="line">                            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (siz == <span class="hljs-number">4</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        X.clear(), Y.clear();</span><br><span class="line">        <span class="hljs-keyword">for</span> (It it = lx.begin(); it != lx.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt; v.size(); i++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[v[i]] != f[v[i - <span class="hljs-number">1</span>]])</span><br><span class="line">                    X.push_back(mp(v[i], v[i - <span class="hljs-number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (It it = ly.begin(); it != ly.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt; v.size(); i++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[v[i]] != f[v[i - <span class="hljs-number">1</span>]])</span><br><span class="line">                    Y.push_back(mp(v[i], v[i - <span class="hljs-number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> x1 : X)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> y1 : Y)</span><br><span class="line">            &#123;</span><br><span class="line">                ll a = x1.first, b = x1.second;</span><br><span class="line">                ll c = y1.first, d = y1.second;</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[a] != f[c] &amp;&amp; f[a] != f[d])</span><br><span class="line">                    <span class="hljs-keyword">if</span> (f[b] != f[c] &amp;&amp; f[b] != f[d])</span><br><span class="line">                        <span class="hljs-keyword">if</span> (Abs(x[a] - x[c]) &lt;= mid &amp;&amp; Abs(x[a] - x[d]) &lt;= mid)</span><br><span class="line">                            <span class="hljs-keyword">if</span> (Abs(y[c] - y[a]) &lt;= mid &amp;&amp; Abs(y[c] - y[b]) &lt;= mid)</span><br><span class="line">                                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x[i] = read(), y[i] = read();</span><br><span class="line">        lx[x[i]].push_back(i);</span><br><span class="line">        ly[y[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (It it = lx.begin(); it != lx.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">        <span class="hljs-built_in">std</span>::sort(v.begin(), v.end(), cmpy);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (It it = ly.begin(); it != ly.end(); it++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; &amp;v = it-&gt;second;</span><br><span class="line">        <span class="hljs-built_in">std</span>::sort(v.begin(), v.end(), cmpx);</span><br><span class="line">    &#125;</span><br><span class="line">    ll l = <span class="hljs-number">1</span>, r = <span class="hljs-number">0x7f7f7f7f</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        ll mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (check(mid))</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            l = mid + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (l == <span class="hljs-number">0x7f7f7f7f</span>)</span><br><span class="line">        l = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, l);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        61
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        50
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">54</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="little_sun&#39;s blog" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2021
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>42.7k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
