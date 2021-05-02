@@ -16,7 +16,7 @@
 <meta property="og:description" content="题目大意一个合法的串定义为：长度在 $[l,r]$ 之间，且只含 0,1，并且不存在连续 $2$ 个或更多的 $0$。 现在要选出 $k$ 个长度相同的合法的串，问有几种选法，答案模 $10^9+7$。 $ 1 \leq k \leq 200$，$1 \leq l \leq r \leq 10^{18}$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/jqspmmrx.png">
-<meta property="og:updated_time" content="2021-05-02T08:02:34.704Z">
+<meta property="og:updated_time" content="2021-05-02T08:06:04.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF717A Festival Organization">
 <meta name="twitter:description" content="题目大意一个合法的串定义为：长度在 $[l,r]$ 之间，且只含 0,1，并且不存在连续 $2$ 个或更多的 $0$。 现在要选出 $k$ 个长度相同的合法的串，问有几种选法，答案模 $10^9+7$。 $ 1 \leq k \leq 200$，$1 \leq l \leq r \leq 10^{18}$">
@@ -167,7 +167,7 @@
 <h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>显而易见的我们要求的是一个形如 $ \sum_{l+2}^{r+2} \binom{f_i}{k}$的东西，其中 $f_i$表示斐波那契数列的第$i$项</p>
 <p>我们把上式转化成求$ \sum_{i=1}^{n} \binom{f_i}{k}$，那么我们可以开始推式子了<br>$$<br>\sum_{i=1}^n \binom {f_i}{k}<br>$$</p>
 <p>$$<br>= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (f_i - j + 1)<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \ j\end{bmatrix} f_i^j<br>$$</p>
+<p>$$<br>= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}{k \ j}\end{bmatrix} f_i^j<br>$$</p>
 <p>这里用的是下降幂多项式转普通多项式的方法，$\begin{bmatrix}k \ j\end{bmatrix}$是第一类斯特林数<br>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \ j\end{bmatrix} \sum_{i=1}^n  f_i^j<br>$$</p>
 <p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \ j\end{bmatrix} \sum_{i=1}^n (\frac{1}{\sqrt 5}(\phi^i - \hat{\phi}^i))^j<br>$$</p>
 <p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \ j\end{bmatrix} (\frac{1}{\sqrt 5})^j \sum_{i=1}^n (\phi^i - \hat{\phi}^i)^j<br>$$</p>
