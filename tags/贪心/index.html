@@ -141,6 +141,61 @@
         <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
+                    <a class="has-link-black-ter" href="/2021/09/25/CF1490G/">CF1490G Old Floppy Drive</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2021-09-25T14:27:28.000Z">
+                        2021-09-25
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            552 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有一个长为 $n$ 的数组 $a_i$，把 $a_i$ 复制成一个无限序列。</p>
+<p>给 $m$ 个询问，每次询问给定一个整数 $x$ ，问这个序列第一个前缀和 $ \geq x$ 的下标是什么</p>
+<p>$ 1 \leq n, m \leq 2 \times 10 ^ 5, -10^9 \leq a_i \leq 10^9, 1 \leq x \leq 10 ^ 9$</p>
+<h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>首先先判断一下有没可能在一次循环之内结束，这可以用一次双指针解决。</p>
+<p>接下来对于还没有求出答案的 $x$ ，如果全部 $n$ 个数的和 $s_n \leq 0$ ，则显然不可能使前缀和达到 $x$。</p>
+<p>否则我们将 $x$ 反复减去 $s_n$ 使得 $x’ \leq \max s_i$ ，之后就可以通过一次二分求出第一个前缀和 $ \geq x’$ 的下标。</p>
+<p>时间复杂度 $ \Theta((n + m) \log n)$ </p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pair std::pair<span class="hljs-meta-string">&lt;ll, ll&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> mp(i, j) std::make_pair(i, j)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) (((a) + (b)) % mod)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> meow(cat...) fprintf(stderr, cat)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ll MaxN = <span class="hljs-number">2e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"></span><br><span class="line">pair q[MaxN];</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">map</span>&lt;ll, ll&gt; mp;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;pair&gt; v;</span><br><span class="line">ll n, m, now, a[MaxN], s[MaxN], ans[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    v.clear(), mp.clear(), now = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">0</span>; i &lt; m + <span class="hljs-number">10</span>; i++)</span><br><span class="line">        ans[i] = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">0</span>; i &lt; n + <span class="hljs-number">10</span>; i++)</span><br><span class="line">        a[i] = s[i] = <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> ll <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll x = <span class="hljs-number">0</span>, f = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(ch == <span class="hljs-string">'-'</span>)</span><br><span class="line">            f = <span class="hljs-number">0</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>) </span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? x : (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;   </span><br><span class="line">    ll T = read();</span><br><span class="line">    <span class="hljs-keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        n = read(), m = read(), init();</span><br><span class="line">        <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i] = read(), s[i] = a[i] + s[i - <span class="hljs-number">1</span>];</span><br><span class="line">            <span class="hljs-keyword">if</span>(s[i] &gt; <span class="hljs-number">0</span> &amp;&amp; !mp[s[i]]) </span><br><span class="line">                mp[s[i]] = i, v.push_back(mp(s[i], i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">            q[i].first = read(), q[i].second = i;</span><br><span class="line">        <span class="hljs-built_in">std</span>::sort(q + <span class="hljs-number">1</span>, q + m + <span class="hljs-number">1</span>), <span class="hljs-built_in">std</span>::sort(v.begin(), v.end());</span><br><span class="line">        <span class="hljs-keyword">if</span>(v.size() &gt;= <span class="hljs-number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(ll i = v.size() - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--)</span><br><span class="line">            &#123;</span><br><span class="line">                ll x = mp[v[i].first];</span><br><span class="line">                x = <span class="hljs-built_in">std</span>::min(x, mp.upper_bound(v[i].first)-&gt;second);</span><br><span class="line">                mp[v[i].first] = x, v[i].second = x;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">// for(auto x : mp)</span></span><br><span class="line">        <span class="hljs-comment">//     meow("# %lld %lld\n", x.first, x.second);</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(now &lt; m &amp;&amp; q[now + <span class="hljs-number">1</span>].first &lt;= v[i].first)</span><br><span class="line">                ++now, ans[q[now].second] = v[i].second - <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">// meow("ok");</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(ll i = now + <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(s[n] &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            ans[q[i].second] = n * ((q[i].first - v.back().first + s[n] - <span class="hljs-number">1</span>) / s[n]);</span><br><span class="line">            q[i].first -= s[n] *((q[i].first - v.back().first + s[n] - <span class="hljs-number">1</span>) / s[n]), </span><br><span class="line">            ans[q[i].second] += mp.lower_bound(q[i].first)-&gt;second - <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-comment">// meow("$ %lld %lld %lld\n", ans[q[i].second], q[i].first, s[n]);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld%c"</span>, ans[i], <span class="hljs-string">" \n"</span>[i == m]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
                     <a class="has-link-black-ter" href="/2021/09/04/CF1454F/">CF1454F Array Partition</a>
                 
             </h1>
@@ -338,7 +393,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        65
+                        66
                     </p>
                 </div>
             </div>
@@ -439,7 +494,7 @@
                 <span class="level-item">Solution</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">58</span>
+                <span class="level-item tag">59</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Template/">
@@ -483,7 +538,7 @@
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>46.7k</span> Words
+                        <span>47.3k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
