@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>GYM103415K Magus Night - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="简要题意对所有长度为 $n$ ，元素不超过 $m$ ，$\texttt{lcm} \ge p$，$\texttt{gcd} \le q$ 数列求积的和">
+<meta name="keywords" content="数论,莫比乌斯反演">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GYM103415K Magus Night">
+<meta property="og:url" content="http://www.zcysky.com/2022/04/10/GYM103415K/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="简要题意对所有长度为 $n$ ，元素不超过 $m$ ，$\texttt{lcm} \ge p$，$\texttt{gcd} \le q$ 数列求积的和">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2022-04-09T16:18:24.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GYM103415K Magus Night">
+<meta name="twitter:description" content="简要题意对所有长度为 $n$ ，元素不超过 $m$ ，$\texttt{lcm} \ge p$，$\texttt{gcd} \le q$ 数列求积的和">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="GYM103415K Magus Night" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    GYM103415K Magus Night
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2022-04-09T16:06:54.000Z">
+                        2022-04-10
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solutions/">Solutions</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1012 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="简要题意"><a href="#简要题意" class="headerlink" title="简要题意"></a>简要题意</h3><p>对所有长度为 $n$ ，元素不超过 $m$ ，$\texttt{lcm} \ge p$，$\texttt{gcd} \le q$ 数列求积的和</p>
+<a id="more"></a>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>原题意可转化为全部 数列的贡献去掉$\texttt{lcm} &lt; p$、$\texttt{gcd} &gt; q$，再加上 $\texttt{lcm} &lt; p$，$\texttt{gcd} &gt; q$ 数列的贡献</p>
+<p>第一部分我们考虑二（多）项式定理，故总和为$H(m)=(\sum_{i=1}^mi)^n=(\frac{m(m+1)}{2})^n$</p>
+<p>第二部分我们考虑枚举 $\texttt{lcm}$ ，设 $g(x)$ 表示 $\texttt{lcm}=x$ 数列的贡献</p>
+<p>则可以莫比乌斯反演，$g(x)=\sum_{d|x} \mu(d) h(\frac{x}{d})$， 其中 $h(x)$ 是所有 $\texttt{lcm}$ 为 $x$ 因数的数列的贡献</p>
+<p>$h(x)$ 的表达式可以写成 $(\sum_{i|x}i)^n$ ，于是我们就可以愉快计算 $g(x)$ 了</p>
+<p>第三部分同样考虑枚举 $\texttt{gcd}$，设 $G(x)$ 表示 $\texttt{gcd}=x$ 数列的贡献</p>
+<p>考虑把 $x$ 除掉变成互质数列，互质数列贡献 $F(m)=\sum_{d=1}^x \mu(d) H(\frac{m}{d})$（好像这里可以整除分块？）</p>
+<p>则 $G(x)=x^n F(\frac{m}{x})$ ，于是也可以快乐计算 $G(x)$ 了</p>
+<p>第四部分考虑同时枚举 $\texttt{gcd}$ 和 $\texttt{lcm}$，由于 $\texttt{lcm} &lt; p$，且 $\texttt{gcd}$ $\mid$ $\texttt{lcm}$，故这里复杂度是正确的</p>
+<p>先考虑一个$\texttt{gcd} = 1, \texttt{lcm}=x$ 的数列，它的贡献 $f(x)=\sum_{d|x} \mu(d) g(\frac{x}{d})$</p>
+<p>再考虑一个$\texttt{gcd}=t$ 和 $\texttt{lcm}=xt$ 的数列，则 $f(x)$ 只要乘上 $t^n$ 即可</p>
+<p>综上所述，总贡献为<br>$$<br>ans=H(m)-\sum_{x=1}^{p-1}g(x)-\sum_{t=q+1}^{m}G(t)+\sum_{t=q+1}^m \sum_{x=1}^{\frac{p-1}{t}}t^nf(x)<br>$$</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> meow(cat...) fprintf(stderr, cat)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ll MaxN = <span class="hljs-number">2e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> ll mod = <span class="hljs-number">998244353</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> ll inv2 = (mod + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;ll&gt; d[MaxN];</span><br><span class="line">ll n, m, p, q, cnt, ans, f[MaxN], g[MaxN], h[MaxN], pw[MaxN], mu[MaxN];</span><br><span class="line">ll vis[MaxN], s[MaxN], pr[MaxN], F[MaxN], G[MaxN], H[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">sum</span><span class="hljs-params">(ll a, ll b)</span> </span>&#123; <span class="hljs-keyword">return</span> ((a + b) % mod + mod) % mod; &#125;</span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">Add</span><span class="hljs-params">(ll &amp;a, ll b)</span> </span>&#123; <span class="hljs-keyword">return</span> a = sum(a, b); &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">fast_pow</span><span class="hljs-params">(ll a, ll b)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll res = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(b &amp; <span class="hljs-number">1</span>)</span><br><span class="line">            res = res * a % mod;</span><br><span class="line">        a = a * a % mod, b &gt;&gt;= <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    mu[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">2</span>; i &lt; MaxN; i++)  </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!vis[i]) pr[++cnt] = i, mu[i] = <span class="hljs-number">-1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(ll j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * pr[j] &lt; MaxN; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i * pr[j]] = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span>(i * pr[j] == <span class="hljs-number">0</span>)</span><br><span class="line">                &#123; mu[i * pr[j]] = <span class="hljs-number">0</span>; <span class="hljs-keyword">break</span>; &#125;</span><br><span class="line">            mu[i * pr[j]] = -mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt; MaxN; i++)</span><br><span class="line">        s[i] = sum(s[i - <span class="hljs-number">1</span>], mu[i]), Add(s[i], mod);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> ll <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll x = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">        ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span>(ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>) </span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;   </span><br><span class="line">    n = read(), m = read(), p = read(), q = read(), init();</span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        H[i] = i * (i + <span class="hljs-number">1</span>) % mod * inv2 % mod, H[i] = fast_pow(H[i], n); </span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="hljs-keyword">for</span>(ll j = <span class="hljs-number">1</span>; j * j &lt;= i; j++)</span><br><span class="line">            <span class="hljs-keyword">if</span>(i % j == <span class="hljs-number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                d[i].push_back(j);</span><br><span class="line">                <span class="hljs-keyword">if</span>(j * j != i)</span><br><span class="line">                    d[i].push_back(i / j);</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="hljs-comment">// meow("1 %d\n", clock());</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        pw[i] = fast_pow(i, n);</span><br><span class="line">        <span class="hljs-keyword">for</span>(ll j = <span class="hljs-number">0</span>; j &lt; d[i].size(); j++)</span><br><span class="line">            Add(h[i], d[i][j]);</span><br><span class="line">        <span class="hljs-comment">// printf("$ %lld %lld\n", i, h[i]);</span></span><br><span class="line">        h[i] = fast_pow(h[i], n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// meow("2 %d\n", clock());</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= m; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        g[i] = h[i];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> j : d[i]) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (j == i) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            Add(g[i], mod - g[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// meow("3 %d\n", clock());</span></span><br><span class="line">    <span class="hljs-comment">// meow("4 %d\n", clock());</span></span><br><span class="line">    <span class="hljs-comment">// for(ll i = 1; i &lt;= m; i++)</span></span><br><span class="line">    <span class="hljs-comment">// &#123;</span></span><br><span class="line">    <span class="hljs-comment">//     printf("i: %d ", i);</span></span><br><span class="line">    <span class="hljs-comment">//     for(ll l = 1, r; l &lt;= i; l = r + 1)</span></span><br><span class="line">    <span class="hljs-comment">//         r = i / (i / l), Add(F[i], sum(s[r], mod - s[l - 1]) * H[i / r] % mod), </span></span><br><span class="line">    <span class="hljs-comment">//             printf("%d %d %d | ", l, r, i / l);</span></span><br><span class="line">    <span class="hljs-comment">//     puts("");</span></span><br><span class="line">        </span><br><span class="line">    <span class="hljs-comment">// &#125;</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = m; i &gt;= <span class="hljs-number">1</span>; --i) </span><br><span class="line">    &#123;</span><br><span class="line">  F[i] = H[m / i] * pw[i] % mod;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + i; j &lt;= m; j += i) </span><br><span class="line">   Add(F[i], mod - F[j]);</span><br><span class="line"> &#125;</span><br><span class="line">    <span class="hljs-comment">// meow("5 %d\n", clock());</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(ll i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        G[i] = (F[i] % mod + mod) % mod;</span><br><span class="line">    ll res1 = <span class="hljs-number">0</span>, res2 = <span class="hljs-number">0</span>, res3 = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(ll x = <span class="hljs-number">1</span>; x &lt; p; x++) Add(res1, g[x]);</span><br><span class="line">    <span class="hljs-comment">// meow("6 %d\n", clock());</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(ll t = q + <span class="hljs-number">1</span>; t &lt;= m; t++) Add(res2, G[t]);</span><br><span class="line">    <span class="hljs-comment">// for(ll i = 1; i &lt;= m; i++)</span></span><br><span class="line">    <span class="hljs-comment">//     for(ll j = 1; i * j &lt;= m; j++)</span></span><br><span class="line">    <span class="hljs-comment">//         Add(f[i * j], g[i] * mu[j]);        </span></span><br><span class="line">    <span class="hljs-comment">// for(ll t = q + 1; t &lt; p; t++)</span></span><br><span class="line">    <span class="hljs-comment">//     for(ll x = 1; x &lt;= (p - 1) / t; x++)</span></span><br><span class="line">    <span class="hljs-comment">//         Add(res3, pw[t] * f[x] % mod);</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        g[i] = sum(g[i], g[i - <span class="hljs-number">1</span>]);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = q + <span class="hljs-number">1</span>; i &lt; p; i++)</span><br><span class="line">        f[i] = g[(p - <span class="hljs-number">1</span>) / i] * pw[i] % mod;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = p - <span class="hljs-number">1</span>; i &gt; q; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span> * i; j &lt; p; j += i)</span><br><span class="line">            f[i] = sum(f[i], mod - f[j]);</span><br><span class="line">        res3 = sum(res3, f[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// meow("7 %d\n", clock());</span></span><br><span class="line">    ans = ((H[m] - res1 - res2 + res3) % mod + mod) % mod;</span><br><span class="line">    meow(<span class="hljs-string">"%lld %lld %lld %lld %lld\n"</span>, H[m], res2, res1, res3, ans); </span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/数论/">数论</a>, <a class="my-post-tag has-link-grey -link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/11/08/CF1601B/">
+                <span class="level-item">CF1601B Frog Traveler</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'a3s1QVgWfNVMxcHITq0cHWf1-gzGzoHsz',
+        app_key: 'VX1mp6MKCsSid6Nb7Kua5fis',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        69
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        57
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#简要题意">
+        <span class="has-mr-6">1</span>
+        <span>简要题意</span>
+        </a></li><li>
+        <a class="is-flex" href="#分析">
+        <span class="has-mr-6">2</span>
+        <span>分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#代码">
+        <span class="has-mr-6">3</span>
+        <span>代码</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">61</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solutions/">
+            <span class="level-start">
+                <span class="level-item">Solutions</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="GYM103415K Magus Night" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2022
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>50.4k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
