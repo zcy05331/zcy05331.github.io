@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>CodeChef TANDEM - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现">
+<meta name="keywords" content="hash,字符串,SA,SAM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeChef TANDEM">
+<meta property="og:url" content="http://www.zcysky.com/2020/02/26/CodeChef TANDEM/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-17T09:55:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeChef TANDEM">
+<meta name="twitter:description" content="题目大意我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果 对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$ 现">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="CodeChef TANDEM" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    CodeChef TANDEM
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2020-02-26T13:01:29.000Z">
+                        2020-02-26
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            687 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>我们定义一个字符串$s$为$\texttt{tandem}$当且仅当这个字符串能被表示三个相同的字符串$A$首尾相连的结果</p>
+<p>对于一个字符串$s$的所有子串$s_{l \cdots r}$，如果它是一个$\texttt{tandem}$，则它是一个有趣的$\texttt{tandem}$当且仅当$s_l \not= s_{r+1}$，否则这就是一个无聊的$\texttt{tandem}$</p>
+<p>现在，你需要统计有趣的和无聊的$\texttt{tandem}$的数量</p>
+<a id="more"></a>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><h4 id="O-n-3-方法"><a href="#O-n-3-方法" class="headerlink" title="$O(n^3)$方法"></a>$O(n^3)$方法</h4><p>不说了，大家都会</p>
+<h4 id="O-n-2-方法"><a href="#O-n-2-方法" class="headerlink" title="$O(n^2)$方法"></a>$O(n^2)$方法</h4><p>我们枚举$A$的长度$L \in [1, \frac{n}{3}]$， 并统计所有长度为$3L$的$\texttt{tandem}$</p>
+<p>我们考虑所有下标能被$L$整除的位置，即$s_0, s_L, s_{2L}, \cdots$，不难发现对于每一个长度为$3L$的$\texttt{tandem}$都会恰好覆盖这些位置中的连续$3$个，我们设这连续三个位置为$(i, j, k)$</p>
+<p>不难发现这些子串的起始位置$a \in [i - L + 1, i]$， 如果这个子串是一个$\texttt{tandem}$， 则有$s_{[a, a+L-1]}=s_{[a+L, a+2L-1]}=s_{[a+2L, a+3L-1]}$</p>
+<p>由于$a \in [i - L + 1, i]$，所以我们有$a \leq i \leq a + L - 1$, $a + L \leq j \leq a +  2L - 1$, $a + 2L \leq k \leq a + 3L - 1$，所以我们可以把上述条件转化为如下条件：<br>$$<br>s_{[a,i]}=s_{[a+L,j]}=s_{[a+2L,k]} \<br>$$</p>
+<p>$$<br>s_{[i,a+L-1]}=s_{[j,a+2L-1]}=s_{[k,a+2L-1]}<br>$$</p>
+<p>上面两个条件可以表示为：子串$s[0,i],\;s[0,j],\;s[0,k]$有一个长度为$i-a+1$的相同后缀，子串$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$有一个长度为$a+L-i$的相同前缀。</p>
+<p>设$\texttt{LCP(i,j,k)}$表示$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$的后缀长度，$\texttt{LCS(i,j,k)}$表示$s[0,i],\;s[0,j],\;s[0,k]$的后缀长度，则有$\max( i−LCS(i , j , k )+1, i − L +1)≤ a ≤ \min( LCP ( i , j , k )− L + i , i )$</p>
+<p>合法的$a$共有$\min(0,\min(LCP(i,j,k)−L+i,i)−\max(i−LCS(i,j,k)+1,i−L+1)+1)$个</p>
+<p>化简一下得到$\min(LCP(i,j,k),L)+\min(LCS(i,j,k),L)−1$，我们设这个值为$V$</p>
+<p>可以发现:</p>
+<ul>
+<li><p>当$V &lt; L$时不存在$\texttt{tandem}$</p>
+</li>
+<li><p>当$V \ge L$时存在$V-L+1$个$\texttt{tandem}$，此时：</p>
+<ul>
+<li>如果$LCP \le L$，则存在$1$个有趣的$\texttt{tandem}$</li>
+<li>否则不存在有趣的$\texttt{tandem}$。</li>
+</ul>
+</li>
+</ul>
+<p>如果朴素的去求$\texttt{LCP,LCS}$的话，时间复杂度$\mathcal{O}(n^2)$</p>
+<h4 id="正解方法"><a href="#正解方法" class="headerlink" title="正解方法"></a>正解方法</h4><p>可以使用字符串哈希，后缀数组$+$线段树，后缀数组$+$$\texttt{ST}$表的方法优化求$\texttt{LCP,LCS}$的过程。</p>
+<p>总时间复杂度$\mathcal{O}(n \; \log^2 n)$或$\mathcal{O}(n \; \log n)$（取决于写法）</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/SA/">SA</a>, <a class="my-post-tag has-link-grey -link" href="/tags/SAM/">SAM</a>, <a class="my-post-tag has-link-grey -link" href="/tags/hash/">hash</a>, <a class="my-post-tag has-link-grey -link" href="/tags/字符串/">字符串</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/07/CF1316D/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">CF1316D Nash Matrix</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/26/洛谷4768/">
+                <span class="level-item">洛谷4768 [NOI2018] 归程</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'a3s1QVgWfNVMxcHITq0cHWf1-gzGzoHsz',
+        app_key: 'VX1mp6MKCsSid6Nb7Kua5fis',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        70
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        58
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目大意">
+        <span class="has-mr-6">1</span>
+        <span>题目大意</span>
+        </a></li><li>
+        <a class="is-flex" href="#分析">
+        <span class="has-mr-6">2</span>
+        <span>分析</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#O-n-3-方法">
+        <span class="has-mr-6">2.1</span>
+        <span>$O(n^3)$方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#O-n-2-方法">
+        <span class="has-mr-6">2.2</span>
+        <span>$O(n^2)$方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#正解方法">
+        <span class="has-mr-6">2.3</span>
+        <span>正解方法</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Life/">
+            <span class="level-start">
+                <span class="level-item">Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">62</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="CodeChef TANDEM" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2023
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>50.4k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
