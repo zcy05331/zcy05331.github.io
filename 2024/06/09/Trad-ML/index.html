@@ -16,7 +16,7 @@
 <meta property="og:description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.zcysky.com/2024/06/09/Trad-ML/HMM%20Chain.png">
-<meta property="og:updated_time" content="2024-06-09T06:29:34.510Z">
+<meta property="og:updated_time" content="2024-06-09T06:39:56.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经典机器学习笔记">
 <meta name="twitter:description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记。">
@@ -148,7 +148,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            8078 Words
+                            8092 Words
                         </span>
                     
                 </div>
@@ -158,7 +158,7 @@
         <div class="content">
             <p>本文为清华大学”模式识别与机器学习”课程的复习笔记。</p>
 <a id="more"></a>
-<h2 id="Evaluation-Metric"><a href="#Evaluation-Metric" class="headerlink" title="Evaluation Metric"></a>Evaluation Metric</h2><p>$$<br>\begin{aligned}<br>\text{Accuracy} &amp;= \frac{\text{TP+TN}}{\text{TP+FP+TN+FN}} \<br>\text{Precision} &amp;= \frac{\text{TP}}{\text{TP+FP}} \<br>\text{Recall} &amp;= \text{Sensitivity} = \frac{\text{TP}}{\text{TP+FN}} \<br>\text{Specificity} &amp;= \frac{\text{TN}}{\text{TN+FP}} \<br>\text{Type-I Error} &amp;= \frac{\text{FP}}{\text{TP+FN}} = 1 - \text{Sensitivity} \<br>\text{Type-II Error} &amp;= \frac{\text{FN}}{\text{TN+FP}} = 1 - \text{Specificity} \<br>\end{aligned}<br>$$</p>
+<h2 id="Evaluation-Metric"><a href="#Evaluation-Metric" class="headerlink" title="Evaluation Metric"></a>Evaluation Metric</h2><p>$$<br>\begin{aligned}<br>\text{Accuracy} &amp;= \frac{\text{TP+TN}}{\text{TP+FP+TN+FN}} \newline<br>\text{Precision} &amp;= \frac{\text{TP}}{\text{TP+FP}} \newline<br>\text{Recall} &amp;= \text{Sensitivity} = \frac{\text{TP}}{\text{TP+FN}} \newline<br>\text{Specificity} &amp;= \frac{\text{TN}}{\text{TN+FP}} \newline<br>\text{Type-I Error} &amp;= \frac{\text{FP}}{\text{TP+FN}} = 1 - \text{Sensitivity} \newline<br>\text{Type-II Error} &amp;= \frac{\text{FN}}{\text{TN+FP}} = 1 - \text{Specificity} \newline<br>\end{aligned}<br>$$</p>
 <h2 id="k-NN"><a href="#k-NN" class="headerlink" title="k-NN"></a>k-NN</h2><h3 id="Nearest-Neighbor"><a href="#Nearest-Neighbor" class="headerlink" title="Nearest Neighbor"></a>Nearest Neighbor</h3><p>For a new instance $x’$, its class $\omega’$ can be predicted by:</p>
 <p>$$<br>\omega’ = \omega_i, \text{ where } i = \underset{j}{\arg\min} \, \delta(x’, x_j)<br>$$</p>
 <h3 id="k-Nearest-Neighbor"><a href="#k-Nearest-Neighbor" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h3><p>For a new instance $x$, define $g_i(x)$ as: the number of $x$’s k-nearest instances belonging to the class $\omega_i$.</p>
@@ -177,15 +177,15 @@
 <li>Feature selection</li>
 <li>Use prior knowledge</li>
 </ul>
-<h2 id="Linear-Regression-Multivariate-ver"><a href="#Linear-Regression-Multivariate-ver" class="headerlink" title="Linear Regression (Multivariate ver.)"></a>Linear Regression (Multivariate ver.)</h2><p>For a multivariate linear regression, the function becomes $y_i = \mathbf{w}^{\rm T}\mathbf{x}_i$, where $\mathbf{x}_i = (1, x_i^1, \cdots, x_i^d)^{\rm T}\in \mathbb{R}^{d+1}, \mathbf{w} = (w_0, w_1, \cdots, w_d)^{\rm T} \in \mathbb{R}^{d+1}$, We adjust the values of $\mathbf{w}$ to find the equation that gives the best fitting line $f(x) = \mathbf{w}^{\rm T}\mathbf{x}$</p>
-<p>We find the best $\mathbf{w}^*$ using the Mean Squared Loss: $\ell(f(\mathbf x, y)) = \min\limits_{\mathbf w} \frac{1}{N} \sum_{i = 1}^N (f(\mathbf x_i) - y_i)^2 = \min \limits_{\mathbf w} \frac{1}{N}(\mathbf {Xw-y})^{\rm T}(\mathbf {Xw-y})$</p>
-<p>So that $\mathbf{w^<em>}$ must satisfy $\mathbf {X^{\rm T}} \mathbf {Xw^</em>} = \mathbf X^{\rm T}\mathbf y$, so we get $\mathbf{w^<em>} = (\mathbf {X^{\rm T}X})^{-1}\mathbf X^{\rm T}\mathbf y$ or $\mathbf{w^</em>} = (\mathbf {X^{\rm T}X} + \lambda \mathbf I)^{-1}\mathbf X^{\rm T}\mathbf y$ (Ridge Regression)</p>
+<h2 id="Linear-Regression-Multivariate-ver"><a href="#Linear-Regression-Multivariate-ver" class="headerlink" title="Linear Regression (Multivariate ver.)"></a>Linear Regression (Multivariate ver.)</h2><p>For a multivariate linear regression, the function becomes $ y_i = \mathbf{w}^{\rm T}\mathbf{x}_i $ , where $ \mathbf{x}_i = (1, x_i^1, \cdots, x_i^d)^{\rm T}\in \mathbb{R}^{d+1}, \mathbf{w} = (w_0, w_1, \cdots, w_d)^{\rm T} \in \mathbb{R}^{d+1}$, We adjust the values of $\mathbf{w}$ to find the equation that gives the best fitting line $f(x) = \mathbf{w}^{\rm T}\mathbf{x}$</p>
+<p>We find the best $ \mathbf{w}^*$ using the Mean Squared Loss: $\ell(f(\mathbf x, y)) = \min\limits_{\mathbf w} \frac{1}{N} \sum_{i = 1}^N (f(\mathbf x_i) - y_i)^2 = \min \limits_{\mathbf w} \frac{1}{N}(\mathbf {Xw-y})^{\rm T}(\mathbf {Xw-y})$</p>
+<p>So that $ \mathbf{w}^{\star} $ must satisfy $ \mathbf {X^{\rm T}} \mathbf {Xw^{\star}} = \mathbf X^{\rm T}\mathbf y$ , so we get $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X})^{-1}\mathbf X^{\rm T}\mathbf y$ or $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X} + \lambda \mathbf I)^{-1}\mathbf X^{\rm T}\mathbf y$ (Ridge Regression)</p>
 <h2 id="Linear-Discriminant-Analysis"><a href="#Linear-Discriminant-Analysis" class="headerlink" title="Linear Discriminant Analysis"></a>Linear Discriminant Analysis</h2><p>project input vector $\mathbf x \in \mathbb{R}^{d+1}$ down to a 1-dimensional subspace with projection vector $\mathbf w$</p>
 <p>The problem is how do we find the good projection vector? We have Fisher’s Criterion, that is to maximize a function that represents the difference between-class means, which is normalized by a measure of the within-class scatter.</p>
 <p>We have <strong>between-class scatter</strong> $\tilde{S}_b = (\tilde{m}_1 - \tilde{m}_2)^2$, where $\tilde{m}_i$ is the mean for the i-th class. Also we have <strong>within-class scatter</strong> $\tilde{S}<em>i=\sum</em>{y_j \in \mathscr{y}_{i}} (y_j - \tilde{m}_i)^2$, then we have <strong>total within-class scatter</strong> $\tilde{S}_w = \tilde{S}_1+ \tilde{S}_2$. Combining the 2 expressions, the new objective function will be $J_F(\mathbf w) = \frac{\tilde{S}_b}{\tilde{S}_w}$</p>
 <p>We have $\tilde{S}_b = (\tilde{m}_1 - \tilde{m}_2)^2 = (\mathbf w^{\rm T} \mathbf m_1 - \mathbf w^{\rm T} \mathbf m_2)^2 = \mathbf w^{\rm T} (\mathbf m_1 - \mathbf m_2)(\mathbf m_1 - \mathbf m_2)^{\rm T} \mathbf w = \mathbf w^{\rm T} \mathbf S_b \mathbf w$, also $\tilde{S}_w = \mathbf w^{\rm T} \mathbf S_w \mathbf w$, so now optimize objective function $J_F$ w.r.t $\mathbf w$:</p>
 <p>$$<br>\max\limits_{\mathbf w} J_F(\mathbf w) = \max \limits_ {\mathbf w} \frac{\mathbf w^{\rm T} \mathbf S_b \mathbf w}{\mathbf w^{\rm T} \mathbf S_w \mathbf w}<br>$$</p>
-<p>Use Lagrange Multiplier Method we obtain: $\lambda w^<em> = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^</em>$, since we only care about the direction of $\mathbf w^<em>$ and $(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^</em>$ is scalar, thus we obtain $w^* = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)$</p>
+<p>Use Lagrange Multiplier Method we obtain: $\lambda w^{\star} = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^{\star}$, since we only care about the direction of $\mathbf w^*$ and $(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^{\star}$ is scalar, thus we obtain $w^{\star} = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)$</p>
 <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><p>Logistic regression is a statistical method used for binary classification, which means it is used to predict the probability of one of two possible outcomes. Unlike linear regression, which predicts a continuous output, logistic regression predicts a discrete outcome (0 or 1, yes or no, true or false, etc.).</p>
 <h3 id="Key-Concepts"><a href="#Key-Concepts" class="headerlink" title="Key Concepts"></a>Key Concepts</h3><ol>
 <li><p><strong>Odds and Log-Odds:</strong></p>
