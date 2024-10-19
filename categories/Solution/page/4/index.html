@@ -142,6 +142,121 @@
         <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
+                    <a class="has-link-black-ter" href="/2019/10/17/洛谷4284/">洛谷4284 [SHOI2014]概率充电器</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-10-17T06:45:16.000Z">
+                        2019-10-17
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            516 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>设$f_u$表示$u$不被以$u$为根的子树内点(包括$u$)通上电的概率，则有:</p>
+<p>$$f_u=(1-p_u) \times \prod_{v \in subtree \; u}e(u, v) \times f_v$$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/17/洛谷4284/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    <a class="has-link-black-ter" href="/2019/10/07/洛谷4314/">洛谷4314 cpu监控</a>
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-10-07T09:25:22.000Z">
+                        2019-10-07
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            774 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>首先我们可以想到一个显而易见的思路：每个节点维护$\mathrm{add,set}$的$tag$,维护最大值$max$和历史最大值$Max$,然后像正常的线段树一样维护</p>
+<p>然后你惊讶的发现你只拿到二十分（只有$Q$的部分分）</p>
+<p>为什么呢？我们发现有些$tag$，他还没有来得及被更新就被覆盖了..而这些$tag$本来能<del>改变世界</del>更新答案</p>
+<p>所以我们可以维护两个$tag$:$\mathrm{Add,Set}$表示该节点从上次下放到目前的最大$add$和$set$值</p>
+<p>然后我们就可以快乐的用这些$tag$来维护答案了</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/07/洛谷4314/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
                     <a class="has-link-black-ter" href="/2019/05/21/LOJ-6012/">LOJ 6012「网络流 24 题」分配问题</a>
                 
             </h1>
@@ -598,123 +713,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/03/14/洛谷4211/">洛谷4211 [LNOI2014]LCA</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-03-14T14:25:03.000Z">
-                        2019-03-14
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            726 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>可以发现题目可以转化为把从$l$到$r$节点到$1$的路径上的点的点权都加上$1$，然后统计$1$到$z$路径上的点权</p>
-<p>然后发现这个东西可以差分。。。</p>
-<p>于是我们就把询问拆成$l-1$和$r$,然后按$r$排序</p>
-<p>从$1$到$n$把$1$到$i$路径点权全部$+1$</p>
-<p>询问时查询$1$到$z$路径点权和</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/14/洛谷4211/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article
-         
-    ">
-        
-        <div class="my-title ">
-            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-                
-                    <a class="has-link-black-ter" href="/2019/03/10/洛谷4114/">洛谷4114 QTree1</a>
-                
-            </h1>
-            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
-                <div class="level-left">
-                    <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-03-10T15:06:38.000Z">
-                        2019-03-10
-                    </time>
-                    <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/Solution/">Solution</a>
-                        </div>
-                    
-                    <i class="far fa-edit"></i>
-                    
-                        <span class="level-item has-text-grey">
-                            718 Words
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>很明显这是一道树剖题</p>
-<p>但是，树剖是在点上进行的操作，如何把它转化到边上呢？</p>
-<p>不难发现，每一个点与他的父亲节点之间仅有唯一的一条边</p>
-<p>于是我们可以把这条边的边权转化为这个儿子节点的点权。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/10/洛谷4114/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -782,7 +780,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        69
+                        75
                     </p>
                 </div>
             </div>
@@ -792,7 +790,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -802,7 +800,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        61
                     </p>
                 </div>
             </div>
@@ -878,20 +876,28 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Learning/">
+            <span class="level-start">
+                <span class="level-item">Learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Solution/">
             <span class="level-start">
                 <span class="level-item">Solution</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Solutions/">
-            <span class="level-start">
-                <span class="level-item">Solutions</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">63</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Template/">
@@ -928,14 +934,14 @@
                  -->
                 </a>
                 <p class="is-size-7">
-                    &copy; 2019 - 2022
+                    &copy; 2019 - 2024
                     <i class="fa fa-heart"></i>
                     little_sun
                 </p>
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>50.4k</span> Words
+                        <span>75.2k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>

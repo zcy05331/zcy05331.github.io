@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>工程热力学 - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
+<meta name="keywords" content="Engineering Thermodynamics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工程热力学">
+<meta property="og:url" content="http://www.zcysky.com/2024/10/18/Engineering-Thermodynamics/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2024-10-18T11:55:36.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工程热力学">
+<meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="工程热力学" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    工程热力学
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2024-10-18T11:08:05.000Z">
+                        2024-10-18
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/Notes/">Notes</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            4593 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。</p>
+<a id="more"></a>
+<h2 id="第一章-基本概念"><a href="#第一章-基本概念" class="headerlink" title="第一章 基本概念"></a>第一章 基本概念</h2><h3 id="热力系统"><a href="#热力系统" class="headerlink" title="热力系统"></a>热力系统</h3><p>热力系统：人为选取的一定范围内的物质</p>
+<ul>
+<li><p>外界：系统意外的所有物质</p>
+</li>
+<li><p>边界：系统与外界的分界面</p>
+</li>
+</ul>
+<p>系统与外界的作用都通过边界</p>
+<table>
+<thead>
+<tr>
+<th>出口</th>
+<th>有</th>
+<th>无</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是否传质</td>
+<td>开口系</td>
+<td>闭口系</td>
+</tr>
+<tr>
+<td>是否传热</td>
+<td>非绝热系</td>
+<td>绝热系</td>
+</tr>
+<tr>
+<td>是否传功</td>
+<td>非绝功系</td>
+<td>绝功系</td>
+</tr>
+<tr>
+<td>是否传热、功、质</td>
+<td>非孤立系</td>
+<td>孤立系</td>
+</tr>
+</tbody>
+</table>
+<p>简单可压缩系统：只交换热量及准静态容积变化功</p>
+<h3 id="状态和状态参数"><a href="#状态和状态参数" class="headerlink" title="状态和状态参数"></a>状态和状态参数</h3><p>状态：某一瞬间热力系所呈现的宏观状况</p>
+<p>状态参数：描述热力系状态的宏观物理量</p>
+<ul>
+<li>状态参数的特征：单值性</li>
+</ul>
+<p>强度参数：与物质的量无关的参数<br>如压力 $p$ 、温度 $T$ </p>
+<p>广延参数：与物质的量有关的参数，具有可加性，如质量 $m$ 、容积 $V$ 、内能 $U$ 、焓 $H$ 、熵 $S$</p>
+<p>比参数：具有强度参数的性质 eg. 比容 $v = \frac{V}{m}$</p>
+<p>基本状态参数：压力 $p$，温度 $T$，比容 $v$。</p>
+<h4 id="压力"><a href="#压力" class="headerlink" title="压力"></a>压力</h4><p>常用单位：</p>
+<p>$$<br>1 \, \text{kPa} = 10^3 \, \text{Pa}, \quad 1 \, \text{bar} = 10^5 \, \text{Pa}, \quad 1 \, \text{MPa} = 10^6 \, \text{Pa}<br>$$</p>
+<p>$$<br>1 \, \text{atm} = 760 \, \text{mmHg} = 1.013 \times 10^5 \, \text{Pa}<br>$$</p>
+<p>$$<br>1 \, \text{at} = 1 \, \text{kgf/cm}^2 = 9.8067 \times 10^4 \, \text{Pa}<br>$$</p>
+<p>绝对压力与环境压力的相对值 —— 相对压力</p>
+<p>注意： 只有绝对压力 $p$ 才是状态参数</p>
+<p>绝对压力与相对压力</p>
+<ul>
+<li><p>当 $p &gt; p_b$ ：表压力 $p_g$ (Gauge pressure)，$p = p_b + p_g$</p>
+</li>
+<li><p>当 $p &lt; p_b$ ：真空度 $p_v$ (Vacuum pressure)，$p = p_b - p_v$</p>
+</li>
+</ul>
+<p>（其中 $p$ 为绝对压力， $p_b$ 为环境压力）</p>
+<h4 id="温度"><a href="#温度" class="headerlink" title="温度"></a>温度</h4><p>温度 $T$ 的一般概念：</p>
+<ul>
+<li>传统：冷热程度的度量（感觉，导热介质等有关）</li>
+<li>微观：衡量分子平均动能的量度</li>
+</ul>
+<p>热力学第零定律：如果两个系统分别与第三个系统处于热平衡，则两个系统彼此必然处于热平衡。</p>
+<p>处于同一热平衡状态的各热力系，必定有某一宏观特征彼此相同，用于描述该宏观特征的物理量——温度</p>
+<h4 id="比容"><a href="#比容" class="headerlink" title="比容"></a>比容</h4><p>表示工质聚集的疏密程度</p>
+<p>$$<br>v = \frac{V}{m} \text{   }\left[m^3/\text{ kg}\right]<br>$$</p>
+<p>物理中常用密度 $\rho$</p>
+<p>$$<br>v = \frac{1}{\rho}<br>$$</p>
+<h3 id="平衡状态"><a href="#平衡状态" class="headerlink" title="平衡状态"></a>平衡状态</h3><p>平衡的本质：不存在不平衡势差</p>
+<h3 id="准静态过程与可逆过程"><a href="#准静态过程与可逆过程" class="headerlink" title="准静态过程与可逆过程"></a>准静态过程与可逆过程</h3><h4 id="准静态过程"><a href="#准静态过程" class="headerlink" title="准静态过程"></a>准静态过程</h4><p>系统随时接近于某个平衡态</p>
+<p><strong>准静态过程的工程条件：</strong></p>
+<p>破坏平衡所需时间（外部作用时间） $\gg$ 自行恢复平衡所需时间（驰豫时间）</p>
+<p>能够足够快恢复到新平衡 $\rightarrow$ 准静态过程</p>
+<p>变化过程中的任一时刻的状态都是确定的，即可以用状态参数描述。</p>
+<hr>
+<p><strong>准静态过程的容积变化功：</strong></p>
+<p>$m$ kg工质发生容积变化对外界作的功：</p>
+<p>$$<br>\delta W = p \times A \times \mathrm{d} l = p \times \mathrm{d} V \<br>W = \int_1^2p \mathrm d V<br>$$</p>
+<p>$1$ kg工质对外界作的功：</p>
+<p>$$<br>\delta w = p \times \mathrm d w<br>w = \int_1^2p \mathrm d w<br>$$</p>
+<p>功的大小与路径有关，是过程量</p>
+<h4 id="可逆过程"><a href="#可逆过程" class="headerlink" title="可逆过程"></a>可逆过程</h4><p><strong>一般定义：</strong>系统经历某一过程后，如果能使系统与外界同时恢复到初始状态，而不留下任何痕迹，则此过程称为可逆过程。</p>
+<p>准静态过程 + 无耗散效应 = 可逆过程</p>
+<h3 id="功量"><a href="#功量" class="headerlink" title="功量"></a>功量</h3><p><strong>功的力学定义：</strong> 力 $\times$ 在力方向上的位移</p>
+<p><strong>功的热力学定义：</strong>功是系统与外界相互作用的一种方式，是在力的推动下，通过有序运动方式传递的能量。</p>
+<hr>
+<p><strong>功的一般表达式：</strong></p>
+<p>$$<br>\delta W = F \, dx<br>$$<br>$$<br>W = \int F \, dx<br>$$</p>
+<hr>
+<p><strong>热力学中常见的功：</strong></p>
+<p>准静态定容积变化功 膨胀功 (+) or 压缩功 (-)</p>
+<p>$$<br>\delta W = p \, dV<br>$$<br>$$<br>W = \int p \, dV<br>$$</p>
+<h3 id="热量与熵"><a href="#热量与熵" class="headerlink" title="热量与熵"></a>热量与熵</h3><p>定义：<br>热量是热力系与外界相互作用的另一种方式，是在温差的推动下，以微观无序运动方式传递的能量。</p>
+<h4 id="热量与容积变化功"><a href="#热量与容积变化功" class="headerlink" title="热量与容积变化功"></a>热量与容积变化功</h4><table>
+<thead>
+<tr>
+<th><strong>能量传递方式</strong></th>
+<th><strong>容积变化功</strong></th>
+<th><strong>热量</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>性质</strong></td>
+<td>过程量</td>
+<td>过程量</td>
+</tr>
+<tr>
+<td><strong>推动力</strong></td>
+<td>无限小 $p$ 势差</td>
+<td>无限小 $T$ 势差</td>
+</tr>
+<tr>
+<td><strong>标志</strong></td>
+<td>$dV, dv$</td>
+<td>$dS, ds$</td>
+</tr>
+<tr>
+<td><strong>表达式</strong></td>
+<td>$\delta w = pdv$</td>
+<td>$\delta q = Tds$</td>
+</tr>
+<tr>
+<td></td>
+<td>$w = \int pdv$</td>
+<td>$q = \int Tds$</td>
+</tr>
+<tr>
+<td><strong>适用条件</strong></td>
+<td>准静态或可逆</td>
+<td>可逆</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>熵 (Entropy) 的定义：</strong></p>
+<p>$$<br>dS = \frac{\delta Q_{\text{rev}}}{T}<br>$$<br>广延量 $\text{kJ/K}$</p>
+<p>$$<br>ds = \frac{\delta q_{\text{rev}}}{T}<br>$$<br>比参数 $\text{kJ/(kg.K)}$</p>
+<p>$\mathrm{d} s$: 可逆过程 $\delta q_{\text{rev}}$ 除以传热时的 $T$ 所得的熵</p>
+<hr>
+<p><strong>熵的说明：</strong></p>
+<ol>
+<li>熵是状态参数</li>
+<li>符号规定：<br>系统吸热时为正，$Q &gt; 0$，$dS &gt; 0$<br>系统放热时为负，$Q &lt; 0$，$dS &lt; 0$</li>
+<li>熵的物理意义：熵变可以体现可逆过程传热的大小与方向</li>
+<li>用途：判断热量传递方向，计算可逆过程的传热量</li>
+</ol>
+<h3 id="热力循环"><a href="#热力循环" class="headerlink" title="热力循环"></a>热力循环</h3><p><strong>定义：</strong> 工质经过一系列变化回到初态，这一系列的变化过程称为热力循环。</p>
+<h4 id="热力循环的评价指标"><a href="#热力循环的评价指标" class="headerlink" title="热力循环的评价指标"></a>热力循环的评价指标</h4><h5 id="正循环：净效应（吸热，对外作功）"><a href="#正循环：净效应（吸热，对外作功）" class="headerlink" title="正循环：净效应（吸热，对外作功）"></a>正循环：净效应（吸热，对外作功）</h5><p><strong>动力循环：热效率</strong></p>
+<p>$$<br>\eta = \frac{收益}{\text{代价}} = \frac{\text{净功}}{\text{吸热}} = \frac{W}{Q_1}<br>$$</p>
+<hr>
+<h5 id="逆循环：净效应（对内作功，放热）"><a href="#逆循环：净效应（对内作功，放热）" class="headerlink" title="逆循环：净效应（对内作功，放热）"></a>逆循环：净效应（对内作功，放热）</h5><p><strong>制冷循环：制冷系数</strong></p>
+<p>$$<br>\varepsilon = \frac{\text{收益}}{\text{代价}} = \frac{\text{吸热}}{\text{耗功}} = \frac{Q_2}{W}<br>$$</p>
+<p><strong>制热循环：制热系数</strong><br>$$<br>\varepsilon = \frac{\text{收益}}{\text{代价}} = \frac{\text{放热}}{\text{耗功}} = \frac{Q_1}{W}<br>$$</p>
+<h2 id="第二章-热力学第一定律"><a href="#第二章-热力学第一定律" class="headerlink" title="第二章 热力学第一定律"></a>第二章 热力学第一定律</h2><h3 id="热力学第一定律的本质"><a href="#热力学第一定律的本质" class="headerlink" title="热力学第一定律的本质"></a>热力学第一定律的本质</h3><p><strong>本质：能量转换与守恒</strong>。</p>
+<p><strong>闭口系循环的热力学第一定律表达式</strong>：</p>
+<p>$$<br>\oint \delta Q = \oint \delta W<br>$$</p>
+<center>要想得到功，必须花费热能或其它能量</center>
+
+<p>热力学第一定律又可表述为：第一类永动机是不可能制成的</p>
+<h3 id="热力学第一定律的推论——内能"><a href="#热力学第一定律的推论——内能" class="headerlink" title="热力学第一定律的推论——内能"></a>热力学第一定律的推论——内能</h3><h4 id="内能及闭口系热一律表达式"><a href="#内能及闭口系热一律表达式" class="headerlink" title="内能及闭口系热一律表达式"></a>内能及闭口系热一律表达式</h4><p>定义 $\mathrm d U = \delta Q - \delta W$，内能 $U$ 是状态参数</p>
+<p>闭口系热一律表达式：</p>
+<p>$$<br>\delta Q = \mathrm d U + \delta W \<br>Q = \Delta U + W<br>$$</p>
+<h4 id="内能-U-的物理意义"><a href="#内能-U-的物理意义" class="headerlink" title="内能 $U$ 的物理意义"></a>内能 $U$ 的物理意义</h4><p>$$<br>\mathrm d U = \delta Q - \delta W<br>$$</p>
+<p>$\mathrm d U$ 代表某微元过程中系统通过边界交换的微热量与微功量之差值，也即系统内部能量的变化。</p>
+<p>$U$ 代表储存于系统内部的能量——内储存能（内能，热力学能）</p>
+<h4 id="内能的说明"><a href="#内能的说明" class="headerlink" title="内能的说明"></a>内能的说明</h4><ul>
+<li><p><strong>内能是状态参数 (state property)</strong>  </p>
+</li>
+<li><p><strong>$U$：广延参数 $\text{[kJ]}$</strong>  </p>
+</li>
+<li><p><strong>$u$：比参数 $\text{[kJ/kg]}$</strong></p>
+</li>
+<li><p><strong>内能总以变化量出现，其零点可人为确定</strong></p>
+</li>
+</ul>
+<h4 id="系统总能"><a href="#系统总能" class="headerlink" title="系统总能"></a>系统总能</h4><p><strong>外部储存能</strong></p>
+<ul>
+<li>宏观动能 $ E_k = mc^2 / 2$</li>
+<li>重力位能 $ E_p = mgz$ </li>
+</ul>
+<p><strong>系统总能 （=内能+动能+位能）</strong></p>
+<p>$$<br>E = U + E_k + E_p \<br>e = u + e_k + e_p<br>$$</p>
+<h4 id="热一律的文字表达式"><a href="#热一律的文字表达式" class="headerlink" title="热一律的文字表达式"></a>热一律的文字表达式</h4><p>热一律: <strong>能量守恒与转换定律</strong></p>
+<p>$$<br>\text{进入系统的能量} - \text{离开系统的能量} = \text{系统总能的变化}<br>$$</p>
+<h3 id="闭口系能量方程"><a href="#闭口系能量方程" class="headerlink" title="闭口系能量方程"></a>闭口系能量方程</h3><p>一般式：</p>
+<p>$$<br>\delta Q = \mathrm d U + \delta W \<br>Q = \Delta U + W<br>$$</p>
+<p>单位质量工质</p>
+<p>$$<br>\delta q = \mathrm d u + \delta w \<br>q = \Delta u + w<br>$$</p>
+<p>适用条件: 1） 任何工质 2） 任何过程</p>
+<p>注意：</p>
+<ul>
+<li>状态量——微分符号 $\mathrm d$</li>
+<li>过程量——微小变化符号 $\delta$</li>
+</ul>
+<h4 id="准静态过程及可逆过程能量方程"><a href="#准静态过程及可逆过程能量方程" class="headerlink" title="准静态过程及可逆过程能量方程"></a>准静态过程及可逆过程能量方程</h4><p><strong>简单可压缩系准静态过程</strong>：</p>
+<p>$$<br>\begin{aligned}<br>&amp; \delta w = p \mathrm d v \<br>&amp; \delta q = \mathrm u + p \mathrm d v \text{（热一律解析式之一）} \<br>&amp;q = \Delta u + \int p \mathrm d v<br>\end{aligned}<br>$$</p>
+<p><strong>简单可压缩系可逆过程</strong>：</p>
+<p>$$<br>\begin{aligned}<br>&amp; \delta q = T \mathrm d s \<br>&amp; T \mathrm d s = \mathrm d u + p \mathrm d v \text{（热力学恒等式）} \<br>\int &amp;T \mathrm d s = \Delta u + \int p \mathrm d v<br>\end{aligned}<br>$$</p>
+<h3 id="开口系能量方程与焓"><a href="#开口系能量方程与焓" class="headerlink" title="开口系能量方程与焓"></a>开口系能量方程与焓</h3><h4 id="推进功-的表达式"><a href="#推进功-的表达式" class="headerlink" title="推进功 的表达式"></a>推进功 的表达式</h4><p>推进功(流动功、推动功)：工质进、出开口系而传递的功</p>
+<p>$$<br>W_{推} = p A \mathrm d l = pV \<br>w_{推} = pv<br>$$</p>
+<p>注意：不是 $p \mathrm d v$，v 无变化。</p>
+<p><strong>对推进功的说明：</strong></p>
+<ol>
+<li>与宏观流动有关，流动停止，推进功不存在</li>
+<li>作用过程中，工质仅发生位置变化，无状态变化</li>
+<li>$w_{推}$ 与所处状态有关，是状态量</li>
+<li>并非工质本身能量(动能、位能)变化引起，而由外界(泵或风机)做出，流动工质所携带的能量</li>
+</ol>
+<p>可理解为：由于工质的进出，系统与外界交换的一种机械功，表现为流动工质进出系统使所携带或所传递的一种能量。</p>
+<h4 id="开口系能量方程的推导"><a href="#开口系能量方程的推导" class="headerlink" title="开口系能量方程的推导"></a>开口系能量方程的推导</h4><p>热一律: 进入系统的能量-离开系统的能量=系统总能的变化</p>
+<p>$$<br>\delta Q + \delta m_{in} \left( u + pv + c^2 / 2 + gz \right)<em>{in} - \delta m</em>{out} \left( u + pv + c^2 / 2 + gz \right)<em>{out} - \delta W</em>{net} = \mathrm d E_{cv}<br>$$</p>
+<p>其中 $W_{net}$ 为净功，$\mathrm d E_{cv}$ 为控制体（$\text{control volume}$）总能量的变化。</p>
+<h4 id="开口系能量方程通用式及焓的引入"><a href="#开口系能量方程通用式及焓的引入" class="headerlink" title="开口系能量方程通用式及焓的引入"></a>开口系能量方程通用式及焓的引入</h4><p>定义：焓 $h = u + pv$</p>
+<p>$$<br>\begin{aligned}<br>\dot{Q} &amp;= \frac{dE_{cv}}{\delta \tau} + \dot{W}<em>{\text{net}} \<br>&amp;+ \sum \left( h + \frac{c^2}{2} + gz \right)</em>{\text{out}} \dot{m}<em>{\text{out}} \<br>&amp;- \sum \left( h + \frac{c^2}{2} + gz \right)</em>{\text{in}} \dot{m}_{\text{in}}<br>\end{aligned} \<br>$$</p>
+<center>开口系能量方程通用式</center>
+
+<h5 id="焓-Enthalpy-的说明："><a href="#焓-Enthalpy-的说明：" class="headerlink" title="焓 Enthalpy 的说明："></a><strong>焓 Enthalpy 的说明</strong>：</h5><p><strong>定义：</strong></p>
+<p>$$<br>h = u + pv \quad \text{[kJ/kg]} \<br>H = U + pV \quad \text{[kJ]}<br>$$</p>
+<ol>
+<li><p><strong>焓是状态量</strong> (state property)</p>
+</li>
+<li><p><strong>$H$ 为广延参数</strong>：<br>$$<br>H = U + pV = m \left( u + pv \right) = mh<br>$$<br><strong>$h$ 为比参数</strong></p>
+</li>
+<li><p><strong>对流动工质，焓代表能量（内能 + 推进功）</strong><br><strong>对静止工质，焓不代表能量</strong></p>
+</li>
+<li><p><strong>物理意义</strong>：<br>开口系中随工质流动而携带的能量，取决于热力状态的能量。</p>
+</li>
+</ol>
+<h3 id="稳定流动能量方程与技术功"><a href="#稳定流动能量方程与技术功" class="headerlink" title="稳定流动能量方程与技术功"></a>稳定流动能量方程与技术功</h3><h4 id="稳定流动的条件"><a href="#稳定流动的条件" class="headerlink" title="稳定流动的条件"></a>稳定流动的条件</h4><ol>
+<li><p>$$<br>\dot{m}<em>{\text{out}} = \dot{m}</em>{\text{in}} = \dot{m}<br>$$</p>
+</li>
+<li><p>$$<br>\dot{Q} = \text{Const}<br>$$</p>
+</li>
+<li><p>$$<br>\dot{W}_{\text{net}} = \text{Const} = \dot{W}_s （轴功\text{ Shaft work}）<br>$$</p>
+</li>
+<li><p>$$<br>\frac{dE_{cv}}{d\tau} = 0<br>$$</p>
+</li>
+</ol>
+<h4 id="稳定流动能量方程的推导"><a href="#稳定流动能量方程的推导" class="headerlink" title="稳定流动能量方程的推导"></a>稳定流动能量方程的推导</h4><p>$$<br>q = \left( h + \frac{c^2}{2} + gz \right)<em>{\text{out}} - \left( h + \frac{c^2}{2} + gz \right)</em>{\text{in}} + w_s<br>$$</p>
+<p>$$<br>q = \Delta h + \frac{1}{2} \Delta c^2 + g \Delta z + w_s<br>$$</p>
+<p><strong>稳定流动能量方程</strong>，适用于任何工质稳定流动过程。</p>
+<h4 id="技术功-Technical-work"><a href="#技术功-Technical-work" class="headerlink" title="技术功 Technical work"></a>技术功 Technical work</h4><p>$$<br>Q = \Delta H + \frac{1}{2} m\Delta c^2 + mg \Delta z + W_s = \Delta H + w_t \<br>q = \Delta h + \frac{1}{2} \Delta c^2 + g \Delta z + w_s = \delta h + w_t<br>$$</p>
+<p>$W_t$（动能，位能，轴功）$\rightarrow$ 机械能，工程技术上可以直接利用</p>
+<h4 id="稳定流动过程中几种功的关系"><a href="#稳定流动过程中几种功的关系" class="headerlink" title="稳定流动过程中几种功的关系"></a>稳定流动过程中几种功的关系</h4><p>闭口系 $ q = \Delta u + w $（容积变化功） 等价于<br>稳流开口系 $ q = \Delta h + w_t $（技术功）</p>
+<p>$$<br>w = \Delta (pv) + w_t \<br>\Delta h = \Delta u + \Delta(pv) \<br>\Downarrow  \<br>q = \Delta h + w_t = \Delta u + \Delta (pv) + w_t = \Delta u + w<br>$$</p>
+<h4 id="简单可压缩系统准静态过程技术功"><a href="#简单可压缩系统准静态过程技术功" class="headerlink" title="简单可压缩系统准静态过程技术功"></a>简单可压缩系统准静态过程技术功</h4><p>$$<br>\begin{aligned}<br>w = \Delta(pv) + w_t \Rightarrow \delta w &amp;= d (pv) + \delta w_t \<br>                \text{准静态 } \delta w &amp;= p \mathrm d v<br>\end{aligned}<br>$$</p>
+<p>$$<br>\delta w_t = p \mathrm d v - \mathrm d (pv) = p \mathrm d v - (p \mathrm d v + v \mathrm d p) = -v \mathrm d p<br>$$</p>
+<p>$$<br>\delta w_t = -v \mathrm d p, \qquad w_t = -\int v \mathrm d p<br>$$</p>
+<p>$$<br>\text{准静态}<br>\left{<br>\begin{aligned}<br>\delta q &amp;= du + p \, dv \<br>\delta q &amp;= dh - v \, dp<br>\end{aligned}<br>\right.<br>$$</p>
+<h4 id="准静态过程技术功在示功图上的表示"><a href="#准静态过程技术功在示功图上的表示" class="headerlink" title="准静态过程技术功在示功图上的表示"></a>准静态过程技术功在示功图上的表示</h4><p>$<br>w_t = w - \Delta(pv)<br>$</p>
+<p>技术功为膨胀功与推进功差值的代数和</p>
+<p>$\mathrm d p &lt; 0$ 压力降低，$w_t &gt; 0$ 对外作功</p>
+<h2 id="第三章-理想气体的性质与过程"><a href="#第三章-理想气体的性质与过程" class="headerlink" title="第三章 理想气体的性质与过程"></a>第三章 理想气体的性质与过程</h2><h3 id="理想气体模型"><a href="#理想气体模型" class="headerlink" title="理想气体模型"></a>理想气体模型</h3><p><strong>1. 分子间无相互作用力。</strong>（只有弹性碰撞力）<br><strong>2. 分子本身不占容积。</strong>（质点）</p>
+<p>实际气体，当其 $p$ 很小, $v$ 很大, $T$ 不太低时, 即处于远离液态的稀薄状态时, 可视为理想气体。</p>
+<p>三原子分子 $(H_2O, CO_2)$ 一般不能当作理想气体。 特殊情况可以，如空调的湿空气，高温烟气的 $CO_2$</p>
+<p>一般：$T \geq$ 常温，$p &lt; 7 \text{ MPa}$ 的双原子分子 $\Rightarrow$。（eg. $O_2, N_2, \text{Air}, CO_2, H_2$）</p>
+<h3 id="理想气体状态方程"><a href="#理想气体状态方程" class="headerlink" title="理想气体状态方程"></a>理想气体状态方程</h3><p>理想气体定义： 遵循克拉贝龙状态方程的气体。</p>
+<p>克拉贝龙状态方程的四种形式：<br>$$<br>\left{<br>\begin{aligned}<br>1 \, \text{kmol}&amp;: \quad p V_m = R_m T \<br>n \, \text{kmol}&amp;: \quad p V = n R_m T \<br>1 \, \text{kg}&amp;: \quad p v = R T \<br>m \, \text{kg}&amp;: \quad p V = m R T<br>\end{aligned}<br>\right.<br>$$</p>
+<p>注意: 1） $R_m$ 与 $R$ 2） 摩尔容积 $V_m$  3） 统一单位</p>
+<h4 id="R-m-与-R-的区别"><a href="#R-m-与-R-的区别" class="headerlink" title="$R_m$ 与 $R$ 的区别"></a>$R_m$ 与 $R$ 的区别</h4><p><strong>$R_m$ —— 通用气体常数</strong></p>
+<p>$$<br>R_m = 8.3143 \, \text{kJ/(kmol} \cdot \text{K)}<br>$$</p>
+<ul>
+<li>与气体种类无关</li>
+</ul>
+<hr>
+<p><strong>$R$ —— 气体常数</strong><br>$$<br>R = \frac{R_m}{M} \, \text{kJ/(kg} \cdot \text{K)}<br>$$</p>
+<ul>
+<li>与气体种类有关  </li>
+<li>$M$ —— 摩尔质量</li>
+</ul>
+<hr>
+<p>例如：<br>$$<br>R_{\text{空气}} = \frac{R_m}{M_{\text{空气}}} = \frac{8.3143}{28.97} = 0.287 \, \text{kJ/(kg} \cdot \text{K)}<br>$$</p>
+<h3 id="比热容"><a href="#比热容" class="headerlink" title="比热容"></a>比热容</h3><p>**比热容的定义：</p>
+<p>$$<br>C = \frac {\delta q } {\mathrm d T}<br>$$</p>
+<p>单位物量的物质升高 $1K$ 或 $1 ^\circ\text{C}$ 所需的热量</p>
+<p><strong>各种比热容：</strong></p>
+<ul>
+<li><p>$c$: 质量比热容<br>$$<br>\text{kJ/(kg} \cdot \text{K)}, kJ / \text{kJ/(kg} \cdot ^\circ\text{C)}<br>$$</p>
+</li>
+<li><p>$C_m$: 摩尔比热容<br>$$<br>\text{kJ/(kmol} \cdot \text{K)}, kJ / \text{kJ/(kmol} \cdot ^\circ\text{C)}<br>$$</p>
+</li>
+<li><p>$C’$: 容积比热容<br>$$<br>\text{kJ/(m}^3 \cdot \text{K)}, kJ / \text{kJ/(m}^3 \cdot ^\circ\text{C)}<br>$$</p>
+</li>
+</ul>
+<p>$$<br>C_m = M \cdot c = 22.414 \cdot C’<br>$$</p>
+<p>比热容是<strong>过程量</strong>。</p>
+<p>常用某些特定过程的比热容：$<br>\left{<br>\begin{aligned}<br>&amp;定容比热容 \<br>&amp;定压比热容<br>\end{aligned}<br>\right.$</p>
+<h4 id="定容比热容-c-v"><a href="#定容比热容-c-v" class="headerlink" title="定容比热容 $c_v$"></a>定容比热容 $c_v$</h4><p>准静态过程 $\delta q = du + p dv$，$u$ 是状态量，设 $u = f(T, v)$：</p>
+<p>$$<br>du = \left( \frac{\partial u}{\partial T} \right)_v dT + \left( \frac{\partial u}{\partial v} \right)_T dv<br>$$</p>
+<p>因此：<br>$$<br>\delta q = \left( \frac{\partial u}{\partial T} \right)_v dT + \left[ p + \left( \frac{\partial u}{\partial v} \right)_T \right] dv<br>$$<br>定容条件下：<br>$$<br>\delta q = \left( \frac{\partial u}{\partial T} \right)_v dT \quad \Rightarrow \quad c_v = \left( \frac{\delta q}{dT} \right)_v = \left( \frac{\partial u}{\partial T} \right)_v<br>$$</p>
+<h4 id="定压比热容-c-p"><a href="#定压比热容-c-p" class="headerlink" title="定压比热容 $c_p$"></a>定压比热容 $c_p$</h4><p>准静态过程 $\delta q = dh - v dp$，$h$ 是状态量，设 $h = f(T, p)$  </p>
+<p>$$<br>dh = \left( \frac{\partial h}{\partial T} \right)_p dT + \left( \frac{\partial h}{\partial p} \right)_T dp<br>$$</p>
+<p>因此：<br>$$<br>\delta q = \left( \frac{\partial h}{\partial T} \right)_p dT + \left[ \left( \frac{\partial h}{\partial p} \right)_T - v \right] dp<br>$$<br>定压条件下：<br>$$<br>\delta q = \left( \frac{\partial h}{\partial T} \right)_p dT \quad \Rightarrow \quad c_p = \left( \frac{\delta q}{dT} \right)_p = \left( \frac{\partial h}{\partial T} \right)_p<br>$$</p>
+<h4 id="c-v-和-c-p-的说明"><a href="#c-v-和-c-p-的说明" class="headerlink" title="$c_v$ 和 $c_p$ 的说明"></a>$c_v$ 和 $c_p$ 的说明</h4><p>$$<br>c_v = \left( \frac{\partial u}{\partial T} \right)_v, \quad c_p = \left( \frac{\partial h}{\partial T} \right)_p<br>$$</p>
+<ol>
+<li><p>$c_v$ 和 $c_p$ 是状态量<br>$c_v$ 物理意义：$\mathbf{v}$ 不变时 $1 \, kg$ 工质温升 $1K$ 内能的增加量<br>$c_p$ 物理意义：$\mathbf{p}$ 不变时 $1 \, kg$ 工质温升 $1K$ 焓的增加量</p>
+</li>
+<li><p>前面的推导没有用到理想气体性质，适用于任何气体。</p>
+</li>
+<li><p>$h$、$u$ 的计算要用 $c_v$ 和 $c_p$</p>
+</li>
+</ol>
+<h3 id="理想气体的内能、焓、熵和比热容"><a href="#理想气体的内能、焓、熵和比热容" class="headerlink" title="理想气体的内能、焓、熵和比热容"></a>理想气体的内能、焓、熵和比热容</h3><h4 id="理想气体的内能"><a href="#理想气体的内能" class="headerlink" title="理想气体的内能"></a>理想气体的内能</h4><p>$u = f(T)$，理想气体 $u$ 只与 $T$ 有关</p>
+<p><strong>实际气体：</strong></p>
+<p>$$<br>u = f(T, v), c_v = \left( \frac{\partial u}{\partial T} \right)_v<br>$$</p>
+<p>$$<br>du = \left( \frac{\partial u}{\partial T} \right)_v \mathrm dT + \left( \frac{\partial u}{\partial v} \right)_T \mathrm dv<br>= c_v \mathrm d T + \left( \frac{\partial u}{\partial v} \right)_T \mathrm dv<br>$$</p>
+<p><strong>理想气体：</strong></p>
+<p>$$<br>u = f(T), \left( \frac{\partial u}{\partial v} \right)_T = 0<br>$$</p>
+<p>$$<br>du = c_v \mathrm d T<br>$$</p>
+<p>对理想气体，任何过程都成立</p>
+<h4 id="理想气体的焓"><a href="#理想气体的焓" class="headerlink" title="理想气体的焓"></a>理想气体的焓</h4><p>$$<br>h = u + pv = u + RT = f(T)<br>$$</p>
+<p>理想气体 $h$ 只与 $T$ 有关。</p>
+<p><strong>实际气体：</strong></p>
+<p>$$<br>\mathrm{d}h = \left( \frac{\partial h}{\partial T} \right)_p \mathrm{d}T + \left( \frac{\partial h}{\partial p} \right)_T \mathrm{d}p<br>$$</p>
+<p>$$<br>\mathrm{d}h = c_p \mathrm{d}T + \left( \frac{\partial h}{\partial p} \right)_T \mathrm{d}p<br>$$</p>
+<p><strong>理想气体：</strong></p>
+<p>$$<br>\left( \frac{\partial h}{\partial p} \right)_T = 0<br>$$</p>
+<p>因此：<br>$$<br>\mathrm{d}h = c_p \mathrm{d}T<br>$$</p>
+<p>对理想气体，任何过程都成立</p>
+<h4 id="理想气体的熵"><a href="#理想气体的熵" class="headerlink" title="理想气体的熵"></a>理想气体的熵</h4><p>熵的定义：  $\mathrm{d}s = \frac{\delta q_{\text{rev}}}{T}$</p>
+<p>可逆过程<br>$$<br>T \mathrm{d}s = \delta q_{\text{rev}} = \mathrm{d}u + p \mathrm{d}v = \mathrm{d}h - v \mathrm{d}p<br>$$</p>
+<p>因此：<br>$$<br>\mathrm{d}s = \frac{\mathrm{d}u}{T} + \frac{p \mathrm{d}v}{T} = \frac{\mathrm{d}h}{T} - \frac{v \mathrm{d}p}{T}<br>$$</p>
+<p>理想气体满足：<br>$$<br>\mathrm{d}u = c_v \mathrm{d}T \<br>\mathrm{d}h = c_p \mathrm{d}T \<br>pv = RT<br>$$</p>
+<p>因此，<br>$$<br>\mathrm{d}s = \frac{c_v \mathrm{d}T}{T} + R \frac{\mathrm{d}v}{v} = \frac{c_p \mathrm{d}T}{T} - R \frac{\mathrm{d}p}{p} = c_p \frac{\mathrm{d}v}{v} + c_v \frac{\mathrm{d}p}{p}<br>$$</p>
+<h4 id="理想气体的-c-v-和-c-p-的关系"><a href="#理想气体的-c-v-和-c-p-的关系" class="headerlink" title="理想气体的 $c_v$ 和 $c_p$ 的关系"></a>理想气体的 $c_v$ 和 $c_p$ 的关系</h4><p>一般工质：<br>$$<br>c_v = \left( \frac{\partial u}{\partial T} \right)_v, \quad c_p = \left( \frac{\partial h}{\partial T} \right)_p<br>$$</p>
+<p>理想气体：<br>$$<br>c_v = \frac{\mathrm{d}u}{\mathrm{d}T}, \quad c_p = \frac{\mathrm{d}h}{\mathrm{d}T}<br>$$</p>
+<p>因此：<br>$$<br>c_p = \frac{\mathrm{d}h}{\mathrm{d}T} = \frac{\mathrm{d}u}{\mathrm{d}T} + \frac{\mathrm{d}(pv)}{\mathrm{d}T} = c_v + R<br>$$</p>
+<p><strong>迈耶公式：</strong><br>$$<br>c_p - c_v = R<br>$$</p>
+<p>令：<br>$$<br>k = \frac{c_p}{c_v} \quad \text{（比热比）}<br>$$</p>
+<p>则：<br>$$<br>c_v = \frac{R}{k - 1}, \quad c_p = \frac{kR}{k - 1}<br>$$</p>
+<p>由于理想气体的内能，焓都只是温度的单值函数，理想气体的定压、定容比热容也只是温度的单值函数，甚至可能是定值。</p>
+<p>通常只会在温度不太高、温度范围比较窄，且计算精度要求不高的情况下，或者为了分析问题方便，才将摩尔热容近似地看作定值。</p>
+<p>实际上分子内部还存在振动，而且分子转动与振动的能量与温度并不是线性关系，因此理想气体热容并非定值，而是温度的单值函数。</p>
+<h3 id="理想气体比热容、内能、焓和熵的计算"><a href="#理想气体比热容、内能、焓和熵的计算" class="headerlink" title="理想气体比热容、内能、焓和熵的计算"></a>理想气体比热容、内能、焓和熵的计算</h3><p>$$<br>\mathrm{d}u = c_v \mathrm{d}T \quad \mathrm{d}h = c_p \mathrm{d}T<br>$$</p>
+<p>$$<br>\mathrm{d}s = c_p \frac{\mathrm{d}v}{v} + c_v \frac{\mathrm{d}p}{p}<br>$$</p>
+<p>$$<br>= \frac{c_v \mathrm{d}T}{T} + R \frac{\mathrm{d}v}{v}<br>$$</p>
+<p>$$<br>= \frac{c_p \mathrm{d}T}{T} - R \frac{\mathrm{d}p}{p}<br>$$</p>
+<p><strong>$u$、$h$、$s$ 的计算要用 $c_v$ 和 $c_p$</strong></p>
+<p>理想气体比热容的计算方法：</p>
+<ol>
+<li>按定比热</li>
+<li>按真实比热计算</li>
+<li>按平均比热计算</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/Engineering-Thermodynamics/">Engineering Thermodynamics</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2024/10/18/ML-DL/">
+                <span class="level-item">模式识别与机器学习笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'a3s1QVgWfNVMxcHITq0cHWf1-gzGzoHsz',
+        app_key: 'VX1mp6MKCsSid6Nb7Kua5fis',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        75
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        61
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#第一章-基本概念">
+        <span class="has-mr-6">1</span>
+        <span>第一章 基本概念</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#热力系统">
+        <span class="has-mr-6">1.1</span>
+        <span>热力系统</span>
+        </a></li><li>
+        <a class="is-flex" href="#状态和状态参数">
+        <span class="has-mr-6">1.2</span>
+        <span>状态和状态参数</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#压力">
+        <span class="has-mr-6">1.2.1</span>
+        <span>压力</span>
+        </a></li><li>
+        <a class="is-flex" href="#温度">
+        <span class="has-mr-6">1.2.2</span>
+        <span>温度</span>
+        </a></li><li>
+        <a class="is-flex" href="#比容">
+        <span class="has-mr-6">1.2.3</span>
+        <span>比容</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#平衡状态">
+        <span class="has-mr-6">1.3</span>
+        <span>平衡状态</span>
+        </a></li><li>
+        <a class="is-flex" href="#准静态过程与可逆过程">
+        <span class="has-mr-6">1.4</span>
+        <span>准静态过程与可逆过程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#准静态过程">
+        <span class="has-mr-6">1.4.1</span>
+        <span>准静态过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#可逆过程">
+        <span class="has-mr-6">1.4.2</span>
+        <span>可逆过程</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#功量">
+        <span class="has-mr-6">1.5</span>
+        <span>功量</span>
+        </a></li><li>
+        <a class="is-flex" href="#热量与熵">
+        <span class="has-mr-6">1.6</span>
+        <span>热量与熵</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#热量与容积变化功">
+        <span class="has-mr-6">1.6.1</span>
+        <span>热量与容积变化功</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#热力循环">
+        <span class="has-mr-6">1.7</span>
+        <span>热力循环</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#热力循环的评价指标">
+        <span class="has-mr-6">1.7.1</span>
+        <span>热力循环的评价指标</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#第二章-热力学第一定律">
+        <span class="has-mr-6">2</span>
+        <span>第二章 热力学第一定律</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#热力学第一定律的本质">
+        <span class="has-mr-6">2.1</span>
+        <span>热力学第一定律的本质</span>
+        </a></li><li>
+        <a class="is-flex" href="#热力学第一定律的推论——内能">
+        <span class="has-mr-6">2.2</span>
+        <span>热力学第一定律的推论——内能</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#内能及闭口系热一律表达式">
+        <span class="has-mr-6">2.2.1</span>
+        <span>内能及闭口系热一律表达式</span>
+        </a></li><li>
+        <a class="is-flex" href="#内能-U-的物理意义">
+        <span class="has-mr-6">2.2.2</span>
+        <span>内能 $U$ 的物理意义</span>
+        </a></li><li>
+        <a class="is-flex" href="#内能的说明">
+        <span class="has-mr-6">2.2.3</span>
+        <span>内能的说明</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统总能">
+        <span class="has-mr-6">2.2.4</span>
+        <span>系统总能</span>
+        </a></li><li>
+        <a class="is-flex" href="#热一律的文字表达式">
+        <span class="has-mr-6">2.2.5</span>
+        <span>热一律的文字表达式</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#闭口系能量方程">
+        <span class="has-mr-6">2.3</span>
+        <span>闭口系能量方程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#准静态过程及可逆过程能量方程">
+        <span class="has-mr-6">2.3.1</span>
+        <span>准静态过程及可逆过程能量方程</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#开口系能量方程与焓">
+        <span class="has-mr-6">2.4</span>
+        <span>开口系能量方程与焓</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#推进功-的表达式">
+        <span class="has-mr-6">2.4.1</span>
+        <span>推进功 的表达式</span>
+        </a></li><li>
+        <a class="is-flex" href="#开口系能量方程的推导">
+        <span class="has-mr-6">2.4.2</span>
+        <span>开口系能量方程的推导</span>
+        </a></li><li>
+        <a class="is-flex" href="#开口系能量方程通用式及焓的引入">
+        <span class="has-mr-6">2.4.3</span>
+        <span>开口系能量方程通用式及焓的引入</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#稳定流动能量方程与技术功">
+        <span class="has-mr-6">2.5</span>
+        <span>稳定流动能量方程与技术功</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#稳定流动的条件">
+        <span class="has-mr-6">2.5.1</span>
+        <span>稳定流动的条件</span>
+        </a></li><li>
+        <a class="is-flex" href="#稳定流动能量方程的推导">
+        <span class="has-mr-6">2.5.2</span>
+        <span>稳定流动能量方程的推导</span>
+        </a></li><li>
+        <a class="is-flex" href="#技术功-Technical-work">
+        <span class="has-mr-6">2.5.3</span>
+        <span>技术功 Technical work</span>
+        </a></li><li>
+        <a class="is-flex" href="#稳定流动过程中几种功的关系">
+        <span class="has-mr-6">2.5.4</span>
+        <span>稳定流动过程中几种功的关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#简单可压缩系统准静态过程技术功">
+        <span class="has-mr-6">2.5.5</span>
+        <span>简单可压缩系统准静态过程技术功</span>
+        </a></li><li>
+        <a class="is-flex" href="#准静态过程技术功在示功图上的表示">
+        <span class="has-mr-6">2.5.6</span>
+        <span>准静态过程技术功在示功图上的表示</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#第三章-理想气体的性质与过程">
+        <span class="has-mr-6">3</span>
+        <span>第三章 理想气体的性质与过程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#理想气体模型">
+        <span class="has-mr-6">3.1</span>
+        <span>理想气体模型</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体状态方程">
+        <span class="has-mr-6">3.2</span>
+        <span>理想气体状态方程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#R-m-与-R-的区别">
+        <span class="has-mr-6">3.2.1</span>
+        <span>$R_m$ 与 $R$ 的区别</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#比热容">
+        <span class="has-mr-6">3.3</span>
+        <span>比热容</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定容比热容-c-v">
+        <span class="has-mr-6">3.3.1</span>
+        <span>定容比热容 $c_v$</span>
+        </a></li><li>
+        <a class="is-flex" href="#定压比热容-c-p">
+        <span class="has-mr-6">3.3.2</span>
+        <span>定压比热容 $c_p$</span>
+        </a></li><li>
+        <a class="is-flex" href="#c-v-和-c-p-的说明">
+        <span class="has-mr-6">3.3.3</span>
+        <span>$c_v$ 和 $c_p$ 的说明</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#理想气体的内能、焓、熵和比热容">
+        <span class="has-mr-6">3.4</span>
+        <span>理想气体的内能、焓、熵和比热容</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#理想气体的内能">
+        <span class="has-mr-6">3.4.1</span>
+        <span>理想气体的内能</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体的焓">
+        <span class="has-mr-6">3.4.2</span>
+        <span>理想气体的焓</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体的熵">
+        <span class="has-mr-6">3.4.3</span>
+        <span>理想气体的熵</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体的-c-v-和-c-p-的关系">
+        <span class="has-mr-6">3.4.4</span>
+        <span>理想气体的 $c_v$ 和 $c_p$ 的关系</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#理想气体比热容、内能、焓和熵的计算">
+        <span class="has-mr-6">3.5</span>
+        <span>理想气体比热容、内能、焓和熵的计算</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Learning/">
+            <span class="level-start">
+                <span class="level-item">Learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">63</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="工程热力学" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2024
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>75.2k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
