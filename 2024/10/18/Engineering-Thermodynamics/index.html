@@ -15,10 +15,13 @@
 <meta property="og:site_name" content="little_sun&#39;s blog">
 <meta property="og:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2024-10-18T11:55:36.582Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/Heat%20exchange%20equipment.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E4%B8%89%E7%A7%8D%E5%8E%8B%E6%B0%94%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83.png">
+<meta property="og:updated_time" content="2024-10-30T15:04:05.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/Heat%20exchange%20equipment.png">
 
 
 
@@ -150,7 +153,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            4593 Words
+                            6736 Words
                         </span>
                     
                 </div>
@@ -416,9 +419,29 @@
 <p>$$<br>\delta w_t = p \mathrm d v - \mathrm d (pv) = p \mathrm d v - (p \mathrm d v + v \mathrm d p) = -v \mathrm d p<br>$$</p>
 <p>$$<br>\delta w_t = -v \mathrm d p, \qquad w_t = -\int v \mathrm d p<br>$$</p>
 <p>$$<br>\text{准静态}<br>\left{<br>\begin{aligned}<br>\delta q &amp;= du + p \, dv \<br>\delta q &amp;= dh - v \, dp<br>\end{aligned}<br>\right.<br>$$</p>
-<h4 id="准静态过程技术功在示功图上的表示"><a href="#准静态过程技术功在示功图上的表示" class="headerlink" title="准静态过程技术功在示功图上的表示"></a>准静态过程技术功在示功图上的表示</h4><p>$<br>w_t = w - \Delta(pv)<br>$</p>
+<h4 id="准静态过程技术功在示功图上的表示"><a href="#准静态过程技术功在示功图上的表示" class="headerlink" title="准静态过程技术功在示功图上的表示"></a>准静态过程技术功在示功图上的表示</h4><p>$$<br>w_t = w - \Delta(pv)<br>$$</p>
 <p>技术功为膨胀功与推进功差值的代数和</p>
-<p>$\mathrm d p &lt; 0$ 压力降低，$w_t &gt; 0$ 对外作功</p>
+<p>$\mathrm d p &lt; 0$ 压力降低， $w_t &gt; 0$ 对外作功</p>
+<h3 id="稳定流动能量方程的应用"><a href="#稳定流动能量方程的应用" class="headerlink" title="稳定流动能量方程的应用"></a>稳定流动能量方程的应用</h3><h4 id="动力机械-能量方程"><a href="#动力机械-能量方程" class="headerlink" title="动力机械 能量方程"></a>动力机械 能量方程</h4><p>1) 体积不大</p>
+<p>2) 流速差不大: $q = \Delta h + w_s$</p>
+<p>3) 时间短、保温: $q \approx 0$</p>
+<p>$w_s = -\Delta h = h_1 - h_2 &gt; 0$， 输出的轴功是靠焓降转变而来的。</p>
+<h4 id="压缩机械-能量方程"><a href="#压缩机械-能量方程" class="headerlink" title="压缩机械 能量方程"></a>压缩机械 能量方程</h4><p>1) 体积不大</p>
+<p>2) 流速差不大: $q = \Delta h + w_s$</p>
+<p>3) 保温层: $q \approx 0$</p>
+<p>$w_s = -\Delta h = h_1 - h_2 &lt; 0$，输入的轴功转变为焓升</p>
+<h4 id="换热设备-能量方程"><a href="#换热设备-能量方程" class="headerlink" title="换热设备 能量方程"></a>换热设备 能量方程</h4><p>$q = \Delta h + w_s$。无作用部件，$w_s = 0$</p>
+<p>$\Rightarrow q = \Delta h = h_2 - h_1$</p>
+<p><strong>焓变：</strong></p>
+<ul>
+<li>热流体放热：$q = \Delta h = h_2 - h_1 &lt; 0$</li>
+<li>冷流体吸热：$q’ = \Delta h = h_1’ - h_2’ &gt; 0$</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/Heat%20exchange%20equipment.png" alt="Heat exchange equipment" style="zoom: 67%;"></p>
+<h4 id="绝热节流-能量方程"><a href="#绝热节流-能量方程" class="headerlink" title="绝热节流 能量方程"></a>绝热节流 能量方程</h4><p>$q = \Delta h + w_s$， 绝热： $q = 0$</p>
+<p>没有作用部件： $w_s = 0$</p>
+<p>$$<br>\Delta h = 0, h_1 = h_2<br>$$</p>
+<p>在忽略动、位能变化的绝热节流过程中，节流前后的工质焓值相等。但需注意，由于在上、下游截面之间，特别在缩口附近，流速变化很大，焓值并不处处相等，即不能把此绝热节流过程理解为定焓过程。</p>
 <h2 id="第三章-理想气体的性质与过程"><a href="#第三章-理想气体的性质与过程" class="headerlink" title="第三章 理想气体的性质与过程"></a>第三章 理想气体的性质与过程</h2><h3 id="理想气体模型"><a href="#理想气体模型" class="headerlink" title="理想气体模型"></a>理想气体模型</h3><p><strong>1. 分子间无相互作用力。</strong>（只有弹性碰撞力）<br><strong>2. 分子本身不占容积。</strong>（质点）</p>
 <p>实际气体，当其 $p$ 很小, $v$ 很大, $T$ 不太低时, 即处于远离液态的稀薄状态时, 可视为理想气体。</p>
 <p>三原子分子 $(H_2O, CO_2)$ 一般不能当作理想气体。 特殊情况可以，如空调的湿空气，高温烟气的 $CO_2$</p>
@@ -505,13 +528,237 @@
 <p>$$<br>= \frac{c_v \mathrm{d}T}{T} + R \frac{\mathrm{d}v}{v}<br>$$</p>
 <p>$$<br>= \frac{c_p \mathrm{d}T}{T} - R \frac{\mathrm{d}p}{p}<br>$$</p>
 <p><strong>$u$、$h$、$s$ 的计算要用 $c_v$ 和 $c_p$</strong></p>
-<p>理想气体比热容的计算方法：</p>
+<h4 id="理想气体比热容的计算方法："><a href="#理想气体比热容的计算方法：" class="headerlink" title="理想气体比热容的计算方法："></a>理想气体比热容的计算方法：</h4><p><strong>按定比热计算：</strong></p>
+<p>由分子运动学：</p>
+<p>$$<br>U_m = \frac{i}{2} R_m T \quad \text{(运动自由度)}<br>$$</p>
+<p>$$<br>C_{v,m} = \frac{dU_m}{dT} = \frac{i}{2} R_m, \quad C_{p,m} = \frac{dH_m}{dT} = \frac{d(U_m + R_m T)}{dT} = \frac{i + 2}{2} R_m<br>$$</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>单原子</th>
+<th>双原子</th>
+<th>多原子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C_{v,m}$ (kJ/(kmol·K))</td>
+<td>$\dfrac{3}{2} R_m$</td>
+<td>$\dfrac{5}{2} R_m$</td>
+<td>$\dfrac{7}{2} R_m$</td>
+</tr>
+<tr>
+<td>$C_{p,m}$ (kJ/(kmol·K))</td>
+<td>$\dfrac{5}{2} R_m$</td>
+<td>$\dfrac{7}{2} R_m$</td>
+<td>$\dfrac{9}{2} R_m$</td>
+</tr>
+<tr>
+<td>$k$ (比热比)</td>
+<td>$1.67$</td>
+<td>$1.4  $</td>
+<td>$1.29 $</td>
+</tr>
+</tbody>
+</table>
+<p><strong>按真实比热计算：</strong></p>
+<p>理想气体</p>
+<p>$$<br>u = f(T), \quad h = \psi(T)<br>$$</p>
+<p>$$<br>c_v = \frac{\mathrm{d}u}{\mathrm{d}T} = f’(T), \quad c_p = \frac{\mathrm{d}h}{\mathrm{d}T} = \psi’(T)<br>$$</p>
+<p>根据实验结果整理：</p>
+<p>$$<br>C_{v,m} = a_0 + a_1 T + a_2 T^2 + a_3 T^3 + \cdots<br>$$</p>
+<p>$$<br>C_{p,m} = b_0 + b_1 T + b_2 T^2 + b_3 T^3 + \cdots<br>$$</p>
+<p>$$<br>c_{p,\text{R134a}} / R = 2.1015 + 0.03252 T - 17.457 \times 10^{-6} T^2<br>$$</p>
+<p><strong>按平均比热计算：</strong></p>
+<p>$$<br>c \Big|_{t_1}^{t_2} = \dfrac{c \Big|_{0}^{t_2} t_2 - c \Big|_{0}^{t_1} t_1}{t_2 - t_1}<br>$$</p>
+<h4 id="理想气体-Delta-u-的计算"><a href="#理想气体-Delta-u-的计算" class="headerlink" title="理想气体 $\Delta u$ 的计算"></a>理想气体 $\Delta u$ 的计算</h4><p>$$<br>\mathrm{d}u = c_v \mathrm{d}T, \quad 理想气体，任何过程<br>$$</p>
 <ol>
-<li>按定比热</li>
-<li>按真实比热计算</li>
-<li>按平均比热计算</li>
+<li>$c_v = \text{Const}$  </li>
 </ol>
-
+<p>$$<br>\Delta u = c_v \Delta T = c_v (T_2 - T_1)<br>$$</p>
+<ol start="2">
+<li>$c_v$ 为真实比热  </li>
+</ol>
+<p>$$<br>\Delta u = \int_{T_1}^{T_2} c_v \, \mathrm{d}T<br>$$</p>
+<ol start="3">
+<li>$c_v$ 为平均比热  </li>
+</ol>
+<p>$$<br>\Delta u = c_v \Big|_{t_1}^{t_2} \cdot (T_2- T_1)<br>$$</p>
+<ol start="4">
+<li>若为空气，可直接查附表2：  </li>
+</ol>
+<p>$$<br>\Delta u = u_2 - u_1<br>$$</p>
+<h4 id="理想气体-Delta-h-的计算"><a href="#理想气体-Delta-h-的计算" class="headerlink" title="理想气体 $\Delta h$ 的计算"></a>理想气体 $\Delta h$ 的计算</h4><p>$$<br>\mathrm{d}h = c_p \mathrm{d}T,\quad 理想气体，任何过程<br>$$</p>
+<ol>
+<li>$c_p = \text{Const}$  </li>
+</ol>
+<p>$$<br>\Delta h = c_p \Delta T<br>$$</p>
+<ol start="2">
+<li>$c_p$ 为真实比热  </li>
+</ol>
+<p>$$<br>\Delta h = \int_{T_1}^{T_2} c_p \, \mathrm{d}T<br>$$</p>
+<ol start="3">
+<li>$c_p$ 为平均比热  </li>
+</ol>
+<p>$$<br>\Delta h = c_p \Big|_{t_1}^{t_2} \cdot (T_2- T_1)<br>$$</p>
+<ol start="4">
+<li>若为空气，可直接查附表2：  </li>
+</ol>
+<p>$$<br>\Delta h = h_2 - h_1<br>$$</p>
+<h4 id="理想气体-Delta-s-的计算"><a href="#理想气体-Delta-s-的计算" class="headerlink" title="理想气体 $\Delta s$ 的计算"></a>理想气体 $\Delta s$ 的计算</h4><p>$$<br>\mathrm{d}s = c_v \frac{\mathrm{d}T}{T} + R \frac{\mathrm{d}v}{v} = c_p \frac{\mathrm{d}T}{T} - R \frac{\mathrm{d}p}{p} = c_p \frac{\mathrm{d}v}{v} + c_v \frac{\mathrm{d}p}{p}<br>$$</p>
+<p>理想气体，任何过程</p>
+<p>定比热（常用）  </p>
+<p>$$<br>\Delta s = c_v \ln \frac{T_2}{T_1} + R \ln \frac{v_2}{v_1}<br>$$</p>
+<p>$$<br>= c_p \ln \frac{T_2}{T_1} - R \ln \frac{p_2}{p_1} = c_p \ln\frac{v_2}{v_1} + c_v \ln \frac{p_2}{p_1}<br>$$</p>
+<h3 id="理想气体的等熵过程"><a href="#理想气体的等熵过程" class="headerlink" title="理想气体的等熵过程"></a>理想气体的等熵过程</h3><ol>
+<li><p>绝热过程未必是等熵过程，只有<strong>可逆绝热</strong>过程才是等熵过程。</p>
+</li>
+<li><p>不仅 $\Delta s = 0$，而且 $\mathrm{d}s = 0 \longrightarrow s$ 处处相等。</p>
+</li>
+</ol>
+<p>理想气体</p>
+<p>$$<br>\mathrm{d}s = c_v \frac{\mathrm{d}p}{p} + c_p \frac{\mathrm{d}v}{v} = 0<br>$$</p>
+<p>$$<br>k = \frac{c_p}{c_v} \longrightarrow \frac{\mathrm{d}p}{p} + k \frac{\mathrm{d}v}{v} = 0<br>$$</p>
+<p>当 $k = \text{const}$ 时：</p>
+<p>$$<br>\ln p + k \ln v = \text{const}<br>$$</p>
+<p>$$<br>p v^k = \text{const}<br>$$</p>
+<p>满足三个条件：</p>
+<ol>
+<li>理想气体  </li>
+<li>等熵过程  </li>
+<li>$k$ 为常数（比热比，绝热指数）</li>
+</ol>
+<h4 id="理想气体等熵过程的过程方程"><a href="#理想气体等熵过程的过程方程" class="headerlink" title="理想气体等熵过程的过程方程"></a>理想气体等熵过程的过程方程</h4><p>$$<br>p v^k = \text{Const} \quad \Rightarrow \quad \frac{p_2}{p_1} = \left( \frac{v_1}{v_2} \right)^k<br>$$</p>
+<p>$$<br>p v^k = (p v) v^{k-1} = R T v^{k-1} = \text{Const}<br>$$</p>
+<p>$$<br>T v^{k-1} = \text{Const} \quad \Rightarrow \quad \frac{T_2}{T_1} = \left( \frac{v_1}{v_2} \right)^{k-1}<br>$$</p>
+<p>$$<br>p v^k = \frac{p^k v^k}{p^{k-1}} = \left( \frac{R T}{p} \right)^k = \text{Const}<br>$$</p>
+<p>$$<br>\frac{T}{p^{\frac{k-1}{k}}} = \text{Const} \quad \Rightarrow \quad \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{k-1}{k}}<br>$$</p>
+<h4 id="理想气体-s-过程-w-w-t-q-的计算"><a href="#理想气体-s-过程-w-w-t-q-的计算" class="headerlink" title="理想气体 $s$ 过程 $w$, $w_t$, $q$ 的计算"></a>理想气体 $s$ 过程 $w$, $w_t$, $q$ 的计算</h4><p><strong>容积变化功：</strong></p>
+<p>$$<br>p v^k = C<br>$$</p>
+<p>$$<br>w = \int p \, \mathrm{d}v = \int \frac{C}{v^k} \, \mathrm{d}v = \frac{C}{1-k} v^{1-k} \Bigg|_1^2 = \frac{1}{k-1} \left( p_1 v_1 - p_2 v_2 \right)<br>$$</p>
+<p>$$<br>= \frac{R}{k-1} (T_1 - T_2) = c_v (T_1 - T_2) = - \Delta u<br>$$</p>
+<p><strong>技术功：</strong></p>
+<p>$$<br>w_t = - \int v \, \mathrm{d}p = - \Delta h = c_p (T_1 - T_2) = k w \ = \frac{k}{k-1} \left( p_1 v_1 - p_2 v_2 \right) = \frac{kR}{k-1} (T_1 - T_2)<br>$$</p>
+<p><strong>热量：</strong></p>
+<p>$$<br>q = 0<br>$$</p>
+<h3 id="理想气体热力过程综合分析"><a href="#理想气体热力过程综合分析" class="headerlink" title="理想气体热力过程综合分析"></a>理想气体热力过程综合分析</h3><h4 id="多变过程与基本过程"><a href="#多变过程与基本过程" class="headerlink" title="多变过程与基本过程"></a>多变过程与基本过程</h4><p>$$<br>p v^n = \text{Const}<br>$$</p>
+<p>$n$ 是常量，每一个多变过程 $n$ 为定值</p>
+<p>例：$n = k \quad \longrightarrow \quad$ 等熵过程</p>
+<p>$$<br>\frac{p_2}{p_1} = \left( \frac{v_1}{v_2} \right)^n, \quad \frac{T_2}{T_1} = \left( \frac{v_1}{v_2} \right)^{n-1}, \quad \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{n-1}{n}}<br>$$</p>
+<h4 id="理想气体-n-过程-w-w-t-q-的计算"><a href="#理想气体-n-过程-w-w-t-q-的计算" class="headerlink" title="理想气体 $n$ 过程 $w$, $w_t$, $q$ 的计算"></a>理想气体 $n$ 过程 $w$, $w_t$, $q$ 的计算</h4><p><strong>$p v^n = \text{Const}$</strong></p>
+<p>$$<br>\begin{aligned}<br>w &amp;= \int p \, \mathrm{d}v = \frac{R}{n-1} (T_1 - T_2) \<br>w_t &amp;= n w \<br>q &amp;= \Delta u + w = c_v (T_2 - T_1) - \frac{R}{n-1} (T_2 - T_1) \<br>&amp;= \left( c_v - \frac{R}{n-1} \right) (T_2 - T_1) = \frac{n-k}{n-1} c_v (T_2 - T_1) = c_n (T_2 - T_1) \<br>\end{aligned}<br>$$</p>
+<p>$c_n$ 为多变过程比热容</p>
+<h4 id="多变过程与基本过程的关系"><a href="#多变过程与基本过程的关系" class="headerlink" title="多变过程与基本过程的关系"></a>多变过程与基本过程的关系</h4><p><strong>基本过程是多变过程的特例</strong>。</p>
+<ol>
+<li>当 $n = 0$:  （等压过程）</li>
+</ol>
+<p>$$<br>p v^0 = \text{Const} \quad \Rightarrow \quad p = \text{Const}, \quad c_n = k c_v = c_p<br>$$</p>
+<ol start="2">
+<li>当 $n = 1$:  （等温过程）</li>
+</ol>
+<p>$$<br>p v^1 = \text{Const} \quad \Rightarrow\quad T = \text{Const}, \quad c_n = \infty$$<br>$$<br>p v = RT<br>$$</p>
+<ol>
+<li>当 $n = k$:  （等熵过程）<br>$$<br>p v^k = \text{Const} \quad \Rightarrow\quad s = \text{Const}, \quad c_n = 0<br>$$</li>
+<li>当 $n = \infty$: （等容过程）<br>$$<br>p v^{\frac{1}{n}} = \text{Const} \quad\Rightarrow \quad v = \text{Const}, \quad c_n = c_v<br>$$</li>
+</ol>
+<h4 id="理想气体基本过程的计算"><a href="#理想气体基本过程的计算" class="headerlink" title="理想气体基本过程的计算"></a>理想气体基本过程的计算</h4><p><strong>气体的各种热力过程：</strong></p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>过程方程式</th>
+<th>初、终状态参数间的关系</th>
+<th>功量交换 $w$ (J/kg)</th>
+<th>功量交换 $w_0^{\circ}$</th>
+<th>热量交换 $q^{\circ}$ (J/kg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定容</td>
+<td>$v = \text{定数}$</td>
+<td>$v_2 = v_1$ , $\dfrac{T_2}{T_1} = \dfrac{p_2}{p_1}$</td>
+<td>$0$</td>
+<td>$v(p_1 - p_2)$</td>
+<td>$c_v (T_2 - T_1)$</td>
+</tr>
+<tr>
+<td>定压</td>
+<td>$p = \text{定数}$</td>
+<td>$p_2 = p_1$ , $\dfrac{T_2}{T_1} = \dfrac{v_2}{v_1}$</td>
+<td>$p(v_2 - v_1)$ 或 $R(T_2 - T_1)$</td>
+<td>$0$</td>
+<td>$c_p (T_2 - T_1)$</td>
+</tr>
+<tr>
+<td>定温</td>
+<td>$pv = \text{定数}$</td>
+<td>$T_2 = T_1$,  $\dfrac{p_2}{p_1} = \dfrac{v_1}{v_2}$</td>
+<td>$p_1 v_1 \ln \dfrac{v_2}{v_1}$</td>
+<td>$w$</td>
+<td>$w$</td>
+</tr>
+<tr>
+<td>绝热</td>
+<td>$pv^k = \text{定数}$</td>
+<td>$\dfrac{p_2}{p_1} = \left( \dfrac{v_1}{v_2} \right)^k$ <br> $\dfrac{T_2}{T_1} = \left( \dfrac{v_1}{v_2} \right)^{k-1}$</td>
+<td>$\dfrac{p_1 v_1 - p_2 v_2}{k - 1}$ 或 <br> $\dfrac{R}{k - 1} (T_1 - T_2)$</td>
+<td>$kw$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>多变</td>
+<td>$pv^n = \text{定数}$</td>
+<td>$\dfrac{p_2}{p_1} = \left( \dfrac{v_1}{v_2} \right)^n$ <br> $\dfrac{T_2}{T_1} = \left( \dfrac{v_1}{v_2} \right)^{n-1}$</td>
+<td>$\dfrac{p_1 v_1 - p_2 v_2}{n - 1}$ 或 <br> $\dfrac{R}{n - 1} (T_1 - T_2)$</td>
+<td>$nw^{\circ}$</td>
+<td>$c_n (T_2 - T_1)$ <br> $= \left( c_v - \dfrac{R}{n - 1} \right)$ <br> $\times (T_2 - T_1)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="气体的压缩"><a href="#气体的压缩" class="headerlink" title="气体的压缩"></a>气体的压缩</h3><p><strong>压气机的作用：</strong></p>
+<ul>
+<li>生活中：自行车打气。</li>
+<li>工业上：锅炉鼓风、出口引风、燃气轮机、制冷空调等</li>
+</ul>
+<p><strong>结构形式：</strong></p>
+<ul>
+<li>活塞式（往复式），视为连续流动</li>
+<li>（离心式、涡旋）、（轴流式、螺杆）：连续流动  </li>
+</ul>
+<p><strong>压力范围：</strong></p>
+<ul>
+<li>通风机 $\Delta p &lt; 0.01 \text{ MPa}$</li>
+<li>鼓风机 $0.01 \text{ MPa} &lt; \Delta p &lt; 0.3 \text{ MPa}$</li>
+<li>压缩机 $\Delta p &gt; 0.3 \text{ MPa}$</li>
+</ul>
+<h3 id="活塞式压气机压缩过程分析"><a href="#活塞式压气机压缩过程分析" class="headerlink" title="活塞式压气机压缩过程分析"></a>活塞式压气机压缩过程分析</h3><p>目的：研究耗功，耗功最小</p>
+<p>理论压气功：可逆过程中压送气体消耗的技术功 $w_t$</p>
+<h4 id="可能的压气过程"><a href="#可能的压气过程" class="headerlink" title="可能的压气过程"></a>可能的压气过程</h4><ol>
+<li>特别快，来不及换热：<strong>绝热过程</strong> $\quad n = k$</li>
+<li>特别慢，热量全部散失：<strong>等温过程</strong> $\quad n = 1$</li>
+<li>一般压气过程：<strong>$n$ 不变</strong> $\quad 1 &lt; n &lt; k$</li>
+</ol>
+<h4 id="三种压气过程参数的比较"><a href="#三种压气过程参数的比较" class="headerlink" title="三种压气过程参数的比较"></a>三种压气过程参数的比较</h4><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E4%B8%89%E7%A7%8D%E5%8E%8B%E6%B0%94%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83.png" alt="Compression process"></p>
+<h4 id="三种压气过程的技术功"><a href="#三种压气过程的技术功" class="headerlink" title="三种压气过程的技术功"></a>三种压气过程的技术功</h4><p>$$<br>w_{tn} = \frac{n}{n - 1} RT_1 \left[ 1 - \left( \frac{p_2}{p_1} \right)^{\frac{n - 1}{n}} \right]<br>$$</p>
+<p>$$<br>w_{ts} = \frac{k}{k - 1} RT_1 \left[ 1 - \left( \frac{p_2}{p_1} \right)^{\frac{k - 1}{k}} \right]<br>$$</p>
+<p>$$<br>w_{T} = RT_1 \ln \frac{p_1}{p_2} \qquad 最小<br>$$</p>
+<h4 id="最佳增压比的推导"><a href="#最佳增压比的推导" class="headerlink" title="最佳增压比的推导"></a>最佳增压比的推导</h4><p>$$<br>w_{\text{分级}} = w_{tn,I} + w_{tn,II}<br>$$</p>
+<p>$$<br>= \frac{n}{n - 1} RT_1 \left[ 1 - \left( \frac{p_2}{p_1} \right)^{\frac{n - 1}{n}} \right] + \frac{n}{n - 1} RT_3 \left[ 1 - \left( \frac{p_4}{p_3} \right)^{\frac{n - 1}{n}} \right]<br>$$</p>
+<p>其中，$T1 = T3, \; p_2 = p_3$</p>
+<p>$$<br>w_{\text{分级}} = \frac{n}{n - 1} RT_1 \left[ 2 - \left( \frac{p_2}{p_1} \right)^{\frac{n - 1}{n}} - \left( \frac{p_4}{p_2} \right)^{\frac{n - 1}{n}} \right]<br>$$</p>
+<p><strong>求 $w_{\text{分级}}$ 的最小值：</strong>$\dfrac{\partial w_{\text{分级}}}{\partial p_2} = 0$</p>
+<p>$$<br>\frac{p_2}{p_1} = \frac{p_4}{p_2} \Rightarrow p_2 = \sqrt{p_1 p_4}<br>$$</p>
+<p><strong>最佳增压比：</strong></p>
+<p>$$<br>\beta = \dfrac{p_2}{p_1} = \dfrac{\sqrt{p_1 p_4}}{p_1} = \sqrt{\dfrac{p_4}{p_1}} = \sqrt{\dfrac{p_{\text{终}}}{p_{\text{初}}}}<br>$$</p>
+<p>若为 $m$ 级，则</p>
+<p>$$<br>\beta = \sqrt[m]{\dfrac{p_{\text{终}}}{p_{\text{初}}}}<br>$$</p>
+<h4 id="分级压缩的级数"><a href="#分级压缩的级数" class="headerlink" title="分级压缩的级数"></a>分级压缩的级数</h4><p>分级的作用：1. 省功 2. 降低出口温度</p>
+<p>多级压缩达到无穷多级 $\quad \Rightarrow \quad$ 等温过程。（缺点：难以实现、结构复杂（成本高））</p>
+<p>一般采用 $2 \sim 4$ 级压缩</p>
+<h2 id="第四章-热力学第二定律"><a href="#第四章-热力学第二定律" class="headerlink" title="第四章 热力学第二定律"></a>第四章 热力学第二定律</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase my-post-tags">
@@ -823,6 +1070,26 @@
         <a class="is-flex" href="#准静态过程技术功在示功图上的表示">
         <span class="has-mr-6">2.5.6</span>
         <span>准静态过程技术功在示功图上的表示</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#稳定流动能量方程的应用">
+        <span class="has-mr-6">2.6</span>
+        <span>稳定流动能量方程的应用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#动力机械-能量方程">
+        <span class="has-mr-6">2.6.1</span>
+        <span>动力机械 能量方程</span>
+        </a></li><li>
+        <a class="is-flex" href="#压缩机械-能量方程">
+        <span class="has-mr-6">2.6.2</span>
+        <span>压缩机械 能量方程</span>
+        </a></li><li>
+        <a class="is-flex" href="#换热设备-能量方程">
+        <span class="has-mr-6">2.6.3</span>
+        <span>换热设备 能量方程</span>
+        </a></li><li>
+        <a class="is-flex" href="#绝热节流-能量方程">
+        <span class="has-mr-6">2.6.4</span>
+        <span>绝热节流 能量方程</span>
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#第三章-理想气体的性质与过程">
         <span class="has-mr-6">3</span>
@@ -879,7 +1146,87 @@
         <a class="is-flex" href="#理想气体比热容、内能、焓和熵的计算">
         <span class="has-mr-6">3.5</span>
         <span>理想气体比热容、内能、焓和熵的计算</span>
-        </a></li></ul></li></ul>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#理想气体比热容的计算方法：">
+        <span class="has-mr-6">3.5.1</span>
+        <span>理想气体比热容的计算方法：</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体-Delta-u-的计算">
+        <span class="has-mr-6">3.5.2</span>
+        <span>理想气体 $\Delta u$ 的计算</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体-Delta-h-的计算">
+        <span class="has-mr-6">3.5.3</span>
+        <span>理想气体 $\Delta h$ 的计算</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体-Delta-s-的计算">
+        <span class="has-mr-6">3.5.4</span>
+        <span>理想气体 $\Delta s$ 的计算</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#理想气体的等熵过程">
+        <span class="has-mr-6">3.6</span>
+        <span>理想气体的等熵过程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#理想气体等熵过程的过程方程">
+        <span class="has-mr-6">3.6.1</span>
+        <span>理想气体等熵过程的过程方程</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体-s-过程-w-w-t-q-的计算">
+        <span class="has-mr-6">3.6.2</span>
+        <span>理想气体 $s$ 过程 $w$, $w_t$, $q$ 的计算</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#理想气体热力过程综合分析">
+        <span class="has-mr-6">3.7</span>
+        <span>理想气体热力过程综合分析</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#多变过程与基本过程">
+        <span class="has-mr-6">3.7.1</span>
+        <span>多变过程与基本过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体-n-过程-w-w-t-q-的计算">
+        <span class="has-mr-6">3.7.2</span>
+        <span>理想气体 $n$ 过程 $w$, $w_t$, $q$ 的计算</span>
+        </a></li><li>
+        <a class="is-flex" href="#多变过程与基本过程的关系">
+        <span class="has-mr-6">3.7.3</span>
+        <span>多变过程与基本过程的关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想气体基本过程的计算">
+        <span class="has-mr-6">3.7.4</span>
+        <span>理想气体基本过程的计算</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#气体的压缩">
+        <span class="has-mr-6">3.8</span>
+        <span>气体的压缩</span>
+        </a></li><li>
+        <a class="is-flex" href="#活塞式压气机压缩过程分析">
+        <span class="has-mr-6">3.9</span>
+        <span>活塞式压气机压缩过程分析</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#可能的压气过程">
+        <span class="has-mr-6">3.9.1</span>
+        <span>可能的压气过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#三种压气过程参数的比较">
+        <span class="has-mr-6">3.9.2</span>
+        <span>三种压气过程参数的比较</span>
+        </a></li><li>
+        <a class="is-flex" href="#三种压气过程的技术功">
+        <span class="has-mr-6">3.9.3</span>
+        <span>三种压气过程的技术功</span>
+        </a></li><li>
+        <a class="is-flex" href="#最佳增压比的推导">
+        <span class="has-mr-6">3.9.4</span>
+        <span>最佳增压比的推导</span>
+        </a></li><li>
+        <a class="is-flex" href="#分级压缩的级数">
+        <span class="has-mr-6">3.9.5</span>
+        <span>分级压缩的级数</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#第四章-热力学第二定律">
+        <span class="has-mr-6">4</span>
+        <span>第四章 热力学第二定律</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -980,7 +1327,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>75.2k</span> Words
+                        <span>77.3k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
