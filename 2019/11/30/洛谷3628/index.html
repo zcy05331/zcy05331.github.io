@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="斜率优化的练手题 通读题目可以发现$$f_i=\max (f_j+g(s[i]-s[j]))$$ $$其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)$$">
+    <meta name="description" content="斜率优化的练手题 通读题目可以发现  f_i=\max (f_j+g(s[i]-s[j])) 其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)">
 <meta name="keywords" content="dp,斜率优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷3628 [APIO2010]特别行动队">
 <meta property="og:url" content="http://www.zcysky.com/2019/11/30/洛谷3628/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="斜率优化的练手题 通读题目可以发现$$f_i=\max (f_j+g(s[i]-s[j]))$$ $$其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)$$">
+<meta property="og:description" content="斜率优化的练手题 通读题目可以发现  f_i=\max (f_j+g(s[i]-s[j])) 其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-11-30T12:58:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷3628 [APIO2010]特别行动队">
-<meta name="twitter:description" content="斜率优化的练手题 通读题目可以发现$$f_i=\max (f_j+g(s[i]-s[j]))$$ $$其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)$$">
+<meta name="twitter:description" content="斜率优化的练手题 通读题目可以发现  f_i=\max (f_j+g(s[i]-s[j])) 其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)">
 
 
 
@@ -159,10 +159,15 @@
         
         <div class="content">
             <p>斜率优化的练手题</p>
-<p>通读题目可以发现<br>$$<br>f_i=\max (f_j+g(s[i]-s[j]))<br>$$</p>
-<p>$$<br>其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)<br>$$<br><a id="more"></a></p>
-<p>展开这个式子我们得到<br>$$<br>f_i=\max(f_j+as_i^2-2as_is_j+as_j^2+bs_i-bs_j+c)<br>$$<br>去掉$\max$，移项得到:<br>$$<br>(f_j+as_j^2-bs_j)=2as_is_j+(f_i-as_i^2-bs_i-c)<br>$$</p>
-<p>然后就是常规的单调队列维护上凸壳了</p>
+<p>通读题目可以发现</p>
+<script type="math/tex; mode=display">
+f_i=\max (f_j+g(s[i]-s[j]))</script><script type="math/tex; mode=display">
+其中f_i表示在i处强制结束一段的最大代价,s_i表示a_i的前缀和,g(x)表示(ax^2+bx+c)</script><a id="more"></a>
+<p>展开这个式子我们得到</p>
+<script type="math/tex; mode=display">
+f_i=\max(f_j+as_i^2-2as_is_j+as_j^2+bs_i-bs_j+c)</script><p>去掉$\max$，移项得到:</p>
+<script type="math/tex; mode=display">
+(f_j+as_j^2-bs_j)=2as_is_j+(f_i-as_i^2-bs_i-c)</script><p>然后就是常规的单调队列维护上凸壳了</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sum(a, b, mod) (((a) + (b)) % mod)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxN = <span class="hljs-number">1e6</span> + <span class="hljs-number">10</span>;</span><br><span class="line"></span><br><span class="line">ll n, A, B, C;</span><br><span class="line">ll a[MaxN], s[MaxN], f[MaxN], q[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> ll <span class="hljs-title">read</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ll x = <span class="hljs-number">0</span>, f = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &gt; <span class="hljs-string">'9'</span> || ch &lt; <span class="hljs-string">'0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'-'</span>)</span><br><span class="line">            f = <span class="hljs-number">0</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (ch &lt;= <span class="hljs-string">'9'</span> &amp;&amp; ch &gt;= <span class="hljs-string">'0'</span>)</span><br><span class="line">        x = (x &lt;&lt; <span class="hljs-number">1</span>) + (x &lt;&lt; <span class="hljs-number">3</span>) + (ch ^ <span class="hljs-number">48</span>), ch = getchar();</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? x : (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">g</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123; <span class="hljs-keyword">return</span> A * num * num + B * num + C; &#125;</span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">x</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123; <span class="hljs-keyword">return</span> s[num]; &#125;</span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">y</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123; <span class="hljs-keyword">return</span> (f[num] + A * s[num] * s[num] - B * s[num]); &#125;</span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">k</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * A * s[num]; &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = read(), A = read(), B = read(), C = read();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = read(), s[i] = s[i - <span class="hljs-number">1</span>] + a[i];</span><br><span class="line">    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; (y(q[l + <span class="hljs-number">1</span>]) - y(q[l])) &gt;= k(i) * (x(q[l + <span class="hljs-number">1</span>]) - x(q[l])))</span><br><span class="line">            ++l;</span><br><span class="line">        f[i] = f[q[l]] + g(s[i] - s[q[l]]);</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; (y(q[r]) - y(q[r - <span class="hljs-number">1</span>])) * (x(i) - x(q[r])) &lt;= (y(i) - y(q[r])) * (x(q[r]) - x(q[r - <span class="hljs-number">1</span>])))</span><br><span class="line">            --r;</span><br><span class="line">        q[++r] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, f[n]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -430,7 +435,7 @@
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>77.3k</span> Words
+                        <span>77.2k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>

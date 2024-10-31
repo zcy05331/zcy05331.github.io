@@ -165,16 +165,18 @@
 <p>$ 1 \leq k \leq 200$，$1 \leq l \leq r \leq 10^{18}$</p>
 <a id="more"></a>
 <h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>显而易见的我们要求的是一个形如 $ \sum_{l+2}^{r+2} \binom{f_i}{k}$的东西，其中 $f_i$表示斐波那契数列的第$i$项</p>
-<p>我们把上式转化成求$ \sum_{i=1}^{n} \binom{f_i}{k}$，那么我们可以开始推式子了<br>$$<br>\sum_{i=1}^n \binom {f_i}{k}<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (f_i - j + 1)<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} f_i^j<br>$$</p>
-<p>这里用的是下降幂多项式转普通多项式的方法，$\begin{bmatrix}k \\ j\end{bmatrix}$是第一类斯特林数<br>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} \sum_{i=1}^n  f_i^j<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} \sum_{i=1}^n (\frac{1}{\sqrt 5}(\phi^i - \hat{\phi}^i))^j<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j \sum_{i=1}^n (\phi^i - \hat{\phi}^i)^j<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j \sum_{i=1}^n  \sum_{l=0}^j (-1)^l \binom{j}{l} \phi^{li} \hat{\phi}^{(j-l)i}<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j  \sum_{l=1}^j (-1)^l \binom{j}{l} \sum_{i=1}^n (\phi^{l} \hat{\phi}^{(j-l)})^i<br>$$</p>
-<p>$$<br>= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j  \sum_{l=1}^j (-1)^l \binom{j}{l} \frac{\phi^{l} \hat{\phi}^{(j-l)}({1-\phi^{l} \hat{\phi}^{(j-l)})^n}}{1-\phi^{l}\hat{\phi}^{(j-l)}}<br>$$</p>
-<p>大概就是这样一个式子，接下来就可以在 $O(k^2)$的时间内计算这个东西了</p>
+<p>我们把上式转化成求$ \sum_{i=1}^{n} \binom{f_i}{k}$，那么我们可以开始推式子了</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n \binom {f_i}{k}</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (f_i - j + 1)</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{i=1}^n \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} f_i^j</script><p>这里用的是下降幂多项式转普通多项式的方法，$\begin{bmatrix}k \\\\ j\end{bmatrix}$是第一类斯特林数</p>
+<script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} \sum_{i=1}^n  f_i^j</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} \sum_{i=1}^n (\frac{1}{\sqrt 5}(\phi^i - \hat{\phi}^i))^j</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j \sum_{i=1}^n (\phi^i - \hat{\phi}^i)^j</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j \sum_{i=1}^n  \sum_{l=0}^j (-1)^l \binom{j}{l} \phi^{li} \hat{\phi}^{(j-l)i}</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j  \sum_{l=1}^j (-1)^l \binom{j}{l} \sum_{i=1}^n (\phi^{l} \hat{\phi}^{(j-l)})^i</script><script type="math/tex; mode=display">
+= \frac{1}{k!} \sum_{j=1}^k (-1)^{k-j} \begin{bmatrix}k \\\ j\end{bmatrix} (\frac{1}{\sqrt 5})^j  \sum_{l=1}^j (-1)^l \binom{j}{l} \frac{\phi^{l} \hat{\phi}^{(j-l)}({1-\phi^{l} \hat{\phi}^{(j-l)})^n}}{1-\phi^{l}\hat{\phi}^{(j-l)}}</script><p>大概就是这样一个式子，接下来就可以在 $O(k^2)$的时间内计算这个东西了</p>
 <p>但是我们发现，浮点数显然无法承担这么复杂的计算任务，怎么处理 $\phi$和$\hat{\phi}$呢？</p>
 <p>类似于 $a + bi$的形式，我们搞一个$a+b\sqrt{5}$出来，接下来就可以用这个数域处理上面的式子了</p>
 <p> 最后会附上草稿纸的原图，如果发现有和上面不一样的请联系我，谢谢！</p>
@@ -468,7 +470,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>77.3k</span> Words
+                        <span>77.2k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>

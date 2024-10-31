@@ -165,13 +165,20 @@
         <div class="content">
             <p>本文为清华大学”模式识别与机器学习”课程的复习笔记（$\text{Full Version}$)。</p>
 <a id="more"></a> 
-<h2 id="Evaluation-Metric"><a href="#Evaluation-Metric" class="headerlink" title="Evaluation Metric"></a>Evaluation Metric</h2><p>$$<br>\begin{aligned}<br>\text{Accuracy} &amp;= \frac{\text{TP+TN}}{\text{TP+FP+TN+FN}} \newline<br>\text{Precision} &amp;= \frac{\text{TP}}{\text{TP+FP}} \newline<br>\text{Recall} &amp;= \text{Sensitivity} = \frac{\text{TP}}{\text{TP+FN}} \newline<br>\text{Specificity} &amp;= \frac{\text{TN}}{\text{TN+FP}} \newline<br>\text{Type-I Error} &amp;= \frac{\text{FP}}{\text{TP+FN}} = 1 - \text{Sensitivity} \newline<br>\text{Type-II Error} &amp;= \frac{\text{FN}}{\text{TN+FP}} = 1 - \text{Specificity} \newline<br>\end{aligned}<br>$$</p>
-<h2 id="k-NN"><a href="#k-NN" class="headerlink" title="k-NN"></a>k-NN</h2><h3 id="Nearest-Neighbor"><a href="#Nearest-Neighbor" class="headerlink" title="Nearest Neighbor"></a>Nearest Neighbor</h3><p>For a new instance $x’$, its class $\omega’$ can be predicted by:</p>
-<p>$$<br>\omega’ = \omega_i, \text{ where } i = \underset{j}{\arg\min} \, \delta(x’, x_j)<br>$$</p>
-<h3 id="k-Nearest-Neighbor"><a href="#k-Nearest-Neighbor" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h3><p>For a new instance $x$, define $g_i(x)$ as: the number of $x$’s k-nearest instances belonging to the class $\omega_i$.</p>
+<h2 id="Evaluation-Metric"><a href="#Evaluation-Metric" class="headerlink" title="Evaluation Metric"></a>Evaluation Metric</h2><script type="math/tex; mode=display">
+\begin{aligned}
+\text{Accuracy} &= \frac{\text{TP+TN}}{\text{TP+FP+TN+FN}} \newline
+\text{Precision} &= \frac{\text{TP}}{\text{TP+FP}} \newline
+\text{Recall} &= \text{Sensitivity} = \frac{\text{TP}}{\text{TP+FN}} \newline
+\text{Specificity} &= \frac{\text{TN}}{\text{TN+FP}} \newline
+\text{Type-I Error} &= \frac{\text{FP}}{\text{TP+FN}} = 1 - \text{Sensitivity} \newline
+\text{Type-II Error} &= \frac{\text{FN}}{\text{TN+FP}} = 1 - \text{Specificity} \newline
+\end{aligned}</script><h2 id="k-NN"><a href="#k-NN" class="headerlink" title="k-NN"></a>k-NN</h2><h3 id="Nearest-Neighbor"><a href="#Nearest-Neighbor" class="headerlink" title="Nearest Neighbor"></a>Nearest Neighbor</h3><p>For a new instance $x’$, its class $\omega’$ can be predicted by:</p>
+<script type="math/tex; mode=display">
+\omega' = \omega_i, \text{ where } i = \underset{j}{\arg\min} \, \delta(x', x_j)</script><h3 id="k-Nearest-Neighbor"><a href="#k-Nearest-Neighbor" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h3><p>For a new instance $x$, define $g_i(x)$ as: the number of $x$’s k-nearest instances belonging to the class $\omega_i$.</p>
 <p>Then the new instance’s class $\omega’$ can be predicted as:</p>
-<p>$$<br>\omega’ = \omega_j,\text{ where }j = \underset{i}{\arg\max} \, g_i(x)<br>$$</p>
-<h3 id="k-NN-Improvements"><a href="#k-NN-Improvements" class="headerlink" title="k-NN Improvements"></a>k-NN Improvements</h3><h4 id="Branch-Bound-Algorithm"><a href="#Branch-Bound-Algorithm" class="headerlink" title="Branch-Bound Algorithm"></a>Branch-Bound Algorithm</h4><p>Use tree structure to reduce calculation.</p>
+<script type="math/tex; mode=display">
+\omega' = \omega_j,\text{ where }j = \underset{i}{\arg\max} \, g_i(x)</script><h3 id="k-NN-Improvements"><a href="#k-NN-Improvements" class="headerlink" title="k-NN Improvements"></a>k-NN Improvements</h3><h4 id="Branch-Bound-Algorithm"><a href="#Branch-Bound-Algorithm" class="headerlink" title="Branch-Bound Algorithm"></a>Branch-Bound Algorithm</h4><p>Use tree structure to reduce calculation.</p>
 <h4 id="Edit-Nearest-Neighbor"><a href="#Edit-Nearest-Neighbor" class="headerlink" title="Edit Nearest Neighbor"></a>Edit Nearest Neighbor</h4><p>Delete nodes that may be misguiding from the training instance set.</p>
 <h4 id="Condensed-Nearest-Neighbor"><a href="#Condensed-Nearest-Neighbor" class="headerlink" title="Condensed Nearest Neighbor"></a>Condensed Nearest Neighbor</h4><p>Delete nodes that are far away from decision boundaries.</p>
 <h3 id="The-Curse-of-Dimensionality"><a href="#The-Curse-of-Dimensionality" class="headerlink" title="The Curse of Dimensionality"></a>The Curse of Dimensionality</h3><h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><ul>
@@ -184,32 +191,42 @@
 <li>Feature selection</li>
 <li>Use prior knowledge</li>
 </ul>
-<h2 id="Linear-Regression-Multivariate-ver"><a href="#Linear-Regression-Multivariate-ver" class="headerlink" title="Linear Regression (Multivariate ver.)"></a>Linear Regression (Multivariate ver.)</h2><p>For a multivariate linear regression, the function becomes $y_i = \mathbf{w}^{\rm T}\mathbf{x}_i$ , where:<br>$$<br>\mathbf{x} = \left(1, x_i^1, \cdots, x_i^{d} \right)^{\mathrm T} \in \mathbb{R}^{d+1}, \mathbf{w} = \left(w_0, w_1, \cdots, w_d\right)^{\mathrm T} \in \mathbb{R}^{d+1}<br>$$<br>, We adjust the values of $\mathbf{w}$ to find the equation that gives the best fitting line $f(x) = \mathbf{w}^{\rm T}\mathbf{x}$</p>
-<p>We find the best $\mathbf{w}^*$ using the Mean Squared Loss:<br>$$<br>\ell(f(\mathbf x, y)) = \min\limits_{\mathbf w} \frac{1}{N} \sum_{i = 1}^N (f(\mathbf x_i) - y_i)^2 = \min \limits_{\mathbf w} \frac{1}{N}(\mathbf {Xw-y})^{\rm T}(\mathbf {Xw-y})<br>$$<br>So that $\mathbf{w}^{\star} $ must satisfy $\mathbf {X^{\rm T}} \mathbf {Xw^{\star}} = \mathbf X^{\rm T}\mathbf y$ , so we get $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X})^{-1}\mathbf X^{\rm T}\mathbf y$ or $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X} + \lambda \mathbf I)^{-1}\mathbf X^{\rm T}\mathbf y$ (Ridge Regression)</p>
+<h2 id="Linear-Regression-Multivariate-ver"><a href="#Linear-Regression-Multivariate-ver" class="headerlink" title="Linear Regression (Multivariate ver.)"></a>Linear Regression (Multivariate ver.)</h2><p>For a multivariate linear regression, the function becomes $y_i = \mathbf{w}^{\rm T}\mathbf{x}_i$ , where: </p>
+<script type="math/tex; mode=display">
+\mathbf{x} = \left(1, x_i^1, \cdots, x_i^{d} \right)^{\mathrm T} \in \mathbb{R}^{d+1}, \mathbf{w} = \left(w_0, w_1, \cdots, w_d\right)^{\mathrm T} \in \mathbb{R}^{d+1}</script><p>, We adjust the values of $\mathbf{w}$ to find the equation that gives the best fitting line $f(x) = \mathbf{w}^{\rm T}\mathbf{x}$</p>
+<p>We find the best $\mathbf{w}^*$ using the Mean Squared Loss: </p>
+<script type="math/tex; mode=display">
+\ell(f(\mathbf x, y)) = \min\limits_{\mathbf w} \frac{1}{N} \sum_{i = 1}^N (f(\mathbf x_i) - y_i)^2 = \min \limits_{\mathbf w} \frac{1}{N}(\mathbf {Xw-y})^{\rm T}(\mathbf {Xw-y})</script><p>So that $\mathbf{w}^{\star} $ must satisfy $\mathbf {X^{\rm T}} \mathbf {Xw^{\star}} = \mathbf X^{\rm T}\mathbf y$ , so we get $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X})^{-1}\mathbf X^{\rm T}\mathbf y$ or $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X} + \lambda \mathbf I)^{-1}\mathbf X^{\rm T}\mathbf y$ (Ridge Regression)</p>
 <h2 id="Linear-Discriminant-Analysis"><a href="#Linear-Discriminant-Analysis" class="headerlink" title="Linear Discriminant Analysis"></a>Linear Discriminant Analysis</h2><p>project input vector $\mathbf x \in \mathbb{R}^{d+1}$ down to a 1-dimensional subspace with projection vector $\mathbf w$</p>
 <p>The problem is how do we find the good projection vector? We have Fisher’s Criterion, that is to maximize a function that represents the difference between-class means, which is normalized by a measure of the within-class scatter.</p>
-<p>We have <strong>between-class scatter</strong> $\tilde{S}_b = (\tilde{m}_1 - \tilde{m}_2)^2$, where $\tilde{m}_i$ is the mean for the i-th class. Also we have <strong>within-class scatter</strong> $\tilde{S}<em>i=\sum</em>{y_j \in \mathscr{y}_{i}} (y_j - \tilde{m}_i)^2$, then we have <strong>total within-class scatter</strong> $\tilde{S}_w = \tilde{S}_1+ \tilde{S}_2$. Combining the 2 expressions, the new objective function will be $J_F(\mathbf w) = \frac{\tilde{S}_b}{\tilde{S}_w}$</p>
+<p>We have <strong>between-class scatter</strong> $\tilde{S}_b = (\tilde{m}_1 - \tilde{m}_2)^2$, where $\tilde{m}_i$ is the mean for the i-th class. Also we have <strong>within-class scatter</strong> $\tilde{S}_i=\sum_{y_j \in \mathscr{y}_{i}} (y_j - \tilde{m}_i)^2$, then we have <strong>total within-class scatter</strong> $\tilde{S}_w = \tilde{S}_1+ \tilde{S}_2$. Combining the 2 expressions, the new objective function will be $J_F(\mathbf w) = \frac{\tilde{S}_b}{\tilde{S}_w}$</p>
 <p>We have $\tilde{S}_b = (\tilde{m}_1 - \tilde{m}_2)^2 = (\mathbf w^{\rm T} \mathbf m_1 - \mathbf w^{\rm T} \mathbf m_2)^2 = \mathbf w^{\rm T} (\mathbf m_1 - \mathbf m_2)(\mathbf m_1 - \mathbf m_2)^{\rm T} \mathbf w = \mathbf w^{\rm T} \mathbf S_b \mathbf w$, also $\tilde{S}_w = \mathbf w^{\rm T} \mathbf S_w \mathbf w$, so now optimize objective function $J_F$ w.r.t $\mathbf w$:</p>
-<p>$$<br>\max\limits_{\mathbf w} J_F(\mathbf w) = \max \limits_ {\mathbf w} \frac{\mathbf w^{\rm T} \mathbf S_b \mathbf w}{\mathbf w^{\rm T} \mathbf S_w \mathbf w}<br>$$</p>
-<p>Use Lagrange Multiplier Method we obtain: $\lambda w^{\star} = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^{\star}$, since we only care about the direction of $\mathbf w^*$ and $(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^{\star}$ is scalar, thus we obtain $w^{\star} = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)$</p>
+<script type="math/tex; mode=display">
+\max\limits_{\mathbf w} J_F(\mathbf w) = \max \limits_ {\mathbf w} \frac{\mathbf w^{\rm T} \mathbf S_b \mathbf w}{\mathbf w^{\rm T} \mathbf S_w \mathbf w}</script><p>Use Lagrange Multiplier Method we obtain: $\lambda w^{\star} = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^{\star}$, since we only care about the direction of $\mathbf w^*$ and $(\mathbf m_1 - \mathbf m_2)^{\rm T}\mathbf w^{\star}$ is scalar, thus we obtain $w^{\star} = \mathbf{S}_W^{-1} (\mathbf m_1 - \mathbf m_2)$</p>
 <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><p>Logistic regression is a statistical method used for binary classification, which means it is used to predict the probability of one of two possible outcomes. Unlike linear regression, which predicts a continuous output, logistic regression predicts a discrete outcome (0 or 1, yes or no, true or false, etc.).</p>
 <h3 id="Key-Concepts"><a href="#Key-Concepts" class="headerlink" title="Key Concepts"></a>Key Concepts</h3><ol>
 <li><p><strong>Odds and Log-Odds:</strong></p>
 <ul>
-<li><strong>Odds</strong>: The odds of an event are the ratio of the probability that the event will occur to the probability that it will not occur.<br>$$<br>\text{Odds} = \frac{P(y=1)}{P(y=0)}<br>$$</li>
-<li><strong>Log-Odds (Logit)</strong>: The natural logarithm of the odds.<br>$$<br>\text{Log-Odds} = \log\left(\frac{P(y=1)}{P(y=0)}\right)<br>$$</li>
+<li><strong>Odds</strong>: The odds of an event are the ratio of the probability that the event will occur to the probability that it will not occur.<script type="math/tex; mode=display">
+\text{Odds} = \frac{P(y=1)}{P(y=0)}</script></li>
+<li><strong>Log-Odds (Logit)</strong>: The natural logarithm of the odds.<script type="math/tex; mode=display">
+\text{Log-Odds} = \log\left(\frac{P(y=1)}{P(y=0)}\right)</script></li>
 </ul>
 </li>
 <li><p><strong>Logistic Function (Sigmoid Function):</strong></p>
 <ul>
-<li>The logistic function maps any real-valued number into the range (0, 1), making it suitable for probability predictions.<br>$$<br>\sigma(z) = \frac{1}{1 + e^{-z}}<br>$$</li>
-<li>In logistic regression, $ z $ is a linear combination of the input features.<br>$$<br>z = w^T x + b<br>$$</li>
+<li>The logistic function maps any real-valued number into the range (0, 1), making it suitable for probability predictions.<script type="math/tex; mode=display">
+\sigma(z) = \frac{1}{1 + e^{-z}}</script></li>
+<li>In logistic regression, $ z $ is a linear combination of the input features.<script type="math/tex; mode=display">
+z = w^T x + b</script></li>
 </ul>
 </li>
 <li><p><strong>Model Equation:</strong></p>
 <ul>
-<li>The probability of the positive class (e.g., $ y=1 $) is given by the logistic function applied to the linear combination of the features.<br>$$<br>P(y=1|x) = \sigma(w^T x + b) = \frac{1}{1 + e^{-(w^T x + b)}}<br>$$</li>
-<li>The probability of the negative class (e.g., $ y=0 $) is:<br>$$<br>P(y=0|x) = 1 - P(y=1|x)<br>$$</li>
+<li>The probability of the positive class (e.g., $ y=1 $) is given by the logistic function applied to the linear combination of the features.<script type="math/tex; mode=display">
+P(y=1|x) = \sigma(w^T x + b) = \frac{1}{1 + e^{-(w^T x + b)}}</script></li>
+<li>The probability of the negative class (e.g., $ y=0 $) is:<script type="math/tex; mode=display">
+P(y=0|x) = 1 - P(y=1|x)</script></li>
 </ul>
 </li>
 <li><p><strong>Decision Boundary:</strong></p>
@@ -219,100 +236,122 @@
 </li>
 </ol>
 <h3 id="Training-the-Model"><a href="#Training-the-Model" class="headerlink" title="Training the Model"></a>Training the Model</h3><p>We use MLE(Maximum Likelihood Estimation) for logistic regression:  </p>
-<p>$$<br>\max_{\mathbf w} \prod_{i=1}^{N} \left[ \theta(w^T x)^{\mathbf 1(y_i=1)} \times (1 - \theta(w^T x))^{\mathbf 1(y_i=0)} \right]<br>$$</p>
-<p>Applying negative log to the likelihood function, we obtain the log-likelihood for logistic regression. =</p>
-<p>$$<br>\min_{\mathbf w} J(\mathbf w) = \min\limits_{\mathbf w} - \sum_{i=1}^{N} \left{ y_i \log \left( \frac{e^{\mathbf w^{\rm T} \mathbf x_i}}{1 + e^{\mathbf w^{\rm T} \mathbf x_i}} \right) + (1 - y_i) \log \left( 1 - \frac{e^{\mathbf w^{\rm T} \mathbf x_i}}{1 + e^{\mathbf w^{\rm T} \mathbf x_i}} \right) \right}<br>$$</p>
-<p>Substituting $y_i \in {0, +1}$ with $\tilde y_i \in {-1, +1}$, and noting that $\theta(-s) + \theta(s) = 1$, we can simplify the previous expression:</p>
-<p>$$<br>\min_w J(w) = \min_{\mathbf w} \sum_{i = 1}^N \log(1 + e^{-\tilde y_i \mathbf w ^ {\rm T}\mathbf x_i})<br>$$</p>
-<p>This is called the Cross Entropy Loss.</p>
+<script type="math/tex; mode=display">
+\max_{\mathbf w} \prod_{i=1}^{N} \left[ \theta(w^T x)^{\mathbf 1(y_i=1)} \times (1 - \theta(w^T x))^{\mathbf 1(y_i=0)} \right]</script><p>Applying negative log to the likelihood function, we obtain the log-likelihood for logistic regression. =</p>
+<script type="math/tex; mode=display">
+\min_{\mathbf w} J(\mathbf w) = \min\limits_{\mathbf w} - \sum_{i=1}^{N} \left\{ y_i \log \left( \frac{e^{\mathbf w^{\rm T} \mathbf x_i}}{1 + e^{\mathbf w^{\rm T} \mathbf x_i}} \right) + (1 - y_i) \log \left( 1 - \frac{e^{\mathbf w^{\rm T} \mathbf x_i}}{1 + e^{\mathbf w^{\rm T} \mathbf x_i}} \right) \right\}</script><p>Substituting $y_i \in \{0, +1\}$ with $\tilde y_i \in \{-1, +1\}$, and noting that $\theta(-s) + \theta(s) = 1$, we can simplify the previous expression:</p>
+<script type="math/tex; mode=display">
+\min_w J(w) = \min_{\mathbf w} \sum_{i = 1}^N \log(1 + e^{-\tilde y_i \mathbf w ^ {\rm T}\mathbf x_i})</script><p>This is called the Cross Entropy Loss.</p>
 <h3 id="Generalization-to-K-classes"><a href="#Generalization-to-K-classes" class="headerlink" title="Generalization to K-classes"></a>Generalization to K-classes</h3><p>The generalized version of logistic regression is called <strong>Softmax Regression</strong>.</p>
-<p>The probability of an input $x$ being class $k$ is denoted as:<br>$$<br>P(y = k | x; \mathbf{W}) = \frac{e^{\mathbf w_k^{\rm T} x}}{\sum_{i=1}^{K} e^{\mathbf w_i^{\rm T} x}}<br>$$</p>
-<p>In multiclass, the likelihood function can be written as:</p>
-<p>$$<br>\max_{w_1, w_2, \ldots, w_k} \prod_{i=1}^{N} \prod_{k=0}^{K} P(y_i = k | x_i; \mathbf{W})^{\mathbf 1(y_i = k)}<br>$$</p>
-<p>We can use the minimum negative log-likehood estimation:  </p>
-<p>$$<br>\min\limits_{\mathbf{W}} J(\mathbf{W}) = \min_{\mathbf w_1, \mathbf w_2, \ldots, \mathbf w_k} -\frac{1}{N} \sum_{i=1}^{N} \sum_{k=0}^{K} \mathbf 1(y_i = k) \cdot \log \frac{e^{\mathbf w_k^{\rm T} x_i}}{\sum_{j=1}^{K} e^{\mathbf w_j^T x_i}}<br>$$</p>
-<h2 id="Perceptron"><a href="#Perceptron" class="headerlink" title="Perceptron"></a>Perceptron</h2><p>We predict based on the sign of $y$: $y = \text{sign}(f_{\mathbf w}(x)) = \text{sign}(\mathbf w^{\rm T}\mathbf x)$</p>
-<p>For Perceptron the objective loss function is defined as:<br>$$<br>J_p(\mathbf{w}) = \sum_{\hat{x}_j \in \mathcal{X}^k} (-\mathbf{w}^T \hat{x}_j)<br>$$<br>where $\mathcal{X}^k$ is the misclassified sample set at step $k$.</p>
+<p>The probability of an input $x$ being class $k$ is denoted as:  </p>
+<script type="math/tex; mode=display">
+P(y = k | x; \mathbf{W}) = \frac{e^{\mathbf w_k^{\rm T} x}}{\sum_{i=1}^{K} e^{\mathbf w_i^{\rm T} x}}</script><p>In multiclass, the likelihood function can be written as:</p>
+<script type="math/tex; mode=display">
+\max_{w_1, w_2, \ldots, w_k} \prod_{i=1}^{N} \prod_{k=0}^{K} P(y_i = k | x_i; \mathbf{W})^{\mathbf 1(y_i = k)}</script><p>We can use the minimum negative log-likehood estimation:  </p>
+<script type="math/tex; mode=display">
+\min\limits_{\mathbf{W}} J(\mathbf{W}) = \min_{\mathbf w_1, \mathbf w_2, \ldots, \mathbf w_k} -\frac{1}{N} \sum_{i=1}^{N} \sum_{k=0}^{K} \mathbf 1(y_i = k) \cdot \log \frac{e^{\mathbf w_k^{\rm T} x_i}}{\sum_{j=1}^{K} e^{\mathbf w_j^T x_i}}</script><h2 id="Perceptron"><a href="#Perceptron" class="headerlink" title="Perceptron"></a>Perceptron</h2><p>We predict based on the sign of $y$: $y = \text{sign}(f_{\mathbf w}(x)) = \text{sign}(\mathbf w^{\rm T}\mathbf x)$</p>
+<p>For Perceptron the objective loss function is defined as:  </p>
+<script type="math/tex; mode=display">
+J_p(\mathbf{w}) = \sum_{\hat{x}_j \in \mathcal{X}^k} (-\mathbf{w}^T \hat{x}_j)</script><p>where $\mathcal{X}^k$ is the misclassified sample set at step $k$.</p>
 <p>We can use gradient descent to solve for $\mathbf w^*$:  </p>
-<p>$$<br>\mathbf{w}_{k+1} = \mathbf{w}_k + \rho_k \sum_{x_j \in \mathcal{X}^k} (-\hat{x}_j)<br>$$</p>
-<h2 id="Support-Vector-Machine"><a href="#Support-Vector-Machine" class="headerlink" title="Support Vector Machine"></a>Support Vector Machine</h2><p>We want the optimal linear separators, that is the most robust classifier to the noisy data, meaning it has the largest margin to the training data. So we want to find the classifier with the largest margin.</p>
+<script type="math/tex; mode=display">
+\mathbf{w}_{k+1} = \mathbf{w}_k + \rho_k \sum_{x_j \in \mathcal{X}^k} (-\hat{x}_j)</script><h2 id="Support-Vector-Machine"><a href="#Support-Vector-Machine" class="headerlink" title="Support Vector Machine"></a>Support Vector Machine</h2><p>We want the optimal linear separators, that is the most robust classifier to the noisy data, meaning it has the largest margin to the training data. So we want to find the classifier with the largest margin.</p>
 <h3 id="Modeling-For-Linear-Separable-Problem"><a href="#Modeling-For-Linear-Separable-Problem" class="headerlink" title="Modeling(For Linear-Separable Problem)"></a>Modeling(For Linear-Separable Problem)</h3><p>We want the margin is largest: $\max\limits_{\mathbf w, b}\rho(\mathbf w, b)$, and all the datapoints are classified correctly, that is $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1$.</p>
 <p>The distance between two paralleled hyperplanes is: $|b_1 - b_2| / ||a||$, and the distance between a point $\mathbf x_0$ and a hyperplane $(\mathbf w, b)$ is $|\mathbf w^{\rm T} \mathbf x_0 + b| / ||\mathbf w||$.  </p>
 <p>Choose the points that are closest to the classifier, and they satisify: $|\mathbf w^{\rm T} \mathbf x_0 + b| = 1$, so that margin $\rho$ = $|\mathbf w^{\rm T} \mathbf x_1 + b| / ||\mathbf w|| + |\mathbf w^{\rm T} \mathbf x_2 + b| / ||\mathbf w|| = 2 / ||\mathbf w||$.  </p>
-<p>Thus we got the Hard-margin Support Vector Machine:<br>$$<br>\max\limits_{\mathbf w, b}\frac{2}{||\mathbf w||}<br>$$<br>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1, 1 \leq i \leq n$</p>
-<p>For compute convenience, we convert it into<br>$$<br>\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2<br>$$<br>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1, 1 \leq i \leq n$</p>
-<h3 id="Modeling-For-Linearly-Non-Separable-Problem"><a href="#Modeling-For-Linearly-Non-Separable-Problem" class="headerlink" title="Modeling(For Linearly Non-Separable Problem)"></a>Modeling(For Linearly Non-Separable Problem)</h3><p>We add a slack that allows points to be classified on the wrong side of the decision boundary, also we add a penalty. So we got the Soft-margin SVM:<br>$$<br>\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2 + C\sum_{i=1}^N \xi_i<br>$$<br>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1 - \xi_i, 1 \leq i \leq n$</p>
-<p>Using hinge-loss $\ell_{\text{hinge}}(t) = \max(1-t, 0)$, we have the final version of Soft-margin SVM:<br>$$<br>\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2 + C\sum_{i=1}^N \ell_{\text{hinge}}(y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b))<br>$$</p>
-<h3 id="Optimization-For-Training"><a href="#Optimization-For-Training" class="headerlink" title="Optimization For Training"></a>Optimization For Training</h3><h4 id="Lagrangian-Function-amp-KKT-Condition"><a href="#Lagrangian-Function-amp-KKT-Condition" class="headerlink" title="Lagrangian Function &amp; KKT Condition"></a>Lagrangian Function &amp; KKT Condition</h4><p>Consider a constrained optimization problem<br>$$<br>\min_{x \in \mathbb{R}^d} f(x), \text{ s.t. } g_i(x) \leq 0, \forall i = 1, \dots, n<br>$$<br>The Lagrangian function $L(x, \mu)$ is defined as:<br>$$<br>L(x, \mu) = f(x) + \sum_{j = 1}^J \mu_ig_j(x)<br>$$<br>We have KKT conditions(necessary condition): for $1 \leq j \leq J$</p>
+<p>Thus we got the Hard-margin Support Vector Machine:</p>
+<script type="math/tex; mode=display">
+\max\limits_{\mathbf w, b}\frac{2}{||\mathbf w||}</script><p>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1, 1 \leq i \leq n$</p>
+<p>For compute convenience, we convert it into</p>
+<script type="math/tex; mode=display">
+\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2</script><p>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1, 1 \leq i \leq n$</p>
+<h3 id="Modeling-For-Linearly-Non-Separable-Problem"><a href="#Modeling-For-Linearly-Non-Separable-Problem" class="headerlink" title="Modeling(For Linearly Non-Separable Problem)"></a>Modeling(For Linearly Non-Separable Problem)</h3><p>We add a slack that allows points to be classified on the wrong side of the decision boundary, also we add a penalty. So we got the Soft-margin SVM:</p>
+<script type="math/tex; mode=display">
+\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2 + C\sum_{i=1}^N \xi_i</script><p>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1 - \xi_i, 1 \leq i \leq n$</p>
+<p>Using hinge-loss $\ell_{\text{hinge}}(t) = \max(1-t, 0)$, we have the final version of Soft-margin SVM:</p>
+<script type="math/tex; mode=display">
+\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2 + C\sum_{i=1}^N \ell_{\text{hinge}}(y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b))</script><h3 id="Optimization-For-Training"><a href="#Optimization-For-Training" class="headerlink" title="Optimization For Training"></a>Optimization For Training</h3><h4 id="Lagrangian-Function-amp-KKT-Condition"><a href="#Lagrangian-Function-amp-KKT-Condition" class="headerlink" title="Lagrangian Function &amp; KKT Condition"></a>Lagrangian Function &amp; KKT Condition</h4><p>Consider a constrained optimization problem</p>
+<script type="math/tex; mode=display">
+\min_{x \in \mathbb{R}^d} f(x), \text{ s.t. } g_i(x) \leq 0, \forall i = 1, \dots, n</script><p>The Lagrangian function $L(x, \mu)$ is defined as:</p>
+<script type="math/tex; mode=display">
+L(x, \mu) = f(x) + \sum_{j = 1}^J \mu_ig_j(x)</script><p>We have KKT conditions(necessary condition): for $1 \leq j \leq J$</p>
 <ul>
 <li>Primal feasibility: $g_j(x) \leq 0$</li>
 <li>dual feasibility: $\mu_i \geq 0$</li>
 <li>Complementary slackness: $\mu_i g_j(x^*) = 0$</li>
 <li>Lagrangian optimality: $\nabla_x L(x_*, \mu) = 0$</li>
 </ul>
-<h4 id="Dual-Problem-For-Soft-margin-SVM"><a href="#Dual-Problem-For-Soft-margin-SVM" class="headerlink" title="Dual Problem For Soft-margin SVM"></a>Dual Problem For Soft-margin SVM</h4><p>For Soft-margin Support Vector Machine:<br>$$<br>\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2 + C\sum_{i=1}^N \xi_i<br>$$<br>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1 - \xi_i, \xi_i \geq 0, 1 \leq i \leq n$</p>
+<h4 id="Dual-Problem-For-Soft-margin-SVM"><a href="#Dual-Problem-For-Soft-margin-SVM" class="headerlink" title="Dual Problem For Soft-margin SVM"></a>Dual Problem For Soft-margin SVM</h4><p>For Soft-margin Support Vector Machine:</p>
+<script type="math/tex; mode=display">
+\min\limits_{\mathbf w, b}\frac{1}{2}||\mathbf w||^2 + C\sum_{i=1}^N \xi_i</script><p>s.t. $y_i \cdot (\mathbf w^{\rm T}\mathbf x_i + b) \geq 1 - \xi_i, \xi_i \geq 0, 1 \leq i \leq n$</p>
 <p>We have the Lagrangian function(with $2n$ inequality constraints):</p>
-<p>$$<br>L(\mathbf{w}, b, \alpha, \xi, \mu) = \frac{1}{2} |\mathbf{w}|<em>2^2 + C \sum</em>{i=1}^{n} \xi_i + \sum_{i=1}^{n} \alpha_i [1 - \xi_i - y_i (\mathbf{w}^T \mathbf{x}<em>i + b)] - \sum</em>{i=1}^{n} \mu_i \xi_i<br>$$<br>s.t. $\alpha_i \geq 0, \mu_i \geq 0, \, i = 1, \ldots, n$.</p>
+<script type="math/tex; mode=display">
+L(\mathbf{w}, b, \alpha, \xi, \mu) = \frac{1}{2} \|\mathbf{w}\|_2^2 + C \sum_{i=1}^{n} \xi_i + \sum_{i=1}^{n} \alpha_i [1 - \xi_i - y_i (\mathbf{w}^T \mathbf{x}_i + b)] - \sum_{i=1}^{n} \mu_i \xi_i</script><p>s.t. $\alpha_i \geq 0, \mu_i \geq 0, \, i = 1, \ldots, n$.</p>
 <p>take the partial derivatives of Lagrangian w.r.t $\mathbf w, b, \xi_i$ and set to zero</p>
-<p>$$<br>\begin{aligned}<br>\frac{\partial L}{\partial \mathbf{w}} &amp;= 0 \implies \mathbf{w} = \sum_{i=1}^{n} \alpha_i y_i \mathbf{x}<em>i \<br>\frac{\partial L}{\partial b} &amp;= 0 \implies \sum</em>{i=1}^{n} \alpha_i y_i = 0 \<br>\frac{\partial L}{\partial \xi_i} &amp;= 0 \implies C = \alpha_i + \mu_i, \, i = 1, \cdots, n \<br>\end{aligned}<br>$$</p>
-<p>So that we got:</p>
-<p>$$<br>L(\mathbf{w}, b, \alpha, \xi, \mu) = \frac{1}{2} |\mathbf{w}|<em>2^2 + C \sum</em>{i=1}^{n} \xi_i + \sum_{i=1}^{n} \alpha_i [1 - \xi_i - y_i (\mathbf{w}^T \mathbf{x}<em>i + b)] - \sum</em>{i=1}^{n} \mu_i \xi_i<br>$$</p>
-<p>$$<br>= \frac{1}{2} \mathbf{w}^T \mathbf{w} + \sum_{i=1}^{n} \xi_i (C - \alpha_i - \mu_i) + \sum_{i=1}^{n} \alpha_i - \sum_{i=1}^{n} \alpha_i \cdot y_i \cdot \mathbf{w}^T \mathbf{x}<em>i - b \sum</em>{i=1}^{n} \alpha_i \cdot y_i<br>$$</p>
-<p>$$<br>= \frac{1}{2} \left( \sum_{i=1}^{n} \alpha_i y_i \mathbf{x}<em>i \right)^T \left( \sum</em>{j=1}^{n} \alpha_j y_j \mathbf{x}<em>j \right) + 0 + \sum</em>{i=1}^{n} \alpha_i - \sum_{i=1}^{n} \alpha_i \cdot y_i \cdot \left( \sum_{j=1}^{n} \alpha_j y_j \mathbf{x}_j \right) x_i + 0<br>$$</p>
-<p>$$<br>= \frac{1}{2} \left( \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i \mathbf{x}<em>j \right) + \sum</em>{i=1}^{n} \alpha_i - \left( \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i \mathbf{x}_j \right)<br>$$</p>
-<p>$$<br>= \sum_{i=1}^{n} \alpha_i - \frac{1}{2} \left( \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i \mathbf{x}_j \right)<br>$$</p>
-<p>So we have the Dual Problem of Soft-SVM:</p>
-<p>$$<br>\max_{\alpha} \sum_{i=1}^{n} \alpha_i - \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i^T \mathbf{x}_j<br>$$</p>
-<p>s.t. $\sum_{i=1}^{n} \alpha_i y_i = 0, \quad 0 \leq \alpha_i \leq C, \, i = 1, \ldots, n.$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial \mathbf{w}} &= 0 \implies \mathbf{w} = \sum_{i=1}^{n} \alpha_i y_i \mathbf{x}_i \\
+\frac{\partial L}{\partial b} &= 0 \implies \sum_{i=1}^{n} \alpha_i y_i = 0 \\
+\frac{\partial L}{\partial \xi_i} &= 0 \implies C = \alpha_i + \mu_i, \, i = 1, \cdots, n \\
+\end{aligned}</script><p>So that we got:</p>
+<script type="math/tex; mode=display">
+L(\mathbf{w}, b, \alpha, \xi, \mu) = \frac{1}{2} \|\mathbf{w}\|_2^2 + C \sum_{i=1}^{n} \xi_i + \sum_{i=1}^{n} \alpha_i [1 - \xi_i - y_i (\mathbf{w}^T \mathbf{x}_i + b)] - \sum_{i=1}^{n} \mu_i \xi_i</script><script type="math/tex; mode=display">
+= \frac{1}{2} \mathbf{w}^T \mathbf{w} + \sum_{i=1}^{n} \xi_i (C - \alpha_i - \mu_i) + \sum_{i=1}^{n} \alpha_i - \sum_{i=1}^{n} \alpha_i \cdot y_i \cdot \mathbf{w}^T \mathbf{x}_i - b \sum_{i=1}^{n} \alpha_i \cdot y_i</script><script type="math/tex; mode=display">
+= \frac{1}{2} \left( \sum_{i=1}^{n} \alpha_i y_i \mathbf{x}_i \right)^T \left( \sum_{j=1}^{n} \alpha_j y_j \mathbf{x}_j \right) + 0 + \sum_{i=1}^{n} \alpha_i - \sum_{i=1}^{n} \alpha_i \cdot y_i \cdot \left( \sum_{j=1}^{n} \alpha_j y_j \mathbf{x}_j \right) x_i + 0</script><script type="math/tex; mode=display">
+= \frac{1}{2} \left( \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i \mathbf{x}_j \right) + \sum_{i=1}^{n} \alpha_i - \left( \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i \mathbf{x}_j \right)</script><script type="math/tex; mode=display">
+= \sum_{i=1}^{n} \alpha_i - \frac{1}{2} \left( \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i \mathbf{x}_j \right)</script><p>So we have the Dual Problem of Soft-SVM:</p>
+<script type="math/tex; mode=display">
+\max_{\alpha} \sum_{i=1}^{n} \alpha_i - \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j \mathbf{x}_i^T \mathbf{x}_j</script><p>s.t. $\sum_{i=1}^{n} \alpha_i y_i = 0, \quad 0 \leq \alpha_i \leq C, \, i = 1, \ldots, n.$</p>
 <p>After solving $\alpha$, we can get $\mathbf{w} = \sum_{j=1}^n\alpha_j y_j x_j$ and $b$</p>
 <h3 id="Kernel-Method-for-SVM"><a href="#Kernel-Method-for-SVM" class="headerlink" title="Kernel Method for SVM"></a>Kernel Method for SVM</h3><p>Linear SVM cannot handle linear non-separable data. So we need to map the original feature space to a higher-dimensional feature space where the training set is separable.</p>
 <p>Basically we could set $x \to \phi(x)$, but calculating $x_i \dots x_j$ will cause heavy computation cost, so we use the kernel trick, that is to find a function $k(x_i, x_j) = \phi(x_i) \dots \phi(x_j)$.</p>
 <p>Some commonly used kernel:</p>
 <ul>
-<li><p><strong>Linear Kernel:</strong><br>$$ k(\mathbf{x}, \mathbf{x}_i) = (\mathbf{x} \cdot \mathbf{x}_i) $$</p>
-</li>
-<li><p><strong>Polynomial Kernel:</strong><br>$$ k(\mathbf{x}, \mathbf{x}_i) = [(\mathbf{x} \cdot \mathbf{x}_i) + 1]^q $$</p>
-</li>
-<li><p><strong>Radial Basis Function Kernel (a.k.a. RBF kernel, Gaussian kernel):</strong><br>$$ k(\mathbf{x}, \mathbf{x}_i) = \exp \left( -\frac{|\mathbf{x} - \mathbf{x}_i|^2}{2\sigma^2} \right) $$</p>
-</li>
-<li><p><strong>Sigmoid Kernel:</strong><br>$$ k(\mathbf{x}, \mathbf{x}_i) = \tanh (v(\mathbf{x} \cdot \mathbf{x}_i) + c) $$</p>
-</li>
+<li><p><strong>Linear Kernel:</strong></p>
+<script type="math/tex; mode=display">k(\mathbf{x}, \mathbf{x}_i) = (\mathbf{x} \cdot \mathbf{x}_i)</script></li>
+<li><p><strong>Polynomial Kernel:</strong></p>
+<script type="math/tex; mode=display">k(\mathbf{x}, \mathbf{x}_i) = [(\mathbf{x} \cdot \mathbf{x}_i) + 1]^q</script></li>
+<li><p><strong>Radial Basis Function Kernel (a.k.a. RBF kernel, Gaussian kernel):</strong></p>
+<script type="math/tex; mode=display">k(\mathbf{x}, \mathbf{x}_i) = \exp \left( -\frac{\|\mathbf{x} - \mathbf{x}_i\|^2}{2\sigma^2} \right)</script></li>
+<li><p><strong>Sigmoid Kernel:</strong></p>
+<script type="math/tex; mode=display">k(\mathbf{x}, \mathbf{x}_i) = \tanh (v(\mathbf{x} \cdot \mathbf{x}_i) + c)</script></li>
 </ul>
 <p>Kernel tricks can also be applied to more algorithms, such as k-NN, LDA, etc.</p>
 <h2 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h2><p>We use a tree-like structure to deal with categorical features.  </p>
 <p>For each node, we find the most useful feature, that means the feature that can better divide the data on the node.</p>
 <h3 id="ID3-Algorithm"><a href="#ID3-Algorithm" class="headerlink" title="ID3 Algorithm"></a>ID3 Algorithm</h3><p>We use entropy as criterion:  </p>
-<p>$$<br>H(D) = -\sum_{k=1}^K \frac{|C_k|}{|D|} \log \frac{|C_k|}{|D|}<br>$$</p>
-<p>A good split gives minimal weighted average entropy of child nodes:  </p>
-<p>$$<br>\frac{|D_1|}{|D|}H(D_1) + \frac{|D_2|}{|D|}H(D_2)<br>$$</p>
-<p>For any split, the entropy of the parent node is constant. Minimizing the weighted<br>entropy of son nodes is equivalent to maximizing the information gain (IG):</p>
-<p>$$<br>H(D) - \frac{|D_1|}{|D|}H(D_1) - \frac{|D_2|}{|D|}H(D_2)<br>$$</p>
-<h3 id="C4-5-Algorithm"><a href="#C4-5-Algorithm" class="headerlink" title="C4.5 Algorithm"></a>C4.5 Algorithm</h3><p>Information Gain is highly biased to multivalued features. So we use Information Gain Ratio (GR) to choose optimal feature:</p>
-<p>$$<br>\text{GR} = \frac{\text{Information Gain}}{\text{Intrinsic Value}}<br>$$</p>
-<p>Intrinsic Value (IV) is to punish multivalued features. For a selected feature $f$, its Intrinsic Value is:</p>
-<p>$$<br>IV(f) = -\sum_{k=1}^{|V|}\frac{|F_k|}{|D|} \log \frac{|F_k|}{|D|}<br>$$</p>
-<p>where $V$ is the set of all possible values of the feature $f$, and $F_k$ is the subset of $D$ where the value of the feature $A$ is $k$. Features with many possible values tend to have a large Intrinsic Value.</p>
+<script type="math/tex; mode=display">
+H(D) = -\sum_{k=1}^K \frac{|C_k|}{|D|} \log \frac{|C_k|}{|D|}</script><p>A good split gives minimal weighted average entropy of child nodes:  </p>
+<script type="math/tex; mode=display">
+\frac{|D_1|}{|D|}H(D_1) + \frac{|D_2|}{|D|}H(D_2)</script><p>For any split, the entropy of the parent node is constant. Minimizing the weighted<br>entropy of son nodes is equivalent to maximizing the information gain (IG):</p>
+<script type="math/tex; mode=display">
+H(D) - \frac{|D_1|}{|D|}H(D_1) - \frac{|D_2|}{|D|}H(D_2)</script><h3 id="C4-5-Algorithm"><a href="#C4-5-Algorithm" class="headerlink" title="C4.5 Algorithm"></a>C4.5 Algorithm</h3><p>Information Gain is highly biased to multivalued features. So we use Information Gain Ratio (GR) to choose optimal feature:</p>
+<script type="math/tex; mode=display">
+\text{GR} = \frac{\text{Information Gain}}{\text{Intrinsic Value}}</script><p>Intrinsic Value (IV) is to punish multivalued features. For a selected feature $f$, its Intrinsic Value is:</p>
+<script type="math/tex; mode=display">
+IV(f) = -\sum_{k=1}^{|V|}\frac{|F_k|}{|D|} \log \frac{|F_k|}{|D|}</script><p>where $V$ is the set of all possible values of the feature $f$, and $F_k$ is the subset of $D$ where the value of the feature $A$ is $k$. Features with many possible values tend to have a large Intrinsic Value.</p>
 <h3 id="Classification-and-Regression-Tree-CART"><a href="#Classification-and-Regression-Tree-CART" class="headerlink" title="Classification and Regression Tree(CART)"></a>Classification and Regression Tree(CART)</h3><p>The CART Tree muse be a binary tree.</p>
-<h4 id="Regression-Tree"><a href="#Regression-Tree" class="headerlink" title="Regression Tree"></a>Regression Tree</h4><p>How to divide the regions $R = {R_1, \dots, R_m}$ and decide the values $V = {v_1, \dots, v_m}$?</p>
+<h4 id="Regression-Tree"><a href="#Regression-Tree" class="headerlink" title="Regression Tree"></a>Regression Tree</h4><p>How to divide the regions $R = \{R_1, \dots, R_m\}$ and decide the values $V = \{v_1, \dots, v_m\}$?</p>
 <p>We use minimum mean-square error over all examples $x_i$ with label $y_i$</p>
-<p>$$<br>\min_{R, V} l = \min_{R, V} \sum_{j = 1}^m \sum_{x_i \in R_j} (y_i - v_j)^2<br>$$</p>
-<p>Assuming that R has been determined and first find the optimal V. For a given region R_j, the value $v_j$ to minimize the loss is the average value of the labels of all samples belonging to region $R_j$:  </p>
-<p>$$<br>v_j = \frac{1}{|R_j|} \sum_{x_i \in R_j} y_i<br>$$</p>
-<p>Now for each feature $A$ and split threshold $a$, the parent node $R$ is split by $(A, a)$ to $R_1$ and $R_2$. We choose $(A, a) over all possible values to minimize:  </p>
-<p>$$<br>l(A, a) = \sum_{x_i \in R_1} (y_i - v_1(A, a))^2 + \sum_{x_i \in R_2} (y_i - v_2(A, a))^2<br>$$</p>
-<p>where $v_1(A, a)$ and $v_2(A, a)$ are described above.</p>
-<h4 id="Classification-Tree"><a href="#Classification-Tree" class="headerlink" title="Classification Tree"></a>Classification Tree</h4><p>The split criteria is now Gini Index:<br>$$<br>\text{Gini}(D) = 1 - \sum_{k = 1}^K \left(\frac{|C_k|}{|D|}\right)^2<br>$$</p>
-<p>We choose the feature $A$ and the threshold $a$ over all possible values with the<br>maximal gain</p>
-<p>$$<br>\text{Gini}(D) - \frac{|D_1|}{|D|} \text{Gini}(D_1) - \frac{|D_2|}{|D|} \text{Gini}(D_2)<br>$$</p>
-<h2 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h2><p>Reduce the randomness (variance) by combining multiple learners.</p>
+<script type="math/tex; mode=display">
+\min_{R, V} l = \min_{R, V} \sum_{j = 1}^m \sum_{x_i \in R_j} (y_i - v_j)^2</script><p>Assuming that R has been determined and first find the optimal V. For a given region R_j, the value $v_j$ to minimize the loss is the average value of the labels of all samples belonging to region $R_j$:  </p>
+<script type="math/tex; mode=display">
+v_j = \frac{1}{|R_j|} \sum_{x_i \in R_j} y_i</script><p>Now for each feature $A$ and split threshold $a$, the parent node $R$ is split by $(A, a)$ to $R_1$ and $R_2$. We choose $(A, a) over all possible values to minimize:  </p>
+<script type="math/tex; mode=display">
+l(A, a) = \sum_{x_i \in R_1} (y_i - v_1(A, a))^2 + \sum_{x_i \in R_2} (y_i - v_2(A, a))^2</script><p>where $v_1(A, a)$ and $v_2(A, a)$ are described above.</p>
+<h4 id="Classification-Tree"><a href="#Classification-Tree" class="headerlink" title="Classification Tree"></a>Classification Tree</h4><p>The split criteria is now Gini Index:  </p>
+<script type="math/tex; mode=display">
+\text{Gini}(D) = 1 - \sum_{k = 1}^K \left(\frac{|C_k|}{|D|}\right)^2</script><p>We choose the feature $A$ and the threshold $a$ over all possible values with the<br>maximal gain</p>
+<script type="math/tex; mode=display">
+\text{Gini}(D) - \frac{|D_1|}{|D|} \text{Gini}(D_1) - \frac{|D_2|}{|D|} \text{Gini}(D_2)</script><h2 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h2><p>Reduce the randomness (variance) by combining multiple learners.</p>
 <h3 id="Bagging-Bootstrap-Aggregating"><a href="#Bagging-Bootstrap-Aggregating" class="headerlink" title="Bagging(Bootstrap Aggregating)"></a>Bagging(Bootstrap Aggregating)</h3><ol>
 <li>Create $M$ bootstrap datasets</li>
 <li>Train a learner on each dataset</li>
 <li>Ensemble $M$ learners</li>
 </ol>
 <p>Uniformly sample from the original data D with replacement. The bootstrap dataset<br>has the same size as the original data D, the probability of not showing up is</p>
-<p>$$<br>(1-\frac{1}{n})^n \approx \frac{1}{e} \approx 0.37<br>$$</p>
-<p>We use the elements show up in $D$ but not in the bootstrap dataset as the validation set(The out-of-bag dataset).</p>
+<script type="math/tex; mode=display">
+(1-\frac{1}{n})^n \approx \frac{1}{e} \approx 0.37</script><p>We use the elements show up in $D$ but not in the bootstrap dataset as the validation set(The out-of-bag dataset).</p>
 <h3 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h3><p>Ensemble decision trees (Training data with $d$ features)</p>
 <ul>
 <li>Create bootstrap datasets</li>
@@ -325,41 +364,46 @@
 <h4 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h4><p>Core idea: give higher weights to the misclassified examples so that half of the<br>training samples come from incorrect classifications. (re-weighting)</p>
 <p>Mathematical Formulation:</p>
 <ol>
-<li><p><strong>Weighted Error</strong>:<br>$$<br>\epsilon_t = \sum_{i=1}^n w_i \cdot \mathbf 1(y_i \neq h_t(x_i))<br>$$</p>
-</li>
-<li><p><strong>Alpha Calculation</strong>:<br>$$<br>\alpha_t = \frac{1}{2} \ln \left( \frac{1 - \epsilon_t}{\epsilon_t} \right)<br>$$</p>
-</li>
-<li><p><strong>Weight Update</strong>:<br>$$<br>w_i \leftarrow w_i \exp(\alpha_t \cdot \mathbf 1(y_i \neq h_t(x_i)))<br>$$</p>
-</li>
-<li><p><strong>Final Hypothesis</strong>:<br>$$<br>H(x) = \text{sign} \left( \sum_{t=1}^T \alpha_t h_t(x) \right)<br>$$</p>
-</li>
+<li><p><strong>Weighted Error</strong>:</p>
+<script type="math/tex; mode=display">
+\epsilon_t = \sum_{i=1}^n w_i \cdot \mathbf 1(y_i \neq h_t(x_i))</script></li>
+<li><p><strong>Alpha Calculation</strong>:</p>
+<script type="math/tex; mode=display">
+\alpha_t = \frac{1}{2} \ln \left( \frac{1 - \epsilon_t}{\epsilon_t} \right)</script></li>
+<li><p><strong>Weight Update</strong>:</p>
+<script type="math/tex; mode=display">
+w_i \leftarrow w_i \exp(\alpha_t \cdot \mathbf 1(y_i \neq h_t(x_i)))</script></li>
+<li><p><strong>Final Hypothesis</strong>:</p>
+<script type="math/tex; mode=display">
+H(x) = \text{sign} \left( \sum_{t=1}^T \alpha_t h_t(x) \right)</script></li>
 </ol>
 <h4 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h4><p>View boosting as an optimization problem. The criterion is to minimize the empirical loss:</p>
-<p>$$<br>\arg \min_{(\alpha_1, \ldots, \alpha_t, h_1, \ldots, h_t)} \sum_{i=1}^{n} l \left( y_i, \sum_{s=1}^{t} \alpha_s h_s(x) \right)<br>$$</p>
-<p>Loss function $l$ depends on the task:</p>
+<script type="math/tex; mode=display">
+\arg \min_{(\alpha_1, \ldots, \alpha_t, h_1, \ldots, h_t)} \sum_{i=1}^{n} l \left( y_i, \sum_{s=1}^{t} \alpha_s h_s(x) \right)</script><p>Loss function $l$ depends on the task:</p>
 <ul>
 <li>Cross entropy for multi-classification</li>
 <li>$\text{L2}$ loss for regression</li>
 </ul>
 <p>We use sequential training: optimize a single model at a time, that is freeze $h_1, \cdots, h_{t-1}$ and optimize $h_t$. (Let $f_{t-1}(x) = \sum_{s=1}^{t-1} \alpha_s h_s(x)$, denoting the ensemble of $t-1$ learners.)</p>
 <p>Now let’s see how to choose the $\alpha_t$ and $h_t$, we define:</p>
-<p>$$<br>u = (f_{t-1}(x_1), \cdots, f_{t-1}(x_n)) \<br>\Delta u = (h_t(x_1), \cdots, h_t(x_n))<br>$$</p>
-<p>Consider function $F(u) = \sum_{i=1}^n l(y_i, u_i)$, then the original objective is equivalent to find a direction $\Delta u$ and step size $\alpha$ at the point $u$<br>to minimize:</p>
-<p>$$<br>F(u + \alpha_t \Delta u) = \sum_{i=1}^n l(y_i, u_i + \alpha \Delta u_i)<br>$$</p>
-<p>According to Gradient Descent, we could let $\delta u = \nabla_u F(u)$, thus</p>
-<p>$$<br>h_t(x_i) = -\frac{\partial F(u)}{\partial u_i} = -\left[ \frac{\partial l(y_i, u_i)}{\partial u_i} \right]_{u_i = f_{t-1}(x_i)}<br>$$</p>
-<p>Then how to decide $\alpha_t$? Use one-dimensional search $(y_i, x_i, f_{t-1}, h_t \text{ is fixed})$</p>
-<p>$$<br>\alpha_t = \arg\min_{\alpha_t} \sum_{i=1}^{n} l(y_i, f_{t-1}(x_i) + \alpha_t h_t(x_i))<br>$$</p>
-<p>For simplicity, search of optimal multiplier can be replaced by setting it a constant.  </p>
+<script type="math/tex; mode=display">
+u = (f_{t-1}(x_1), \cdots, f_{t-1}(x_n)) \\
+\Delta u = (h_t(x_1), \cdots, h_t(x_n))</script><p>Consider function $F(u) = \sum_{i=1}^n l(y_i, u_i)$, then the original objective is equivalent to find a direction $\Delta u$ and step size $\alpha$ at the point $u$<br>to minimize:</p>
+<script type="math/tex; mode=display">
+F(u + \alpha_t \Delta u) = \sum_{i=1}^n l(y_i, u_i + \alpha \Delta u_i)</script><p>According to Gradient Descent, we could let $\delta u = \nabla_u F(u)$, thus</p>
+<script type="math/tex; mode=display">
+h_t(x_i) = -\frac{\partial F(u)}{\partial u_i} = -\left[ \frac{\partial l(y_i, u_i)}{\partial u_i} \right]_{u_i = f_{t-1}(x_i)}</script><p>Then how to decide $\alpha_t$? Use one-dimensional search $(y_i, x_i, f_{t-1}, h_t \text{ is fixed})$</p>
+<script type="math/tex; mode=display">
+\alpha_t = \arg\min_{\alpha_t} \sum_{i=1}^{n} l(y_i, f_{t-1}(x_i) + \alpha_t h_t(x_i))</script><p>For simplicity, search of optimal multiplier can be replaced by setting it a constant.  </p>
 <p>In conclusion, <strong>Gradient Boosting = Gradient Descent + Boosting</strong>.</p>
-<h2 id="Learning-Theory"><a href="#Learning-Theory" class="headerlink" title="Learning Theory"></a>Learning Theory</h2><h3 id="Empirical-Risk-Minimization-ERM"><a href="#Empirical-Risk-Minimization-ERM" class="headerlink" title="Empirical Risk Minimization (ERM)"></a>Empirical Risk Minimization (ERM)</h3><p>Empirical Risk: The average loss of the model $f$ on training set $\mathcal D = {x_i, y_i}^N_{i=1}$</p>
-<p>$$<br>\hat{R}(f) = \frac{1}{N} \sum_{i = 1}^N \ell(f(x_i), y_i)<br>$$</p>
-<p>Empirical Risk Minimization(ERM): The learning algorithm selects the model that minimizes the empirical risk on the training dataset.</p>
-<p>$$<br>\mathcal A(\mathcal D, \mathcal H) = \arg \min_{f \in \mathcal H} \hat R(f)<br>$$</p>
-<h3 id="The-Consistency-of-Learning-Process"><a href="#The-Consistency-of-Learning-Process" class="headerlink" title="The Consistency of Learning Process"></a>The Consistency of Learning Process</h3><p>We say a learning process is consistent, if the minimizer for empirical risk at<br>the infinite data limit, converges to the minimum expected risk.</p>
+<h2 id="Learning-Theory"><a href="#Learning-Theory" class="headerlink" title="Learning Theory"></a>Learning Theory</h2><h3 id="Empirical-Risk-Minimization-ERM"><a href="#Empirical-Risk-Minimization-ERM" class="headerlink" title="Empirical Risk Minimization (ERM)"></a>Empirical Risk Minimization (ERM)</h3><p>Empirical Risk: The average loss of the model $f$ on training set $\mathcal D = \{x_i, y_i\}^N_{i=1}$</p>
+<script type="math/tex; mode=display">
+\hat{R}(f) = \frac{1}{N} \sum_{i = 1}^N \ell(f(x_i), y_i)</script><p>Empirical Risk Minimization(ERM): The learning algorithm selects the model that minimizes the empirical risk on the training dataset.</p>
+<script type="math/tex; mode=display">
+\mathcal A(\mathcal D, \mathcal H) = \arg \min_{f \in \mathcal H} \hat R(f)</script><h3 id="The-Consistency-of-Learning-Process"><a href="#The-Consistency-of-Learning-Process" class="headerlink" title="The Consistency of Learning Process"></a>The Consistency of Learning Process</h3><p>We say a learning process is consistent, if the minimizer for empirical risk at<br>the infinite data limit, converges to the minimum expected risk.</p>
 <h3 id="Overfitting-and-Bias-Variance-Trade-off"><a href="#Overfitting-and-Bias-Variance-Trade-off" class="headerlink" title="Overfitting and Bias-Variance Trade-off"></a>Overfitting and Bias-Variance Trade-off</h3><p>Define the Population Loss (also called Expected Risk) as</p>
-<p>$$<br>R(f) = \mathbb E_{(x, y) \sim u} \ell(f(x), y)<br>$$</p>
-<p>Therefore define the Generalization Gap as: $R(f) - \hat R(f)$</p>
+<script type="math/tex; mode=display">
+R(f) = \mathbb E_{(x, y) \sim u} \ell(f(x), y)</script><p>Therefore define the Generalization Gap as: $R(f) - \hat R(f)$</p>
 <p>There are two important concepts of predicting model</p>
 <ul>
 <li>Bias: The assumptions of target model, represents the extent to which the<br>average prediction over all datasets differs from the desired function.</li>
@@ -368,52 +412,50 @@
 <p>Bias-Variance Trade-off : There is an intrinsic contradict between bias and variance. The model’s test error contains the sum of both.</p>
 <p>Bias-Variance Decomposition :</p>
 <p>Suppose the ground truth function is $f^*$, the data distribution is $\mu$, the algorithm $\mathcal{A}$ learns from hypothesis space $\mathcal{H}$. We use $y(x; \mathcal{D}) = \mathcal{A}(\mathcal{D}, \mathcal{H})(x)$ to denote the output of ERM model $\hat{f} = \mathcal{A}(\mathcal{D}, \mathcal{H})$ on input $x$.<br>We are interested in the learned model’s prediction error on any $x$, namely</p>
-<p>$$<br>[y(x; \mathcal{D}) - f^<em>(x)]^2 = {y(x; \mathcal{D}) - \mathbb{E}<em>{\mathcal{D}}[y(x; \mathcal{D})] + \mathbb{E}</em>{\mathcal{D}}[y(x; \mathcal{D})] - f^</em>(x)}^2<br>$$</p>
-<p>$$<br>= {y(x; \mathcal{D}) - \mathbb{E}<em>{\mathcal{D}}[y(x; \mathcal{D})]}^2 + {\mathbb{E}</em>{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)}^2<br>$$</p>
-<p>$$</p>
-<ul>
-<li>2{y(x; \mathcal{D}) - \mathbb{E}<em>{\mathcal{D}}[y(x; \mathcal{D})]}{\mathbb{E}</em>{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)}<br>$$</li>
-</ul>
-<p>Taking expectation over all possible datasets $\mathcal{D}$, the last term is zero.</p>
-<p>$$<br>= {\mathbb{E}<em>{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)}^2 + \mathbb{E}</em>{\mathcal{D}}[{y(x; \mathcal{D}) - \mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})]}^2]<br>$$</p>
-<p>$$<br>= (\text{bias})^2 + \text{variance}<br>$$</p>
-<p>Regularization refers to techniques that are used to calibrate machine learning<br>models in order to prevent overfitting, which picks a small subset of solutions<br>that are more regular (punish the parameters for behaving abnormally) to<br>reduce the variance.</p>
+<script type="math/tex; mode=display">
+[y(x; \mathcal{D}) - f^*(x)]^2 = \{y(x; \mathcal{D}) - \mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})] + \mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)\}^2</script><script type="math/tex; mode=display">
+= \{y(x; \mathcal{D}) - \mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})]\}^2 + \{\mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)\}^2</script><script type="math/tex; mode=display">
+- 2\{y(x; \mathcal{D}) - \mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})]\}\{\mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)\}</script><p>Taking expectation over all possible datasets $\mathcal{D}$, the last term is zero.</p>
+<script type="math/tex; mode=display">
+= \{\mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})] - f^*(x)\}^2 + \mathbb{E}_{\mathcal{D}}[\{y(x; \mathcal{D}) - \mathbb{E}_{\mathcal{D}}[y(x; \mathcal{D})]\}^2]</script><script type="math/tex; mode=display">
+= (\text{bias})^2 + \text{variance}</script><p>Regularization refers to techniques that are used to calibrate machine learning<br>models in order to prevent overfitting, which picks a small subset of solutions<br>that are more regular (punish the parameters for behaving abnormally) to<br>reduce the variance.</p>
 <h3 id="Generalization-Error-and-Regularization"><a href="#Generalization-Error-and-Regularization" class="headerlink" title="Generalization Error and Regularization"></a>Generalization Error and Regularization</h3><h4 id="VC-dimension"><a href="#VC-dimension" class="headerlink" title="VC dimension"></a>VC dimension</h4><p>VC dimension is a measure of complexity for a certain hypothesis class:<br>The largest integer $d$ for a binary classification hypothesis class $\mathcal H$, such that<br>there exists 𝑑 points in the input space 𝒳 that can be perfectly classified by some<br>function $h \in \mathcal H$ no matter how you assign labels for these $d$ points.</p>
 <p>VC dimension characterizes the model class’s capacity for fitting random labels.</p>
 <h4 id="Generalization-Error-Bound"><a href="#Generalization-Error-Bound" class="headerlink" title="Generalization Error Bound"></a>Generalization Error Bound</h4><p>If a hypothesis class $\mathcal{H}$ has VC dimension $d_{vc}$, we have a theorem that states that with probability $1 - \delta$ and $m$ samples, we can bound the generalization gap for any model $h \in \mathcal{H}$ as</p>
-<p>$$<br>R(h) \leq \hat{R}(h) + \sqrt{\frac{8d_{vc} \ln\left(\frac{2em}{d_{vc}}\right) + 8 \ln\left(\frac{4}{\delta}\right)}{m}}<br>$$</p>
-<h2 id="Bayesian-Decision"><a href="#Bayesian-Decision" class="headerlink" title="Bayesian Decision"></a>Bayesian Decision</h2><p>Bayesian Decision: Find an optimal classifier according to the prior probability and class-conditional probability density of the feature</p>
+<script type="math/tex; mode=display">
+R(h) \leq \hat{R}(h) + \sqrt{\frac{8d_{vc} \ln\left(\frac{2em}{d_{vc}}\right) + 8 \ln\left(\frac{4}{\delta}\right)}{m}}</script><h2 id="Bayesian-Decision"><a href="#Bayesian-Decision" class="headerlink" title="Bayesian Decision"></a>Bayesian Decision</h2><p>Bayesian Decision: Find an optimal classifier according to the prior probability and class-conditional probability density of the feature</p>
 <p>The a priori or prior probability reflects our knowledge of how likely we expect a certain state of nature before we can actually observe said state of nature. </p>
 <p>The class-conditional probability density function is the probability<br>density function $P(x|\omega)$ for our feature $x$, given that the state/class is $\omega$</p>
 <p>Posterior Probability is the probability of a certain state/class given<br>our observable feature $x$: $P(\omega | x)$</p>
 <p><strong>Minimum Prediction Error Principle.</strong> The optimal classifier $f(\cdot)$ should minimize the expected prediction error, defined as</p>
-<p>$$<br>P(\text{error}) = \int \sum_{\omega_j \neq f(x)} P(x, \omega_j) \, dx<br>$$</p>
-<p>So, for each $x$, we want</p>
-<p>$$<br>f(x) = \arg\min_{\omega_i} \sum_{\omega_j \neq \omega_i} P(x, \omega_j) = \arg\min_{\omega_i} P(x) - P(x, \omega_i)<br>$$</p>
-<p>$$<br>f(x) = \arg\max_{\omega_i} P(x, \omega_i) = \arg\max_{\omega_i} P(\omega_i | x)<br>$$</p>
-<p>Therefore, the classifier just needs to pick the class with largest posterior probability.</p>
+<script type="math/tex; mode=display">
+P(\text{error}) = \int \sum_{\omega_j \neq f(x)} P(x, \omega_j) \, dx</script><p>So, for each $x$, we want</p>
+<script type="math/tex; mode=display">
+f(x) = \arg\min_{\omega_i} \sum_{\omega_j \neq \omega_i} P(x, \omega_j) = \arg\min_{\omega_i} P(x) - P(x, \omega_i)</script><script type="math/tex; mode=display">
+f(x) = \arg\max_{\omega_i} P(x, \omega_i) = \arg\max_{\omega_i} P(\omega_i | x)</script><p>Therefore, the classifier just needs to pick the class with largest posterior probability.</p>
 <p>We could use a decision threshold $\theta$ for diciding. Also we can avoid making decisions on the difficult cases in anticipation of a high error rate on those examples.</p>
 <h2 id="Density-estimation"><a href="#Density-estimation" class="headerlink" title="Density estimation"></a>Density estimation</h2><p>We need a method to estimate the distribution of each feature, this is called density estimation.</p>
 <h3 id="Parametric-Density-Estimation-Method"><a href="#Parametric-Density-Estimation-Method" class="headerlink" title="Parametric Density Estimation Method"></a>Parametric Density Estimation Method</h3><p>We can assume that the density function follows some form, for example:</p>
-<p>$$<br>P(x|\omega_i) = \frac{1}{\sqrt{2\pi}\sigma_i}e^{-\frac{(x-\mu_i)^2}{2\sigma_i^2}}<br>$$</p>
-<p>The unknown $\theta_i = (\mu_i, \sigma_i)$ is called the parameters.</p>
+<script type="math/tex; mode=display">
+P(x|\omega_i) = \frac{1}{\sqrt{2\pi}\sigma_i}e^{-\frac{(x-\mu_i)^2}{2\sigma_i^2}}</script><p>The unknown $\theta_i = (\mu_i, \sigma_i)$ is called the parameters.</p>
 <h4 id="Maximum-Likelihood-Estimation-MLE"><a href="#Maximum-Likelihood-Estimation-MLE" class="headerlink" title="Maximum Likelihood Estimation (MLE)"></a>Maximum Likelihood Estimation (MLE)</h4><p>Likelihood Function: $p(x|\theta)$ measures the likelihood of a parametrized distribution to generate a sample $x$.</p>
 <p>Max Likelihood Estimation (MLE): Choose the parameter 𝜃 that maximizes the<br>likelihood function for all the samples.</p>
-<p>For example, if we use Gaussian to estimate $X = {x_i}_{i=1}^N$, MLE gives the result as</p>
-<p>$$<br>\mu, \sigma = \arg\max_{\mu, \sigma} \prod_{i=1}^{N} \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x_i - \mu)^2}{2\sigma^2}}<br>$$</p>
-<p>For the sake of simplicity, denote $H(\theta) = \ln p(X|\theta) = \sum_{i=1}^{N} \ln p(x_i|\theta)$</p>
-<p>$$<br>\frac{dH}{d\mu} = 0 \implies \sum_{i=1}^{N} \frac{1}{\sigma} (x_i - \mu) = 0 \implies \mu = \frac{1}{N} \sum_{i=1}^{N} x_i,<br>$$</p>
-<p>$$<br>\frac{dH}{d\sigma} = 0 \implies -\sum_{i=1}^{N} \frac{1}{\sigma} + \sum_{i=1}^{N} \frac{(x_i - \mu)^2}{2\sigma^2} = 0 \implies \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2.<br>$$</p>
-<h3 id="Non-parametric-Density-Estimation-Method"><a href="#Non-parametric-Density-Estimation-Method" class="headerlink" title="Non-parametric Density Estimation Method"></a>Non-parametric Density Estimation Method</h3><p>Non-parametric method makes few assumptions about the form of the distribution and does not involve any parameter about the density function’s form.</p>
+<p>For example, if we use Gaussian to estimate $X = \{x_i\}_{i=1}^N$, MLE gives the result as</p>
+<script type="math/tex; mode=display">
+\mu, \sigma = \arg\max_{\mu, \sigma} \prod_{i=1}^{N} \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x_i - \mu)^2}{2\sigma^2}}</script><p>For the sake of simplicity, denote $H(\theta) = \ln p(X|\theta) = \sum_{i=1}^{N} \ln p(x_i|\theta)$</p>
+<script type="math/tex; mode=display">
+\frac{dH}{d\mu} = 0 \implies \sum_{i=1}^{N} \frac{1}{\sigma} (x_i - \mu) = 0 \implies \mu = \frac{1}{N} \sum_{i=1}^{N} x_i,</script><script type="math/tex; mode=display">
+\frac{dH}{d\sigma} = 0 \implies -\sum_{i=1}^{N} \frac{1}{\sigma} + \sum_{i=1}^{N} \frac{(x_i - \mu)^2}{2\sigma^2} = 0 \implies \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2.</script><h3 id="Non-parametric-Density-Estimation-Method"><a href="#Non-parametric-Density-Estimation-Method" class="headerlink" title="Non-parametric Density Estimation Method"></a>Non-parametric Density Estimation Method</h3><p>Non-parametric method makes few assumptions about the form of the distribution and does not involve any parameter about the density function’s form.</p>
 <p>Suppose totally we sample $N$ data, of which $K$ points are within $R$. Each data is<br>sample identically and independently. For each sample, whether it belongs to 𝑅 follows Bernoulli distribution with parameter $P_R$. We have $p(x) \approx \frac{P_R}{V} \approx \frac{K}{NV}$</p>
 <p>We could apply kernel methods to it.</p>
 <h2 id="Hidden-Markov-Models-HMMs"><a href="#Hidden-Markov-Models-HMMs" class="headerlink" title="Hidden Markov Models (HMMs)"></a>Hidden Markov Models (HMMs)</h2><p>Understanding Bayes’ Rule:</p>
-<p>$$<br>p(H|E)=\frac{p(E|H)P(H)}{P(E)}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+p(H|E)=\frac{p(E|H)P(H)}{P(E)}</script><ul>
 <li>Prior $P(H)$ : How probable was our hypothesis before observing the evidence?</li>
 <li>Likelihood $p(E|H)$ : How probable is the evidence given that our hypothesis is true?</li>
 <li>Marginal $P(E)$: How probable is the new evidence?</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -423,11 +465,11 @@
 </thead>
 <tbody>
 <tr>
-<td>$Q = {q_1, \ldots, q_n}$</td>
+<td>$Q = \{q_1, \ldots, q_n\}$</td>
 <td>The set of $n$ hidden states.</td>
 </tr>
 <tr>
-<td>$V = {v_1, \ldots, v_v}$</td>
+<td>$V = \{v_1, \ldots, v_v\}$</td>
 <td>The set of all possible observed values.</td>
 </tr>
 <tr>
@@ -452,58 +494,60 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Trad_ML/HMM%20Chain.png" alt="alt text"></p>
 <h3 id="Question-1-–-Evaluation"><a href="#Question-1-–-Evaluation" class="headerlink" title="Question #1 – Evaluation"></a>Question #1 – Evaluation</h3><p><strong>The evaluation problem in HMM</strong>: Given a model $M$ and an observed sequence $O$, calculate the probability of the observed sequence $P(O|M)$ .</p>
 <h4 id="Forward-Algorithm"><a href="#Forward-Algorithm" class="headerlink" title="Forward Algorithm"></a>Forward Algorithm</h4><p>Denote $\alpha_t(j)$ as the probability of observing $o_1 o_2 \ldots o_t$ and the hidden state at $t$ being $q_j$:</p>
-<p>$$<br>\alpha_t(j) = p(o_1 o_2 \ldots o_t, x_t = q_j)<br>$$</p>
-<p>Obviously, $\alpha_t(j)$ can be rewritten as:</p>
-<p>$$<br>\alpha_t(j) = e_j(o_t) \times \sum_{i=1}^{n} \alpha_{t-1}(i) a_{ij}<br>$$</p>
-<ol>
-<li><p>Define Initial Values:<br> $$<br> \alpha_1(j) = e_j(o_1) \times \pi_j, \quad j = 1, \cdots, n<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+\alpha_t(j) = p(o_1 o_2 \ldots o_t, x_t = q_j)</script><p>Obviously, $\alpha_t(j)$ can be rewritten as:</p>
+<script type="math/tex; mode=display">
+\alpha_t(j) = e_j(o_t) \times \sum_{i=1}^{n} \alpha_{t-1}(i) a_{ij}</script><ol>
+<li><p>Define Initial Values:</p>
+<script type="math/tex; mode=display">
+ \alpha_1(j) = e_j(o_1) \times \pi_j, \quad j = 1, \cdots, n</script></li>
 <li><p>Iterative solving:</p>
-<p> $$<br> \alpha_t(j) = e_j(o_t) \times \sum_{i=1}^{n} \alpha_{t-1}(i) a_{ij}, \quad t = 1:L<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ \alpha_t(j) = e_j(o_t) \times \sum_{i=1}^{n} \alpha_{t-1}(i) a_{ij}, \quad t = 1:L</script></li>
 <li><p>Obtaining results:</p>
-<p> $$<br> p(O) = \sum_{i=1}^{n} \alpha_L(i)<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ p(O) = \sum_{i=1}^{n} \alpha_L(i)</script></li>
 </ol>
 <h4 id="Backward-Algorithm"><a href="#Backward-Algorithm" class="headerlink" title="Backward Algorithm"></a>Backward Algorithm</h4><p>Denote $\beta_t(j)$ as the probability of observing $o_{t+1} o_{t+2} \ldots o_L$ and the hidden state at $t$ being $q_j$:</p>
-<p>$$<br>\beta_t(j) = p(o_{t+1} o_{t+2} \ldots o_L \mid x_t = q_j)<br>$$</p>
-<p>Obviously, $\beta_t(j)$ can be rewritten as:</p>
-<p>$$<br>\beta_t(j) = \sum_{i=1}^{n} a_{ji} e_i(o_{t+1}) \beta_{t+1}(i)<br>$$</p>
-<ol>
+<script type="math/tex; mode=display">
+\beta_t(j) = p(o_{t+1} o_{t+2} \ldots o_L \mid x_t = q_j)</script><p>Obviously, $\beta_t(j)$ can be rewritten as:</p>
+<script type="math/tex; mode=display">
+\beta_t(j) = \sum_{i=1}^{n} a_{ji} e_i(o_{t+1}) \beta_{t+1}(i)</script><ol>
 <li><p>Define Initial Values:</p>
-<p> $$<br> \beta_L(j) = 1, \quad j = 1:n \quad (L + 1 \text{ is terminal state})<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ \beta_L(j) = 1, \quad j = 1:n \quad (L + 1 \text{ is terminal state})</script></li>
 <li><p>Iterative solving:</p>
-<p> $$<br> \beta_t(j) = \sum_{i=1}^{n} a_{ji} e_i(o_{t+1}) \beta_{t+1}(i), \quad t = 1:L, \quad j = 1:n<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ \beta_t(j) = \sum_{i=1}^{n} a_{ji} e_i(o_{t+1}) \beta_{t+1}(i), \quad t = 1:L, \quad j = 1:n</script></li>
 <li><p>Obtaining results:</p>
-<p> $$<br> p(O) = \sum_{i=1}^{n} \pi_i e_i(o_1) \beta_1(i)<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ p(O) = \sum_{i=1}^{n} \pi_i e_i(o_1) \beta_1(i)</script></li>
 </ol>
 <h3 id="Question-2-–-Decoding"><a href="#Question-2-–-Decoding" class="headerlink" title="Question #2 – Decoding"></a>Question #2 – Decoding</h3><p><strong>The decoding problem in HMM:</strong> Given a model $M$ and an observed sequence $O$, calculate the most probable hidden state sequence $\mathbf{x} = \arg\max_{\mathbf{x}} p(\mathbf{x}, O | M)$.</p>
 <p>Define:</p>
-<p>$$<br>v_t(j) = \max_{q_1 \ldots q_{t-1}} p(q_1 \ldots q_{t-1}, o_1 \ldots o_t, x_t = q_j)<br>$$</p>
-<p>According to the recurrence relation, rewrite the above as:</p>
-<p>$$<br>v_t(j) = \max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)<br>$$</p>
-<p>Therefore, the most probable hidden state sequence is:</p>
-<p>$$<br>pa_t(j) = \arg\max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)<br>$$</p>
-<h4 id="Viterbi-Algorithm"><a href="#Viterbi-Algorithm" class="headerlink" title="Viterbi Algorithm"></a>Viterbi Algorithm</h4><ol>
+<script type="math/tex; mode=display">
+v_t(j) = \max_{q_1 \ldots q_{t-1}} p(q_1 \ldots q_{t-1}, o_1 \ldots o_t, x_t = q_j)</script><p>According to the recurrence relation, rewrite the above as:</p>
+<script type="math/tex; mode=display">
+v_t(j) = \max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)</script><p>Therefore, the most probable hidden state sequence is:</p>
+<script type="math/tex; mode=display">
+pa_t(j) = \arg\max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)</script><h4 id="Viterbi-Algorithm"><a href="#Viterbi-Algorithm" class="headerlink" title="Viterbi Algorithm"></a>Viterbi Algorithm</h4><ol>
 <li><p>Define Initial Values:</p>
-<p> $$<br> v_1(j) = e_j(o_1) \times \pi_j, \quad pa_1(j) = 0, \quad j = 1:n<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ v_1(j) = e_j(o_1) \times \pi_j, \quad pa_1(j) = 0, \quad j = 1:n</script></li>
 <li><p>Iterative solving:</p>
-<p> $$<br> v_t(j) = \max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)<br> $$</p>
-<p> $$<br> pa_t(j) = \arg\max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ v_t(j) = \max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)</script><script type="math/tex; mode=display">
+ pa_t(j) = \arg\max_{i=1}^n v_{t-1}(i) a_{ij} e_j(o_t)</script></li>
 <li><p>Obtaining results:</p>
-<p> $$<br> p^* = \max_{i=1:n} v_L(i)<br> $$</p>
-</li>
+<script type="math/tex; mode=display">
+ p^* = \max_{i=1:n} v_L(i)</script></li>
 </ol>
-<p>$$<br>x^*<em>L = \arg\max</em>{i=1:n} v_L(i)<br>$$</p>
-<p><strong>Computational Complexity</strong>: $O(n^2 L)$</p>
+<script type="math/tex; mode=display">
+x^*_L = \arg\max_{i=1:n} v_L(i)</script><p><strong>Computational Complexity</strong>: $O(n^2 L)$</p>
 <h3 id="Question-3-–-Learning"><a href="#Question-3-–-Learning" class="headerlink" title="Question #3 – Learning"></a>Question #3 – Learning</h3><p><strong>The learning problem in HMM</strong>: Given an observed sequence $O$, estimate the parameters of model: $M = \arg \max \limits_{M}P(M|O)$</p>
 <p>For simplicity, in the following steps we only present the learning process of transition matrix $A$. (The other parameters can be learned in a similar manner.)</p>
 <h4 id="Baum-Welch-Algorithm-a-special-case-of-EM-algorithm"><a href="#Baum-Welch-Algorithm-a-special-case-of-EM-algorithm" class="headerlink" title="Baum-Welch Algorithm (a special case of EM algorithm)"></a>Baum-Welch Algorithm (a special case of EM algorithm)</h4><ul>
@@ -512,27 +556,27 @@
 </ul>
 <h5 id="E-step"><a href="#E-step" class="headerlink" title="E-step"></a>E-step</h5><p>(#$T_{ij}$ denotes the times of hidden state transitioning from $q_i$ to $q_j$)</p>
 <p>Generate the guesses of #$T_{ij}$, i.e., the expected counts:</p>
-<p>$$<br>\text{Expected Counts} = \sum_{t=1}^{L} p(x_t = q_i, x_{t+1} = q_j \mid O, \theta_{\text{old}})<br>$$</p>
-<p>Can be estimated with Forward Algorithm and Backward Algorithm.</p>
+<script type="math/tex; mode=display">
+\text{Expected Counts} = \sum_{t=1}^{L} p(x_t = q_i, x_{t+1} = q_j \mid O, \theta_{\text{old}})</script><p>Can be estimated with Forward Algorithm and Backward Algorithm.</p>
 <h5 id="M-step"><a href="#M-step" class="headerlink" title="M-step"></a>M-step</h5><p>Generate new estimations with the expected counts:</p>
-<p>$$<br>\hat{a}<em>{ij} = \frac{\sum</em>{t=1}^{L-1} p(x_t = q_i, x_{t+1} = q_j \mid O, \theta_{\text{old}})}{\sum_{t=1}^{L-1} \left( \sum_{j’} p(x_t = q_i, x_{t+1} = q_{j’} \mid O, \theta_{\text{old}}) \right)}<br>$$</p>
-<p>Estimation when hidden state is unknown.</p>
+<script type="math/tex; mode=display">
+\hat{a}_{ij} = \frac{\sum_{t=1}^{L-1} p(x_t = q_i, x_{t+1} = q_j \mid O, \theta_{\text{old}})}{\sum_{t=1}^{L-1} \left( \sum_{j'} p(x_t = q_i, x_{t+1} = q_{j'} \mid O, \theta_{\text{old}}) \right)}</script><p>Estimation when hidden state is unknown.</p>
 <p><strong>Iterative Solving</strong>: Recalculate the expected counts with newly estimated parameters (E-step). Then generate newer estimations of $\theta$ with (M-step). Repeat until convergence.</p>
 <h2 id="Bayesian-Networks"><a href="#Bayesian-Networks" class="headerlink" title="Bayesian Networks"></a>Bayesian Networks</h2><h3 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h3><p>Naïve Bayes Assumption: Features $X_i$ are independent given class $Y$:</p>
-<p>$$<br>P_\theta(X_1, \ldots, X_n \mid Y) = \prod_i P_\theta(X_i \mid Y)<br>$$</p>
-<p>Inference: the label can be easily predicted with Bayes’ rule</p>
-<p>$$<br>Y^* = \arg\max_Y \prod_i P_\theta(X_i \mid Y) P(Y)<br>$$</p>
-<p>$Y^*$ is the value that maximizes Likelihood $\times$ Prior.</p>
+<script type="math/tex; mode=display">
+P_\theta(X_1, \ldots, X_n \mid Y) = \prod_i P_\theta(X_i \mid Y)</script><p>Inference: the label can be easily predicted with Bayes’ rule</p>
+<script type="math/tex; mode=display">
+Y^* = \arg\max_Y \prod_i P_\theta(X_i \mid Y) P(Y)</script><p>$Y^*$ is the value that maximizes Likelihood $\times$ Prior.</p>
 <p>When the number of samples is small, it is likely to encounter cases where $\text{Count}(Y = y) = 0$ or $\text{Count}(X_i = x, Y = y) = 0$. So we use Laplace Smoothing. The parameters of Naïve Bayes can be learned by counting:</p>
 <ul>
 <li>Prior:</li>
 </ul>
-<p>$$<br>P(Y = y) = \frac{\text{Count}(Y = y) + 1}{\sum_{y’} \text{Count}(Y = y’) + C}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+P(Y = y) = \frac{\text{Count}(Y = y) + 1}{\sum_{y'} \text{Count}(Y = y') + C}</script><ul>
 <li>Observation Distribution</li>
 </ul>
-<p>$$<br>P(X_i = x \mid Y = y) = \frac{\text{Count}(X_i = x, Y = y) + 1}{\sum_{x’} \text{Count}(X_i = x’, Y = y) + S}<br>$$</p>
-<p>Here, $C$ is the number of classes, $S$ is the number of possible values that $X_i$ can take.</p>
+<script type="math/tex; mode=display">
+P(X_i = x \mid Y = y) = \frac{\text{Count}(X_i = x, Y = y) + 1}{\sum_{x'} \text{Count}(X_i = x', Y = y) + S}</script><p>Here, $C$ is the number of classes, $S$ is the number of possible values that $X_i$ can take.</p>
 <h3 id="Learning-amp-Decision-on-BN"><a href="#Learning-amp-Decision-on-BN" class="headerlink" title="Learning &amp; Decision on BN"></a>Learning &amp; Decision on BN</h3><h4 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h4><p><strong>BN</strong>$(G, \Theta)$: a Bayesian network</p>
 <ul>
 <li>$G$ is a DAG with nodes and directed edges.</li>
@@ -543,31 +587,37 @@
 </li>
 </ul>
 <p>Joint probability of BN: </p>
-<p>$$<br>p(x) = \prod_{t=1}^{n} p(x_t \mid x_{\text{pa}(t)})<br>$$</p>
-<p>where $\text{pa}(t)$ is the set of all parent nodes of node $t$.</p>
-<p>$$<br>\begin{aligned}<br>\begin{array}{ccc}<br>&amp; D \<br>&amp; \downarrow \<br>&amp; A \rightarrow B \rightarrow C<br>\end{array}<br>\end{aligned}<br>$$</p>
-<p>$$<br>P(A, B, C, D) = P(A) P(D) P(B \mid A, D) P(C \mid B)<br>$$</p>
-<h4 id="Learning-on-Bayesian-Network"><a href="#Learning-on-Bayesian-Network" class="headerlink" title="Learning on Bayesian Network"></a>Learning on Bayesian Network</h4><p>Notation: Suppose BN has $n$ nodes, we use $\text{pa}(t)$ to denote the parent nodes of $t$ $(t = 1, \ldots, n)$</p>
+<script type="math/tex; mode=display">
+p(x) = \prod_{t=1}^{n} p(x_t \mid x_{\text{pa}(t)})</script><p>where $\text{pa}(t)$ is the set of all parent nodes of node $t$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\begin{array}{ccc}
+& D \\
+& \downarrow \\
+& A \rightarrow B \rightarrow C
+\end{array}
+\end{aligned}</script><script type="math/tex; mode=display">
+P(A, B, C, D) = P(A) P(D) P(B \mid A, D) P(C \mid B)</script><h4 id="Learning-on-Bayesian-Network"><a href="#Learning-on-Bayesian-Network" class="headerlink" title="Learning on Bayesian Network"></a>Learning on Bayesian Network</h4><p>Notation: Suppose BN has $n$ nodes, we use $\text{pa}(t)$ to denote the parent nodes of $t$ $(t = 1, \ldots, n)$</p>
 <p>By the conditional independence of BN, we have</p>
-<p>$$<br>p(D \mid \Theta) = \prod_{i=1}^{N} p(x_i \mid \Theta) = \prod_{i=1}^{N} \prod_{t=1}^{n} p(x_{i,t} \mid x_{i,\text{pa}(t)}, \theta_t) = \prod_{t=1}^{n} \prod_{i=1}^{N} p(D_{i,t} \mid \theta_t)<br>$$</p>
-<p>$$<br>p(\Theta) = \prod_{t=1}^{n} p(\theta_t)<br>$$</p>
-<p>Thus, the posterior becomes:</p>
-<p>$$<br>p(\Theta \mid D) \sim \prod_{t=1}^{n} p(D_t \mid \theta_t) p(\theta_t)<br>$$</p>
-<p>$$<br>p(\theta \mid D) \sim \prod_{t=1}^{n} \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc}) \cdot p(\theta_{tc})<br>$$</p>
-<h5 id="Learning-BN-with-Categorical-Distribution"><a href="#Learning-BN-with-Categorical-Distribution" class="headerlink" title="Learning BN with Categorical Distribution"></a>Learning BN with Categorical Distribution</h5><p>Consider a case where each probability distribution in BN is categorical, In this case, we can model the conditional distribution of node $t$ as(We use a scalar value $c$ to represent parent nodes’ states for simplicity.):</p>
-<p>$$<br>P(x_t = k \mid x_{\text{pa}(t)} = c) = \theta_{tck}<br>$$</p>
-<p>and the conditional probability of node $t$ can be denoted as:</p>
-<p>$$<br>\theta_{tc} = [\theta_{tc1}, \theta_{tc2}, \ldots, \theta_{tcK_t}], \quad \sum_{k=1}^{K_t} \theta_{tck} = 1<br>$$</p>
-<p>Categorical Distribution: </p>
-<p>$$<br>p = [\theta_1, \theta_2, \ldots, \theta_d], \quad \theta_i \geq 0, \quad \sum_{i} \theta_i = 1<br>$$</p>
-<p>E.g., toss a coin $(d = 2)$, roll a die $(d = 6)$</p>
+<script type="math/tex; mode=display">
+p(D \mid \Theta) = \prod_{i=1}^{N} p(x_i \mid \Theta) = \prod_{i=1}^{N} \prod_{t=1}^{n} p(x_{i,t} \mid x_{i,\text{pa}(t)}, \theta_t) = \prod_{t=1}^{n} \prod_{i=1}^{N} p(D_{i,t} \mid \theta_t)</script><script type="math/tex; mode=display">
+p(\Theta) = \prod_{t=1}^{n} p(\theta_t)</script><p>Thus, the posterior becomes:</p>
+<script type="math/tex; mode=display">
+p(\Theta \mid D) \sim \prod_{t=1}^{n} p(D_t \mid \theta_t) p(\theta_t)</script><script type="math/tex; mode=display">
+p(\theta \mid D) \sim \prod_{t=1}^{n} \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc}) \cdot p(\theta_{tc})</script><h5 id="Learning-BN-with-Categorical-Distribution"><a href="#Learning-BN-with-Categorical-Distribution" class="headerlink" title="Learning BN with Categorical Distribution"></a>Learning BN with Categorical Distribution</h5><p>Consider a case where each probability distribution in BN is categorical, In this case, we can model the conditional distribution of node $t$ as(We use a scalar value $c$ to represent parent nodes’ states for simplicity.):</p>
+<script type="math/tex; mode=display">
+P(x_t = k \mid x_{\text{pa}(t)} = c) = \theta_{tck}</script><p>and the conditional probability of node $t$ can be denoted as:</p>
+<script type="math/tex; mode=display">
+\theta_{tc} = [\theta_{tc1}, \theta_{tc2}, \ldots, \theta_{tcK_t}], \quad \sum_{k=1}^{K_t} \theta_{tck} = 1</script><p>Categorical Distribution: </p>
+<script type="math/tex; mode=display">
+p = [\theta_1, \theta_2, \ldots, \theta_d], \quad \theta_i \geq 0, \quad \sum_{i} \theta_i = 1</script><p>E.g., toss a coin $(d = 2)$, roll a die $(d = 6)$</p>
 <p>Count the training samples where $x_t = k, x_{\text{pa}(t)} = c$:</p>
-<p>$$<br>N_{tck} = \sum_{i=1}^{N} I(x_{i,t} = k, x_{i,\text{pa}(t)} = c)<br>$$</p>
-<p>According to the property of categorical distribution, we can represent the likelihood function as:</p>
-<p>$$<br>p(D_t \mid \theta_t) = \prod_{c=1}^{q_t} \prod_{k=1}^{K_t} \theta_{tck}^{N_{tck}} = \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc})<br>$$</p>
-<p>Thus the posterior can be further factorized:</p>
-<p>$$<br>p(\theta \mid D) \sim \prod_{t=1}^{n} p(D_t \mid \theta_t)p(\theta_t) = \prod_{t=1}^{n} \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc})p(\theta_{tc})<br>$$</p>
-<p>Notation:</p>
+<script type="math/tex; mode=display">
+N_{tck} = \sum_{i=1}^{N} I(x_{i,t} = k, x_{i,\text{pa}(t)} = c)</script><p>According to the property of categorical distribution, we can represent the likelihood function as:</p>
+<script type="math/tex; mode=display">
+p(D_t \mid \theta_t) = \prod_{c=1}^{q_t} \prod_{k=1}^{K_t} \theta_{tck}^{N_{tck}} = \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc})</script><p>Thus the posterior can be further factorized:</p>
+<script type="math/tex; mode=display">
+p(\theta \mid D) \sim \prod_{t=1}^{n} p(D_t \mid \theta_t)p(\theta_t) = \prod_{t=1}^{n} \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc})p(\theta_{tc})</script><p>Notation:</p>
 <ul>
 <li>$D_{tc}$ are the sample set where the value of $x_{\text{pa}(t)}$ is $c$</li>
 <li>$q_t$ is the number of possible values of $x_{\text{pa}(t)}$</li>
@@ -577,28 +627,30 @@
 <p>Conjugate Prior: A prior distribution is called a conjugate prior for a likelihood function if the posterior distribution is in the same probability distribution family as the prior.</p>
 <p>The conjugate prior for the categorical distribution is the Dirichlet distribution:</p>
 <p>Choosing the prior as conjugate prior — Dirichlet distribution:</p>
-<p>$$<br>p(\theta_{tc}) \propto \prod_{k=1}^{K_t} \theta_{tck}^{\alpha_{tck} - 1}<br>$$</p>
-<p>$\alpha_{tck}$ are integers and are the hyperparameters of BN model.</p>
+<script type="math/tex; mode=display">
+p(\theta_{tc}) \propto \prod_{k=1}^{K_t} \theta_{tck}^{\alpha_{tck} - 1}</script><p>$\alpha_{tck}$ are integers and are the hyperparameters of BN model.</p>
 <p>In this case, the posterior can be easily derived as:</p>
-<p>$$<br>p(D_{tc} \mid \theta_{tc}) p(\theta_{tc}) \propto \left( \prod_{k=1}^{K_t} \theta_{tck}^{N_{tck}} \right) * \left( \prod_{k=1}^{K_t} \theta_{tck}^{\alpha_{tck} - 1} \right) = \prod_{k=1}^{K_t} \theta_{tck}^{N_{tck} + \alpha_{tck} - 1}<br>$$</p>
-<p>We can then derive an estimate of $\theta_{tck}$ by calculating the expectation:</p>
-<p>$$<br>\hat{\theta}<em>{tck} = E(\theta</em>{tck}) = \frac{N_{tck} + \alpha_{tck}}{\sum_{k’} (N_{tck’} + \alpha_{tck’})}<br>$$</p>
-<h2 id="K-Means-Algorithm"><a href="#K-Means-Algorithm" class="headerlink" title="K-Means Algorithm"></a>K-Means Algorithm</h2><ol>
+<script type="math/tex; mode=display">
+p(D_{tc} \mid \theta_{tc}) p(\theta_{tc}) \propto \left( \prod_{k=1}^{K_t} \theta_{tck}^{N_{tck}} \right) * \left( \prod_{k=1}^{K_t} \theta_{tck}^{\alpha_{tck} - 1} \right) = \prod_{k=1}^{K_t} \theta_{tck}^{N_{tck} + \alpha_{tck} - 1}</script><p>We can then derive an estimate of $\theta_{tck}$ by calculating the expectation:</p>
+<script type="math/tex; mode=display">
+\hat{\theta}_{tck} = E(\theta_{tck}) = \frac{N_{tck} + \alpha_{tck}}{\sum_{k'} (N_{tck'} + \alpha_{tck'})}</script><h2 id="K-Means-Algorithm"><a href="#K-Means-Algorithm" class="headerlink" title="K-Means Algorithm"></a>K-Means Algorithm</h2><ol>
 <li><strong>Initalize</strong> cluster centers $\mu_1, \cdots, \mu_k$ randomly.</li>
 <li><p><strong>Repeat</strong> until no change of cluster assignment</p>
 <ol>
-<li><strong>Assignment step</strong>: Assign data points to closest cluster center<br> $$<br> C_k \leftarrow \set{n \mid x_n \text{ is closest to } \mu_k}<br> $$</li>
-<li><strong>Update Step</strong>: Change the cluster center to the average of its assigned points<br> $$<br> \mu_k \leftarrow \frac{1}{|C_k|} \sum_{n \in C_k} x_n<br> $$</li>
+<li><strong>Assignment step</strong>: Assign data points to closest cluster center<script type="math/tex; mode=display">
+ C_k \leftarrow \set{n \mid x_n \text{ is closest to } \mu_k}</script></li>
+<li><strong>Update Step</strong>: Change the cluster center to the average of its assigned points<script type="math/tex; mode=display">
+ \mu_k \leftarrow \frac{1}{|C_k|} \sum_{n \in C_k} x_n</script></li>
 </ol>
 </li>
 </ol>
 <h3 id="Optimization-View-of-K-Means"><a href="#Optimization-View-of-K-Means" class="headerlink" title="Optimization View of K-Means"></a>Optimization View of K-Means</h3><p><strong>Optimization Objective</strong>: within-cluster sum of squares (WCSS)</p>
-<p>$$<br>\min_{\mu, r} J_e = \sum_{k=1}^{K} \sum_{n=1}^{N} r_{n,k} | x_n - \mu_k |^2<br>$$</p>
-<p><strong>Step 1: Fix $\mu$, optimize $r$</strong></p>
-<p>$$<br>r_{n,k^<em>} = 1 \quad \Leftrightarrow \quad k^</em> = \arg\min_k | x_n - \mu_k |<br>$$</p>
-<p><strong>Step 2: Fix $r$, optimize $\mu$</strong></p>
-<p>$$<br>\mu_k^* = \frac{\sum_{n} r_{n,k} x_n}{\sum_{n} r_{n,k}} = \frac{1}{|C_k|} \sum_{n \in C_k} x_i<br>$$</p>
-<h3 id="Rule-of-Thumbs-for-initializing-k-means"><a href="#Rule-of-Thumbs-for-initializing-k-means" class="headerlink" title="Rule of Thumbs for initializing k-means"></a>Rule of Thumbs for initializing k-means</h3><ul>
+<script type="math/tex; mode=display">
+\min_{\mu, r} J_e = \sum_{k=1}^{K} \sum_{n=1}^{N} r_{n,k} \| x_n - \mu_k \|^2</script><p><strong>Step 1: Fix $\mu$, optimize $r$</strong></p>
+<script type="math/tex; mode=display">
+r_{n,k^*} = 1 \quad \Leftrightarrow \quad k^* = \arg\min_k \| x_n - \mu_k \|</script><p><strong>Step 2: Fix $r$, optimize $\mu$</strong></p>
+<script type="math/tex; mode=display">
+\mu_k^* = \frac{\sum_{n} r_{n,k} x_n}{\sum_{n} r_{n,k}} = \frac{1}{|C_k|} \sum_{n \in C_k} x_i</script><h3 id="Rule-of-Thumbs-for-initializing-k-means"><a href="#Rule-of-Thumbs-for-initializing-k-means" class="headerlink" title="Rule of Thumbs for initializing k-means"></a>Rule of Thumbs for initializing k-means</h3><ul>
 <li><strong>Random Initialization</strong>: Randomly generate 𝑘 points in the space.</li>
 <li><strong>Random Partition Initialization</strong>: Randomly group the data into 𝑘 clusters and<br>use their cluster center to initialize the algorithm.</li>
 <li><strong>Forgy Initialization</strong>: Randomly select 𝑘 samples from the data.</li>
@@ -606,97 +658,97 @@
 </ul>
 <h3 id="How-to-tell-the-right-number-of-clusters"><a href="#How-to-tell-the-right-number-of-clusters" class="headerlink" title="How to tell the right number of clusters?"></a>How to tell the right number of clusters?</h3><p>We find the elbow point of the $J_e$ image.</p>
 <h2 id="EM-Algorithm-for-Gaussian-Mixture-Model-GMM"><a href="#EM-Algorithm-for-Gaussian-Mixture-Model-GMM" class="headerlink" title="EM Algorithm for Gaussian Mixture Model (GMM)"></a>EM Algorithm for Gaussian Mixture Model (GMM)</h2><h3 id="Multivariate-Gaussian-Distribution"><a href="#Multivariate-Gaussian-Distribution" class="headerlink" title="Multivariate Gaussian Distribution"></a>Multivariate Gaussian Distribution</h3><p><strong>$d$-dimensional Multivariate Gaussian</strong>:  </p>
-<p>$$<br>N(x \mid \mu, \Sigma) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu) \right)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+N(x \mid \mu, \Sigma) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu) \right)</script><ul>
 <li>$\mu \in \mathbb{R}^d$ the mean vector</li>
 <li>$\Sigma \in \mathbb{R}^{d \times d}$ the covariance matrix</li>
 </ul>
-<h4 id="MLE-of-Gaussian-Distribution"><a href="#MLE-of-Gaussian-Distribution" class="headerlink" title="MLE of Gaussian Distribution"></a>MLE of Gaussian Distribution</h4><p>The likelihood function of a given dataset $X = {x_1, x_2, \ldots, x_N}$:</p>
-<p>$$<br>p(X \mid \mu, \Sigma) = \prod_{n=1}^{N} p(x_n \mid \mu, \Sigma) = \prod_{n=1}^{N} \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x_n - \mu)^T \Sigma^{-1} (x_n - \mu) \right)<br>$$</p>
-<p>The maximum likelihood estimation (MLE) of the parameters is defined by:</p>
-<p>$$<br>\mu^<em>, \Sigma^</em> = \arg\max_{\mu, \Sigma} \mathcal{L}(\mu, \Sigma)<br>$$</p>
-<p>$$<br>\mathcal{L}(\mu, \Sigma) = \log p(X \mid \mu, \Sigma) = \frac{N}{2} \log |\Sigma| - \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)^T \Sigma^{-1} (x_n - \mu)<br>$$</p>
-<p>The optimization problem of maximum likelihood estimation (MLE):</p>
-<p>$$<br>\max_{\mu, \Sigma} \mathcal{L}(\mu, \Sigma) = \frac{N}{2} \log |\Sigma| - \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)^T \Sigma^{-1} (x_n - \mu)<br>$$</p>
-<p>Solve the optimization by taking the gradient:</p>
-<p>$$<br>0 = \frac{\partial \mathcal{L}}{\partial \mu} = \sum_{n=1}^{N} \Sigma^{-1} (x_n - \mu) \quad \Rightarrow \quad \mu^* = \frac{1}{N} \sum_{n=1}^{N} x_n \quad \text{(Sample Mean)}<br>$$</p>
-<p>$$<br>0 = \frac{\partial \mathcal{L}}{\partial \Sigma^{-1}} = \frac{N}{2} \Sigma - \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)(x_n - \mu)^T \quad \Rightarrow \quad \Sigma^<em> = \frac{1}{N} \sum_{n=1}^{N} (x_n - \mu^</em>)(x_n - \mu^*)^T \quad \text{(Sample Covariance)}<br>$$</p>
-<h3 id="Gaussian-Mixture-Model-GMM"><a href="#Gaussian-Mixture-Model-GMM" class="headerlink" title="Gaussian Mixture Model (GMM)"></a>Gaussian Mixture Model (GMM)</h3><p>A Gaussian Mixture Model (GMM) is the weighted sum of a family of Gaussians whose density function has the form:</p>
-<p>$$<br>p(x \mid \pi, \mu, \Sigma) = \sum_{k=1}^{K} \pi_k N(x \mid \mu_k, \Sigma_k)<br>$$</p>
-<ul>
+<h4 id="MLE-of-Gaussian-Distribution"><a href="#MLE-of-Gaussian-Distribution" class="headerlink" title="MLE of Gaussian Distribution"></a>MLE of Gaussian Distribution</h4><p>The likelihood function of a given dataset $X = \{x_1, x_2, \ldots, x_N\}$:</p>
+<script type="math/tex; mode=display">
+p(X \mid \mu, \Sigma) = \prod_{n=1}^{N} p(x_n \mid \mu, \Sigma) = \prod_{n=1}^{N} \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x_n - \mu)^T \Sigma^{-1} (x_n - \mu) \right)</script><p>The maximum likelihood estimation (MLE) of the parameters is defined by:</p>
+<script type="math/tex; mode=display">
+\mu^*, \Sigma^* = \arg\max_{\mu, \Sigma} \mathcal{L}(\mu, \Sigma)</script><script type="math/tex; mode=display">
+\mathcal{L}(\mu, \Sigma) = \log p(X \mid \mu, \Sigma) = \frac{N}{2} \log |\Sigma| - \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)^T \Sigma^{-1} (x_n - \mu)</script><p>The optimization problem of maximum likelihood estimation (MLE):</p>
+<script type="math/tex; mode=display">
+\max_{\mu, \Sigma} \mathcal{L}(\mu, \Sigma) = \frac{N}{2} \log |\Sigma| - \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)^T \Sigma^{-1} (x_n - \mu)</script><p>Solve the optimization by taking the gradient:</p>
+<script type="math/tex; mode=display">
+0 = \frac{\partial \mathcal{L}}{\partial \mu} = \sum_{n=1}^{N} \Sigma^{-1} (x_n - \mu) \quad \Rightarrow \quad \mu^* = \frac{1}{N} \sum_{n=1}^{N} x_n \quad \text{(Sample Mean)}</script><script type="math/tex; mode=display">
+0 = \frac{\partial \mathcal{L}}{\partial \Sigma^{-1}} = \frac{N}{2} \Sigma - \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)(x_n - \mu)^T \quad \Rightarrow \quad \Sigma^* = \frac{1}{N} \sum_{n=1}^{N} (x_n - \mu^*)(x_n - \mu^*)^T \quad \text{(Sample Covariance)}</script><h3 id="Gaussian-Mixture-Model-GMM"><a href="#Gaussian-Mixture-Model-GMM" class="headerlink" title="Gaussian Mixture Model (GMM)"></a>Gaussian Mixture Model (GMM)</h3><p>A Gaussian Mixture Model (GMM) is the weighted sum of a family of Gaussians whose density function has the form:</p>
+<script type="math/tex; mode=display">
+p(x \mid \pi, \mu, \Sigma) = \sum_{k=1}^{K} \pi_k N(x \mid \mu_k, \Sigma_k)</script><ul>
 <li>Each Gaussian $N(\mu_k, \Sigma_k)$ is called a component of GMM.</li>
-<li>Scalars ${\pi_k}_{k=1}^{K}$ are referred to as mixing coefficients, which satisfy</li>
+<li>Scalars $\{\pi_k\}_{k=1}^{K}$ are referred to as mixing coefficients, which satisfy</li>
 </ul>
-<p>$$<br>\sum_{k=1}^{K} \pi_k = 1<br>$$</p>
-<p>This condition ensures $p(x \mid \pi, \mu, \Sigma)$ is indeed a density function.</p>
-<h3 id="Soft-Clustering-with-Mixture-Model"><a href="#Soft-Clustering-with-Mixture-Model" class="headerlink" title="Soft Clustering with Mixture Model"></a>Soft Clustering with Mixture Model</h3><p>$$<br>p(z = k) = \pi_k, \quad p(x \mid z) = N(x \mid \mu_z, \Sigma_z)<br>$$</p>
-<p>By Bayes Rule, the posterior probability of $z$ given $x$ is:</p>
-<p>$$<br>\gamma_k \overset{\Delta}{=} p(z = k \mid x) = \frac{p(z = k, x)}{p(x)} = \frac{\pi_k N(x \mid \mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j N(x \mid \mu_j, \Sigma_j)}<br>$$</p>
-<p>We call $\gamma_k$ the responsibility of the $k$-th component on the data $x$.</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{K} \pi_k = 1</script><p>This condition ensures $p(x \mid \pi, \mu, \Sigma)$ is indeed a density function.</p>
+<h3 id="Soft-Clustering-with-Mixture-Model"><a href="#Soft-Clustering-with-Mixture-Model" class="headerlink" title="Soft Clustering with Mixture Model"></a>Soft Clustering with Mixture Model</h3><script type="math/tex; mode=display">
+p(z = k) = \pi_k, \quad p(x \mid z) = N(x \mid \mu_z, \Sigma_z)</script><p>By Bayes Rule, the posterior probability of $z$ given $x$ is:</p>
+<script type="math/tex; mode=display">
+\gamma_k \overset{\Delta}{=} p(z = k \mid x) = \frac{p(z = k, x)}{p(x)} = \frac{\pi_k N(x \mid \mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j N(x \mid \mu_j, \Sigma_j)}</script><p>We call $\gamma_k$ the responsibility of the $k$-th component on the data $x$.</p>
 <p><strong>Probabilistic Clustering</strong>: each data point is assigned a probability distribution over the clusters.</p>
 <p>“$x$ belongs to the $k$-th cluster with probability $\gamma_k$”</p>
 <h3 id="MLE-for-Gaussian-Mixture-Model"><a href="#MLE-for-Gaussian-Mixture-Model" class="headerlink" title="MLE for Gaussian Mixture Model"></a>MLE for Gaussian Mixture Model</h3><p>Log-likelihood function of GMM</p>
-<p>$$<br>\log p(X \mid \pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)<br>$$</p>
-<p>Maximum Likelihood Estimation</p>
-<p>$$<br>\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)<br>$$</p>
-<p>subject to:</p>
-<p>$$<br>\sum_{k=1}^{K} \pi_k = 1<br>$$</p>
-<h3 id="Optimality-Condition-for-mu"><a href="#Optimality-Condition-for-mu" class="headerlink" title="Optimality Condition for $\mu$"></a>Optimality Condition for $\mu$</h3><p>$$<br>N(x \mid \mu, \Sigma) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu) \right),<br>$$</p>
-<p>$$<br>\frac{\partial x^T A x}{\partial x} = (A + A^T) x<br>$$</p>
-<p>$$<br>\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)<br>$$</p>
-<p>Take partial derivative with respect to $\mu_k$,</p>
-<p>$$<br>0 = \frac{\partial \mathcal{L}}{\partial \mu_k} = -\sum_{n=1}^{N} \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)} \Sigma_k^{-1} (x_n - \mu_k)<br>$$</p>
-<p>Notice that the posterior of $z_n$ (also known as responsibility $\gamma_{n,k}$) can be written as</p>
-<p>$$<br>\gamma_{n,k} \overset{\Delta}{=} p(z_n = k \mid x_n) = \frac{p(z_n = k) p(x_n \mid z_n = k)}{\sum_j p(z_n = j) p(x_n \mid z_n = j)} = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}<br>$$</p>
-<p>Thus</p>
-<p>$$<br>0 = \sum_{n=1}^{N} \gamma_{n,k} (x_n - \mu_k)<br>$$</p>
-<p>$$<br>\mu_k = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} x_n, \text{ where } N_k = \sum_{n=1}^{N} \gamma_{n,k}<br>$$</p>
-<h3 id="Optimality-Condition-for-Sigma"><a href="#Optimality-Condition-for-Sigma" class="headerlink" title="Optimality Condition for $\Sigma$"></a>Optimality Condition for $\Sigma$</h3><p>$$<br>\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)<br>$$</p>
-<p>$$<br>\gamma_{n,k} = p(z_n = k \mid x_n) = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}, \quad N_k \overset{\Delta}{=} \sum_{n=1}^{N} \gamma_{n,k}<br>$$</p>
-<p>Similarly, take derivative with respect to $\Sigma_k$, which yields</p>
-<p>$$<br>0 = \frac{\partial \mathcal{L}}{\partial \Sigma_k} \quad \Rightarrow \quad \Sigma_k = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} (x_n - \mu_k)(x_n - \mu_k)^T<br>$$</p>
-<p>Responsibility-reweighted Sample Covariance</p>
-<h3 id="Optimality-Condition-for-pi"><a href="#Optimality-Condition-for-pi" class="headerlink" title="Optimality Condition for $\pi$"></a>Optimality Condition for $\pi$</h3><p>$$<br>\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)<br>$$</p>
-<p>$$<br>\gamma_{n,k} = p(z_n = k \mid x_n) = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}, \quad N_k \overset{\Delta}{=} \sum_{n=1}^{N} \gamma_{n,k}<br>$$</p>
-<p>Constraints of mixing coefficients $\pi$: $\sum_{k=1}^{K} \pi_k = 1$</p>
+<script type="math/tex; mode=display">
+\log p(X \mid \pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)</script><p>Maximum Likelihood Estimation</p>
+<script type="math/tex; mode=display">
+\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)</script><p>subject to:</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{K} \pi_k = 1</script><h3 id="Optimality-Condition-for-mu"><a href="#Optimality-Condition-for-mu" class="headerlink" title="Optimality Condition for $\mu$"></a>Optimality Condition for $\mu$</h3><script type="math/tex; mode=display">
+N(x \mid \mu, \Sigma) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left( -\frac{1}{2} (x - \mu)^T \Sigma^{-1} (x - \mu) \right),</script><script type="math/tex; mode=display">
+\frac{\partial x^T A x}{\partial x} = (A + A^T) x</script><script type="math/tex; mode=display">
+\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)</script><p>Take partial derivative with respect to $\mu_k$,</p>
+<script type="math/tex; mode=display">
+0 = \frac{\partial \mathcal{L}}{\partial \mu_k} = -\sum_{n=1}^{N} \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)} \Sigma_k^{-1} (x_n - \mu_k)</script><p>Notice that the posterior of $z_n$ (also known as responsibility $\gamma_{n,k}$) can be written as</p>
+<script type="math/tex; mode=display">
+\gamma_{n,k} \overset{\Delta}{=} p(z_n = k \mid x_n) = \frac{p(z_n = k) p(x_n \mid z_n = k)}{\sum_j p(z_n = j) p(x_n \mid z_n = j)} = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}</script><p>Thus</p>
+<script type="math/tex; mode=display">
+0 = \sum_{n=1}^{N} \gamma_{n,k} (x_n - \mu_k)</script><script type="math/tex; mode=display">
+\mu_k = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} x_n, \text{ where } N_k = \sum_{n=1}^{N} \gamma_{n,k}</script><h3 id="Optimality-Condition-for-Sigma"><a href="#Optimality-Condition-for-Sigma" class="headerlink" title="Optimality Condition for $\Sigma$"></a>Optimality Condition for $\Sigma$</h3><script type="math/tex; mode=display">
+\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)</script><script type="math/tex; mode=display">
+\gamma_{n,k} = p(z_n = k \mid x_n) = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}, \quad N_k \overset{\Delta}{=} \sum_{n=1}^{N} \gamma_{n,k}</script><p>Similarly, take derivative with respect to $\Sigma_k$, which yields</p>
+<script type="math/tex; mode=display">
+0 = \frac{\partial \mathcal{L}}{\partial \Sigma_k} \quad \Rightarrow \quad \Sigma_k = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} (x_n - \mu_k)(x_n - \mu_k)^T</script><p>Responsibility-reweighted Sample Covariance</p>
+<h3 id="Optimality-Condition-for-pi"><a href="#Optimality-Condition-for-pi" class="headerlink" title="Optimality Condition for $\pi$"></a>Optimality Condition for $\pi$</h3><script type="math/tex; mode=display">
+\max_{\pi, \mu, \Sigma} \mathcal{L}(\pi, \mu, \Sigma) = \sum_{n=1}^{N} \log \left( \sum_{k=1}^{K} \pi_k N(x_n \mid \mu_k, \Sigma_k) \right)</script><script type="math/tex; mode=display">
+\gamma_{n,k} = p(z_n = k \mid x_n) = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}, \quad N_k \overset{\Delta}{=} \sum_{n=1}^{N} \gamma_{n,k}</script><p>Constraints of mixing coefficients $\pi$: $\sum_{k=1}^{K} \pi_k = 1$</p>
 <p>Introduce Lagrange multiplier:</p>
-<p>$$<br>\mathcal{L}’ = \mathcal{L} + \lambda \left( \sum_{k=1}^{K} \pi_k - 1 \right)<br>$$</p>
-<p>Take derivative with respect to $\pi_k$, which gives</p>
-<p>$$<br>0 = \frac{\partial \mathcal{L}’}{\partial \pi_k} \quad \Rightarrow \quad \sum_{n=1}^{N} \frac{\gamma_{n,k}}{\pi_k} + \lambda = \frac{N_k}{\pi_k} + \lambda \quad \Rightarrow \quad \pi_k = \frac{-N_k}{\lambda}<br>$$</p>
-<p>By the constraints, we have $1 = \sum_{k=1}^{K} \pi_k = \frac{-1}{\lambda} \sum_{k=1}^{K} N_k$,</p>
+<script type="math/tex; mode=display">
+\mathcal{L}' = \mathcal{L} + \lambda \left( \sum_{k=1}^{K} \pi_k - 1 \right)</script><p>Take derivative with respect to $\pi_k$, which gives</p>
+<script type="math/tex; mode=display">
+0 = \frac{\partial \mathcal{L}'}{\partial \pi_k} \quad \Rightarrow \quad \sum_{n=1}^{N} \frac{\gamma_{n,k}}{\pi_k} + \lambda = \frac{N_k}{\pi_k} + \lambda \quad \Rightarrow \quad \pi_k = \frac{-N_k}{\lambda}</script><p>By the constraints, we have $1 = \sum_{k=1}^{K} \pi_k = \frac{-1}{\lambda} \sum_{k=1}^{K} N_k$,</p>
 <p>Also notice that</p>
-<p>$$<br>\sum_{k=1}^{K} N_k = \sum_{k=1}^{K} \sum_{n=1}^{N} \gamma_{n,k} = \sum_{n=1}^{N} \sum_{k=1}^{K} \gamma_{n,k} = \sum_{n=1}^{N} 1 = N<br>$$</p>
-<p>Therefore,</p>
-<p>$$<br>\lambda = -\sum_{k=1}^{K} N_k = -N, \quad \pi_k = \frac{N_k}{N}<br>$$</p>
-<h3 id="Expectation-Maximization-EM-Algorithm"><a href="#Expectation-Maximization-EM-Algorithm" class="headerlink" title="Expectation-Maximization (EM) Algorithm"></a>Expectation-Maximization (EM) Algorithm</h3><ol>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{K} N_k = \sum_{k=1}^{K} \sum_{n=1}^{N} \gamma_{n,k} = \sum_{n=1}^{N} \sum_{k=1}^{K} \gamma_{n,k} = \sum_{n=1}^{N} 1 = N</script><p>Therefore,</p>
+<script type="math/tex; mode=display">
+\lambda = -\sum_{k=1}^{K} N_k = -N, \quad \pi_k = \frac{N_k}{N}</script><h3 id="Expectation-Maximization-EM-Algorithm"><a href="#Expectation-Maximization-EM-Algorithm" class="headerlink" title="Expectation-Maximization (EM) Algorithm"></a>Expectation-Maximization (EM) Algorithm</h3><ol>
 <li>Initialize $\pi_k, \mu_k, \Sigma_k, \quad k = 1, 2, \ldots, K$</li>
 <li>E-Step: Evaluate the responsibilities using the current parameter values</li>
 </ol>
-<p>$$<br>\gamma_{n,k} = p(z_n = 1 \mid x_n) = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}<br>$$</p>
-<ol start="3">
+<script type="math/tex; mode=display">
+\gamma_{n,k} = p(z_n = 1 \mid x_n) = \frac{\pi_k N(x_n \mid \mu_k, \Sigma_k)}{\sum_j \pi_j N(x_n \mid \mu_j, \Sigma_j)}</script><ol>
 <li>M-Step: Re-estimate the parameters using the current responsibilities</li>
 </ol>
-<p>$$<br>\mu_k^{\text{new}} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} x_n<br>$$</p>
-<p>$$<br>\Sigma_k^{\text{new}} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} (x_n - \mu_k^{\text{new}})(x_n - \mu_k^{\text{new}})^T<br>$$</p>
-<p>$$<br>\pi_k^{\text{new}} = \frac{N_k}{N}<br>$$</p>
-<p>where $N_k = \sum_{n=1}^{N} \gamma_{n,k}$</p>
-<ol start="4">
+<script type="math/tex; mode=display">
+\mu_k^{\text{new}} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} x_n</script><script type="math/tex; mode=display">
+\Sigma_k^{\text{new}} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma_{n,k} (x_n - \mu_k^{\text{new}})(x_n - \mu_k^{\text{new}})^T</script><script type="math/tex; mode=display">
+\pi_k^{\text{new}} = \frac{N_k}{N}</script><p>where $N_k = \sum_{n=1}^{N} \gamma_{n,k}$</p>
+<ol>
 <li>Return to step 2 if the convergence criterion is not satisfied.</li>
 </ol>
 <h2 id="Hierarchical-Clustering"><a href="#Hierarchical-Clustering" class="headerlink" title="Hierarchical Clustering"></a>Hierarchical Clustering</h2><p><strong>Distance Function</strong>: The distance function affects which pairs of clusters are merged/split and in what order.</p>
 <ul>
 <li><strong>Single Linkage</strong>:</li>
 </ul>
-<p>$$<br>d(C_i, C_j) = \min_{x \in C_i, y \in C_j} d(x, y)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+d(C_i, C_j) = \min_{x \in C_i, y \in C_j} d(x, y)</script><ul>
 <li><strong>Complete Linkage</strong>:</li>
 </ul>
-<p>$$<br>d(C_i, C_j) = \max_{x \in C_i, y \in C_j} d(x, y)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+d(C_i, C_j) = \max_{x \in C_i, y \in C_j} d(x, y)</script><ul>
 <li><strong>Average Linkage</strong>:</li>
 </ul>
-<p>$$<br>d(C_i, C_j) = \frac{1}{|C_i| \cdot |C_j|} \sum_{x \in C_i, y \in C_j} d(x, y)<br>$$</p>
-<h3 id="Two-Types-of-Hierarchical-Clustering"><a href="#Two-Types-of-Hierarchical-Clustering" class="headerlink" title="Two Types of Hierarchical Clustering"></a>Two Types of Hierarchical Clustering</h3><ul>
+<script type="math/tex; mode=display">
+d(C_i, C_j) = \frac{1}{|C_i| \cdot |C_j|} \sum_{x \in C_i, y \in C_j} d(x, y)</script><h3 id="Two-Types-of-Hierarchical-Clustering"><a href="#Two-Types-of-Hierarchical-Clustering" class="headerlink" title="Two Types of Hierarchical Clustering"></a>Two Types of Hierarchical Clustering</h3><ul>
 <li><p><strong>Bottom-Up (Agglomerative)</strong></p>
 <ul>
 <li>Start with each item in its own cluster, find the best pair to merge into a new cluster.</li>
@@ -711,93 +763,111 @@
 </li>
 </ul>
 <h3 id="Agglomerative-Bottom-up-Clustering"><a href="#Agglomerative-Bottom-up-Clustering" class="headerlink" title="Agglomerative (Bottom-up) Clustering"></a>Agglomerative (Bottom-up) Clustering</h3><ol>
-<li><strong>Input</strong>: cluster distance measure $d$, dataset $X = {x_n}_{n=1}^{N}$, number of clusters $k$</li>
-<li><strong>Initialize</strong> $\mathcal{C} = {C_i = {x_n} \mid x_n \in X}$ // Each point in separate cluster</li>
+<li><strong>Input</strong>: cluster distance measure $d$, dataset $X = \{x_n\}_{n=1}^{N}$, number of clusters $k$</li>
+<li><strong>Initialize</strong> $\mathcal{C} = \{C_i = \{x_n\} \mid x_n \in X\}$ // Each point in separate cluster</li>
 <li><strong>Repeat</strong>:<ul>
 <li>Find the closest pair of clusters $C_i, C_j \in \mathcal{C}$ based on distance metric $d$</li>
 <li>$C_{ij} = C_i \cup C_j$ // Merge the selected clusters</li>
-<li>$\mathcal{C} = (\mathcal{C} \setminus {C_i, C_j}) \cup {C_{ij}}$ // Update the clustering</li>
+<li>$\mathcal{C} = (\mathcal{C} \setminus \{C_i, C_j\}) \cup \{C_{ij}\}$ // Update the clustering</li>
 </ul>
 </li>
 <li><strong>Until</strong> $|\mathcal{C}| = k$</li>
 </ol>
 <p>A naïve implementation takes space complexity $O(N^2)$, time complexity $O(N^3)$.</p>
 <h2 id="LASSO-Regression"><a href="#LASSO-Regression" class="headerlink" title="LASSO Regression"></a>LASSO Regression</h2><p><strong>LASSO (Least Absolute Shrinkage and Selection Operator)</strong>: Simply linear regression with an $\ell_1$ penalty for sparsity</p>
-<p>$$<br>L(w) = \sum_{i=1}^{n} \left( w^T x_i - y_i \right)^2 + C |w|_1<br>$$</p>
-<p>sparse solution $\leftrightarrow$ feature selection</p>
+<script type="math/tex; mode=display">
+L(w) = \sum_{i=1}^{n} \left( w^T x_i - y_i \right)^2 + C \|w\|_1</script><p>sparse solution $\leftrightarrow$ feature selection</p>
 <h2 id="Principal-Component-Analysis-PCA"><a href="#Principal-Component-Analysis-PCA" class="headerlink" title="Principal Component Analysis (PCA)"></a>Principal Component Analysis (PCA)</h2><h3 id="Computing-PCA-Eigenvalue-Decomposition"><a href="#Computing-PCA-Eigenvalue-Decomposition" class="headerlink" title="Computing PCA: Eigenvalue Decomposition"></a>Computing PCA: Eigenvalue Decomposition</h3><p><strong>Objective</strong>: Maximize variance of projected data</p>
-<p>$$<br>\max_{\mathbf{u}_j} \mathbb{E}[(\mathbf{u}_j^T \mathbf{x})^2]<br>$$</p>
-<p>subject to $\mathbf{u}_j^T \mathbf{u}_j = 1$, $\mathbf{u}_j^T \mathbf{u}_k = 1$, $k &lt; j$</p>
+<script type="math/tex; mode=display">
+\max_{\mathbf{u}_j} \mathbb{E}[(\mathbf{u}_j^T \mathbf{x})^2]</script><p>subject to $\mathbf{u}_j^T \mathbf{u}_j = 1$, $\mathbf{u}_j^T \mathbf{u}_k = 1$, $k &lt; j$</p>
 <p><strong>Observation</strong>: PC $j$ is direction of the $j$-th largest eigenvector of $\frac{1}{n} \mathbf{X}^T \mathbf{X}$</p>
 <p><strong>Eigenvalue Decomposition</strong>:  </p>
-<p>$$<br>\mathbf{U} =<br>\begin{pmatrix}<br>\mathbf{u}_1 &amp; \cdots &amp; \mathbf{u}_k \<br>\end{pmatrix}<br>$$</p>
-<p>are eigenvectors of $\frac{1}{n} \mathbf{X}^T \mathbf{X}$</p>
+<script type="math/tex; mode=display">
+\mathbf{U} = 
+\begin{pmatrix}
+\mathbf{u}_1 & \cdots & \mathbf{u}_k \\
+\end{pmatrix}</script><p>are eigenvectors of $\frac{1}{n} \mathbf{X}^T \mathbf{X}$</p>
 <h2 id="Manifold-Learning"><a href="#Manifold-Learning" class="headerlink" title="Manifold Learning"></a>Manifold Learning</h2><p>Geodesic distance: lines of shortest length between points on a manifold</p>
-<h2 id="Classical-Neural-Networks"><a href="#Classical-Neural-Networks" class="headerlink" title="Classical Neural Networks"></a>Classical Neural Networks</h2><h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><p>$$<br>\begin{aligned}<br>\mathbf{a}^{(1)} &amp;= \mathbf{x} \newline</p>
-<p>\mathbf{z}^{(2)} &amp;= \Theta^{(1)} \mathbf{a}^{(1)} \newline</p>
-<p>\mathbf{a}^{(2)} &amp;= g(\mathbf{z}^{(2)}) \quad [\text{append } a_0^{(2)}] \newline</p>
-<p>\mathbf{z}^{(3)} &amp;= \Theta^{(2)} \mathbf{a}^{(2)} \newline</p>
-<p>\mathbf{a}^{(3)} &amp;= g(\mathbf{z}^{(3)}) \quad [\text{append } a_0^{(3)}] \newline</p>
-<p>\mathbf{z}^{(4)} &amp;= \Theta^{(3)} \mathbf{a}^{(3)} \newline</p>
-<p>\mathbf{a}^{(4)} &amp;= h_\Theta(\mathbf{x}) = g(\mathbf{z}^{(4)})<br>\end{aligned}<br>$$</p>
-<h3 id="Backpropagation-Gradient-Computation"><a href="#Backpropagation-Gradient-Computation" class="headerlink" title="Backpropagation: Gradient Computation"></a>Backpropagation: Gradient Computation</h3><p>Apply the chain rule to compute gradients.</p>
+<h2 id="Classical-Neural-Networks"><a href="#Classical-Neural-Networks" class="headerlink" title="Classical Neural Networks"></a>Classical Neural Networks</h2><h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><script type="math/tex; mode=display">
+\begin{aligned}
+\mathbf{a}^{(1)} &= \mathbf{x} \newline
+
+\mathbf{z}^{(2)} &= \Theta^{(1)} \mathbf{a}^{(1)} \newline
+
+\mathbf{a}^{(2)} &= g(\mathbf{z}^{(2)}) \quad [\text{append } a_0^{(2)}] \newline
+
+\mathbf{z}^{(3)} &= \Theta^{(2)} \mathbf{a}^{(2)} \newline
+
+\mathbf{a}^{(3)} &= g(\mathbf{z}^{(3)}) \quad [\text{append } a_0^{(3)}] \newline
+
+\mathbf{z}^{(4)} &= \Theta^{(3)} \mathbf{a}^{(3)} \newline
+
+\mathbf{a}^{(4)} &= h_\Theta(\mathbf{x}) = g(\mathbf{z}^{(4)})
+\end{aligned}</script><h3 id="Backpropagation-Gradient-Computation"><a href="#Backpropagation-Gradient-Computation" class="headerlink" title="Backpropagation: Gradient Computation"></a>Backpropagation: Gradient Computation</h3><p>Apply the chain rule to compute gradients.</p>
 <p>Summary of backpropagation:</p>
-<p>$$<br>\delta^{(4)} = \frac{\partial J(\Theta)}{\partial \mathbf{z}^{(4)}} = \mathbf{a}^{(4)} - \mathbf{y}<br>$$</p>
-<p>$$<br>\delta^{(3)} = \frac{\partial J(\Theta)}{\partial \mathbf{z}^{(3)}} = (\Theta^{(3)})^T \delta^{(4)} \ast g’(\mathbf{z}^{(3)})<br>$$</p>
-<p>$$<br>\delta^{(2)} = \frac{\partial J(\Theta)}{\partial \mathbf{z}^{(2)}} = (\Theta^{(2)})^T \delta^{(3)} \ast g’(\mathbf{z}^{(2)})<br>$$</p>
-<p>(No $\delta^{(1)}$)</p>
+<script type="math/tex; mode=display">
+\delta^{(4)} = \frac{\partial J(\Theta)}{\partial \mathbf{z}^{(4)}} = \mathbf{a}^{(4)} - \mathbf{y}</script><script type="math/tex; mode=display">
+\delta^{(3)} = \frac{\partial J(\Theta)}{\partial \mathbf{z}^{(3)}} = (\Theta^{(3)})^T \delta^{(4)} \ast g'(\mathbf{z}^{(3)})</script><script type="math/tex; mode=display">
+\delta^{(2)} = \frac{\partial J(\Theta)}{\partial \mathbf{z}^{(2)}} = (\Theta^{(2)})^T \delta^{(3)} \ast g'(\mathbf{z}^{(2)})</script><p>(No $\delta^{(1)}$)</p>
 <ul>
 <li>Based on $\delta^{(l)}$, $\frac{\partial J(\Theta)}{\partial \Theta^{(l)}}$ can be computed as:</li>
 </ul>
-<p>$$<br>\frac{\partial J(\Theta)}{\partial \Theta^{(l)}} = \delta^{(l+1)} (\mathbf{a}^{(l)})^T \quad (l = 1, 2, 3)<br>$$</p>
-<p>For example, the activation function $g(x)$ is sigmoid, i.e., $g(x) = \frac{1}{1+e^{-x}}$ and $g’(x) = g(x)(1 - g(x))$.</p>
+<script type="math/tex; mode=display">
+\frac{\partial J(\Theta)}{\partial \Theta^{(l)}} = \delta^{(l+1)} (\mathbf{a}^{(l)})^T \quad (l = 1, 2, 3)</script><p>For example, the activation function $g(x)$ is sigmoid, i.e., $g(x) = \frac{1}{1+e^{-x}}$ and $g’(x) = g(x)(1 - g(x))$.</p>
 <p>For example, $J(\Theta)$ is the cross-entropy loss for binary classification, i.e.,</p>
-<p>$$<br>J(\Theta) = -(1 - y) \log(1 - h_\Theta(\mathbf{x})) - y \log(h_\Theta(\mathbf{x}))<br>$$</p>
-<p>and</p>
-<p>$$<br>J’(\Theta) = \frac{h_\Theta(\mathbf{x}) - y}{h_\Theta(\mathbf{x})(1 - h_\Theta(\mathbf{x}))}<br>$$</p>
-<h2 id="Optimization-of-Deep-Networks"><a href="#Optimization-of-Deep-Networks" class="headerlink" title="Optimization of Deep Networks"></a>Optimization of Deep Networks</h2><h3 id="Vanilla-Gradient-Descent"><a href="#Vanilla-Gradient-Descent" class="headerlink" title="Vanilla Gradient Descent"></a>Vanilla Gradient Descent</h3><p>Core: Compute the gradient of the loss function $g_t = \nabla \mathcal L$ on all training samples</p>
+<script type="math/tex; mode=display">
+J(\Theta) = -(1 - y) \log(1 - h_\Theta(\mathbf{x})) - y \log(h_\Theta(\mathbf{x}))</script><p>and</p>
+<script type="math/tex; mode=display">
+J'(\Theta) = \frac{h_\Theta(\mathbf{x}) - y}{h_\Theta(\mathbf{x})(1 - h_\Theta(\mathbf{x}))}</script><h2 id="Optimization-of-Deep-Networks"><a href="#Optimization-of-Deep-Networks" class="headerlink" title="Optimization of Deep Networks"></a>Optimization of Deep Networks</h2><h3 id="Vanilla-Gradient-Descent"><a href="#Vanilla-Gradient-Descent" class="headerlink" title="Vanilla Gradient Descent"></a>Vanilla Gradient Descent</h3><p>Core: Compute the gradient of the loss function $g_t = \nabla \mathcal L$ on all training samples</p>
 <h3 id="Stochastic-Gradient-Descent"><a href="#Stochastic-Gradient-Descent" class="headerlink" title="Stochastic Gradient Descent"></a>Stochastic Gradient Descent</h3><p>Core: Select a sample $(\mathbf x_i, y_i)$ from the training set and compute the gradient of the loss function $g_t = \nabla \mathcal L$ on the selected sample.</p>
-<h3 id="Mini-batch-Gradient-Descent"><a href="#Mini-batch-Gradient-Descent" class="headerlink" title="Mini-batch Gradient Descent"></a>Mini-batch Gradient Descent</h3><p>Core Randomly select $b$ samples ${(\mathbf x_i, y_i)}_{i \in [1, n]}$ and compute the gradient of the loss function $g_t = \nabla \mathcal L$ on the selected sample.</p>
-<h3 id="Gradient-Descent-with-Momentum"><a href="#Gradient-Descent-with-Momentum" class="headerlink" title="Gradient Descent with Momentum"></a>Gradient Descent with Momentum</h3><p>$$<br>\Theta_{t+1} = \Theta_t + \mathbf{v}_t<br>$$</p>
-<p>where</p>
-<p>$$<br>\mathbf{v}<em>t = \beta \mathbf{v}</em>{t-1} - \alpha \nabla_\Theta \mathcal{L}<br>$$</p>
-<p>The momentum term ($\mathbf{v}_t$) accumulates the gradients from the past several steps.</p>
+<h3 id="Mini-batch-Gradient-Descent"><a href="#Mini-batch-Gradient-Descent" class="headerlink" title="Mini-batch Gradient Descent"></a>Mini-batch Gradient Descent</h3><p>Core Randomly select $b$ samples $\{(\mathbf x_i, y_i)\}_{i \in [1, n]}$ and compute the gradient of the loss function $g_t = \nabla \mathcal L$ on the selected sample.</p>
+<h3 id="Gradient-Descent-with-Momentum"><a href="#Gradient-Descent-with-Momentum" class="headerlink" title="Gradient Descent with Momentum"></a>Gradient Descent with Momentum</h3><script type="math/tex; mode=display">
+\Theta_{t+1} = \Theta_t + \mathbf{v}_t</script><p>where</p>
+<script type="math/tex; mode=display">
+\mathbf{v}_t = \beta \mathbf{v}_{t-1} - \alpha \nabla_\Theta \mathcal{L}</script><p>The momentum term ($\mathbf{v}_t$) accumulates the gradients from the past several steps.</p>
 <h3 id="Adaptative-Gradient-AdaGrad"><a href="#Adaptative-Gradient-AdaGrad" class="headerlink" title="Adaptative Gradient (AdaGrad)"></a>Adaptative Gradient (AdaGrad)</h3><p>Particularly, it tends to assign higher learning rates to infrequent features, which ensures that the parameter updates rely less on frequency and more on relevance.</p>
 <p>In AdaGrad, the parameters are updated as:</p>
-<p>$$<br>\Theta_{t+1} = \Theta_t - \frac{\alpha}{\sqrt{r_t} + \epsilon} .* \mathbf{g}_t<br>$$</p>
-<p>where</p>
-<p>$$<br>r_t = r_{t-1} + \mathbf{g}_t .* \mathbf{g}_t<br>$$</p>
-<p>$\epsilon$ is a small number to ensure numerical stability.</p>
+<script type="math/tex; mode=display">
+\Theta_{t+1} = \Theta_t - \frac{\alpha}{\sqrt{r_t} + \epsilon} .* \mathbf{g}_t</script><p>where</p>
+<script type="math/tex; mode=display">
+r_t = r_{t-1} + \mathbf{g}_t .* \mathbf{g}_t</script><p>$\epsilon$ is a small number to ensure numerical stability.</p>
 <p>Here, $.*$ is the element-wise product, and $\mathbf{g}_t = \nabla \mathcal{L}(\Theta_t)$.</p>
 <h3 id="Root-Mean-Square-Propagation-RMSProp"><a href="#Root-Mean-Square-Propagation-RMSProp" class="headerlink" title="Root Mean Square Propagation (RMSProp)"></a>Root Mean Square Propagation (RMSProp)</h3><p>RMSProp changes the gradient accumulation in AdaGrad into an exponentially weighted moving average.</p>
 <p>This method uses an exponentially decaying average to discard history from the extreme past so that it can converge rapidly after finding a convex bowl, as if it were an instance of the AdaGrad algorithm initialized within that bowl.</p>
 <ul>
 <li>The update rule is denoted as:</li>
 </ul>
-<p>$$<br>\Theta_{t+1} = \Theta_t - \frac{\alpha}{\sqrt{r_t} + \epsilon} .* \mathbf{g}_t<br>$$</p>
-<p>where</p>
-<p>$$<br>r_t = \beta r_{t-1} + (1 - \beta) \mathbf{g}_t .* \mathbf{g}_t<br>$$</p>
-<p>$r$ is the moving average of squared gradients, $\beta$ is the decay rate.</p>
+<script type="math/tex; mode=display">
+\Theta_{t+1} = \Theta_t - \frac{\alpha}{\sqrt{r_t} + \epsilon} .* \mathbf{g}_t</script><p>where</p>
+<script type="math/tex; mode=display">
+r_t = \beta r_{t-1} + (1 - \beta) \mathbf{g}_t .* \mathbf{g}_t</script><p>$r$ is the moving average of squared gradients, $\beta$ is the decay rate.</p>
 <h3 id="Adaptive-Moment-Estimation-Adam"><a href="#Adaptive-Moment-Estimation-Adam" class="headerlink" title="Adaptive Moment Estimation (Adam)"></a>Adaptive Moment Estimation (Adam)</h3><p>Adam extends the RMSProp method by making use of <strong>first moments</strong> of gradients, instead of second moment only in RMSProp.</p>
 <ul>
 <li>Adam can be seen as a variant of combination of RMSProp and Momentum with a few distinctions:</li>
 </ul>
-<p><strong>First-order Moment:</strong><br>$$<br>s_t = \beta_1 s_{t-1} + (1 - \beta_1) g_t<br>$$</p>
-<p><strong>Second-order Moment:</strong><br>$$<br>r_t = \beta_2 r_{t-1} + (1 - \beta_2) g_t .* g_t<br>$$</p>
-<p>Considering the first-order moment $s_t = \beta_1 s_{t-1} + (1 - \beta_1) g_t$, we start by initializing $s_0 = 0$, then:</p>
-<p>$$<br>\begin{aligned}</p>
-<p>s_1 &amp;= \beta_1 s_0 + (1 - \beta_1) g_1 = (1 - \beta_1) g_1 \</p>
-<p>s_2 &amp;= \beta_1 s_1 + (1 - \beta_1) g_2 = \beta_1 (1 - \beta_1) g_1 + (1 - \beta_1) g_2 \</p>
-<p>s_3 &amp;= \beta_1 s_2 + (1 - \beta_1) g_3 = \beta_1 [ \beta_1 (1 - \beta_1) g_1 + (1 - \beta_1) g_2 ] + (1 - \beta_1) g_3 \</p>
-<p>s_t &amp;= (1 - \beta_1) \sum_{i=0}^t (\beta_1^i) g_i</p>
-<p>\end{aligned}<br>$$</p>
-<p>Note that we initialized $s_0 = 0$, this causes significant amount of bias initially towards smaller values. We can use the fact that $\sum_{i=0}^{t-1} \beta_1^i = \frac{1 - \beta_1^t}{1 - \beta_1}$ to re-normalize the terms, and get:</p>
-<p>$$<br>\hat{s}_t = \frac{s_t}{1 - \beta_1^t}<br>$$</p>
-<p>The same method can be performed in the second-order moments, we get:</p>
-<p>$$<br>\hat{r}_t = \frac{r_t}{1 - \beta_2^t}<br>$$</p>
-<p>Finally, Adam combines the bias-corrected first and second-order moments and updates the parameters as:</p>
-<p>$$<br>\theta_{t+1} = \theta_t - \alpha \frac{\hat{s}_t}{\sqrt{\hat{r}_t + \epsilon}}<br>$$</p>
-<h2 id="Convolutional-Neural-Networks"><a href="#Convolutional-Neural-Networks" class="headerlink" title="Convolutional Neural Networks"></a>Convolutional Neural Networks</h2><h3 id="Convolution-Layer"><a href="#Convolution-Layer" class="headerlink" title="Convolution Layer"></a>Convolution Layer</h3><p>The convolution operator preserves the spatial structure of image. Different filters extract different features from the original image.</p>
+<p><strong>First-order Moment:</strong></p>
+<script type="math/tex; mode=display">
+s_t = \beta_1 s_{t-1} + (1 - \beta_1) g_t</script><p><strong>Second-order Moment:</strong></p>
+<script type="math/tex; mode=display">
+r_t = \beta_2 r_{t-1} + (1 - \beta_2) g_t .* g_t</script><p>Considering the first-order moment $s_t = \beta_1 s_{t-1} + (1 - \beta_1) g_t$, we start by initializing $s_0 = 0$, then:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+
+s_1 &= \beta_1 s_0 + (1 - \beta_1) g_1 = (1 - \beta_1) g_1 \\
+
+s_2 &= \beta_1 s_1 + (1 - \beta_1) g_2 = \beta_1 (1 - \beta_1) g_1 + (1 - \beta_1) g_2 \\
+
+s_3 &= \beta_1 s_2 + (1 - \beta_1) g_3 = \beta_1 [ \beta_1 (1 - \beta_1) g_1 + (1 - \beta_1) g_2 ] + (1 - \beta_1) g_3 \\
+
+s_t &= (1 - \beta_1) \sum_{i=0}^t (\beta_1^i) g_i
+
+\end{aligned}</script><p>Note that we initialized $s_0 = 0$, this causes significant amount of bias initially towards smaller values. We can use the fact that $\sum_{i=0}^{t-1} \beta_1^i = \frac{1 - \beta_1^t}{1 - \beta_1}$ to re-normalize the terms, and get:</p>
+<script type="math/tex; mode=display">
+\hat{s}_t = \frac{s_t}{1 - \beta_1^t}</script><p>The same method can be performed in the second-order moments, we get:</p>
+<script type="math/tex; mode=display">
+\hat{r}_t = \frac{r_t}{1 - \beta_2^t}</script><p>Finally, Adam combines the bias-corrected first and second-order moments and updates the parameters as:</p>
+<script type="math/tex; mode=display">
+\theta_{t+1} = \theta_t - \alpha \frac{\hat{s}_t}{\sqrt{\hat{r}_t + \epsilon}}</script><h2 id="Convolutional-Neural-Networks"><a href="#Convolutional-Neural-Networks" class="headerlink" title="Convolutional Neural Networks"></a>Convolutional Neural Networks</h2><h3 id="Convolution-Layer"><a href="#Convolution-Layer" class="headerlink" title="Convolution Layer"></a>Convolution Layer</h3><p>The convolution operator preserves the spatial structure of image. Different filters extract different features from the original image.</p>
 <h3 id="Pooling-Layer"><a href="#Pooling-Layer" class="headerlink" title="Pooling Layer"></a>Pooling Layer</h3><p>The pooling layer is a downsampling operation, typically applied after a convolution layer, which does some spatial invariance.</p>
 <p>Commonly used pooling operations: Max Pooling and Average Pooling</p>
 <h3 id="Batch-Normalization-Layer"><a href="#Batch-Normalization-Layer" class="headerlink" title="Batch Normalization Layer"></a>Batch Normalization Layer</h3><p>Batch Normalization alleviate the problem of gradient vanishing.  </p>
@@ -811,8 +881,8 @@
 <li>$\theta = [\theta_1, \ldots, \theta_V]$ represents all the parameters of $V$-many words.</li>
 <li>The objective function $J(\theta)$ is the (average) negative log likelihood:</li>
 </ul>
-<p>$$<br>J(\theta) = -\frac{1}{T} \log L(\theta) = -\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \le j \le m, j \ne 0} \log P(w_{t+j} | w_t; \theta)<br>$$</p>
-<h4 id="Word2vec-Prediction-Function"><a href="#Word2vec-Prediction-Function" class="headerlink" title="Word2vec: Prediction Function"></a>Word2vec: Prediction Function</h4><ul>
+<script type="math/tex; mode=display">
+J(\theta) = -\frac{1}{T} \log L(\theta) = -\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \le j \le m, j \ne 0} \log P(w_{t+j} | w_t; \theta)</script><h4 id="Word2vec-Prediction-Function"><a href="#Word2vec-Prediction-Function" class="headerlink" title="Word2vec: Prediction Function"></a>Word2vec: Prediction Function</h4><ul>
 <li>How to calculate $P(w_{t+j} | w_t; \theta)$?<ul>
 <li>Softmax function</li>
 </ul>
@@ -823,8 +893,8 @@
 </ul>
 </li>
 </ul>
-<p>$$<br>P(o | c) = \frac{\exp(u_o^T v_c)}{\sum_{w \in V} \exp(u_w^T v_c)}<br>$$</p>
-<ol>
+<script type="math/tex; mode=display">
+P(o | c) = \frac{\exp(u_o^T v_c)}{\sum_{w \in V} \exp(u_w^T v_c)}</script><ol>
 <li>Dot product compares similarity of $o$ and $c$.</li>
 <li>Exponentiation makes anything positive.</li>
 <li>Normalize over entire vocabulary to give probability distribution.</li>
@@ -834,11 +904,11 @@
 <h3 id="Training-RNN"><a href="#Training-RNN" class="headerlink" title="Training RNN"></a>Training RNN</h3><p>Get a big corpus of text which is sequences of words</p>
 <p>Sample a (batch of) sequence of length ( T ) into RNN-LM; compute output distribution ( \hat{y}^{(t)} ) for every step ( t ), i.e., predict probability distribution of every word, given words so far.</p>
 <p>Average this to get overall loss for a sentence (actually, a batch of sentences):</p>
-<p>$$<br>J(\theta) = \frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)<br>$$</p>
-<p>Backpropagation for RNNs: backpropagation through time  </p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)</script><p>Backpropagation for RNNs: backpropagation through time  </p>
 <p>Apply the multivariable chain rule:</p>
-<p>$$<br>\frac{\partial J}{\partial \mathbf{W}<em>h} = \sum</em>{i=1}^{t} \frac{\partial J^{(t)}}{\partial \mathbf{W}<em>h^{(i)}} = \sum</em>{i=1}^{t} \frac{\partial J^{(t)}}{\partial \mathbf{W}_h^{(i)}}<br>$$</p>
-<p>The gradient w.r.t. a repeated weight is the sum of the gradient w.r.t. each time it appears.</p>
+<script type="math/tex; mode=display">
+\frac{\partial J}{\partial \mathbf{W}_h} = \sum_{i=1}^{t} \frac{\partial J^{(t)}}{\partial \mathbf{W}_h^{(i)}} = \sum_{i=1}^{t} \frac{\partial J^{(t)}}{\partial \mathbf{W}_h^{(i)}}</script><p>The gradient w.r.t. a repeated weight is the sum of the gradient w.r.t. each time it appears.</p>
 <h2 id="Long-Short-Term-Memory-RNN"><a href="#Long-Short-Term-Memory-RNN" class="headerlink" title="Long Short-Term Memory RNN"></a>Long Short-Term Memory RNN</h2><p>The key to LSTMs is the cell state, the hidden state stores short-term information; the cell stores long-term information.</p>
 <p>The cell runs straight down the entire chain, with only some minor linear interactions. It’s very easy for information to just flow along it unchanged.</p>
 <h3 id="LSTM-–-Forget-Gate"><a href="#LSTM-–-Forget-Gate" class="headerlink" title="LSTM – Forget Gate"></a>LSTM – Forget Gate</h3><p>Gating mechanisms: Control which information is erased/written/read from the cell</p>
@@ -848,99 +918,125 @@
 </ul>
 <p>Forget gate:</p>
 <p>Controls what is forgotten from the previous cell state</p>
-<p>$$ f^{(t)} = \sigma (W_f h^{(t-1)} + U_f x^{(t)} + b_f) $$</p>
-<h3 id="LSTM-–-Input-Gate"><a href="#LSTM-–-Input-Gate" class="headerlink" title="LSTM – Input Gate"></a>LSTM – Input Gate</h3><p>New cell content:<br>The content that will be added to the cell state</p>
-<p>$$ \tilde{c}^{(t)} = \tanh (W_c h^{(t-1)} + U_c x^{(t)} + b_c) $$</p>
-<p>Input gate:</p>
+<script type="math/tex; mode=display">f^{(t)} = \sigma (W_f h^{(t-1)} + U_f x^{(t)} + b_f)</script><h3 id="LSTM-–-Input-Gate"><a href="#LSTM-–-Input-Gate" class="headerlink" title="LSTM – Input Gate"></a>LSTM – Input Gate</h3><p>New cell content:<br>The content that will be added to the cell state</p>
+<script type="math/tex; mode=display">\tilde{c}^{(t)} = \tanh (W_c h^{(t-1)} + U_c x^{(t)} + b_c)</script><p>Input gate:</p>
 <p>Controls what parts of the new cell content are written to the cell</p>
-<p>$$ i^{(t)} = \sigma (W_i h^{(t-1)} + U_i x^{(t)} + b_i) $$</p>
-<h3 id="LSTM-–-Update-Cell-State"><a href="#LSTM-–-Update-Cell-State" class="headerlink" title="LSTM – Update Cell State"></a>LSTM – Update Cell State</h3><p>Cell state: Forget some content from the last cell state; input some new content to the cell state</p>
-<p>$$ c^{(t)} = f^{(t)} \odot c^{(t-1)} + i^{(i)} \odot \tilde{c}^{(t)} $$</p>
-<h3 id="LSTM-–-Output-Gate"><a href="#LSTM-–-Output-Gate" class="headerlink" title="LSTM – Output Gate"></a>LSTM – Output Gate</h3><p>Output gate: Controls what parts of cell content are output to hidden state</p>
-<p>$$ o^{(t)} = \sigma (W_o h^{(t-1)} + U_o x^{(t)} + b_o) $$</p>
-<p>Hidden state: Output some content from the cell as hidden state</p>
-<p>$$ h^{(t)} = o^{(t)} \odot \tanh c^{(t)} $$</p>
-<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/LSTM.png" alt="alt text"></p>
+<script type="math/tex; mode=display">i^{(t)} = \sigma (W_i h^{(t-1)} + U_i x^{(t)} + b_i)</script><h3 id="LSTM-–-Update-Cell-State"><a href="#LSTM-–-Update-Cell-State" class="headerlink" title="LSTM – Update Cell State"></a>LSTM – Update Cell State</h3><p>Cell state: Forget some content from the last cell state; input some new content to the cell state</p>
+<script type="math/tex; mode=display">c^{(t)} = f^{(t)} \odot c^{(t-1)} + i^{(i)} \odot \tilde{c}^{(t)}</script><h3 id="LSTM-–-Output-Gate"><a href="#LSTM-–-Output-Gate" class="headerlink" title="LSTM – Output Gate"></a>LSTM – Output Gate</h3><p>Output gate: Controls what parts of cell content are output to hidden state</p>
+<script type="math/tex; mode=display">o^{(t)} = \sigma (W_o h^{(t-1)} + U_o x^{(t)} + b_o)</script><p>Hidden state: Output some content from the cell as hidden state</p>
+<script type="math/tex; mode=display">h^{(t)} = o^{(t)} \odot \tanh c^{(t)}</script><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/LSTM.png" alt="alt text"></p>
 <h2 id="Transformers"><a href="#Transformers" class="headerlink" title="Transformers"></a>Transformers</h2><h3 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h3><ul>
 <li>Attention: directly model relationships between any two positions in the input sequence, regardless of their distance.</li>
 <li>Let the sequence be $w_{1:n}$. For each word $w_i$, let $x_i$ be its word embedding.</li>
 <li>Each word vector (embedding) is transformed into three vectors <strong>query</strong>, <strong>key</strong>, <strong>value</strong>.</li>
 </ul>
-<p>$$<br>q_i = Qx_i<br>$$</p>
-<p>$$<br>k_i = Kx_i<br>$$</p>
-<p>$$<br>v_i = Vx_i<br>$$</p>
-<p>Matrices (Q, K, V) are learnable parameters.</p>
-<p>$$<br>o_i = \sum_{j’} \alpha_{ij} v_j<br>$$</p>
-<p>$$<br>e_{ij} = q_i^T k_j<br>$$</p>
-<p>$$<br>\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_{j’} \exp(e_{ij’})}<br>$$</p>
-<h3 id="Transformer-Encoder"><a href="#Transformer-Encoder" class="headerlink" title="Transformer Encoder"></a>Transformer Encoder</h3><h4 id="Position-encoding"><a href="#Position-encoding" class="headerlink" title="Position encoding"></a>Position encoding</h4><p>Since self-attention doesn’t build the order information, we need to encode the order of the sentence in word embeddings.</p>
-<p>Consider representing each sequence index as $p_i \in \mathbb{R}^d$<br>$$<br>\tilde{x}_i = x_i + p_i<br>$$<br>$x_i$ is word embedding, $\tilde{x}_i$ is positioned word embedding. $p_i$ can be a sinusoidal function or learnable parameters.</p>
+<script type="math/tex; mode=display">
+q_i = Qx_i</script><script type="math/tex; mode=display">
+k_i = Kx_i</script><script type="math/tex; mode=display">
+v_i = Vx_i</script><p>Matrices (Q, K, V) are learnable parameters.</p>
+<script type="math/tex; mode=display">
+o_i = \sum_{j'} \alpha_{ij} v_j</script><script type="math/tex; mode=display">
+e_{ij} = q_i^T k_j</script><script type="math/tex; mode=display">
+\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_{j'} \exp(e_{ij'})}</script><h3 id="Transformer-Encoder"><a href="#Transformer-Encoder" class="headerlink" title="Transformer Encoder"></a>Transformer Encoder</h3><h4 id="Position-encoding"><a href="#Position-encoding" class="headerlink" title="Position encoding"></a>Position encoding</h4><p>Since self-attention doesn’t build the order information, we need to encode the order of the sentence in word embeddings.</p>
+<p>Consider representing each sequence index as $p_i \in \mathbb{R}^d$</p>
+<script type="math/tex; mode=display">
+\tilde{x}_i = x_i + p_i</script><p>$x_i$ is word embedding, $\tilde{x}_i$ is positioned word embedding. $p_i$ can be a sinusoidal function or learnable parameters.</p>
 <h4 id="Multi-head-attention"><a href="#Multi-head-attention" class="headerlink" title="Multi-head attention"></a>Multi-head attention</h4><p>Define multiple attention “heads” through multiple $Q$, $K$, $V$ matrices.<br>Each attention head performs attention independently.<br>Then the outputs of all the heads are combined.</p>
 <h4 id="Residual-connection"><a href="#Residual-connection" class="headerlink" title="Residual connection"></a>Residual connection</h4><p>A trick from ResNet to help models train better.</p>
-<h4 id="Layer-normalization"><a href="#Layer-normalization" class="headerlink" title="Layer normalization"></a>Layer normalization</h4><p>A trick to stabilize the training.<br>$\mu, \sigma$ is the mean and standard deviation of $x \in \mathbb{R}^d$<br>$$<br>o = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} * \gamma + \beta<br>$$</p>
-<h4 id="Feed-forward-network"><a href="#Feed-forward-network" class="headerlink" title="Feed-forward network"></a>Feed-forward network</h4><p>Self-attention is just the linear combination of values.<br>Feed-forward network introduces nonlinearity.<br>$$<br>o = W_2 <em> \text{ReLu}(W_1 </em> x + b_1) + b_2<br>$$</p>
-<h3 id="Transformer-Decoder"><a href="#Transformer-Decoder" class="headerlink" title="Transformer Decoder"></a>Transformer Decoder</h3><p><strong>Masked attention</strong>: Mask out attention to future words by setting attention scores to $-\infty$</p>
-<p>$$<br>e_{ij} = q_i^T k_j \quad \Rightarrow \quad e_{ij} =<br>\begin{cases}<br>q_i^T k_j &amp; \text{if } j \leq i \<br>-\infty &amp; \text{if } j &gt; k<br>\end{cases}<br>$$<br>For any current word $i$ and future word $j$ ($i &lt; j$), we have the attention weight</p>
-<p>$$<br>\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_{j’} \exp(e_{ij’})} = 0<br>$$</p>
-<p><strong>Cross-attention</strong>: The queries are drawn from the decoder, the keys and values are drawn from the encoder. Establish a connection between the source (input) and target (output) sequences.</p>
-<p>$$<br>q_i = Q x_{\text{decoder}}<br>$$<br>$$<br>k_i = K x_{\text{encoder}}<br>$$<br>$$<br>v_i = V x_{\text{encoder}}<br>$$</p>
-<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/transformer.png" alt="alt text" style="zoom:15%;"></p>
+<h4 id="Layer-normalization"><a href="#Layer-normalization" class="headerlink" title="Layer normalization"></a>Layer normalization</h4><p>A trick to stabilize the training.<br>$\mu, \sigma$ is the mean and standard deviation of $x \in \mathbb{R}^d$</p>
+<script type="math/tex; mode=display">
+o = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} * \gamma + \beta</script><h4 id="Feed-forward-network"><a href="#Feed-forward-network" class="headerlink" title="Feed-forward network"></a>Feed-forward network</h4><p>Self-attention is just the linear combination of values.<br>Feed-forward network introduces nonlinearity.</p>
+<script type="math/tex; mode=display">
+o = W_2 * \text{ReLu}(W_1 * x + b_1) + b_2</script><h3 id="Transformer-Decoder"><a href="#Transformer-Decoder" class="headerlink" title="Transformer Decoder"></a>Transformer Decoder</h3><p><strong>Masked attention</strong>: Mask out attention to future words by setting attention scores to $-\infty$</p>
+<script type="math/tex; mode=display">
+e_{ij} = q_i^T k_j \quad \Rightarrow \quad e_{ij} =  
+\begin{cases}
+q_i^T k_j & \text{if } j \leq i \\
+-\infty & \text{if } j > k
+\end{cases}</script><p>For any current word $i$ and future word $j$ ($i &lt; j$), we have the attention weight</p>
+<script type="math/tex; mode=display">
+\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_{j'} \exp(e_{ij'})} = 0</script><p><strong>Cross-attention</strong>: The queries are drawn from the decoder, the keys and values are drawn from the encoder. Establish a connection between the source (input) and target (output) sequences.</p>
+<script type="math/tex; mode=display">
+q_i = Q x_{\text{decoder}}</script><script type="math/tex; mode=display">
+k_i = K x_{\text{encoder}}</script><script type="math/tex; mode=display">
+v_i = V x_{\text{encoder}}</script><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/transformer.png" alt="alt text" style="zoom:15%;"></p>
 <h2 id="Variational-Autoencoder-VAE"><a href="#Variational-Autoencoder-VAE" class="headerlink" title="Variational Autoencoder(VAE)"></a>Variational Autoencoder(VAE)</h2><p>Let’s turn the autoencoder into a probabilistic model.</p>
 <p>The encoder encodes the input data into a distribution of the latent space instead of a single point in latent space.</p>
-<p>$$<br>q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right)<br>$$</p>
-<p>The decoder maps any latent code to a meaningful data distribution</p>
-<p>$$<br>p_{\theta}(x | z) = \mathcal{N} \left(x; \mu_{\theta}(z), \Sigma_{\theta}(z) \right)<br>$$</p>
-<h3 id="VAE-Generative-Process"><a href="#VAE-Generative-Process" class="headerlink" title="VAE: Generative Process"></a>VAE: Generative Process</h3><p>WE assume each data point is generated by the following two steps:  </p>
+<script type="math/tex; mode=display">
+q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right)</script><p>The decoder maps any latent code to a meaningful data distribution</p>
+<script type="math/tex; mode=display">
+p_{\theta}(x | z) = \mathcal{N} \left(x; \mu_{\theta}(z), \Sigma_{\theta}(z) \right)</script><h3 id="VAE-Generative-Process"><a href="#VAE-Generative-Process" class="headerlink" title="VAE: Generative Process"></a>VAE: Generative Process</h3><p>WE assume each data point is generated by the following two steps:  </p>
 <ul>
 <li>Sample latent variable $z$ from its prior distribution $p(z)$</li>
 <li>Generate $x$ by the conditional model $p_{\theta}(x \mid z)$</li>
 </ul>
 <p>The prior distribution $p(z)$ is usually simple, say $p(z) \sim N(0, I)$</p>
-<p>$$<br>p_{\theta}(x) = \int p(z) p_{\theta}(x | z) \, dz<br>$$</p>
-<p>The likelihood $p_{\theta}(x)$ is intractable. However, with the help of an encoder $q_{\phi}(z | x)$, we can obtain a tractable lower bound of the likelihood.</p>
-<p>$$<br>q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right)<br>$$</p>
-<p>The model can be trained by maximizing this lower bound.</p>
-<p>$$<br>\log p_{\theta}(x) = \log \int p_{\theta}(x, z) \, dz = \log \int \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \cdot q_{\phi}(z | x) \, dz<br>$$<br>$$<br>= \log \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right] \geq \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right]<br>$$</p>
-<p>The Evidence Lower Bound (ELBO)<br>$$<br>L_{ELBO}(x, \theta, \phi) \triangleq \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right]<br>$$</p>
-<p>The formula for the Kullback-Leibler (KL) divergence:</p>
+<script type="math/tex; mode=display">
+p_{\theta}(x) = \int p(z) p_{\theta}(x | z) \, dz</script><p>The likelihood $p_{\theta}(x)$ is intractable. However, with the help of an encoder $q_{\phi}(z | x)$, we can obtain a tractable lower bound of the likelihood.</p>
+<script type="math/tex; mode=display">
+q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right)</script><p>The model can be trained by maximizing this lower bound.</p>
+<script type="math/tex; mode=display">
+\log p_{\theta}(x) = \log \int p_{\theta}(x, z) \, dz = \log \int \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \cdot q_{\phi}(z | x) \, dz</script><script type="math/tex; mode=display">
+= \log \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right] \geq \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right]</script><p>The Evidence Lower Bound (ELBO)</p>
+<script type="math/tex; mode=display">
+L_{ELBO}(x, \theta, \phi) \triangleq \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right]</script><p>The formula for the Kullback-Leibler (KL) divergence:</p>
 <p>The KL divergence from distribution $Q$ to distribution $P$ is defined as:</p>
-<p>$$<br>D_{KL}(P | Q) = \int_{-\infty}^{\infty} p(x) \log \frac{p(x)}{q(x)} \, dx<br>$$</p>
-<p>For discrete probability distributions, it is defined as:</p>
-<p>$$<br>D_{KL}(P | Q) = \sum_{i} P(i) \log \frac{P(i)}{Q(i)}<br>$$</p>
-<p>In the context of variational autoencoders, where $q_{\phi}(z|x)$ is the approximate posterior and $p_{\theta}(z|x)$ is the true posterior, the KL divergence is given by:</p>
-<p>$$<br>D_{KL}(q_{\phi}(z|x) | p_{\theta}(z|x)) = \mathbb{E}<em>{z \sim q</em>{\phi}(z|x)} \left[ \log \frac{q_{\phi}(z|x)}{p_{\theta}(z|x)} \right]<br>$$</p>
-<p>Notice that<br>$$<br>D_{KL} \left( q_{\phi}(z | x) | p_{\theta}(z | x) \right) = \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log \frac{q_{\phi}(z | x)}{p_{\theta}(z | x)} \right] = \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log \frac{q_{\phi}(z | x) p_{\theta}(x)}{p_{\theta}(x, z)} \right]<br>$$<br>$$<br>= \log p_{\theta}(x) + \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log \frac{q_{\phi}(z | x)}{p_{\theta}(x, z)} \right] = \log p_{\theta}(x) - L_{ELBO}<br>$$</p>
-<p>$$<br>\Rightarrow \log p_{\theta}(x) = L_{ELBO}(x, \theta, \phi) + D_{KL} \left( q_{\phi}(z | x) | p_{\theta}(z | x) \right)<br>$$<br><strong>The gap between log-likelihood and ELBO = distance between true posterior and $q_{\phi}$</strong></p>
+<script type="math/tex; mode=display">
+D_{KL}(P \| Q) = \int_{-\infty}^{\infty} p(x) \log \frac{p(x)}{q(x)} \, dx</script><p>For discrete probability distributions, it is defined as:</p>
+<script type="math/tex; mode=display">
+D_{KL}(P \| Q) = \sum_{i} P(i) \log \frac{P(i)}{Q(i)}</script><p>In the context of variational autoencoders, where $q_{\phi}(z|x)$ is the approximate posterior and $p_{\theta}(z|x)$ is the true posterior, the KL divergence is given by:</p>
+<script type="math/tex; mode=display">
+D_{KL}(q_{\phi}(z|x) \| p_{\theta}(z|x)) = \mathbb{E}_{z \sim q_{\phi}(z|x)} \left[ \log \frac{q_{\phi}(z|x)}{p_{\theta}(z|x)} \right]</script><p>Notice that</p>
+<script type="math/tex; mode=display">
+D_{KL} \left( q_{\phi}(z | x) \| p_{\theta}(z | x) \right) = \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log \frac{q_{\phi}(z | x)}{p_{\theta}(z | x)} \right] = \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log \frac{q_{\phi}(z | x) p_{\theta}(x)}{p_{\theta}(x, z)} \right]</script><script type="math/tex; mode=display">
+= \log p_{\theta}(x) + \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log \frac{q_{\phi}(z | x)}{p_{\theta}(x, z)} \right] = \log p_{\theta}(x) - L_{ELBO}</script><script type="math/tex; mode=display">
+\Rightarrow \log p_{\theta}(x) = L_{ELBO}(x, \theta, \phi) + D_{KL} \left( q_{\phi}(z | x) \| p_{\theta}(z | x) \right)</script><p><strong>The gap between log-likelihood and ELBO = distance between true posterior and $q_{\phi}$</strong></p>
 <p>Encoder and decoder are jointly trained to maximize the evidence lower bound.</p>
-<p>$$<br>\theta^<em>, \phi^</em> = \arg \max_{\theta, \phi} \sum_{i=1}^{N} L_{ELBO}(x_i, \theta, \phi)<br>$$</p>
-<p>This type of DGM is called <strong>Variational Autoencoder (VAE)</strong>.</p>
+<script type="math/tex; mode=display">
+\theta^*, \phi^* = \arg \max_{\theta, \phi} \sum_{i=1}^{N} L_{ELBO}(x_i, \theta, \phi)</script><p>This type of DGM is called <strong>Variational Autoencoder (VAE)</strong>.</p>
 <h3 id="Further-Analysis-for-ELBO"><a href="#Further-Analysis-for-ELBO" class="headerlink" title="Further Analysis for ELBO"></a>Further Analysis for ELBO</h3><p>ELBO is tractable and differentiable.</p>
-<p>$$<br>\log p_{\theta}(x) \geq L_{ELBO}(x, \theta, \phi) = \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right]<br>$$<br>$$<br>= \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log p_{\theta}(x | z) + \log p(z) - \log q_{\phi}(z | x) \right]<br>$$<br>$$<br>= \mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log p_{\theta}(x | z) \right] - D_{KL} \left( q_{\phi}(z | x) | p(z) \right)<br>$$</p>
-<p><strong>Reconstruction Loss:</strong><br>$$<br>\mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log p_{\theta}(x | z) \right]<br>$$<br>The reconstruction error of sending $x$ through the encoder and decoder.</p>
-<p><strong>Prior Regularization:</strong><br>$$<br>D_{KL} \left( q_{\phi}(z | x) | p(z) \right)<br>$$<br>Make approximate posterior close to prior.</p>
+<script type="math/tex; mode=display">
+\log p_{\theta}(x) \geq L_{ELBO}(x, \theta, \phi) = \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log \frac{p_{\theta}(x, z)}{q_{\phi}(z | x)} \right]</script><script type="math/tex; mode=display">
+= \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log p_{\theta}(x | z) + \log p(z) - \log q_{\phi}(z | x) \right]</script><script type="math/tex; mode=display">
+= \mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log p_{\theta}(x | z) \right] - D_{KL} \left( q_{\phi}(z | x) \| p(z) \right)</script><p><strong>Reconstruction Loss:</strong></p>
+<script type="math/tex; mode=display">
+\mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log p_{\theta}(x | z) \right]</script><p>The reconstruction error of sending $x$ through the encoder and decoder.</p>
+<p><strong>Prior Regularization:</strong></p>
+<script type="math/tex; mode=display">
+D_{KL} \left( q_{\phi}(z | x) \| p(z) \right)</script><p>Make approximate posterior close to prior.</p>
 <h4 id="Prior-Regularization"><a href="#Prior-Regularization" class="headerlink" title="Prior Regularization"></a>Prior Regularization</h4><p>Make approximate posterior distribution closer to prior.</p>
 <ul>
 <li>It prevents the “overfitting” of the autoencoder.</li>
 </ul>
-<p>Suppose a standard Gaussian prior and a Gaussian decoder:<br>$$<br>p(z) \sim \mathcal{N}(0, 1) \quad q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right)<br>$$</p>
-<p>The KL-divergence between Gaussians has closed-form solution:<br>$$<br>-D_{KL} \left( q_{\phi}(z | x) | p(z) \right) = \frac{1}{2} \left(1 + \log \sigma_{\phi}^2(x) - \mu_{\phi}^2(x) - \sigma_{\phi}^2(x) \right)<br>$$</p>
-<h4 id="Reconstruction-Loss"><a href="#Reconstruction-Loss" class="headerlink" title="Reconstruction Loss"></a>Reconstruction Loss</h4><p>Suppose the encoder and decoder are both Gaussian<br>$$<br>q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right) \quad p_{\theta}(x | z) = \mathcal{N} \left(x; \mu_{\theta}(z), \sigma^2 \right)<br>$$</p>
-<p>(<strong>Decoder has fixed variance for simplicity</strong>)</p>
-<p>The likelihood function:<br>$$<br>\log p_{\theta}(x | z) = -\frac{d}{2} \log \sigma^2 - \frac{| x - \mu_{\theta}(z) |^2}{2\sigma^2} \text{ (The later term denotes L2 loss between decoder output and the input data) }<br>$$</p>
-<p>The reconstruction loss can be approximated via Monte Carlo methods:</p>
-<p>$$<br>\mathbb{E}<em>{z \sim q</em>{\phi}(z | x)} \left[ \log p_{\theta}(x | z) \right] \approx \frac{1}{K} \sum_{k=1}^{K} \log p_{\theta}(x | z^{(k)}) \quad \text{where} \quad z^{(k)} \sim q_{\phi}(z | x)<br>$$<br>$$<br>= -C_1 \sum_{k=1}^{K} | x - \mu_{\theta}(z^{(k)}) |^2 + C_2<br>$$</p>
-<p>where $C_1 = \frac{1}{2 \sigma^2 K}$</p>
+<p>Suppose a standard Gaussian prior and a Gaussian decoder:</p>
+<script type="math/tex; mode=display">
+p(z) \sim \mathcal{N}(0, 1) \quad q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right)</script><p>The KL-divergence between Gaussians has closed-form solution:</p>
+<script type="math/tex; mode=display">
+-D_{KL} \left( q_{\phi}(z | x) \| p(z) \right) = \frac{1}{2} \left(1 + \log \sigma_{\phi}^2(x) - \mu_{\phi}^2(x) - \sigma_{\phi}^2(x) \right)</script><h4 id="Reconstruction-Loss"><a href="#Reconstruction-Loss" class="headerlink" title="Reconstruction Loss"></a>Reconstruction Loss</h4><p>Suppose the encoder and decoder are both Gaussian</p>
+<script type="math/tex; mode=display">
+q_{\phi}(z | x) = \mathcal{N} \left(z; \mu_{\phi}(x), \sigma_{\phi}^2(x) \right) \quad p_{\theta}(x | z) = \mathcal{N} \left(x; \mu_{\theta}(z), \sigma^2 \right)</script><p>(<strong>Decoder has fixed variance for simplicity</strong>)</p>
+<p>The likelihood function:  </p>
+<script type="math/tex; mode=display">
+\log p_{\theta}(x | z) = -\frac{d}{2} \log \sigma^2 - \frac{\| x - \mu_{\theta}(z) \|^2}{2\sigma^2} \text{ (The later term denotes L2 loss between decoder output and the input data) }</script><p>The reconstruction loss can be approximated via Monte Carlo methods:</p>
+<script type="math/tex; mode=display">
+\mathbb{E}_{z \sim q_{\phi}(z | x)} \left[ \log p_{\theta}(x | z) \right] \approx \frac{1}{K} \sum_{k=1}^{K} \log p_{\theta}(x | z^{(k)}) \quad \text{where} \quad z^{(k)} \sim q_{\phi}(z | x)</script><script type="math/tex; mode=display">
+= -C_1 \sum_{k=1}^{K} \| x - \mu_{\theta}(z^{(k)}) \|^2 + C_2</script><p>where $C_1 = \frac{1}{2 \sigma^2 K}$</p>
 <p><strong>$K$ is the number of MC samples.</strong></p>
 <h3 id="VAE-Putting-together"><a href="#VAE-Putting-together" class="headerlink" title="VAE: Putting together"></a>VAE: Putting together</h3><h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4><ul>
-<li>Forward Encoder, compute regularization term<br>$$<br>L_{\text{reg}} = -D_{KL} \left( q_{\phi}(z | x) | p(z) \right)<br>$$</li>
+<li>Forward Encoder, compute regularization term<script type="math/tex; mode=display">
+L_{\text{reg}} = -D_{KL} \left( q_{\phi}(z | x) \| p(z) \right)</script></li>
 <li>Sample $z \sim q_{\phi}(z | x)$ with reparameterization trick.</li>
-<li>Forward decoder, compute reconstruction term<br>$$<br>x’ \sim p_{\theta}(x | z), \quad L_{\text{recon}} = -C_1 | x - x’ |^2<br>$$</li>
-<li>Maximize ELBO with gradient ascent<br>$$<br>L_{ELBO} = L_{\text{recon}} + L_{\text{reg}}<br>$$</li>
+<li>Forward decoder, compute reconstruction term<script type="math/tex; mode=display">
+x' \sim p_{\theta}(x | z), \quad L_{\text{recon}} = -C_1 \| x - x' \|^2</script></li>
+<li>Maximize ELBO with gradient ascent<script type="math/tex; mode=display">
+L_{ELBO} = L_{\text{recon}} + L_{\text{reg}}</script></li>
 </ul>
 <h4 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h4><ul>
 <li>Discard the encoder</li>
-<li>Sample latent from prior<br>$$<br>z \sim \mathcal{N}(0, 1)<br>$$</li>
-<li>Forward decoder<br>$$<br>x’ \sim p_{\theta}(x | z)<br>$$</li>
+<li>Sample latent from prior<script type="math/tex; mode=display">
+z \sim \mathcal{N}(0, 1)</script></li>
+<li>Forward decoder<script type="math/tex; mode=display">
+x' \sim p_{\theta}(x | z)</script></li>
 </ul>
 <h2 id="Generative-Adversarial-Network"><a href="#Generative-Adversarial-Network" class="headerlink" title="Generative Adversarial Network"></a>Generative Adversarial Network</h2><p>A generative adversarial network (GAN) consists of:  </p>
 <ul>
@@ -950,56 +1046,77 @@
 <p>$D$ is a binary classifier that tries to discriminate between a sample from the data distribution and a sample from the generator $G$.</p>
 <p>$G$ tries to “trick” $D$ by generating samples that are hard for $D$ to distinguish from data.</p>
 <p><strong>Min-max objective</strong>:</p>
-<p>$$<br>\min_G \max_D V(D, G) = \mathbb E_{x \sim p_{data}(x)} [ \log D(x) ] + \mathbb E_{z \sim p(z)} [\log(1 - D(G(z)))]<br>$$</p>
-<p>$$<br>\begin{aligned}<br>V(D,G)&amp;=\mathbb{E}<em>{x\sim p</em>{data}(x)}[log~D(x)]+\mathbb{E}_{z\sim p(z)}[log(1-D(G(z)))] \newline</p>
-<p>&amp;=\int p_{data}(x)log~D(x)dx+\int p(z)log(1-D(G(z)))dz \newline</p>
-<p>&amp;=\int p_{data}(x)log~D(x)dx+\int p_{model}(x)log(1-D(x))dx \newline</p>
-<p>&amp;=\int(p_{data}(x)log~D(x)+p_{model}(x)log(1-D(x)))dx \newline<br>\end{aligned}<br>$$</p>
-<p>For a fixed generator $G$, the optimal discriminator $D^*$ is</p>
-<p>$$<br>D^* = \arg \max_D V(D, G)</p>
-<p>= \frac{p_{data}(x)}{p_{data}(x) + p_{model}(x)}<br>$$</p>
-<p>Now consider the min-max objective:<br>$$<br>\begin{aligned}<br>\min_G \max_D V(D, G) &amp;= \min_G V(D^<em>, G) \newline<br>&amp;= \min_G \mathbb{E}<em>{x \sim p</em>{\text{data}}(x)}[\log D_G^</em>(x)] + \mathbb{E}_{z \sim p(z)}[\log (1 - D_G^<em>(G(z)))] \newline<br>&amp;= \min_G \mathbb{E}<em>{x \sim p</em>{\text{data}}(x)}[\log D_G^</em>(x)] + \mathbb{E}<em>{x \sim p</em>{\text{model}}(x)}[\log (1 - D_G^*(x))] \newline<br>&amp;= \min_G \mathbb{E}<em>{x \sim p</em>{\text{data}}(x)}\left[\log \frac{p_{\text{data}}(x)}{p_{\text{data}}(x) + p_{\text{model}}(x)}\right] + \mathbb{E}<em>{x \sim p</em>{\text{model}}(x)}\left[\log \frac{p_{\text{model}}(x)}{p_{\text{data}}(x) + p_{\text{model}}(x)}\right] \newline<br>&amp;= \min_G \left[ D_{KL}(p_{\text{data}}(x) | \frac{p_{\text{data}}(x) + p_{\text{model}}(x)}{2}) + D_{KL}(p_{\text{model}}(x) | \frac{p_{\text{data}}(x) + p_{\text{model}}(x)}{2}) - \log 4 \right] \newline<br>&amp;= \min_G \left[ 2 \cdot \text{JSD}(p_{\text{data}}(x) | p_{\text{model}}(x)) - \log 4 \right] \newline<br>\end{aligned}<br>$$</p>
-<p>Where $\text{JSD}$ is <strong>Jensen-Shannon Divergence</strong>:<br>$$<br>\text{JSD}(P | Q) = \frac{1}{2} D_{KL}(P | M) + \frac{1}{2} D_{KL}(Q | M)<br>$$<br>$$<br>M = \frac{1}{2} (P + Q)<br>$$</p>
-<p>Thus we have the <strong>Unique global minimum</strong><br>$$<br>p_{\text{model}}(x) = p_{\text{data}}(x)<br>$$</p>
-<p>For training we use <strong>Gradient ascent</strong> on generator, with objective  </p>
-<p>$$<br>\max_G \mathbb E_{z \sim p(z)} [\log(D(G(z)))]<br>$$</p>
-<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/GAN.png" alt="alt text"></p>
+<script type="math/tex; mode=display">
+\min_G \max_D V(D, G) = \mathbb E_{x \sim p_{data}(x)} [ \log D(x) ] + \mathbb E_{z \sim p(z)} [\log(1 - D(G(z)))]</script><script type="math/tex; mode=display">
+\begin{aligned}
+V(D,G)&=\mathbb{E}_{x\sim p_{data}(x)}[log~D(x)]+\mathbb{E}_{z\sim p(z)}[log(1-D(G(z)))] \newline
+
+&=\int p_{data}(x)log~D(x)dx+\int p(z)log(1-D(G(z)))dz \newline
+
+&=\int p_{data}(x)log~D(x)dx+\int p_{model}(x)log(1-D(x))dx \newline
+
+&=\int(p_{data}(x)log~D(x)+p_{model}(x)log(1-D(x)))dx \newline
+\end{aligned}</script><p>For a fixed generator $G$, the optimal discriminator $D^*$ is</p>
+<script type="math/tex; mode=display">
+D^* = \arg \max_D V(D, G)
+
+= \frac{p_{data}(x)}{p_{data}(x) + p_{model}(x)}</script><p>Now consider the min-max objective:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\min_G \max_D V(D, G) &= \min_G V(D^*, G) \newline
+&= \min_G \mathbb{E}_{x \sim p_{\text{data}}(x)}[\log D_G^*(x)] + \mathbb{E}_{z \sim p(z)}[\log (1 - D_G^*(G(z)))] \newline
+&= \min_G \mathbb{E}_{x \sim p_{\text{data}}(x)}[\log D_G^*(x)] + \mathbb{E}_{x \sim p_{\text{model}}(x)}[\log (1 - D_G^*(x))] \newline
+&= \min_G \mathbb{E}_{x \sim p_{\text{data}}(x)}\left[\log \frac{p_{\text{data}}(x)}{p_{\text{data}}(x) + p_{\text{model}}(x)}\right] + \mathbb{E}_{x \sim p_{\text{model}}(x)}\left[\log \frac{p_{\text{model}}(x)}{p_{\text{data}}(x) + p_{\text{model}}(x)}\right] \newline
+&= \min_G \left[ D_{KL}(p_{\text{data}}(x) \| \frac{p_{\text{data}}(x) + p_{\text{model}}(x)}{2}) + D_{KL}(p_{\text{model}}(x) \| \frac{p_{\text{data}}(x) + p_{\text{model}}(x)}{2}) - \log 4 \right] \newline
+&= \min_G \left[ 2 \cdot \text{JSD}(p_{\text{data}}(x) \| p_{\text{model}}(x)) - \log 4 \right] \newline
+\end{aligned}</script><p>Where $\text{JSD}$ is <strong>Jensen-Shannon Divergence</strong>:</p>
+<script type="math/tex; mode=display">
+\text{JSD}(P \| Q) = \frac{1}{2} D_{KL}(P \| M) + \frac{1}{2} D_{KL}(Q \| M)</script><script type="math/tex; mode=display">
+M = \frac{1}{2} (P + Q)</script><p>Thus we have the <strong>Unique global minimum</strong></p>
+<script type="math/tex; mode=display">
+p_{\text{model}}(x) = p_{\text{data}}(x)</script><p>For training we use <strong>Gradient ascent</strong> on generator, with objective  </p>
+<script type="math/tex; mode=display">
+\max_G \mathbb E_{z \sim p(z)} [\log(D(G(z)))]</script><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/GAN.png" alt="alt text"></p>
 <h2 id="Diffusion-Probabilistic-Models"><a href="#Diffusion-Probabilistic-Models" class="headerlink" title="Diffusion Probabilistic Models"></a>Diffusion Probabilistic Models</h2><h3 id="Forward-Diffusion-Process"><a href="#Forward-Diffusion-Process" class="headerlink" title="Forward Diffusion Process"></a>Forward Diffusion Process</h3><p>Given a data point sampled from real distribution $x_0 \sim q(x_0)$, define a forward diffusion process in which we add small amount of Gaussian noise to the sample in $T$ steps, producing noisy samples $x_1, \ldots, x_T$. The step sizes are controlled by $\beta_t$.</p>
-<p>$$<br>q(x_t | x_{t-1}) = \mathcal{N} (x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I)<br>$$</p>
-<p>$$<br>q(x_{1:T} | x_0) = \prod_{t=1}^{T} q(x_t | x_{t-1})<br>$$</p>
-<p>Let $\alpha_t = 1 - \beta_t, \bar{\alpha}<em>t = \prod</em>{i=1}^{t} \alpha_t$. Then we have</p>
-<p>$$<br>x_t = \sqrt{\alpha_t} x_{t-1} + \sqrt{1 - \alpha_t} \epsilon_{t-1}<br>$$</p>
-<p>$$<br>= \sqrt{\alpha_t} (\sqrt{\alpha_{t-1}} x_{t-2} + \sqrt{1 - \alpha_{t-1}} \epsilon_{t-2}) + \sqrt{1 - \alpha_t} \epsilon_{t-1}<br>$$</p>
-<p>$$<br>= \sqrt{\alpha_t \alpha_{t-1}} x_{t-2} + \sqrt{\alpha_t (1 - \alpha_{t-1})} \epsilon_{t-2} + \sqrt{1 - \alpha_t} \epsilon_{t-1}<br>$$</p>
-<p>$$<br>= \ldots = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon<br>$$</p>
-<p>$$<br>\Rightarrow q(x_t | x_0) = \mathcal{N} (x_t; \sqrt{\bar{\alpha}_t} x_0, (1 - \bar{\alpha}_t) I)<br>$$</p>
-<h3 id="Backward-Diffusion-Process"><a href="#Backward-Diffusion-Process" class="headerlink" title="Backward Diffusion Process"></a>Backward Diffusion Process</h3><p><strong>Core idea</strong>: Learn to map noise to data by reversing the time.</p>
+<script type="math/tex; mode=display">
+q(x_t | x_{t-1}) = \mathcal{N} (x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I)</script><script type="math/tex; mode=display">
+q(x_{1:T} | x_0) = \prod_{t=1}^{T} q(x_t | x_{t-1})</script><p>Let $\alpha_t = 1 - \beta_t, \bar{\alpha}_t = \prod_{i=1}^{t} \alpha_t$. Then we have</p>
+<script type="math/tex; mode=display">
+x_t = \sqrt{\alpha_t} x_{t-1} + \sqrt{1 - \alpha_t} \epsilon_{t-1}</script><script type="math/tex; mode=display">
+= \sqrt{\alpha_t} (\sqrt{\alpha_{t-1}} x_{t-2} + \sqrt{1 - \alpha_{t-1}} \epsilon_{t-2}) + \sqrt{1 - \alpha_t} \epsilon_{t-1}</script><script type="math/tex; mode=display">
+= \sqrt{\alpha_t \alpha_{t-1}} x_{t-2} + \sqrt{\alpha_t (1 - \alpha_{t-1})} \epsilon_{t-2} + \sqrt{1 - \alpha_t} \epsilon_{t-1}</script><script type="math/tex; mode=display">
+= \ldots = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon</script><script type="math/tex; mode=display">
+\Rightarrow q(x_t | x_0) = \mathcal{N} (x_t; \sqrt{\bar{\alpha}_t} x_0, (1 - \bar{\alpha}_t) I)</script><h3 id="Backward-Diffusion-Process"><a href="#Backward-Diffusion-Process" class="headerlink" title="Backward Diffusion Process"></a>Backward Diffusion Process</h3><p><strong>Core idea</strong>: Learn to map noise to data by reversing the time.</p>
 <p>To reverse the diffusion process, we need to estimate the reverse conditional probabilities $q(x_{t-1} | x_t)$. Note that if $\beta_t$ is small enough, $q(x_{t-1} | x_t)$ will also be Gaussian. Learn a model $p_{\theta}(x_{t-1} | x_t)$ to approximate the reverse process $q(x_{t-1} | x_t)$.</p>
-<p>$$<br>p_{\theta}(x_{0:T}) = p(x_T) \prod_{t=1}^{T} p_{\theta}(x_{t-1} | x_t)<br>$$</p>
-<p>$$<br>p_{\theta}(x_{t-1} | x_t) = \mathcal{N} (x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\theta}(x_t, t))<br>$$</p>
-<h3 id="DPM-Putting-Together"><a href="#DPM-Putting-Together" class="headerlink" title="DPM: Putting Together"></a>DPM: Putting Together</h3><h4 id="Training-Algorithm"><a href="#Training-Algorithm" class="headerlink" title="Training Algorithm"></a>Training Algorithm</h4><p>repeat</p>
+<script type="math/tex; mode=display">
+p_{\theta}(x_{0:T}) = p(x_T) \prod_{t=1}^{T} p_{\theta}(x_{t-1} | x_t)</script><script type="math/tex; mode=display">
+p_{\theta}(x_{t-1} | x_t) = \mathcal{N} (x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\theta}(x_t, t))</script><h3 id="DPM-Putting-Together"><a href="#DPM-Putting-Together" class="headerlink" title="DPM: Putting Together"></a>DPM: Putting Together</h3><h4 id="Training-Algorithm"><a href="#Training-Algorithm" class="headerlink" title="Training Algorithm"></a>Training Algorithm</h4><p>repeat</p>
 <ul>
 <li>$x_0 \sim q(x_0)$</li>
-<li>$t \sim \text{Uniform}({1, \ldots, T})$</li>
+<li>$t \sim \text{Uniform}(\{1, \ldots, T\})$</li>
 <li>$\epsilon \sim \mathcal{N}(0, I)$</li>
-<li>Take gradient descent step on<br>$$<br>\nabla_{\theta} | \epsilon - \epsilon_{\theta} (\sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, t) |^2<br>$$</li>
+<li>Take gradient descent step on<script type="math/tex; mode=display">
+\nabla_{\theta} \| \epsilon - \epsilon_{\theta} (\sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, t) \|^2</script></li>
 </ul>
 <p>until converged</p>
 <h4 id="Sampling-Algorithm"><a href="#Sampling-Algorithm" class="headerlink" title="Sampling Algorithm"></a>Sampling Algorithm</h4><p>$x_T \sim \mathcal{N}(0, I)$</p>
 <p>for $t = T, \ldots, 1$ do</p>
 <ul>
 <li>$z \sim \mathcal{N}(0, I)$ if $t &gt; 1$ else $z = 0$</li>
-<li>$$<br>x_{t-1} = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{1 - \alpha_t}{\sqrt{1 - \bar{\alpha}<em>t}} \epsilon</em>{\theta}(x_t, t) \right) + \sigma_t z<br>$$</li>
+<li><script type="math/tex; mode=display">
+x_{t-1} = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{1 - \alpha_t}{\sqrt{1 - \bar{\alpha}_t}} \epsilon_{\theta}(x_t, t) \right) + \sigma_t z</script></li>
 </ul>
 <p>end for</p>
 <p>return $x_0$</p>
-<h2 id="Contrastive-Representation-Learning"><a href="#Contrastive-Representation-Learning" class="headerlink" title="Contrastive Representation Learning"></a>Contrastive Representation Learning</h2><p>We want a feature extractor $f$ and a score function $S$, such that<br>$$<br>S(f(x), f(x^+)) \gg S(f(x), f(x^-))<br>$$<br>Here, $x$ is the reference sample, $x^+$ is positive sample and $x^-$ is negative sample.</p>
+<h2 id="Contrastive-Representation-Learning"><a href="#Contrastive-Representation-Learning" class="headerlink" title="Contrastive Representation Learning"></a>Contrastive Representation Learning</h2><p>We want a feature extractor $f$ and a score function $S$, such that</p>
+<script type="math/tex; mode=display">
+S(f(x), f(x^+)) \gg S(f(x), f(x^-))</script><p>Here, $x$ is the reference sample, $x^+$ is positive sample and $x^-$ is negative sample.</p>
 <p>Given a chosen score function $S(\cdot)$, we aim to learn an encoder function $f$ that yields high score for positive pairs $(x, x^+)$ and low scores for negative pairs $(x, x^-)$.</p>
-<p>$$<br>L = - \mathbb{E}<em>X \left[ \log \frac{\exp \left( s(f(x), f(x^+)) \right)}{\exp \left( s(f(x), f(x^+)) \right) + \sum</em>{j=1}^{N-1} \exp \left( s(f(x), f(x_j^-)) \right)} \right]<br>$$</p>
-<p>Commonly known as InfoNCE loss</p>
+<script type="math/tex; mode=display">
+L = - \mathbb{E}_X \left[ \log \frac{\exp \left( s(f(x), f(x^+)) \right)}{\exp \left( s(f(x), f(x^+)) \right) + \sum_{j=1}^{N-1} \exp \left( s(f(x), f(x_j^-)) \right)} \right]</script><p>Commonly known as InfoNCE loss</p>
 <p>A lower bound on the mutual information between $f(x)$ and $f(x^+)$</p>
-<p>$$<br>I[f(x): f(x^+)] \geq \log(N) - L<br>$$</p>
-<p>Therefore, the larger total samples $N$ is, the lower loss $L$ is, $f(x)$ and $f(x^+)$ are more correlated.</p>
+<script type="math/tex; mode=display">
+I[f(x): f(x^+)] \geq \log(N) - L</script><p>Therefore, the larger total samples $N$ is, the lower loss $L$ is, $f(x)$ and $f(x^+)$ are more correlated.</p>
 
         </div>
         
@@ -1820,7 +1937,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>77.3k</span> Words
+                        <span>77.2k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>

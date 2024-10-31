@@ -166,9 +166,10 @@
 <h4 id="O-n-2-方法"><a href="#O-n-2-方法" class="headerlink" title="$O(n^2)$方法"></a>$O(n^2)$方法</h4><p>我们枚举$A$的长度$L \in [1, \frac{n}{3}]$， 并统计所有长度为$3L$的$\texttt{tandem}$</p>
 <p>我们考虑所有下标能被$L$整除的位置，即$s_0, s_L, s_{2L}, \cdots$，不难发现对于每一个长度为$3L$的$\texttt{tandem}$都会恰好覆盖这些位置中的连续$3$个，我们设这连续三个位置为$(i, j, k)$</p>
 <p>不难发现这些子串的起始位置$a \in [i - L + 1, i]$， 如果这个子串是一个$\texttt{tandem}$， 则有$s_{[a, a+L-1]}=s_{[a+L, a+2L-1]}=s_{[a+2L, a+3L-1]}$</p>
-<p>由于$a \in [i - L + 1, i]$，所以我们有$a \leq i \leq a + L - 1$, $a + L \leq j \leq a +  2L - 1$, $a + 2L \leq k \leq a + 3L - 1$，所以我们可以把上述条件转化为如下条件：<br>$$<br>s_{[a,i]}=s_{[a+L,j]}=s_{[a+2L,k]} \<br>$$</p>
-<p>$$<br>s_{[i,a+L-1]}=s_{[j,a+2L-1]}=s_{[k,a+2L-1]}<br>$$</p>
-<p>上面两个条件可以表示为：子串$s[0,i],\;s[0,j],\;s[0,k]$有一个长度为$i-a+1$的相同后缀，子串$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$有一个长度为$a+L-i$的相同前缀。</p>
+<p>由于$a \in [i - L + 1, i]$，所以我们有$a \leq i \leq a + L - 1$, $a + L \leq j \leq a +  2L - 1$, $a + 2L \leq k \leq a + 3L - 1$，所以我们可以把上述条件转化为如下条件：</p>
+<script type="math/tex; mode=display">
+s_{[a,i]}=s_{[a+L,j]}=s_{[a+2L,k]} \\</script><script type="math/tex; mode=display">
+s_{[i,a+L-1]}=s_{[j,a+2L-1]}=s_{[k,a+2L-1]}</script><p>上面两个条件可以表示为：子串$s[0,i],\;s[0,j],\;s[0,k]$有一个长度为$i-a+1$的相同后缀，子串$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$有一个长度为$a+L-i$的相同前缀。</p>
 <p>设$\texttt{LCP(i,j,k)}$表示$s[i,n-1],\;s[j,n-1],\;s[k,n-1]$的后缀长度，$\texttt{LCS(i,j,k)}$表示$s[0,i],\;s[0,j],\;s[0,k]$的后缀长度，则有$\max( i−LCS(i , j , k )+1, i − L +1)≤ a ≤ \min( LCP ( i , j , k )− L + i , i )$</p>
 <p>合法的$a$共有$\min(0,\min(LCP(i,j,k)−L+i,i)−\max(i−LCS(i,j,k)+1,i−L+1)+1)$个</p>
 <p>化简一下得到$\min(LCP(i,j,k),L)+\min(LCS(i,j,k),L)−1$，我们设这个值为$V$</p>
@@ -482,7 +483,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>77.3k</span> Words
+                        <span>77.2k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
