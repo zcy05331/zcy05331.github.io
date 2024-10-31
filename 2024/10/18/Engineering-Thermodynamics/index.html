@@ -17,7 +17,9 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/Heat%20exchange%20equipment.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E4%B8%89%E7%A7%8D%E5%8E%8B%E6%B0%94%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83.png">
-<meta property="og:updated_time" content="2024-10-31T09:15:53.005Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
+<meta property="og:updated_time" content="2024-10-31T10:19:34.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -153,7 +155,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            6734 Words
+                            7956 Words
                         </span>
                     
                 </div>
@@ -845,7 +847,82 @@ w_{\text{分级}} = \frac{n}{n - 1} RT_1 \left[ 2 - \left( \frac{p_2}{p_1} \righ
 \beta = \sqrt[m]{\dfrac{p_{\text{终}}}{p_{\text{初}}}}</script><h4 id="分级压缩的级数"><a href="#分级压缩的级数" class="headerlink" title="分级压缩的级数"></a>分级压缩的级数</h4><p>分级的作用：1. 省功 2. 降低出口温度</p>
 <p>多级压缩达到无穷多级 $\quad \Rightarrow \quad$ 等温过程。（缺点：难以实现、结构复杂（成本高））</p>
 <p>一般采用 $2 \sim 4$ 级压缩</p>
-<h2 id="第四章-热力学第二定律"><a href="#第四章-热力学第二定律" class="headerlink" title="第四章 热力学第二定律"></a>第四章 热力学第二定律</h2>
+<h2 id="第四章-热力学第二定律"><a href="#第四章-热力学第二定律" class="headerlink" title="第四章 热力学第二定律"></a>第四章 热力学第二定律</h2><h3 id="热力学第二律的表述与实质"><a href="#热力学第二律的表述与实质" class="headerlink" title="热力学第二律的表述与实质"></a>热力学第二律的表述与实质</h3><ul>
+<li><p>开尔文－普朗克表述：热功转换角度</p>
+</li>
+<li><p>克劳修斯表述：热量传递角度</p>
+</li>
+</ul>
+<h4 id="开尔文－普朗克表述"><a href="#开尔文－普朗克表述" class="headerlink" title="开尔文－普朗克表述"></a>开尔文－普朗克表述</h4><p><strong>不可能从单一热源取热，并使之完全转变为有用功而不产生其它影响。</strong> 热机不可能将从热源吸收的热量全部转变为有用功，而必须将其中的一部分传给冷源。</p>
+<p>理想气体等温过程 $q = w$ ？气体膨胀，<strong>产生其他影响</strong>。</p>
+<p>热源/冷源的特点：容量无限大，吸热或放热，其温度不变。</p>
+<p>第二类永动机：从单一热源取热，并使之完全变为功的热机。由热力学第二定律可以知道，第二类永动机是不可能制造成功的。</p>
+<h4 id="克劳修斯表述"><a href="#克劳修斯表述" class="headerlink" title="克劳修斯表述"></a>克劳修斯表述</h4><p>不可能将热从低温物体传至高温物体而不引起其它变化。</p>
+<p>空调的制冷与制热？ <strong>代价：耗功</strong></p>
+<p>热量不可能自发地、不付代价地从低温物体传至高温物体。</p>
+<h4 id="热力学第二定律的实质"><a href="#热力学第二定律的实质" class="headerlink" title="热力学第二定律的实质"></a>热力学第二定律的实质</h4><p>自发过程都是具有方向性的</p>
+<h3 id="卡诺定理与卡诺循环"><a href="#卡诺定理与卡诺循环" class="headerlink" title="卡诺定理与卡诺循环"></a>卡诺定理与卡诺循环</h3><h4 id="卡诺定理"><a href="#卡诺定理" class="headerlink" title="卡诺定理"></a>卡诺定理</h4><p><strong>定理：在两个不同温度的恒温热源间工作的所有热机，可逆热机的热效率最高。</strong></p>
+<p>即在恒温 $T_1$ 与 $T_2$ 下，$n_{t, A} \not &gt; n_{t, R}$</p>
+<h5 id="卡诺定理的推论"><a href="#卡诺定理的推论" class="headerlink" title="卡诺定理的推论"></a>卡诺定理的推论</h5><ol>
+<li><p><strong>在两个不同温度的恒温热源间工作的一切可逆热机具有相同的热效率，且与工质的性质无关</strong>。</p>
+</li>
+<li><p><strong>在两个不同温度的恒温热源间工作的任何不可逆热机，其热效率总小于这两个热源间工作的可逆热机的热效率。</strong></p>
+</li>
+</ol>
+<h4 id="卡诺循环——理想可逆热机循环"><a href="#卡诺循环——理想可逆热机循环" class="headerlink" title="卡诺循环——理想可逆热机循环"></a>卡诺循环——理想可逆热机循环</h4><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png" alt="卡诺循环"></p>
+<h5 id="卡诺热机循环的热效率"><a href="#卡诺热机循环的热效率" class="headerlink" title="卡诺热机循环的热效率"></a>卡诺热机循环的热效率</h5><p>热机热效率：$\eta_t = \dfrac{w}{q_1} = \dfrac{q_1 - q_2}{q_1} = 1 - \dfrac{q_2}{q_1}$</p>
+<p>卡诺定理推论：$T_1$ 与 $T_2$ 间的一切可逆热机，热效率相同，与工质性质无关。</p>
+<p>对于卡诺热机循环，取理想气体为工质，其可逆定温过程的吸热量 $q_1$ 和放热量 $q_2$：</p>
+<script type="math/tex; mode=display">
+q_1 = RT_1 \ln \frac{v_2}{v_1}, \quad q_2 = RT_2 \ln \frac{v_3}{v_4}</script><p>而对于 $2 - 3$ 及 $4 - 1$ 等熵过程，</p>
+<script type="math/tex; mode=display">
+\frac{v_2}{v_3} = \left( \frac{T_2}{T_1} \right)^{\frac{1}{k-1}} = \frac{v_1}{v_4}, \quad \frac{v_2}{v_1} = \frac{v_3}{v_4}</script><p>所以，</p>
+<script type="math/tex; mode=display">
+\frac{q_2}{q_1} = \dfrac{RT_2 \ln \dfrac{v_3}{v_4}}{RT_1 \ln \dfrac{v_2}{v_1}} = \frac{T_2}{T_1}</script><p><strong>卡诺热机循环热效率：</strong></p>
+<script type="math/tex; mode=display">
+\eta_{t, C} = 1 - \frac{q_2}{q_1} = 1 - \frac{T_2}{T_1}</script><h5 id="卡诺热机循环热效率的说明"><a href="#卡诺热机循环热效率的说明" class="headerlink" title="卡诺热机循环热效率的说明"></a>卡诺热机循环热效率的说明</h5><script type="math/tex; mode=display">
+\eta_{t, C} = 1 - \frac{T_2}{T_1}</script><ul>
+<li><p>$\eta_{t, c}$ 只取决于恒温热源的温度 $T_1$ 和 $T_2$，而与工质的性质无关；</p>
+</li>
+<li><p>$T_1 \uparrow$ 或 $T_2 \downarrow$ 时，$\eta_{t, c} \uparrow$，即温差越大，$\eta_{t, c}$ 越高</p>
+</li>
+<li><p>$T_1 \neq \infty \, \text{K}$，$T_2 \neq 0 \, \text{K}$，∴ $\eta_{t, c} &lt; 100\%$，符合热力学第二定律</p>
+</li>
+<li><p>当 $T_1 = T_2$，$\eta_{t, c} = 0$，单热源热机不可能</p>
+</li>
+</ul>
+<h5 id="卡诺逆循环-"><a href="#卡诺逆循环-" class="headerlink" title="卡诺逆循环 "></a>卡诺逆循环 </h5><ol>
+<li>卡诺制冷循环</li>
+</ol>
+<script type="math/tex; mode=display">
+\varepsilon_C = \frac{q_2}{w} = \frac{q_2}{q_1 - q_2}</script><script type="math/tex; mode=display">
+= \frac{1}{\dfrac{q_1}{q_2} - 1} = \frac{1}{\dfrac{T_0}{T_2} - 1} = \frac{T_2}{T_0 - T_2}</script><ol>
+<li>卡诺制热循环</li>
+</ol>
+<script type="math/tex; mode=display">
+\varepsilon' = \frac{q_1}{w} = \frac{q_1}{q_1 - q_2}</script><script type="math/tex; mode=display">
+= \frac{1}{1 - \dfrac{q_2}{q_1}} = \frac{1}{1 - \dfrac{T_0}{T_1}} = \frac{T_1}{T_1 - T_0}</script><h4 id="多热源（变温热源）可逆热机"><a href="#多热源（变温热源）可逆热机" class="headerlink" title="多热源（变温热源）可逆热机"></a>多热源（变温热源）可逆热机</h4><script type="math/tex; mode=display">
+Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="math/tex; mode=display">
+\eta_t = 1 - \frac{Q_2}{Q_1}</script><p>因此 $\eta_{t R\text{多}} &lt; \eta_{t C}$</p>
+<p><strong>平均温度法：</strong> $T_1$ 与 $T_2$ 间的卡诺循环 $\eta_{t R\text{多}} = 1 - \dfrac{\overline{T_2}}{\overline{T_1}}$</p>
+<h4 id="概括性卡诺循环"><a href="#概括性卡诺循环" class="headerlink" title="概括性卡诺循环"></a>概括性卡诺循环</h4><p>用两个多变过程取代可逆绝热过程，吸热和放热的多变指数 $n$ 相同。</p>
+<p>完全回热：$Q_{da} = -Q_{bc}$</p>
+<script type="math/tex; mode=display">
+\overline{ab} = \overline{cd} = \overline{ef}</script><script type="math/tex; mode=display">
+\eta_{t R\text{概括}} = 1 - \frac{T_2}{T_1} = \eta_{t C}</script><p>提供了提高热效率的一个途径：回热</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png" alt="概括性卡诺循环"></p>
+<h4 id="关于热机热效率的小结"><a href="#关于热机热效率的小结" class="headerlink" title="关于热机热效率的小结"></a>关于热机热效率的小结</h4><ul>
+<li><p>在两个恒温热源 $T_1$, $T_2$ 间工作的一切可逆热机，$\eta_R = \eta_C$，与工质性质无关。</p>
+</li>
+<li><p>多（变温）热源间工作的可逆热机 $\eta_{R\text{多}} &lt;$ 同温限间工作卡诺热机 $\eta_C$</p>
+</li>
+<li><p>不可逆热机 $\eta_{IR} &lt;$ 同热源间工作可逆热机 $\eta_R$</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\eta_{IR} < \eta_R = \eta_C</script><p>因此在给定温度界限间工作的一切热机，$\eta_C$ 最高 $\Longrightarrow$ 热机极限</p>
+<h4 id="实际热机与卡诺热机"><a href="#实际热机与卡诺热机" class="headerlink" title="实际热机与卡诺热机"></a>实际热机与卡诺热机</h4><p>卡诺热机只有理论意义，是理想极限。实际上等温过程和绝热过程很难实现。</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase my-post-tags">
@@ -1313,7 +1390,51 @@ w_{\text{分级}} = \frac{n}{n - 1} RT_1 \left[ 2 - \left( \frac{p_2}{p_1} \righ
         <a class="is-flex" href="#第四章-热力学第二定律">
         <span class="has-mr-6">4</span>
         <span>第四章 热力学第二定律</span>
-        </a></li></ul>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#热力学第二律的表述与实质">
+        <span class="has-mr-6">4.1</span>
+        <span>热力学第二律的表述与实质</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#开尔文－普朗克表述">
+        <span class="has-mr-6">4.1.1</span>
+        <span>开尔文－普朗克表述</span>
+        </a></li><li>
+        <a class="is-flex" href="#克劳修斯表述">
+        <span class="has-mr-6">4.1.2</span>
+        <span>克劳修斯表述</span>
+        </a></li><li>
+        <a class="is-flex" href="#热力学第二定律的实质">
+        <span class="has-mr-6">4.1.3</span>
+        <span>热力学第二定律的实质</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#卡诺定理与卡诺循环">
+        <span class="has-mr-6">4.2</span>
+        <span>卡诺定理与卡诺循环</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#卡诺定理">
+        <span class="has-mr-6">4.2.1</span>
+        <span>卡诺定理</span>
+        </a></li><li>
+        <a class="is-flex" href="#卡诺循环——理想可逆热机循环">
+        <span class="has-mr-6">4.2.2</span>
+        <span>卡诺循环——理想可逆热机循环</span>
+        </a></li><li>
+        <a class="is-flex" href="#多热源（变温热源）可逆热机">
+        <span class="has-mr-6">4.2.3</span>
+        <span>多热源（变温热源）可逆热机</span>
+        </a></li><li>
+        <a class="is-flex" href="#概括性卡诺循环">
+        <span class="has-mr-6">4.2.4</span>
+        <span>概括性卡诺循环</span>
+        </a></li><li>
+        <a class="is-flex" href="#关于热机热效率的小结">
+        <span class="has-mr-6">4.2.5</span>
+        <span>关于热机热效率的小结</span>
+        </a></li><li>
+        <a class="is-flex" href="#实际热机与卡诺热机">
+        <span class="has-mr-6">4.2.6</span>
+        <span>实际热机与卡诺热机</span>
+        </a></li></ul></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -1414,7 +1535,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>77.2k</span> Words
+                        <span>78.3k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
