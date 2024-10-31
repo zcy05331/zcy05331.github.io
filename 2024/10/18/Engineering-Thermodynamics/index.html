@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/Heat%20exchange%20equipment.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E4%B8%89%E7%A7%8D%E5%8E%8B%E6%B0%94%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83.png">
-<meta property="og:updated_time" content="2024-10-30T15:04:05.157Z">
+<meta property="og:updated_time" content="2024-10-31T09:08:36.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -153,7 +153,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            6736 Words
+                            6730 Words
                         </span>
                     
                 </div>
@@ -418,7 +418,7 @@
 <h4 id="简单可压缩系统准静态过程技术功"><a href="#简单可压缩系统准静态过程技术功" class="headerlink" title="简单可压缩系统准静态过程技术功"></a>简单可压缩系统准静态过程技术功</h4><p>$$<br>\begin{aligned}<br>w = \Delta(pv) + w_t \Rightarrow \delta w &amp;= d (pv) + \delta w_t \<br>                \text{准静态 } \delta w &amp;= p \mathrm d v<br>\end{aligned}<br>$$</p>
 <p>$$<br>\delta w_t = p \mathrm d v - \mathrm d (pv) = p \mathrm d v - (p \mathrm d v + v \mathrm d p) = -v \mathrm d p<br>$$</p>
 <p>$$<br>\delta w_t = -v \mathrm d p, \qquad w_t = -\int v \mathrm d p<br>$$</p>
-<p>$$<br>\text{准静态}<br>\left{<br>\begin{aligned}<br>\delta q &amp;= du + p \, dv \<br>\delta q &amp;= dh - v \, dp<br>\end{aligned}<br>\right.<br>$$</p>
+<p>$$<br>\text{准静态}<br>\begin{cases}<br>\delta q = du + p \, dv \<br>\delta q = dh - v \, dp<br>\end{cases}<br>$$</p>
 <h4 id="准静态过程技术功在示功图上的表示"><a href="#准静态过程技术功在示功图上的表示" class="headerlink" title="准静态过程技术功在示功图上的表示"></a>准静态过程技术功在示功图上的表示</h4><p>$$<br>w_t = w - \Delta(pv)<br>$$</p>
 <p>技术功为膨胀功与推进功差值的代数和</p>
 <p>$\mathrm d p &lt; 0$ 压力降低， $w_t &gt; 0$ 对外作功</p>
@@ -447,7 +447,7 @@
 <p>三原子分子 $(H_2O, CO_2)$ 一般不能当作理想气体。 特殊情况可以，如空调的湿空气，高温烟气的 $CO_2$</p>
 <p>一般：$T \geq$ 常温，$p &lt; 7 \text{ MPa}$ 的双原子分子 $\Rightarrow$。（eg. $O_2, N_2, \text{Air}, CO_2, H_2$）</p>
 <h3 id="理想气体状态方程"><a href="#理想气体状态方程" class="headerlink" title="理想气体状态方程"></a>理想气体状态方程</h3><p>理想气体定义： 遵循克拉贝龙状态方程的气体。</p>
-<p>克拉贝龙状态方程的四种形式：<br>$$<br>\left{<br>\begin{aligned}<br>1 \, \text{kmol}&amp;: \quad p V_m = R_m T \<br>n \, \text{kmol}&amp;: \quad p V = n R_m T \<br>1 \, \text{kg}&amp;: \quad p v = R T \<br>m \, \text{kg}&amp;: \quad p V = m R T<br>\end{aligned}<br>\right.<br>$$</p>
+<p>克拉贝龙状态方程的四种形式：<br>$$<br>\begin{cases}<br>1 \, \text{kmol}&amp;: \quad p V_m = R_m T \<br>n \, \text{kmol}&amp;: \quad p V = n R_m T \<br>1 \, \text{kg}&amp;: \quad p v = R T \<br>m \, \text{kg}&amp;: \quad p V = m R T<br>\end{cases}<br>$$</p>
 <p>注意: 1） $R_m$ 与 $R$ 2） 摩尔容积 $V_m$  3） 统一单位</p>
 <h4 id="R-m-与-R-的区别"><a href="#R-m-与-R-的区别" class="headerlink" title="$R_m$ 与 $R$ 的区别"></a>$R_m$ 与 $R$ 的区别</h4><p><strong>$R_m$ —— 通用气体常数</strong></p>
 <p>$$<br>R_m = 8.3143 \, \text{kJ/(kmol} \cdot \text{K)}<br>$$</p>
@@ -476,7 +476,7 @@
 </ul>
 <p>$$<br>C_m = M \cdot c = 22.414 \cdot C’<br>$$</p>
 <p>比热容是<strong>过程量</strong>。</p>
-<p>常用某些特定过程的比热容：$<br>\left{<br>\begin{aligned}<br>&amp;定容比热容 \<br>&amp;定压比热容<br>\end{aligned}<br>\right.$</p>
+<p>常用某些特定过程的比热容：$<br>\begin{cases}<br>定容比热容 \<br>定压比热容<br>\end{cases}<br>$</p>
 <h4 id="定容比热容-c-v"><a href="#定容比热容-c-v" class="headerlink" title="定容比热容 $c_v$"></a>定容比热容 $c_v$</h4><p>准静态过程 $\delta q = du + p dv$，$u$ 是状态量，设 $u = f(T, v)$：</p>
 <p>$$<br>du = \left( \frac{\partial u}{\partial T} \right)_v dT + \left( \frac{\partial u}{\partial v} \right)_T dv<br>$$</p>
 <p>因此：<br>$$<br>\delta q = \left( \frac{\partial u}{\partial T} \right)_v dT + \left[ p + \left( \frac{\partial u}{\partial v} \right)_T \right] dv<br>$$<br>定容条件下：<br>$$<br>\delta q = \left( \frac{\partial u}{\partial T} \right)_v dT \quad \Rightarrow \quad c_v = \left( \frac{\delta q}{dT} \right)_v = \left( \frac{\partial u}{\partial T} \right)_v<br>$$</p>
@@ -652,16 +652,17 @@
 <p>$c_n$ 为多变过程比热容</p>
 <h4 id="多变过程与基本过程的关系"><a href="#多变过程与基本过程的关系" class="headerlink" title="多变过程与基本过程的关系"></a>多变过程与基本过程的关系</h4><p><strong>基本过程是多变过程的特例</strong>。</p>
 <ol>
-<li>当 $n = 0$:  （等压过程）</li>
+<li><p>当 $n = 0$:  （等压过程）<br>$$<br>p v^0 = \text{Const} \quad \Rightarrow \quad p = \text{Const}, \quad c_n = k c_v = c_p<br>$$</p>
+</li>
+<li><p>当 $n = 1$:  （等温过程）<br>$$<br>p v^1 = \text{Const} \quad \Rightarrow\quad T = \text{Const}, \quad c_n = \infty<br>$$  </p>
+</li>
 </ol>
-<p>$$<br>p v^0 = \text{Const} \quad \Rightarrow \quad p = \text{Const}, \quad c_n = k c_v = c_p<br>$$</p>
-<ol start="2">
-<li>当 $n = 1$:  （等温过程）</li>
-</ol>
-<p>$$<br>p v^1 = \text{Const} \quad \Rightarrow\quad T = \text{Const}, \quad c_n = \infty$$<br>$$<br>p v = RT<br>$$</p>
-<ol>
-<li>当 $n = k$:  （等熵过程）<br>$$<br>p v^k = \text{Const} \quad \Rightarrow\quad s = \text{Const}, \quad c_n = 0<br>$$</li>
-<li>当 $n = \infty$: （等容过程）<br>$$<br>p v^{\frac{1}{n}} = \text{Const} \quad\Rightarrow \quad v = \text{Const}, \quad c_n = c_v<br>$$</li>
+<p>$$<br>p v = RT<br>$$</p>
+<ol start="3">
+<li><p>当 $n = k$:  （等熵过程）<br>$$<br>p v^k = \text{Const} \quad \Rightarrow\quad s = \text{Const}, \quad c_n = 0<br>$$</p>
+</li>
+<li><p>当 $n = \infty$: （等容过程）<br>$$<br>p v^{\frac{1}{n}} = \text{Const} \quad\Rightarrow \quad v = \text{Const}, \quad c_n = c_v<br>$$</p>
+</li>
 </ol>
 <h4 id="理想气体基本过程的计算"><a href="#理想气体基本过程的计算" class="headerlink" title="理想气体基本过程的计算"></a>理想气体基本过程的计算</h4><p><strong>气体的各种热力过程：</strong></p>
 <table>
