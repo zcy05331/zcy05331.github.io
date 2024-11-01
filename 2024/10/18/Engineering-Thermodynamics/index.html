@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%BE%AE%E5%85%83%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
-<meta property="og:updated_time" content="2024-11-01T06:59:14.682Z">
+<meta property="og:updated_time" content="2024-11-01T07:56:46.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -156,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            8787 Words
+                            9483 Words
                         </span>
                     
                 </div>
@@ -969,7 +969,9 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
 \mathrm{d}S = \mathrm{d}S_f + \mathrm{d}S_g</script><script type="math/tex; mode=display">
 \Delta S = \Delta S_f + \Delta S_g</script><p>热力学第二定律表达式之一</p>
 <p><strong>熵产是过程不可逆性程度的度量</strong></p>
-<h4 id="熵变的计算"><a href="#熵变的计算" class="headerlink" title="熵变的计算"></a>熵变的计算</h4><h5 id="1-理想气体"><a href="#1-理想气体" class="headerlink" title="1. 理想气体"></a>1. 理想气体</h5><h6 id="a-初、终态"><a href="#a-初、终态" class="headerlink" title="a. 初、终态"></a>a. 初、终态</h6><script type="math/tex; mode=display">
+<h4 id="熵变的计算"><a href="#熵变的计算" class="headerlink" title="熵变的计算"></a>熵变的计算</h4><p><strong>1. 理想气体</strong></p>
+<p>a. 初、终态</p>
+<script type="math/tex; mode=display">
 任意过程
 \left\{
 \begin{array}{l}
@@ -977,19 +979,76 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
 \Delta S_{12} = \int_{1}^{2} c_p \dfrac{\mathrm{d}T}{T} - R \ln \dfrac{p_2}{p_1} \\
 \Delta S_{12} = \int_{1}^{2} c_p \dfrac{\mathrm{d}v}{v} + \int_{1}^{2} c_v \dfrac{\mathrm{d}p}{p}
 \end{array}
-\right.</script><h6 id="b-定义式"><a href="#b-定义式" class="headerlink" title="b. 定义式"></a>b. 定义式</h6><script type="math/tex; mode=display">
+\right.</script><p>b. 定义式</p>
+<script type="math/tex; mode=display">
 \Delta S_{12} = \Delta S_{13} + \Delta S_{32} = \frac{Q_{13}}{T_1}</script><script type="math/tex; mode=display">
-\Delta S_{12} = \Delta S_{14} + \Delta S_{42} = \frac{Q_{42}}{T_2}</script><h5 id="2-非理想气体-：查图表"><a href="#2-非理想气体-：查图表" class="headerlink" title="2. 非理想气体 ：查图表"></a>2. 非理想气体 ：查图表</h5><h5 id="3-固体和液体"><a href="#3-固体和液体" class="headerlink" title="3. 固体和液体"></a>3. 固体和液体</h5><p>$\mathrm{d}S = \dfrac{\delta Q_{\text{re}}}{T} \qquad$ 熵变与过程无关</p>
+\Delta S_{12} = \Delta S_{14} + \Delta S_{42} = \frac{Q_{42}}{T_2}</script><p><strong>2. 非理想气体 ：查图表</strong></p>
+<p><strong>3. 固体和液体</strong></p>
+<p>$\mathrm{d}S = \dfrac{\delta Q_{\text{re}}}{T} \qquad$ 熵变与过程无关</p>
 <p>而</p>
 <script type="math/tex; mode=display">
 \delta Q_{\text{re}} = \mathrm{d}U + p \mathrm{d}V = \mathrm{d}U = cm \, \mathrm{d}T</script><script type="math/tex; mode=display">
 \therefore \mathrm{d}S = \frac{\delta Q_{\text{re}}}{T} = \frac{cm \, \mathrm{d}T}{T}</script><p>通常 $c_p = c_v = c$ 为常数，例：水 $c = 4.1868 \, \text{kJ/(kg} \cdot \text{K)}$</p>
 <script type="math/tex; mode=display">
-\therefore \Delta S = cm \ln \frac{T_2}{T_1}</script><h5 id="4-热源-蓄热器"><a href="#4-热源-蓄热器" class="headerlink" title="4. 热源(蓄热器)"></a>4. 热源(蓄热器)</h5><p>与外界交换热量，$T$ 始终不变</p>
+\therefore \Delta S = cm \ln \frac{T_2}{T_1}</script><p><strong>4. 热源(蓄热器)</strong></p>
+<p>与外界交换热量，$T$ 始终不变</p>
 <p>热源 $T1$ 的熵变：</p>
 <script type="math/tex; mode=display">
-\Delta S = \int \dfrac{\delta Q_{\text{rev}}}{T_r} = \dfrac{-Q_1}{T_1}</script><h5 id="5-功源（蓄功器）-：只与外界交换功"><a href="#5-功源（蓄功器）-：只与外界交换功" class="headerlink" title="5. 功源（蓄功器） ：只与外界交换功"></a>5. 功源（蓄功器） ：只与外界交换功</h5><p>可以设想为理想弹簧：无耗散，无热量交换</p>
+\Delta S = \int \dfrac{\delta Q_{\text{rev}}}{T_r} = \dfrac{-Q_1}{T_1}</script><p><strong>5. 功源（蓄功器） ：只与外界交换功</strong></p>
+<p>可以设想为理想弹簧：无耗散，无热量交换</p>
 <p>功源的熵变： $\Delta S = 0$</p>
+<h3 id="孤立系统熵增原理"><a href="#孤立系统熵增原理" class="headerlink" title="孤立系统熵增原理"></a>孤立系统熵增原理</h3><h4 id="孤立系统熵增原理-1"><a href="#孤立系统熵增原理-1" class="headerlink" title="孤立系统熵增原理"></a>孤立系统熵增原理</h4><script type="math/tex; mode=display">
+孤立系统\text{ (Isolated system) }
+\left\{
+\begin{array}{l}
+无质量交换 \\
+无热量交换 \\
+无功量交换
+\end{array}
+\right.
+\mathrm{d}S_f = 0</script><p>孤立系统 $=$ 非孤立系统 $+$ 相关外界</p>
+<script type="math/tex; mode=display">
+\mathrm{d}S_{\text{iso}} = \mathrm{d}S_g \geq 0 \qquad热力学第二定律表达式之一</script><script type="math/tex; mode=display">
+> 不可逆过程  \qquad = 可逆过程</script><p><strong>孤立系统的熵只能增大，或者不变，绝不能减小。</strong> —— 孤立系统熵增原理</p>
+<h4 id="作功能力损失"><a href="#作功能力损失" class="headerlink" title="作功能力损失"></a>作功能力损失</h4><p>热量 $Q$ 的量没变，但不可逆过程的熵增，导致作功能力下降，即能量贬值或功的耗散。</p>
+<p>作功能力: 以环境为基准, 系统可能作出的最大功。</p>
+<p><strong>作功能力损失：</strong></p>
+<script type="math/tex; mode=display">
+\Pi = W_R - W_{\text{IR}} = T_0 \Delta S_{\text{iso}} = T_0 \Delta S_g</script><script type="math/tex; mode=display">
+\pi = T_0 \Delta s_{\text{iso}} = T_0 \Delta s_g</script><h3 id="熵方程及对熵的小结"><a href="#熵方程及对熵的小结" class="headerlink" title="熵方程及对熵的小结"></a>熵方程及对熵的小结</h3><h4 id="熵方程以及绝热稳流系统熵增原理"><a href="#熵方程以及绝热稳流系统熵增原理" class="headerlink" title="熵方程以及绝热稳流系统熵增原理"></a>熵方程以及绝热稳流系统熵增原理</h4><p><strong>闭口系</strong></p>
+<script type="math/tex; mode=display">
+\Delta S_{12} = \Delta S_f + \Delta S_g</script><p><strong>开口系</strong></p>
+<script type="math/tex; mode=display">
+\mathrm{d}S_{\text{cv}} = \frac{\delta Q}{T_r} + \mathrm{d}S_g + \sum_{i=1}^{n} S_{\text{in}, i} \, \delta m_{\text{in}, i} - \sum_{i=1}^{n} S_{\text{out}, i} \, \delta m_{\text{out}, i}</script><p><strong>稳定流动</strong></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{d}S_{\text{cv}} &= 0 \\
+\delta m_{\text{in}} &= \delta m_{\text{out}} = \delta m \\
+0 = & \dfrac{\delta Q}{T_r} + \mathrm{d}S_g + s_{\text{in}} \, \delta m - s_{\text{out}} \, \delta m \\
+\mathrm{d}S_{12}&  = (s_{\text{out}} - s_{\text{in}}) \, \delta m = \frac{\delta Q}{T_r} + \mathrm{d}S_g \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\Delta S_{12} = \Delta S_f + \Delta S_g</script><p><strong>绝热稳流系统的熵变：</strong></p>
+<script type="math/tex; mode=display">
+\Delta S_{12} = \Delta S_f + \Delta S_g = \int \frac{\delta Q}{T_r} + \Delta S_g</script><script type="math/tex; mode=display">
+\Delta S_{12} - \int \frac{\delta Q}{T_r} = \Delta S_g \geq 0</script><script type="math/tex; mode=display">
+\Delta S_{12} + \int -\frac{\delta Q}{T_r} = \Delta S_g \geq 0</script><script type="math/tex; mode=display">
+\Delta S_{12} + \Delta S_{T_r} = \Delta S_g \geq 0</script><p>绝热稳流系统熵增：</p>
+<script type="math/tex; mode=display">
+\Delta S_{\text{总}} = \Delta S_{12} + \Delta S_{T_r} = \Delta S_g \geq 0</script><h3 id="熵与不可逆及熵的物理意义"><a href="#熵与不可逆及熵的物理意义" class="headerlink" title="熵与不可逆及熵的物理意义"></a>熵与不可逆及熵的物理意义</h3><p>不可逆的深层含义：不可逆, 必然有熵产，必然导致作功能力损失。</p>
+<h4 id="熵的物理意义"><a href="#熵的物理意义" class="headerlink" title="熵的物理意义"></a>熵的物理意义</h4><ul>
+<li>可逆过程传热的大小和方向</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{d}s = \frac{\delta q_{\text{re}}}{T}</script><ul>
+<li><p>孤立系熵增 $\Delta S_{\text{iso}} \geq 0$ 或任何系统的熵产 $\Delta S_g \geq 0$ 表征过程不可逆的程度，熵增越大，表明系统不可逆程度越甚。</p>
+</li>
+<li><p>自然界有限空间的过程总是朝着孤立系熵增的方向进行，所以熵可以作为过程方向性的判据。</p>
+</li>
+</ul>
+<p><strong>熵的统计意义：</strong></p>
+<script type="math/tex; mode=display">
+S = k \log W</script><p>$k$：玻尔兹曼常数<br>$W$：宏观态对应的可能的微观态的数目。</p>
+<p>熵可以看作分子无序性或随机性的一种量度，系统越无序，分子所处的位置就越难以预测，熵也就越大。</p>
 
         </div>
         
@@ -1526,6 +1585,34 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
         <a class="is-flex" href="#熵变的计算">
         <span class="has-mr-6">4.4.2</span>
         <span>熵变的计算</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#孤立系统熵增原理">
+        <span class="has-mr-6">4.5</span>
+        <span>孤立系统熵增原理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#孤立系统熵增原理-1">
+        <span class="has-mr-6">4.5.1</span>
+        <span>孤立系统熵增原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#作功能力损失">
+        <span class="has-mr-6">4.5.2</span>
+        <span>作功能力损失</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#熵方程及对熵的小结">
+        <span class="has-mr-6">4.6</span>
+        <span>熵方程及对熵的小结</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#熵方程以及绝热稳流系统熵增原理">
+        <span class="has-mr-6">4.6.1</span>
+        <span>熵方程以及绝热稳流系统熵增原理</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#熵与不可逆及熵的物理意义">
+        <span class="has-mr-6">4.7</span>
+        <span>熵与不可逆及熵的物理意义</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#熵的物理意义">
+        <span class="has-mr-6">4.7.1</span>
+        <span>熵的物理意义</span>
         </a></li></ul></li></ul></li></ul>
         </div>
     </div>
@@ -1627,7 +1714,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>79.1k</span> Words
+                        <span>79.8k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
