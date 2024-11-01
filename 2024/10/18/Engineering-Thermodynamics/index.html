@@ -19,7 +19,8 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E4%B8%89%E7%A7%8D%E5%8E%8B%E6%B0%94%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
-<meta property="og:updated_time" content="2024-10-31T10:19:34.964Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%BE%AE%E5%85%83%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
+<meta property="og:updated_time" content="2024-11-01T06:37:10.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -155,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            7956 Words
+                            8271 Words
                         </span>
                     
                 </div>
@@ -922,7 +923,36 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
 <script type="math/tex; mode=display">
 \eta_{IR} < \eta_R = \eta_C</script><p>因此在给定温度界限间工作的一切热机，$\eta_C$ 最高 $\Longrightarrow$ 热机极限</p>
 <h4 id="实际热机与卡诺热机"><a href="#实际热机与卡诺热机" class="headerlink" title="实际热机与卡诺热机"></a>实际热机与卡诺热机</h4><p>卡诺热机只有理论意义，是理想极限。实际上等温过程和绝热过程很难实现。</p>
-
+<h3 id="克劳修斯不等式及熵的引出"><a href="#克劳修斯不等式及熵的引出" class="headerlink" title="克劳修斯不等式及熵的引出"></a>克劳修斯不等式及熵的引出</h3><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%BE%AE%E5%85%83%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png" alt="微卡诺循环"></p>
+<p>对于任意可逆循环，如用无数组绝热线将其分割，微元循环 $\text{abfga}$ 可近似看成微卡诺循环。</p>
+<p>因此，对任意循环，有克劳修斯不等式：</p>
+<script type="math/tex; mode=display">
+\oint \frac{\delta Q}{T_r} \leq 0 \qquad T_r 代表热源温度</script><ul>
+<li><code>&lt;</code> 不可逆循环</li>
+<li><code>=</code> 可逆循环</li>
+<li><code>&gt;</code> 不可能</li>
+</ul>
+<p>是热力学第二定律表达式之一</p>
+<h4 id="熵的引出以及物理意义"><a href="#熵的引出以及物理意义" class="headerlink" title="熵的引出以及物理意义"></a>熵的引出以及物理意义</h4><p><strong>定义：</strong></p>
+<p>熵</p>
+<script type="math/tex; mode=display">
+\mathrm{d}S = \frac{\delta Q_{\text{re}}}{T}</script><p>比熵</p>
+<script type="math/tex; mode=display">
+\mathrm{d}s = \frac{\delta q_{\text{re}}}{T}</script><p>$T$：热源温度 $=$ 工质温度</p>
+<p><strong>熵的物理意义之一：</strong>熵变可以体现可逆过程热交换的方向和大小</p>
+<script type="math/tex; mode=display">
+可逆时
+\left\{
+\begin{array}{l}
+\mathrm{d}S > 0 \Rightarrow \delta Q > 0 \\
+\mathrm{d}S < 0 \Rightarrow \delta Q < 0 \\
+\mathrm{d}S = 0 \Rightarrow \delta Q = 0
+\end{array}
+\right.</script><h4 id="熵变及熵的循环积分"><a href="#熵变及熵的循环积分" class="headerlink" title="熵变及熵的循环积分"></a>熵变及熵的循环积分</h4><p>熵是状态量，熵变与路径无关，只与初终态有关</p>
+<script type="math/tex; mode=display">
+\Delta S_{\text{12可逆}} = \Delta S_{\text{12不可逆}}</script><p>熵的环积分：</p>
+<script type="math/tex; mode=display">
+\oint \mathrm d S_{\text{可逆}} = \oint \mathrm d S_{\text{不可逆}} = 0</script><h3 id="不可逆过程熵的变化"><a href="#不可逆过程熵的变化" class="headerlink" title="不可逆过程熵的变化"></a>不可逆过程熵的变化</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase my-post-tags">
@@ -1434,7 +1464,23 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
         <a class="is-flex" href="#实际热机与卡诺热机">
         <span class="has-mr-6">4.2.6</span>
         <span>实际热机与卡诺热机</span>
-        </a></li></ul></li></ul></li></ul>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#克劳修斯不等式及熵的引出">
+        <span class="has-mr-6">4.3</span>
+        <span>克劳修斯不等式及熵的引出</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#熵的引出以及物理意义">
+        <span class="has-mr-6">4.3.1</span>
+        <span>熵的引出以及物理意义</span>
+        </a></li><li>
+        <a class="is-flex" href="#熵变及熵的循环积分">
+        <span class="has-mr-6">4.3.2</span>
+        <span>熵变及熵的循环积分</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#不可逆过程熵的变化">
+        <span class="has-mr-6">4.4</span>
+        <span>不可逆过程熵的变化</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -1535,7 +1581,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>78.3k</span> Words
+                        <span>78.6k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
