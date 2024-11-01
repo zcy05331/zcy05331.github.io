@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%BE%AE%E5%85%83%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
-<meta property="og:updated_time" content="2024-11-01T07:56:46.920Z">
+<meta property="og:updated_time" content="2024-11-01T09:02:19.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -156,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            9483 Words
+                            9910 Words
                         </span>
                     
                 </div>
@@ -1006,7 +1006,7 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
 无功量交换
 \end{array}
 \right.
-\mathrm{d}S_f = 0</script><p>孤立系统 $=$ 非孤立系统 $+$ 相关外界</p>
+\qquad \mathrm{d}S_f = 0</script><p>孤立系统 $=$ 非孤立系统 $+$ 相关外界</p>
 <script type="math/tex; mode=display">
 \mathrm{d}S_{\text{iso}} = \mathrm{d}S_g \geq 0 \qquad热力学第二定律表达式之一</script><script type="math/tex; mode=display">
 > 不可逆过程  \qquad = 可逆过程</script><p><strong>孤立系统的熵只能增大，或者不变，绝不能减小。</strong> —— 孤立系统熵增原理</p>
@@ -1045,11 +1045,47 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
 <li><p>自然界有限空间的过程总是朝着孤立系熵增的方向进行，所以熵可以作为过程方向性的判据。</p>
 </li>
 </ul>
-<p><strong>熵的统计意义：</strong></p>
-<script type="math/tex; mode=display">
+<h4 id="熵的统计意义"><a href="#熵的统计意义" class="headerlink" title="熵的统计意义"></a>熵的统计意义</h4><script type="math/tex; mode=display">
 S = k \log W</script><p>$k$：玻尔兹曼常数<br>$W$：宏观态对应的可能的微观态的数目。</p>
 <p>熵可以看作分子无序性或随机性的一种量度，系统越无序，分子所处的位置就越难以预测，熵也就越大。</p>
-
+<h3 id="㶲及其计算"><a href="#㶲及其计算" class="headerlink" title="㶲及其计算"></a>㶲及其计算</h3><h4 id="㶲即作功能力"><a href="#㶲即作功能力" class="headerlink" title="㶲即作功能力"></a>㶲即作功能力</h4><p>㶲 $\text{Exergy}$： Available Energy 有效能</p>
+<p>㷻 $\text{Anergy}$：Unavailable Energy 无效能</p>
+<p>㶲的定义：给定环境条件下，能量中最大可能转换为有用功的那部分能量，称为㶲。（㶲即作功能力）</p>
+<p>能量中㶲以外的部分是㷻。</p>
+<h4 id="热力学第一及第二定律与㶲"><a href="#热力学第一及第二定律与㶲" class="headerlink" title="热力学第一及第二定律与㶲"></a>热力学第一及第二定律与㶲</h4><p><strong>热力学第一定律</strong>：一切过程，㶲 + 㷻 总量恒定</p>
+<p><strong>热力学第二定律</strong>：㷻不能转换为㶲</p>
+<ul>
+<li>可逆过程中，㶲保持不变</li>
+<li>不可逆过程中，部分㶲退化为㷻</li>
+</ul>
+<p><strong>㶲损失</strong>、作功能力损失、能量贬值</p>
+<p>任何一孤立系，㶲只能不变或减少，不能增加。  —— <strong>孤立系㶲减原理</strong></p>
+<h4 id="热量㶲及冷量㶲的计算"><a href="#热量㶲及冷量㶲的计算" class="headerlink" title="热量㶲及冷量㶲的计算"></a>热量㶲及冷量㶲的计算</h4><p><strong>1.热量㶲</strong></p>
+<p>$Ex_Q$ : 给定环境下，热量 $Q$ 能做的最大有用功。</p>
+<script type="math/tex; mode=display">
+Ex_Q = Q - T_0 \Delta S</script><p>若是恒温 $T$ 的热量，则：</p>
+<script type="math/tex; mode=display">
+Ex_Q = Q - T_0 \frac{Q}{T} = Q(1 - \frac{T_0}{T})</script><p>热量㶲的说明：</p>
+<ol>
+<li><p>$Ex_Q$: $Q$ 中能转换的最大有用功</p>
+</li>
+<li><p>$Ex_Q = Q - T_0 \Delta S = f(Q, T, T_0)$</p>
+<ul>
+<li>$T_0$, $Q$ 一定，$T \downarrow \Rightarrow Ex_Q \uparrow$</li>
+<li>$T$ 一定，$Q \downarrow \Rightarrow Ex_Q \downarrow$</li>
+</ul>
+<p>㶲损失、作功能力损失</p>
+</li>
+<li><p>单热源热机不能作功<br>$T = T_0$, $Ex_Q = 0$</p>
+</li>
+<li><p>$Ex_Q$ 是过程量</p>
+</li>
+</ol>
+<p><strong>2.冷量㶲：</strong></p>
+<script type="math/tex; mode=display">
+Ex_{Q_2} = T_0 \Delta S - Q_2</script><p>冷量㶲：吸热 $Q_2$对外做的最大有用功，或制造冷量 $Q_2$ 时消耗的最小有用功。</p>
+<p>实际上，只要系统状态与环境状态有差别，就有可能对外作功，就有㶲。</p>
+<h4 id="内能㶲及焓㶲的计算"><a href="#内能㶲及焓㶲的计算" class="headerlink" title="内能㶲及焓㶲的计算"></a>内能㶲及焓㶲的计算</h4>
         </div>
         
         <div class="level is-size-7 is-uppercase my-post-tags">
@@ -1613,6 +1649,30 @@ S = k \log W</script><p>$k$：玻尔兹曼常数<br>$W$：宏观态对应的可�
         <a class="is-flex" href="#熵的物理意义">
         <span class="has-mr-6">4.7.1</span>
         <span>熵的物理意义</span>
+        </a></li><li>
+        <a class="is-flex" href="#熵的统计意义">
+        <span class="has-mr-6">4.7.2</span>
+        <span>熵的统计意义</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#㶲及其计算">
+        <span class="has-mr-6">4.8</span>
+        <span>㶲及其计算</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#㶲即作功能力">
+        <span class="has-mr-6">4.8.1</span>
+        <span>㶲即作功能力</span>
+        </a></li><li>
+        <a class="is-flex" href="#热力学第一及第二定律与㶲">
+        <span class="has-mr-6">4.8.2</span>
+        <span>热力学第一及第二定律与㶲</span>
+        </a></li><li>
+        <a class="is-flex" href="#热量㶲及冷量㶲的计算">
+        <span class="has-mr-6">4.8.3</span>
+        <span>热量㶲及冷量㶲的计算</span>
+        </a></li><li>
+        <a class="is-flex" href="#内能㶲及焓㶲的计算">
+        <span class="has-mr-6">4.8.4</span>
+        <span>内能㶲及焓㶲的计算</span>
         </a></li></ul></li></ul></li></ul>
         </div>
     </div>
@@ -1714,7 +1774,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>79.8k</span> Words
+                        <span>80.1k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
