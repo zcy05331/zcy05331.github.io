@@ -7,22 +7,22 @@
 
 
 
-    <meta name="description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记（$\text{Full Version}$)。">
+    <meta name="description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记($\text{Full Version}$)。">
 <meta name="keywords" content="Machine Learning,Deep Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模式识别与机器学习笔记">
 <meta property="og:url" content="http://www.zcysky.com/2024/10/18/ML-DL/index.html">
 <meta property="og:site_name" content="little_sun&#39;s blog">
-<meta property="og:description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记（$\text{Full Version}$)。">
+<meta property="og:description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记($\text{Full Version}$)。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Trad_ML/HMM%20Chain.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/LSTM.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/transformer.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/ML-DL/GAN.png">
-<meta property="og:updated_time" content="2024-10-18T15:43:56.846Z">
+<meta property="og:updated_time" content="2024-11-01T09:08:06.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模式识别与机器学习笔记">
-<meta name="twitter:description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记（$\text{Full Version}$)。">
+<meta name="twitter:description" content="本文为清华大学”模式识别与机器学习”课程的复习笔记($\text{Full Version}$)。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Trad_ML/HMM%20Chain.png">
 
 
@@ -155,7 +155,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            5061 Words
+                            5060 Words
                         </span>
                     
                 </div>
@@ -163,8 +163,8 @@
         </div>
         
         <div class="content">
-            <p>本文为清华大学”模式识别与机器学习”课程的复习笔记（$\text{Full Version}$)。</p>
-<a id="more"></a> 
+            <p>本文为清华大学”模式识别与机器学习”课程的复习笔记($\text{Full Version}$)。</p>
+<a id="more"></a>
 <h2 id="Evaluation-Metric"><a href="#Evaluation-Metric" class="headerlink" title="Evaluation Metric"></a>Evaluation Metric</h2><script type="math/tex; mode=display">
 \begin{aligned}
 \text{Accuracy} &= \frac{\text{TP+TN}}{\text{TP+FP+TN+FN}} \newline
@@ -191,10 +191,10 @@
 <li>Feature selection</li>
 <li>Use prior knowledge</li>
 </ul>
-<h2 id="Linear-Regression-Multivariate-ver"><a href="#Linear-Regression-Multivariate-ver" class="headerlink" title="Linear Regression (Multivariate ver.)"></a>Linear Regression (Multivariate ver.)</h2><p>For a multivariate linear regression, the function becomes $y_i = \mathbf{w}^{\rm T}\mathbf{x}_i$ , where: </p>
+<h2 id="Linear-Regression-Multivariate-ver"><a href="#Linear-Regression-Multivariate-ver" class="headerlink" title="Linear Regression (Multivariate ver.)"></a>Linear Regression (Multivariate ver.)</h2><p>For a multivariate linear regression, the function becomes $y_i = \mathbf{w}^{\rm T}\mathbf{x}_i$ , where:</p>
 <script type="math/tex; mode=display">
 \mathbf{x} = \left(1, x_i^1, \cdots, x_i^{d} \right)^{\mathrm T} \in \mathbb{R}^{d+1}, \mathbf{w} = \left(w_0, w_1, \cdots, w_d\right)^{\mathrm T} \in \mathbb{R}^{d+1}</script><p>, We adjust the values of $\mathbf{w}$ to find the equation that gives the best fitting line $f(x) = \mathbf{w}^{\rm T}\mathbf{x}$</p>
-<p>We find the best $\mathbf{w}^*$ using the Mean Squared Loss: </p>
+<p>We find the best $\mathbf{w}^*$ using the Mean Squared Loss:  </p>
 <script type="math/tex; mode=display">
 \ell(f(\mathbf x, y)) = \min\limits_{\mathbf w} \frac{1}{N} \sum_{i = 1}^N (f(\mathbf x_i) - y_i)^2 = \min \limits_{\mathbf w} \frac{1}{N}(\mathbf {Xw-y})^{\rm T}(\mathbf {Xw-y})</script><p>So that $\mathbf{w}^{\star} $ must satisfy $\mathbf {X^{\rm T}} \mathbf {Xw^{\star}} = \mathbf X^{\rm T}\mathbf y$ , so we get $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X})^{-1}\mathbf X^{\rm T}\mathbf y$ or $\mathbf{w^{\star}} = (\mathbf {X^{\rm T}X} + \lambda \mathbf I)^{-1}\mathbf X^{\rm T}\mathbf y$ (Ridge Regression)</p>
 <h2 id="Linear-Discriminant-Analysis"><a href="#Linear-Discriminant-Analysis" class="headerlink" title="Linear Discriminant Analysis"></a>Linear Discriminant Analysis</h2><p>project input vector $\mathbf x \in \mathbb{R}^{d+1}$ down to a 1-dimensional subspace with projection vector $\mathbf w$</p>
@@ -424,7 +424,7 @@ R(f) = \mathbb E_{(x, y) \sim u} \ell(f(x), y)</script><p>Therefore define the G
 <h4 id="Generalization-Error-Bound"><a href="#Generalization-Error-Bound" class="headerlink" title="Generalization Error Bound"></a>Generalization Error Bound</h4><p>If a hypothesis class $\mathcal{H}$ has VC dimension $d_{vc}$, we have a theorem that states that with probability $1 - \delta$ and $m$ samples, we can bound the generalization gap for any model $h \in \mathcal{H}$ as</p>
 <script type="math/tex; mode=display">
 R(h) \leq \hat{R}(h) + \sqrt{\frac{8d_{vc} \ln\left(\frac{2em}{d_{vc}}\right) + 8 \ln\left(\frac{4}{\delta}\right)}{m}}</script><h2 id="Bayesian-Decision"><a href="#Bayesian-Decision" class="headerlink" title="Bayesian Decision"></a>Bayesian Decision</h2><p>Bayesian Decision: Find an optimal classifier according to the prior probability and class-conditional probability density of the feature</p>
-<p>The a priori or prior probability reflects our knowledge of how likely we expect a certain state of nature before we can actually observe said state of nature. </p>
+<p>The a priori or prior probability reflects our knowledge of how likely we expect a certain state of nature before we can actually observe said state of nature.  </p>
 <p>The class-conditional probability density function is the probability<br>density function $P(x|\omega)$ for our feature $x$, given that the state/class is $\omega$</p>
 <p>Posterior Probability is the probability of a certain state/class given<br>our observable feature $x$: $P(\omega | x)$</p>
 <p><strong>Minimum Prediction Error Principle.</strong> The optimal classifier $f(\cdot)$ should minimize the expected prediction error, defined as</p>
@@ -586,7 +586,7 @@ P(X_i = x \mid Y = y) = \frac{\text{Count}(X_i = x, Y = y) + 1}{\sum_{x'} \text{
 </ul>
 </li>
 </ul>
-<p>Joint probability of BN: </p>
+<p>Joint probability of BN:  </p>
 <script type="math/tex; mode=display">
 p(x) = \prod_{t=1}^{n} p(x_t \mid x_{\text{pa}(t)})</script><p>where $\text{pa}(t)$ is the set of all parent nodes of node $t$.</p>
 <script type="math/tex; mode=display">
@@ -608,7 +608,7 @@ p(\theta \mid D) \sim \prod_{t=1}^{n} \prod_{c=1}^{q_t} p(D_{tc} \mid \theta_{tc
 <script type="math/tex; mode=display">
 P(x_t = k \mid x_{\text{pa}(t)} = c) = \theta_{tck}</script><p>and the conditional probability of node $t$ can be denoted as:</p>
 <script type="math/tex; mode=display">
-\theta_{tc} = [\theta_{tc1}, \theta_{tc2}, \ldots, \theta_{tcK_t}], \quad \sum_{k=1}^{K_t} \theta_{tck} = 1</script><p>Categorical Distribution: </p>
+\theta_{tc} = [\theta_{tc1}, \theta_{tc2}, \ldots, \theta_{tcK_t}], \quad \sum_{k=1}^{K_t} \theta_{tck} = 1</script><p>Categorical Distribution:  </p>
 <script type="math/tex; mode=display">
 p = [\theta_1, \theta_2, \ldots, \theta_d], \quad \theta_i \geq 0, \quad \sum_{i} \theta_i = 1</script><p>E.g., toss a coin $(d = 2)$, roll a die $(d = 6)$</p>
 <p>Count the training samples where $x_t = k, x_{\text{pa}(t)} = c$:</p>
@@ -783,7 +783,7 @@ L(w) = \sum_{i=1}^{n} \left( w^T x_i - y_i \right)^2 + C \|w\|_1</script><p>spar
 <p><strong>Observation</strong>: PC $j$ is direction of the $j$-th largest eigenvector of $\frac{1}{n} \mathbf{X}^T \mathbf{X}$</p>
 <p><strong>Eigenvalue Decomposition</strong>:  </p>
 <script type="math/tex; mode=display">
-\mathbf{U} = 
+\mathbf{U} =  
 \begin{pmatrix}
 \mathbf{u}_1 & \cdots & \mathbf{u}_k \\
 \end{pmatrix}</script><p>are eigenvectors of $\frac{1}{n} \mathbf{X}^T \mathbf{X}$</p>
