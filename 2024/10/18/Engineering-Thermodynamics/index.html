@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%BE%AE%E5%85%83%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
-<meta property="og:updated_time" content="2024-11-01T09:02:19.965Z">
+<meta property="og:updated_time" content="2024-11-02T03:48:07.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -156,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            9910 Words
+                            10317 Words
                         </span>
                     
                 </div>
@@ -213,7 +213,7 @@
 <ul>
 <li>状态参数的特征：单值性</li>
 </ul>
-<p>强度参数：与物质的量无关的参数<br>如压力 $p$ 、温度 $T$ </p>
+<p>强度参数：与物质的量无关的参数<br>如压力 $p$ 、温度 $T$</p>
 <p>广延参数：与物质的量有关的参数，具有可加性，如质量 $m$ 、容积 $V$ 、内能 $U$ 、焓 $H$ 、熵 $S$</p>
 <p>比参数：具有强度参数的性质 eg. 比容 $v = \frac{V}{m}$</p>
 <p>基本状态参数：压力 $p$，温度 $T$，比容 $v$。</p>
@@ -255,7 +255,7 @@ v = \frac{1}{\rho}</script><h3 id="平衡状态"><a href="#平衡状态" class="
 \delta W = p \times A \times \mathrm{d} l = p \times \mathrm{d} V \\
 W = \int_1^2p \mathrm d V</script><p>$1$ kg工质对外界作的功：</p>
 <script type="math/tex; mode=display">
-\delta w = p \times \mathrm d w
+\delta w = p \times \mathrm d w \\
 w = \int_1^2p \mathrm d w</script><p>功的大小与路径有关，是过程量</p>
 <h4 id="可逆过程"><a href="#可逆过程" class="headerlink" title="可逆过程"></a>可逆过程</h4><p><strong>一般定义：</strong>系统经历某一过程后，如果能使系统与外界同时恢复到初始状态，而不留下任何痕迹，则此过程称为可逆过程。</p>
 <p>准静态过程 + 无耗散效应 = 可逆过程</p>
@@ -293,18 +293,18 @@ W = \int p \, dV</script><h3 id="热量与熵"><a href="#热量与熵" class="he
 </tr>
 <tr>
 <td><strong>标志</strong></td>
-<td>$dV, dv$</td>
-<td>$dS, ds$</td>
+<td>$\mathrm dV,\mathrm  dv$</td>
+<td>$\mathrm dS, \mathrm ds$</td>
 </tr>
 <tr>
 <td><strong>表达式</strong></td>
-<td>$\delta w = pdv$</td>
-<td>$\delta q = Tds$</td>
+<td>$\delta w = p\mathrm dv$</td>
+<td>$\delta q = T\mathrm ds$</td>
 </tr>
 <tr>
 <td></td>
-<td>$w = \int pdv$</td>
-<td>$q = \int Tds$</td>
+<td>$w = \int p\mathrm dv$</td>
+<td>$q = \int T\mathrm ds$</td>
 </tr>
 <tr>
 <td><strong>适用条件</strong></td>
@@ -317,9 +317,9 @@ W = \int p \, dV</script><h3 id="热量与熵"><a href="#热量与熵" class="he
 <hr>
 <p><strong>熵 (Entropy) 的定义：</strong></p>
 <script type="math/tex; mode=display">
-dS = \frac{\delta Q_{\text{rev}}}{T}</script><p>广延量 $\text{kJ/K}$</p>
+\mathrm dS = \frac{\delta Q_{\text{rev}}}{T}</script><p>广延量 $\text{kJ/K}$</p>
 <script type="math/tex; mode=display">
-ds = \frac{\delta q_{\text{rev}}}{T}</script><p>比参数 $\text{kJ/(kg.K)}$</p>
+\mathrm ds = \frac{\delta q_{\text{rev}}}{T}</script><p>比参数 $\text{kJ/(kg.K)}$</p>
 <p>$\mathrm{d} s$: 可逆过程 $\delta q_{\text{rev}}$ 除以传热时的 $T$ 所得的熵</p>
 <hr>
 <p><strong>熵的说明：</strong></p>
@@ -1085,7 +1085,58 @@ Ex_Q = Q - T_0 \frac{Q}{T} = Q(1 - \frac{T_0}{T})</script><p>热量㶲的说明�
 <script type="math/tex; mode=display">
 Ex_{Q_2} = T_0 \Delta S - Q_2</script><p>冷量㶲：吸热 $Q_2$对外做的最大有用功，或制造冷量 $Q_2$ 时消耗的最小有用功。</p>
 <p>实际上，只要系统状态与环境状态有差别，就有可能对外作功，就有㶲。</p>
-<h4 id="内能㶲及焓㶲的计算"><a href="#内能㶲及焓㶲的计算" class="headerlink" title="内能㶲及焓㶲的计算"></a>内能㶲及焓㶲的计算</h4>
+<h4 id="内能㶲及焓㶲的计算"><a href="#内能㶲及焓㶲的计算" class="headerlink" title="内能㶲及焓㶲的计算"></a>内能㶲及焓㶲的计算</h4><p><strong>3.闭口系统内能㶲：</strong></p>
+<script type="math/tex; mode=display">
+ex_u = (u_1 - u_0) - \left[ T_0 (s_1 - s_0) - p_0 (v_1 - v_0) \right]</script><p>闭口系统内能焓的说明</p>
+<ol>
+<li><p>闭口系的内能 $u_1 - u_0$，只有一部分是 $ex_u$<br>其余是 $an_u = T_0 (s_1 - s_0) - p_0 (v_1 - v_0)$</p>
+</li>
+<li><p>$ex_u$ 是与工质及环境有关的状态参数</p>
+</li>
+<li><p>环境的内能很大，但 $ex_u = 0$</p>
+</li>
+<li><p>闭口系由 $1 \rightarrow 2$ 可逆过程，工质作 <strong>最大有用功</strong> 或 <strong>消耗最小有用功</strong>：</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{aligned}
+w_{\text{max}} &= ex_{u1} - ex_{u2} \\
+&= (u_1 - u_2) - \left[ T_0 (s_1 - s_2) - p_0 (v_1 - v_2) \right]
+\end{aligned}</script><p><strong>4.稳定流动工质的焓㶲：</strong></p>
+<script type="math/tex; mode=display">
+ex_h = (h_1 - h_0) - T_0 (s_1 - s_0)</script><p>稳定流动工质焓㶲的说明：</p>
+<ol>
+<li><p>稳流工质的焓 $h_1 - h_0$，只有一部分是 $ex_h$<br>其余是 $an_h = T_0 (s_1 - s_0)$</p>
+</li>
+<li><p>$ex_h$ 是与工质及环境有关的状态参数</p>
+</li>
+<li><p>当工质状态与环境相平衡，$ex_h = 0$</p>
+</li>
+<li><p>由初态 $1 \rightarrow$ 终态 $2$ 的可逆过程，工质作 <strong>最大有用功</strong> 或 <strong>消耗最小有用功</strong>：</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+w_{\text{max}} = ex_{h1} - ex_{h2} = (h_1 - h_2) - T_0 (s_1 - s_2)</script><h4 id="㶲效率及㶲平衡"><a href="#㶲效率及㶲平衡" class="headerlink" title="㶲效率及㶲平衡"></a>㶲效率及㶲平衡</h4><p>㶲平衡：热力系统</p>
+<script type="math/tex; mode=display">
+\sum Ex_{\text{进}} - \sum Ex_{\text{出}} = \sum \Pi \; (㶲损失)</script><p>㶲效率：</p>
+<script type="math/tex; mode=display">
+\eta_{\text{ex}} = \frac{\text{收益焓}}{\text{支付焓}}</script><p>可逆过程：$\eta_{\text{ex}} = 100\%$</p>
+<ul>
+<li>动力装置</li>
+</ul>
+<script type="math/tex; mode=display">
+\eta_{\text{ex}} = \frac{W_{\text{net}}}{Ex_{h,\text{in}} - Ex_{h,\text{out}}} \qquad
+\eta_t = \frac{W_{\text{net}}}{Q_1}</script><ul>
+<li>动力装置</li>
+</ul>
+<script type="math/tex; mode=display">
+\eta_{\text{ex}} = \frac{Ex_{h,\text{out}} - Ex_{h,\text{in}}}{W}</script><ul>
+<li>加热设备</li>
+</ul>
+<script type="math/tex; mode=display">
+\eta_{\text{ex}} = \frac{\text{冷流体得到的㶲}}{\text{热流体放出的㶲}}</script><p>㶲损失 $=$ 作功能力损失</p>
+<script type="math/tex; mode=display">
+\sum \Pi = T_0 \Delta S_g</script>
         </div>
         
         <div class="level is-size-7 is-uppercase my-post-tags">
@@ -1673,6 +1724,10 @@ Ex_{Q_2} = T_0 \Delta S - Q_2</script><p>冷量㶲：吸热 $Q_2$对外做的最
         <a class="is-flex" href="#内能㶲及焓㶲的计算">
         <span class="has-mr-6">4.8.4</span>
         <span>内能㶲及焓㶲的计算</span>
+        </a></li><li>
+        <a class="is-flex" href="#㶲效率及㶲平衡">
+        <span class="has-mr-6">4.8.5</span>
+        <span>㶲效率及㶲平衡</span>
         </a></li></ul></li></ul></li></ul>
         </div>
     </div>
@@ -1774,7 +1829,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>80.1k</span> Words
+                        <span>80.5k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
