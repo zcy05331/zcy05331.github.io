@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E6%A6%82%E6%8B%AC%E6%80%A7%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/Engineering%20Thermodynamics/%E5%BE%AE%E5%85%83%E5%8D%A1%E8%AF%BA%E5%BE%AA%E7%8E%AF.png">
-<meta property="og:updated_time" content="2024-11-02T03:48:07.134Z">
+<meta property="og:updated_time" content="2024-11-04T12:20:43.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程热力学">
 <meta name="twitter:description" content="本博客为清华大学“工程热力学”课程的复习笔记（持续更新中）。">
@@ -156,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            10317 Words
+                            10438 Words
                         </span>
                     
                 </div>
@@ -702,37 +702,51 @@ c \Big|_{t_1}^{t_2} = \dfrac{c \Big|_{0}^{t_2} t_2 - c \Big|_{0}^{t_1} t_1}{t_2 
 k = \frac{c_p}{c_v} \longrightarrow \frac{\mathrm{d}p}{p} + k \frac{\mathrm{d}v}{v} = 0</script><p>当 $k = \text{const}$ 时：</p>
 <script type="math/tex; mode=display">
 \ln p + k \ln v = \text{const}</script><script type="math/tex; mode=display">
-p v^k = \text{const}</script><p>满足三个条件：</p>
+p v^k = \text{const}</script><p>即为可逆绝热系统的过程方程</p>
+<p>需要满足三个条件：</p>
 <ol>
 <li>理想气体  </li>
 <li>等熵过程  </li>
-<li>$k$ 为常数（比热比，绝热指数）</li>
+<li>$k$ （比热比，绝热指数）为常数</li>
 </ol>
-<h4 id="理想气体等熵过程的过程方程"><a href="#理想气体等熵过程的过程方程" class="headerlink" title="理想气体等熵过程的过程方程"></a>理想气体等熵过程的过程方程</h4><script type="math/tex; mode=display">
+<h4 id="理想气体绝热过程的过程方程"><a href="#理想气体绝热过程的过程方程" class="headerlink" title="理想气体绝热过程的过程方程"></a>理想气体绝热过程的过程方程</h4><script type="math/tex; mode=display">
 p v^k = \text{Const} \quad \Rightarrow \quad \frac{p_2}{p_1} = \left( \frac{v_1}{v_2} \right)^k</script><script type="math/tex; mode=display">
 p v^k = (p v) v^{k-1} = R T v^{k-1} = \text{Const}</script><script type="math/tex; mode=display">
 T v^{k-1} = \text{Const} \quad \Rightarrow \quad \frac{T_2}{T_1} = \left( \frac{v_1}{v_2} \right)^{k-1}</script><script type="math/tex; mode=display">
 p v^k = \frac{p^k v^k}{p^{k-1}} = \left( \frac{R T}{p} \right)^k = \text{Const}</script><script type="math/tex; mode=display">
-\frac{T}{p^{\frac{k-1}{k}}} = \text{Const} \quad \Rightarrow \quad \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{k-1}{k}}</script><h4 id="理想气体-s-过程-w-w-t-q-的计算"><a href="#理想气体-s-过程-w-w-t-q-的计算" class="headerlink" title="理想气体 $s$ 过程 $w$, $w_t$, $q$ 的计算"></a>理想气体 $s$ 过程 $w$, $w_t$, $q$ 的计算</h4><p><strong>容积变化功：</strong></p>
+\frac{T}{p^{\frac{k-1}{k}}} = \text{Const} \quad \Rightarrow \quad \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{k-1}{k}}</script><h4 id="理想气体绝热过程-w-w-t-q-的计算"><a href="#理想气体绝热过程-w-w-t-q-的计算" class="headerlink" title="理想气体绝热过程 $w$, $w_t$, $q$ 的计算"></a>理想气体绝热过程 $w$, $w_t$, $q$ 的计算</h4><p><strong>容积变化功：</strong></p>
 <script type="math/tex; mode=display">
 p v^k = C</script><script type="math/tex; mode=display">
 w = \int p \, \mathrm{d}v = \int \frac{C}{v^k} \, \mathrm{d}v = \frac{C}{1-k} v^{1-k} \Bigg|_1^2 = \frac{1}{k-1} \left( p_1 v_1 - p_2 v_2 \right)</script><script type="math/tex; mode=display">
-= \frac{R}{k-1} (T_1 - T_2) = c_v (T_1 - T_2) = - \Delta u</script><p><strong>技术功：</strong></p>
+= \frac{R}{k-1} (T_1 - T_2) = c_v (T_1 - T_2) = - \Delta u</script><p>对于定比热容理想气体的可逆绝热过程，利用 $p v^k = \text{const}$ ：</p>
 <script type="math/tex; mode=display">
-w_t = - \int v \, \mathrm{d}p = - \Delta h = c_p (T_1 - T_2) = k w \\ = \frac{k}{k-1} \left( p_1 v_1 - p_2 v_2 \right) = \frac{kR}{k-1} (T_1 - T_2)</script><p><strong>热量：</strong></p>
+w = \frac{RT_1}{k - 1} \left[ 1 - \left( \frac{p_2}{p_1} \right)^{\frac{k - 1}{k}} \right]</script><p><strong>技术功：</strong></p>
+<script type="math/tex; mode=display">
+w_t = - \int v \, \mathrm{d}p = - \Delta h = c_p (T_1 - T_2) = k w \\ = \frac{k}{k-1} \left( p_1 v_1 - p_2 v_2 \right) = \frac{kR}{k-1} (T_1 - T_2)</script><p>可逆绝热时有：</p>
+<script type="math/tex; mode=display">
+w_t = \frac{k}{k - 1} RT_1 \left[ 1 - \left( \frac{p_2}{p_1} \right)^{\frac{k - 1}{k}} \right]</script><p><strong>热量：</strong></p>
 <script type="math/tex; mode=display">
 q = 0</script><h3 id="理想气体热力过程综合分析"><a href="#理想气体热力过程综合分析" class="headerlink" title="理想气体热力过程综合分析"></a>理想气体热力过程综合分析</h3><h4 id="多变过程与基本过程"><a href="#多变过程与基本过程" class="headerlink" title="多变过程与基本过程"></a>多变过程与基本过程</h4><script type="math/tex; mode=display">
 p v^n = \text{Const}</script><p>$n$ 是常量，每一个多变过程 $n$ 为定值</p>
 <p>例：$n = k \quad \longrightarrow \quad$ 等熵过程</p>
 <script type="math/tex; mode=display">
-\frac{p_2}{p_1} = \left( \frac{v_1}{v_2} \right)^n, \quad \frac{T_2}{T_1} = \left( \frac{v_1}{v_2} \right)^{n-1}, \quad \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{n-1}{n}}</script><h4 id="理想气体-n-过程-w-w-t-q-的计算"><a href="#理想气体-n-过程-w-w-t-q-的计算" class="headerlink" title="理想气体 $n$ 过程 $w$, $w_t$, $q$ 的计算"></a>理想气体 $n$ 过程 $w$, $w_t$, $q$ 的计算</h4><p><strong>$p v^n = \text{Const}$</strong></p>
+\frac{p_2}{p_1} = \left( \frac{v_1}{v_2} \right)^n, \quad \frac{T_2}{T_1} = \left( \frac{v_1}{v_2} \right)^{n-1}, \quad \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{n-1}{n}}</script><h4 id="理想气体多变过程-w-w-t-q-的计算"><a href="#理想气体多变过程-w-w-t-q-的计算" class="headerlink" title="理想气体多变过程 $w$, $w_t$, $q$ 的计算"></a>理想气体多变过程 $w$, $w_t$, $q$ 的计算</h4><p><strong>$p v^n = \text{Const}$</strong></p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-w &= \int p \, \mathrm{d}v = \frac{R}{n-1} (T_1 - T_2) \\
-w_t &= n w \\
+w &= \int p \, \mathrm{d}v =
+\begin{cases}
+\dfrac{R}{n-1} (T_1 - T_2) \; , \; n \not = 1 \\
+\dfrac{k}{k - 1} RT_1 \left[ 1 - \left( \dfrac{p_2}{p_1} \right)^{\frac{k - 1}{k}} \right]  \;, \; 0 \not = n \not = 1 \\
+RT \ln \dfrac{v_2}{v_1} = RT \ln \dfrac{p_1}{p_2} \; , \; n = 1
+\end{cases} \\
+w_t &= 
+\begin{cases}
+n w \;,\;n \not = \infty\\
+- v \cdot \Delta p \; , \; n = \infty
+\end{cases} \\
 q &= \Delta u + w = c_v (T_2 - T_1) - \frac{R}{n-1} (T_2 - T_1) \\
 &= \left( c_v - \frac{R}{n-1} \right) (T_2 - T_1) = \frac{n-k}{n-1} c_v (T_2 - T_1) = c_n (T_2 - T_1) \\
-\end{aligned}</script><p>$c_n$ 为多变过程比热容</p>
+\end{aligned}</script><p>$c_n$ 为多变比热容</p>
 <h4 id="多变过程与基本过程的关系"><a href="#多变过程与基本过程的关系" class="headerlink" title="多变过程与基本过程的关系"></a>多变过程与基本过程的关系</h4><p><strong>基本过程是多变过程的特例</strong>。</p>
 <ol>
 <li><p>当 $n = 0$:  （等压过程）</p>
@@ -740,10 +754,8 @@ q &= \Delta u + w = c_v (T_2 - T_1) - \frac{R}{n-1} (T_2 - T_1) \\
 p v^0 = \text{Const} \quad \Rightarrow \quad p = \text{Const}, \quad c_n = k c_v = c_p</script></li>
 <li><p>当 $n = 1$:  （等温过程）</p>
 <script type="math/tex; mode=display">
-p v^1 = \text{Const} \quad \Rightarrow\quad T = \text{Const}, \quad c_n = \infty</script></li>
-</ol>
-<script type="math/tex; mode=display">
-p v = RT</script><ol>
+p v^1 = \text{Const} = RT
+\quad \Rightarrow\quad T = \text{Const}, \quad c_n = \infty</script></li>
 <li><p>当 $n = k$:  （等熵过程）</p>
 <script type="math/tex; mode=display">
 p v^k = \text{Const} \quad \Rightarrow\quad s = \text{Const}, \quad c_n = 0</script></li>
@@ -760,8 +772,8 @@ p v^{\frac{1}{n}} = \text{Const} \quad\Rightarrow \quad v = \text{Const}, \quad 
 <th>过程方程式</th>
 <th>初、终状态参数间的关系</th>
 <th>功量交换 $w$ (J/kg)</th>
-<th>功量交换 $w_0^{\circ}$</th>
-<th>热量交换 $q^{\circ}$ (J/kg)</th>
+<th>功量交换 $w_t$</th>
+<th>热量交换 $q$ (J/kg)</th>
 </tr>
 </thead>
 <tbody>
@@ -959,7 +971,7 @@ Q_{R\text{多}1} < Q_{C1} \quad Q_{R\text{多}2} > Q_{C2}</script><script type="
 \int_{2b1} \frac{\delta Q}{T_r} = -\int_{1b2} \frac{\delta Q}{T_r}</script><p>因此</p>
 <script type="math/tex; mode=display">
 \int_{1a2} \frac{\delta Q}{T_r} < \int_{1b2} \frac{\delta Q}{T_r} = \Delta S_{12}</script><script type="math/tex; mode=display">
-\Delta S_{12} = S_2 - S_1 \geq \int_{1}^{2} \frac{\delta Q}{T_r} \newline</script><script type="math/tex; mode=display">
+\Delta S_{12} = S_2 - S_1 \geq \int_{1}^{2} \frac{\delta Q}{T_r}</script><script type="math/tex; mode=display">
 > 不可逆 \qquad = 可逆</script><script type="math/tex; mode=display">
 \Delta S \geq \int \frac{\delta Q}{T_r}，对于循环\;\Delta S=0 \Longrightarrow 克劳修斯不等式</script><p>不可逆绝热过程：$\delta Q = 0$，$\Delta S &gt; 0$</p>
 <p>除了传热，还有其它因素影响熵 $\Rightarrow$ <strong>不可逆因素会引起熵变</strong>  </p>
@@ -1545,13 +1557,13 @@ w_{\text{max}} = ex_{h1} - ex_{h2} = (h_1 - h_2) - T_0 (s_1 - s_2)</script><h4 i
         <span class="has-mr-6">3.6</span>
         <span>理想气体的等熵过程</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#理想气体等熵过程的过程方程">
+        <a class="is-flex" href="#理想气体绝热过程的过程方程">
         <span class="has-mr-6">3.6.1</span>
-        <span>理想气体等熵过程的过程方程</span>
+        <span>理想气体绝热过程的过程方程</span>
         </a></li><li>
-        <a class="is-flex" href="#理想气体-s-过程-w-w-t-q-的计算">
+        <a class="is-flex" href="#理想气体绝热过程-w-w-t-q-的计算">
         <span class="has-mr-6">3.6.2</span>
-        <span>理想气体 $s$ 过程 $w$, $w_t$, $q$ 的计算</span>
+        <span>理想气体绝热过程 $w$, $w_t$, $q$ 的计算</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#理想气体热力过程综合分析">
         <span class="has-mr-6">3.7</span>
@@ -1561,9 +1573,9 @@ w_{\text{max}} = ex_{h1} - ex_{h2} = (h_1 - h_2) - T_0 (s_1 - s_2)</script><h4 i
         <span class="has-mr-6">3.7.1</span>
         <span>多变过程与基本过程</span>
         </a></li><li>
-        <a class="is-flex" href="#理想气体-n-过程-w-w-t-q-的计算">
+        <a class="is-flex" href="#理想气体多变过程-w-w-t-q-的计算">
         <span class="has-mr-6">3.7.2</span>
-        <span>理想气体 $n$ 过程 $w$, $w_t$, $q$ 的计算</span>
+        <span>理想气体多变过程 $w$, $w_t$, $q$ 的计算</span>
         </a></li><li>
         <a class="is-flex" href="#多变过程与基本过程的关系">
         <span class="has-mr-6">3.7.3</span>
@@ -1829,7 +1841,7 @@ function myHideElement(name) {
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <p class="is-size-7">
                     <span>
-                        <span>80.5k</span> Words
+                        <span>80.6k</span> Words
                     </span>
                     <span id="busuanzi_container_site_pv" style="display:none">
                     <span class="division">|</span>
