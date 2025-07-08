@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>CS 184 Homework 1 Writeup - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Writeup for HW1: RasterizerThis writeup is also provided on the following website: blog">
+<meta name="keywords" content="Rasterization,Computer Graphics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS 184 Homework 1 Writeup">
+<meta property="og:url" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="Writeup for HW1: RasterizerThis writeup is also provided on the following website: blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task1.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task1-without-optimize.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task1-with-optimize.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-1spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-4spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-9spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-16spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-1spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-4spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-9spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-16spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-1spp-lowdiscrepancy.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-4spp-lowdiscrepancy.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-9spp-lowdiscrepancy.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task2-16spp-lowdiscrepancy.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task3.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task4-barycoord.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task4.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task5-nearest-1spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task5-linear-1spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task5-nearest-16spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task5-linear-16spp.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task6-l_zero-p_nearest.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task6-l_zero-p_linear.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task6-l_nearest-p_nearest.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task6-l_nearest-p_linear.png">
+<meta property="og:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/extra-credit.png">
+<meta property="og:updated_time" content="2025-07-08T05:56:03.092Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS 184 Homework 1 Writeup">
+<meta name="twitter:description" content="Writeup for HW1: RasterizerThis writeup is also provided on the following website: blog">
+<meta name="twitter:image" content="http://www.zcysky.com/2025/07/07/CS184-hw1-writeup/image/cs184-hw1-results/task1.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="CS 184 Homework 1 Writeup" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    CS 184 Homework 1 Writeup
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2025-07-08T05:50:22.000Z">
+                        2025-07-07
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/projects/">projects</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1694 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="Writeup-for-HW1-Rasterizer"><a href="#Writeup-for-HW1-Rasterizer" class="headerlink" title="Writeup for HW1: Rasterizer"></a>Writeup for HW1: Rasterizer</h1><p>This writeup is also provided on the following website: <a href="2025/07/07/CS184-hw1-writeup">blog</a></p>
+<a id="more"></a>
+<h2 id="Task-1-Drawing-Single-Color-Triangles"><a href="#Task-1-Drawing-Single-Color-Triangles" class="headerlink" title="Task 1: Drawing Single-Color Triangles"></a>Task 1: Drawing Single-Color Triangles</h2><p>In this task, we implemented a simple rasterizer that draws single-color triangles on a framebuffer. The main steps involved were:</p>
+<ol>
+<li>Defining the triangle’s bounding box.</li>
+<li>Iterating over each pixel in the bounding box.</li>
+<li>Checking if the pixel is inside the triangle using the edge function.</li>
+<li>If the pixel is inside, we set its color in the framebuffer.</li>
+</ol>
+<h3 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><ul>
+<li>We check if a pixel is inside the triangle by checking if the point is on the same side of each edge of the triangle.</li>
+<li>The edge function is defined as follows:</li>
+</ul>
+<h3 id="Screen-shot"><a href="#Screen-shot" class="headerlink" title="Screen shot"></a>Screen shot</h3><p><img src="./image/cs184-hw1-results/task1.png" alt="Task 1 Screenshot"></p>
+<h3 id="Extra-Credit-Improvements"><a href="#Extra-Credit-Improvements" class="headerlink" title="Extra Credit Improvements"></a>Extra Credit Improvements</h3><p>Using the code of <code>rasterize_line</code>, we iterate all <code>3</code> edges, and for every possible <code>y</code> we calculate the <code>x</code> range of the triangle, so we can iterate over the <code>x</code> values to set the color of the pixels. This optimization reduces the number of pixel checks significantly.</p>
+<p>Without optimize: </p>
+<p><img src="./image/cs184-hw1-results/task1-without-optimize.png" alt="Task 1 Screenshot Without Optimize"></p>
+<p>With optimize:</p>
+<p><img src="./image/cs184-hw1-results/task1-with-optimize.png" alt="Task 1 Screenshot With Optimize"></p>
+<p>We can see that the optimized version is much faster, especially for larger triangles.</p>
+<h2 id="Task-2-Antialiasing-by-Supersampling"><a href="#Task-2-Antialiasing-by-Supersampling" class="headerlink" title="Task 2: Antialiasing by Supersampling"></a>Task 2: Antialiasing by Supersampling</h2><p>In this task, we implemented antialiasing for our rasterizer using supersampling. The main steps involved were:</p>
+<ol>
+<li>For each pixel, we generate multiple sub-pixel samples.</li>
+<li>We check if each sub-pixel sample is inside the triangle.</li>
+<li>If a sample is inside, we accumulate its color.</li>
+<li>Finally, we average the colors of all samples for each pixel.</li>
+</ol>
+<h3 id="Implementation-Details-1"><a href="#Implementation-Details-1" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><ul>
+<li>We use a grid of samples for each pixel, where the number of samples is determined by the <code>sample_rate</code>.</li>
+<li>The <code>fill_pixel</code> function is modified to handle multiple samples per pixel. The color of each pixel is computed by averaging the colors of the samples that fall inside the triangle.</li>
+<li>We use a simple box filter for averaging the colors of the samples.</li>
+</ul>
+<h3 id="Screen-shot-1"><a href="#Screen-shot-1" class="headerlink" title="Screen shot"></a>Screen shot</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>1 spp</th>
+<th>4 spp</th>
+<th>9 spp</th>
+<th>16 spp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="./image/cs184-hw1-results/task2-1spp.png" alt="1 spp"></td>
+<td><img src="./image/cs184-hw1-results/task2-4spp.png" alt="4 spp"></td>
+<td><img src="./image/cs184-hw1-results/task2-9spp.png" alt="9 spp"></td>
+<td><img src="./image/cs184-hw1-results/task2-16spp.png" alt="16 spp"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Extra-Credit-Improvements-1"><a href="#Extra-Credit-Improvements-1" class="headerlink" title="Extra Credit Improvements"></a>Extra Credit Improvements</h3><p>For the extra credit, we implemented a low-discrepancy sampling method to generate the sub-pixel samples using the Halton sequence. This method ensures that the samples are evenly distributed across the pixel area, which can lead to better antialiasing results.</p>
+<p>The Halton sequence is generated using the following function:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-keyword">auto</span> radicalInverse = [](<span class="hljs-keyword">int</span> base, <span class="hljs-keyword">int</span> index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">float</span> result = <span class="hljs-number">0.0f</span>;</span><br><span class="line">    <span class="hljs-keyword">float</span> f = <span class="hljs-number">1.0f</span> / base;</span><br><span class="line">    <span class="hljs-keyword">while</span> (index &gt; <span class="hljs-number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        result += f * (index % base);</span><br><span class="line">        index /= base;</span><br><span class="line">        f /= base;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">auto</span> generateLowDiscrepancySamples = [&amp;radicalInverse](<span class="hljs-keyword">int</span> sampleCount,<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">float</span>, <span class="hljs-keyword">float</span>&gt;&gt; &amp;samples)</span><br><span class="line">&#123;</span><br><span class="line">    samples.clear();</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; sampleCount; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">float</span> x = radicalInverse(<span class="hljs-number">2</span>, i); <span class="hljs-comment">// base-2 for x</span></span><br><span class="line">        <span class="hljs-keyword">float</span> y = radicalInverse(<span class="hljs-number">3</span>, i); <span class="hljs-comment">// base-3 for y</span></span><br><span class="line">        samples.emplace_back(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">generateLowDiscrepancySamples(sample_rate, gridDelta);</span><br></pre></td></tr></table></figure>
+<h4 id="Comparison-Regular-Grid-vs-Low-Discrepancy-Sampling"><a href="#Comparison-Regular-Grid-vs-Low-Discrepancy-Sampling" class="headerlink" title="Comparison: Regular Grid vs Low-Discrepancy Sampling"></a>Comparison: Regular Grid vs Low-Discrepancy Sampling</h4><p><strong>Regular Grid Sampling:</strong><br>| 1 spp | 4 spp | 9 spp | 16 spp |<br>|———-|———-|———-|————|<br>| <img src="./image/cs184-hw1-results/task2-1spp.png" alt="1 spp"> | <img src="./image/cs184-hw1-results/task2-4spp.png" alt="4 spp"> | <img src="./image/cs184-hw1-results/task2-9spp.png" alt="9 spp"> | <img src="./image/cs184-hw1-results/task2-16spp.png" alt="16 spp"> |<br>| <img src="./image/cs184-hw1-results/task2-1spp-lowdiscrepancy.png" alt="1 spp"> | <img src="./image/cs184-hw1-results/task2-4spp-lowdiscrepancy.png" alt="4 spp"> | <img src="./image/cs184-hw1-results/task2-9spp-lowdiscrepancy.png" alt="9 spp"> | <img src="./image/cs184-hw1-results/task2-16spp-lowdiscrepancy.png" alt="16 spp"> |</p>
+<p>The low-discrepancy sampling method using Halton sequence provides more evenly distributed samples, which can result in better antialiasing quality with reduced aliasing artifacts compared to regular grid sampling, especially in low sample rates.</p>
+<h2 id="Task-3-Transforms"><a href="#Task-3-Transforms" class="headerlink" title="Task 3: Transforms"></a>Task 3: Transforms</h2><p>In this task, we implemented a simple transformation system to apply translations, rotations, and scalings to triangles before rasterization. We defined transformation matrices for translation, rotation, and scaling. The matrices are: </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{Translation Matrix} &= \begin{bmatrix}
+1 & 0 & tx \\
+0 & 1 & ty \\
+0 & 0 & 1
+\end{bmatrix} \\
+\text{Rotation Matrix} &= \begin{bmatrix}
+\cos(\theta) & -\sin(\theta) & 0 \\
+\sin(\theta) & \cos(\theta) & 0 \\
+0 & 0 & 1
+\end{bmatrix} \\
+\text{Scaling Matrix} &= \begin{bmatrix}
+sx & 0 & 0 \\
+0 & sy & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\end{aligned}</script><h3 id="Screen-shot-2"><a href="#Screen-shot-2" class="headerlink" title="Screen shot"></a>Screen shot</h3><p>Here is a screenshot of my own robot, happliy waving arms and hopping around:</p>
+<p><img src="./image/cs184-hw1-results/task3.png" alt="Task 3 Screenshot"></p>
+<h2 id="Task-4-Barycentric-coordinates"><a href="#Task-4-Barycentric-coordinates" class="headerlink" title="Task 4: Barycentric coordinates"></a>Task 4: Barycentric coordinates</h2><p>In this task, we implemented barycentric coordinates to interpolate colors across the triangle. The barycentric coordinates are computed based on the area of the sub-triangles formed by the pixel and the triangle vertices.</p>
+<h3 id="Explain-barycentric-coordinates"><a href="#Explain-barycentric-coordinates" class="headerlink" title="Explain barycentric coordinates"></a>Explain barycentric coordinates</h3><p>Barycentric coordinates are a coordinate system used in a triangle to express the position of a point within the triangle as a weighted average of the triangle’s vertices. Given a triangle with vertices (A), (B), and (C), any point (P) inside the triangle can be represented as:</p>
+<p>[<br>P = \alpha A + \beta B + \gamma C<br>]</p>
+<p>where (\alpha), (\beta), and (\gamma) are the barycentric coordinates corresponding to vertices (A), (B), and (C), respectively. These coordinates have the following properties:</p>
+<ol>
+<li>They are non-negative: (\alpha \geq 0), (\beta \geq 0), (\gamma \geq 0).</li>
+<li>They sum to 1: (\alpha + \beta + \gamma = 1).</li>
+</ol>
+<p>Barycentric coordinates shows the portion of each vertex’s contribution to the point (P). They are particularly useful for interpolation tasks, such as color interpolation in rasterization, as they allow for smooth transitions between vertex attributes (e.g., colors, normals) across the surface of the triangle.</p>
+<p>Here is an image showing how barycentric coordinates interpolate colors across a triangle:</p>
+<p><img src="./image/cs184-hw1-results/task4-barycoord.png" alt="Task 4 Barycentric Coordinates"></p>
+<h3 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h3><p>Here is a screenshot of the <code>svg/basic/test7.svg</code> with interpolated colors using barycentric coordinates:</p>
+<p><img src="./image/cs184-hw1-results/task4.png" alt="Task 4 Screenshot"></p>
+<h2 id="Task-5-“Pixel-sampling”-for-texture-mapping"><a href="#Task-5-“Pixel-sampling”-for-texture-mapping" class="headerlink" title="Task 5: “Pixel sampling” for texture mapping"></a>Task 5: “Pixel sampling” for texture mapping</h2><p>In this task, we implemented texture mapping using pixel sampling. The main steps involved were:</p>
+<ol>
+<li>For each sample point, we compute the corresponding barycentric coordinates.</li>
+<li>We use these coordinates to interpolate the texture coordinates from the triangle vertices.</li>
+<li>Finally, we sample the texture at the interpolated texture coordinates and use the resulting color for the pixel.</li>
+</ol>
+<h3 id="Sampling-Methods"><a href="#Sampling-Methods" class="headerlink" title="Sampling Methods"></a>Sampling Methods</h3><p>We implemented two sampling methods for texture mapping:</p>
+<ol>
+<li><p><strong>Nearest Neighbor Sampling</strong>: This method samples the texture at the nearest pixel to the interpolated texture coordinates. It is simple and fast but can produce blocky artifacts.</p>
+</li>
+<li><p><strong>Bilinear Filtering</strong>: This method samples the texture at the four nearest texels (texture pixels) and performs bilinear interpolation to compute the final color. It produces smoother results but is more computationally expensive.</p>
+</li>
+</ol>
+<h3 id="Screenshot-1"><a href="#Screenshot-1" class="headerlink" title="Screenshot"></a>Screenshot</h3><p>Here is screenshots comparing the two sampling methods:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Nearest Neighbor</th>
+<th>Bilinear Filtering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="./image/cs184-hw1-results/task5-nearest-1spp.png" alt="Nearest Neighbor"></td>
+<td><img src="./image/cs184-hw1-results/task5-linear-1spp.png" alt="Bilinear Filtering"></td>
+</tr>
+<tr>
+<td><img src="./image/cs184-hw1-results/task5-nearest-16spp.png" alt="Nearest Neighbor"></td>
+<td><img src="./image/cs184-hw1-results/task5-linear-16spp.png" alt="Bilinear Filtering"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As we can see, bilinear filtering produces smoother textures compared to nearest neighbor sampling, especially at lower sample rates.</p>
+<p>The difference between nearest neighbor and bilinear filtering becomes most pronounced in the following scenarios:</p>
+<ol>
+<li><p><strong>High-frequency texture details</strong>: When the texture contains fine details or sharp transitions, nearest neighbor sampling can cause visible aliasing and pixelation, while bilinear filtering smooths these transitions.</p>
+</li>
+<li><p><strong>Texture magnification</strong>: When the texture is being scaled up (fewer texels than screen pixels), nearest neighbor sampling results in blocky, pixelated appearance, whereas bilinear filtering creates smoother gradients between texel values.</p>
+</li>
+<li><p><strong>Low sample rates</strong>: At 1 sample per pixel, the difference is most noticeable because there’s no additional averaging from supersampling to mask the sampling artifacts. Higher sample rates (like 16 spp) can reduce the visual difference as the supersampling provides additional smoothing.</p>
+</li>
+<li><p><strong>Slanted or rotated textures</strong>: When texture coordinates don’t align perfectly with the texture grid, bilinear filtering provides much better results by interpolating between neighboring texels rather than snapping to the nearest one.</p>
+</li>
+</ol>
+<p>The fundamental reason for these differences is that nearest neighbor sampling introduces discontinuities (sudden jumps in color values), while bilinear filtering maintains continuity by smoothly interpolating between texel values, resulting in more visually pleasing and artifact-free rendering.</p>
+<h2 id="Task-6-“Level-sampling”-with-mipmaps-for-texture-mapping"><a href="#Task-6-“Level-sampling”-with-mipmaps-for-texture-mapping" class="headerlink" title="Task 6: “Level sampling” with mipmaps for texture mapping"></a>Task 6: “Level sampling” with mipmaps for texture mapping</h2><p>As we can see, a pixel on the image may correspond to multiple texels in the texture, especially when the texture is magnified. This can lead to aliasing artifacts, where high-frequency details in the texture create visual noise or flickering.</p>
+<p>To address this issue, we can use mipmaps, which are precomputed, downsampled versions of the original texture at different levels of detail. When rendering, we can select the appropriate mipmap level based on the screen-space size of the texture, allowing us to sample from a lower-resolution version of the texture when it is displayed at a smaller size. This helps to reduce aliasing artifacts and improve rendering performance.</p>
+<h3 id="Tradeoffs"><a href="#Tradeoffs" class="headerlink" title="Tradeoffs"></a>Tradeoffs</h3><p>When choosing between different sampling techniques, there are tradeoffs to consider:</p>
+<ol>
+<li>Pixel Sampling (Nearest vs Bilinear)</li>
+</ol>
+<ul>
+<li><strong>Speed</strong>: Nearest neighbor is fastest, bilinear requires 4 texture lookups and interpolation</li>
+<li><strong>Memory</strong>: Both use same amount of memory (original texture only)</li>
+<li><strong>Antialiasing</strong>: Bilinear provides better filtering of texture aliasing, nearest can be blocky</li>
+</ul>
+<ol>
+<li>Level Sampling (Mipmaps)</li>
+</ol>
+<ul>
+<li><strong>Speed</strong>: Faster rendering due to better cache performance with smaller textures</li>
+<li><strong>Memory</strong>: Requires 33% more memory to store all mipmap levels</li>
+<li><strong>Antialiasing</strong>: Excellent for reducing texture aliasing when textures are minified</li>
+</ul>
+<ol>
+<li>Supersampling</li>
+</ol>
+<ul>
+<li><strong>Speed</strong>: Significantly slower - O(n) where n is sample rate</li>
+<li><strong>Memory</strong>: Requires n times more memory for sample buffer</li>
+<li><strong>Antialiasing</strong>: Most effective against geometric aliasing (triangle edges)</li>
+</ul>
+<h3 id="Screenshot-2"><a href="#Screenshot-2" class="headerlink" title="Screenshot"></a>Screenshot</h3><p>The following screenshots show the combinations of L_ZERO and P_NEAREST, L_ZERO and P_LINEAR, L_NEAREST and P_NEAREST, as well as L_NEAREST and P_LINEAR.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_NEAREST</th>
+<th>P_LINEAR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L_ZERO</strong></td>
+<td><img src="./image/cs184-hw1-results/task6-l_zero-p_nearest.png" alt="L_ZERO P_NEAREST"></td>
+<td><img src="./image/cs184-hw1-results/task6-l_zero-p_linear.png" alt="L_ZERO P_LINEAR"></td>
+</tr>
+<tr>
+<td><strong>L_NEAREST</strong></td>
+<td><img src="./image/cs184-hw1-results/task6-l_nearest-p_nearest.png" alt="L_NEAREST P_NEAREST"></td>
+<td><img src="./image/cs184-hw1-results/task6-l_nearest-p_linear.png" alt="L_NEAREST P_LINEAR"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Extra-Credit-Draw-Something-Creative"><a href="#Extra-Credit-Draw-Something-Creative" class="headerlink" title="Extra Credit - Draw Something Creative!"></a>Extra Credit - Draw Something Creative!</h2><p>For the extra credit, I created a pattern of Nautiloidea using color interpolation. </p>
+<p><img src="./image/cs184-hw1-results/extra-credit.png" alt="Extra Credit Screenshot"></p>
+<p>The script for generating the file is in the folder</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/Computer-Graphics/">Computer Graphics</a>, <a class="my-post-tag has-link-grey -link" href="/tags/Rasterization/">Rasterization</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2025/06/09/prob-stats/">
+                <span class="level-item">概率论与数理统计 课程笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'a3s1QVgWfNVMxcHITq0cHWf1-gzGzoHsz',
+        app_key: 'VX1mp6MKCsSid6Nb7Kua5fis',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        78
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        67
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Writeup-for-HW1-Rasterizer">
+        <span class="has-mr-6">1</span>
+        <span>Writeup for HW1: Rasterizer</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Task-1-Drawing-Single-Color-Triangles">
+        <span class="has-mr-6">1.1</span>
+        <span>Task 1: Drawing Single-Color Triangles</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Implementation-Details">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Implementation Details</span>
+        </a></li><li>
+        <a class="is-flex" href="#Screen-shot">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Screen shot</span>
+        </a></li><li>
+        <a class="is-flex" href="#Extra-Credit-Improvements">
+        <span class="has-mr-6">1.1.3</span>
+        <span>Extra Credit Improvements</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-2-Antialiasing-by-Supersampling">
+        <span class="has-mr-6">1.2</span>
+        <span>Task 2: Antialiasing by Supersampling</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Implementation-Details-1">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Implementation Details</span>
+        </a></li><li>
+        <a class="is-flex" href="#Screen-shot-1">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Screen shot</span>
+        </a></li><li>
+        <a class="is-flex" href="#Extra-Credit-Improvements-1">
+        <span class="has-mr-6">1.2.3</span>
+        <span>Extra Credit Improvements</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-3-Transforms">
+        <span class="has-mr-6">1.3</span>
+        <span>Task 3: Transforms</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Screen-shot-2">
+        <span class="has-mr-6">1.3.1</span>
+        <span>Screen shot</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-4-Barycentric-coordinates">
+        <span class="has-mr-6">1.4</span>
+        <span>Task 4: Barycentric coordinates</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Explain-barycentric-coordinates">
+        <span class="has-mr-6">1.4.1</span>
+        <span>Explain barycentric coordinates</span>
+        </a></li><li>
+        <a class="is-flex" href="#Screenshot">
+        <span class="has-mr-6">1.4.2</span>
+        <span>Screenshot</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-5-“Pixel-sampling”-for-texture-mapping">
+        <span class="has-mr-6">1.5</span>
+        <span>Task 5: “Pixel sampling” for texture mapping</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Sampling-Methods">
+        <span class="has-mr-6">1.5.1</span>
+        <span>Sampling Methods</span>
+        </a></li><li>
+        <a class="is-flex" href="#Screenshot-1">
+        <span class="has-mr-6">1.5.2</span>
+        <span>Screenshot</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-6-“Level-sampling”-with-mipmaps-for-texture-mapping">
+        <span class="has-mr-6">1.6</span>
+        <span>Task 6: “Level sampling” with mipmaps for texture mapping</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Tradeoffs">
+        <span class="has-mr-6">1.6.1</span>
+        <span>Tradeoffs</span>
+        </a></li><li>
+        <a class="is-flex" href="#Screenshot-2">
+        <span class="has-mr-6">1.6.2</span>
+        <span>Screenshot</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Extra-Credit-Draw-Something-Creative">
+        <span class="has-mr-6">1.7</span>
+        <span>Extra Credit - Draw Something Creative!</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Learning/">
+            <span class="level-start">
+                <span class="level-item">Learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">64</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/projects/">
+            <span class="level-start">
+                <span class="level-item">projects</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="CS 184 Homework 1 Writeup" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2025
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>85.1k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
