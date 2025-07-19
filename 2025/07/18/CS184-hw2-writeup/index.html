@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>CS 184 Homework 2 Writeup - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Writeup for HW2: Mesh Editing and Bezier Curves">
+<meta name="keywords" content="Computer Graphics,Mesh Editing,Curves">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS 184 Homework 2 Writeup">
+<meta property="og:url" content="http://www.zcysky.com/2025/07/18/CS184-hw2-writeup/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="Writeup for HW2: Mesh Editing and Bezier Curves">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part3-on.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part3-off.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part4-off.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part4-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part4-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part5-off.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part5-split.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part5-split-flip.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-preproc.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-loop1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-loop2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-loop4.png">
+<meta property="og:updated_time" content="2025-07-19T01:51:17.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS 184 Homework 2 Writeup">
+<meta name="twitter:description" content="Writeup for HW2: Mesh Editing and Bezier Curves">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve1.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="CS 184 Homework 2 Writeup" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    CS 184 Homework 2 Writeup
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2025-07-19T01:47:18.000Z">
+                        2025-07-18
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/projects/">projects</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1501 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="Writeup-for-HW2-Mesh-Editing-and-Bezier-Curves"><a href="#Writeup-for-HW2-Mesh-Editing-and-Bezier-Curves" class="headerlink" title="Writeup for HW2: Mesh Editing and Bezier Curves"></a>Writeup for HW2: Mesh Editing and Bezier Curves</h1><a id="more"></a>
+<h2 id="Section-1-Bezier-Curves-and-Surfaces"><a href="#Section-1-Bezier-Curves-and-Surfaces" class="headerlink" title="Section 1: Bezier Curves and Surfaces"></a>Section 1: Bezier Curves and Surfaces</h2><h3 id="Part-1-Bezier-Curves-with-1D-de-Casteljau-Subdivision"><a href="#Part-1-Bezier-Curves-with-1D-de-Casteljau-Subdivision" class="headerlink" title="Part 1: Bezier Curves with 1D de Casteljau Subdivision"></a>Part 1: Bezier Curves with 1D de Casteljau Subdivision</h3><p>the de Casteljau algorithm is a recursive method for evaluating Bezier curves. It works by linearly interpolating between control points, and can be implemented in a straightforward manner using the provided <code>evaluateStep</code> function.</p>
+<h4 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h4><p>The following images show the results of evaluating two different Bezier curves using the implemented de Casteljau algorithm.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve1.png" alt="Curve 1"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2.png" alt="Curve 2"></p>
+<p>The following images shows the step-by-step subdivision of a Bezier curve.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step1.png" alt="Subdivision Steps 1"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step2.png" alt="Subdivision Steps 2"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step3.png" alt="Subdivision Steps 3"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step4.png" alt="Subdivision Steps 4"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve2-step5.png" alt="Subdivision Steps 5"></p>
+<p>Here is a slightly different curve generated by dragging the control points and scrolling the mouse wheel to change the parameter t.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part1-curve3.png" alt="Curve 2"></p>
+<h3 id="Part-2-Bezier-Surfaces-with-Separable-1D-de-Casteljau"><a href="#Part-2-Bezier-Surfaces-with-Separable-1D-de-Casteljau" class="headerlink" title="Part 2: Bezier Surfaces with Separable 1D de Casteljau"></a>Part 2: Bezier Surfaces with Separable 1D de Casteljau</h3><p>The Bezier surface evaluation is an extension of the 1D de Casteljau algorithm to two dimensions. The implementation involves evaluating the surface in one direction (u) and then in the other direction (v).</p>
+<p>In my implementation, I first evaluate the Bezier curve in the u direction for each fixed v, resulting in a set of intermediate points. Then, I apply the de Casteljau algorithm again on these intermediate points in the v direction to obtain the final point on the Bezier surface.</p>
+<h4 id="Screenshot-1"><a href="#Screenshot-1" class="headerlink" title="Screenshot"></a>Screenshot</h4><p>The following images show the results of evaluating a Bezier surface using the implemented 2D de Casteljau algorithm.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part2.png" alt="Teapot Surface"></p>
+<h2 id="Section-II-Triangle-Meshes-and-Half-Edge-Data-Structure"><a href="#Section-II-Triangle-Meshes-and-Half-Edge-Data-Structure" class="headerlink" title="Section II: Triangle Meshes and Half-Edge Data Structure"></a>Section II: Triangle Meshes and Half-Edge Data Structure</h2><h3 id="Part-3-Area-Weighted-Vertex-Normals"><a href="#Part-3-Area-Weighted-Vertex-Normals" class="headerlink" title="Part 3: Area-Weighted Vertex Normals"></a>Part 3: Area-Weighted Vertex Normals</h3><p>To compute the area-weighted vertex normals, I iterate all the faces adjacent to a vertex using a half-edge data structure. For each face, I compute the normal using the cross product of two edges of the face and weight it by the area of the face. The area can be computed as half the magnitude of the cross product of two edges. Finally, I normalize the accumulated normal vector to get the unit normal.</p>
+<h4 id="Screenshot-2"><a href="#Screenshot-2" class="headerlink" title="Screenshot"></a>Screenshot</h4><p>The following images show the vertex normals with the feature turned on and off.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part3-on.png" alt="Vertex Normals On"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part3-off.png" alt="Vertex Normals Off"></p>
+<h3 id="Part-4-Edge-Flip"><a href="#Part-4-Edge-Flip" class="headerlink" title="Part 4: Edge Flip"></a>Part 4: Edge Flip</h3><p>The edge flip operation transforms two adjacent triangles by flipping their shared edge. This is a fundamental operation in mesh editing that maintains the mesh’s topology while changing its geometry.</p>
+<p>My implementation follows a systematic approach to ensure all half-edge data structure pointers are correctly updated. First, I verify that both faces adjacent to the edge are not boundary faces, as flipping boundary edges would create invalid topology. Then, I systematically collect all mesh elements involved in the flip operation: 6 halfedges forming the two triangles, 4 outer twin halfedges for the surrounding edges, 5 edges, 4 vertices, and 2 faces.</p>
+<p>The key insight is to use the <code>setNeighbors</code> method to efficiently update all halfedge connections in a single call, which reduces the chance of errors compared to setting each pointer individually. After updating the halfedge topology, I update all back-pointers including twin relationships for outer edges, edge-&gt;halfedge pointers, vertex-&gt;halfedge pointers, and face-&gt;halfedge pointers to maintain consistency in the data structure.</p>
+<h4 id="Screenshot-3"><a href="#Screenshot-3" class="headerlink" title="Screenshot"></a>Screenshot</h4><p>This image shows the mesh before performing edge flip operations.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part4-off.png" alt="Before Edge Flip"></p>
+<p>The following images show the mesh after performing edge flip operations.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part4-1.png" alt="Edge Flip 1"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part4-2.png" alt="Edge Flip 2"></p>
+<h3 id="Part-5-Edge-Split"><a href="#Part-5-Edge-Split" class="headerlink" title="Part 5: Edge Split"></a>Part 5: Edge Split</h3><p>The edge split operation divides an edge into two edges by inserting a new vertex at the midpoint. This operation transforms two adjacent triangles into four triangles, which is essential for mesh refinement and subdivision algorithms.</p>
+<p>My implementation follows a similar systematic approach to the edge flip operation but is more complex due to the creation of new mesh elements. First, I verify that both faces adjacent to the edge are not boundary faces to ensure valid topology. Then, I collect all existing mesh elements: 6 halfedges forming the two triangles, 4 outer twin halfedges, 5 edges, 4 vertices, and 2 faces.</p>
+<p>The key challenge is creating and properly connecting the new elements. I create a new vertex at the midpoint of the edge, three new edges to connect the midpoint to the opposite vertices, six new halfedges to form the additional triangular faces, and two new faces. The implementation uses the <code>setNeighbors</code> method to efficiently update all halfedge connections, ensuring that the four resulting triangles maintain proper topology and the new vertex’s halfedge points along the original edge direction as required.</p>
+<h4 id="Screenshot-4"><a href="#Screenshot-4" class="headerlink" title="Screenshot"></a>Screenshot</h4><p>The following images show the mesh before and after performing edge split operations.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part5-off.png" alt="Before Edge Split"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part5-split.png" alt="After Edge Split"></p>
+<p>The following images show the mesh after performing edge split and edge flip operations.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part5-split-flip.png" alt="Edge Split and Flip"></p>
+<h3 id="Part-6-Loop-Subdivision-for-Mesh-Upsampling"><a href="#Part-6-Loop-Subdivision-for-Mesh-Upsampling" class="headerlink" title="Part 6: Loop Subdivision for Mesh Upsampling"></a>Part 6: Loop Subdivision for Mesh Upsampling</h3><p>Loop subdivision is a recursive algorithm that creates smoother, more refined meshes by subdividing each triangle into four smaller triangles and adjusting vertex positions according to specific weighted averaging rules.</p>
+<p>My implementation follows the classic five-step Loop subdivision algorithm. First, I compute new positions for all original vertices using the Loop subdivision rule, which applies different weights based on vertex degree - regular vertices (degree $6$) use the weight $\frac{3}{16}$, while irregular vertices use $\frac{3}{8n}$ where n is the degree. Second, I calculate new positions for edge midpoints using a 3:1 ratio between adjacent vertices and their opposite neighbors, with special handling for boundary edges.</p>
+<p>The critical challenge lies in the mesh topology updates. I split every original edge to create new vertices at midpoints, carefully tracking which elements are new versus original using the isNew flags. Then I flip specific new edges that connect old and new vertices to achieve the proper Loop subdivision connectivity. A key debugging insight was to iterate over edges carefully, storing the next iterator before modification to avoid invalidated iterators. Finally, I copy all computed positions from the temporary newPosition storage to the final vertex positions, completing the subdivision process.</p>
+<h4 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h4><p>For the torus mesh, it has sharp edges at the beginning, but after performing Loop subdivision, the mesh becomes smooth and round.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-0.png" alt="Before Loop Subdivision"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-1.png" alt="Loop Subdivision Level 1"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-2.png" alt="Loop Subdivision Level 2"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-torus-3.png" alt="Loop Subdivision Level 3"></p>
+<p>For the Cube, I split every diagonal edge in every quadrilateral face to prevent the asymmetricity issue during subdivision. In my observation, the asymmetricity is caused by the fact that the original mesh has asymmetric topology, because the square faces is not central symmetric, and the Loop subdivision algorithm magnifies this asymmetry. By splitting the diagonal edges, I ensure that the mesh has a more uniform topology, which helps to reduce the asymmetricity during subdivision.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-preproc.png" alt="Before Loop Subdivision"></p>
+<p>The following images show the cube mesh after performing different levels of loop subdivision.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-loop1.png" alt="Loop Subdivision Level 1"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-loop2.png" alt="Loop Subdivision Level 2"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw2-result/part6-cube-loop4.png" alt="Loop Subdivision Level 4"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/Computer-Graphics/">Computer Graphics</a>, <a class="my-post-tag has-link-grey -link" href="/tags/Curves/">Curves</a>, <a class="my-post-tag has-link-grey -link" href="/tags/Mesh-Editing/">Mesh Editing</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2025/07/07/CS184-hw1-writeup/">
+                <span class="level-item">CS 184 Homework 1 Writeup</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'a3s1QVgWfNVMxcHITq0cHWf1-gzGzoHsz',
+        app_key: 'VX1mp6MKCsSid6Nb7Kua5fis',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        79
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        69
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Writeup-for-HW2-Mesh-Editing-and-Bezier-Curves">
+        <span class="has-mr-6">1</span>
+        <span>Writeup for HW2: Mesh Editing and Bezier Curves</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Section-1-Bezier-Curves-and-Surfaces">
+        <span class="has-mr-6">1.1</span>
+        <span>Section 1: Bezier Curves and Surfaces</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Part-1-Bezier-Curves-with-1D-de-Casteljau-Subdivision">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Part 1: Bezier Curves with 1D de Casteljau Subdivision</span>
+        </a></li><li>
+        <a class="is-flex" href="#Part-2-Bezier-Surfaces-with-Separable-1D-de-Casteljau">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Part 2: Bezier Surfaces with Separable 1D de Casteljau</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Section-II-Triangle-Meshes-and-Half-Edge-Data-Structure">
+        <span class="has-mr-6">1.2</span>
+        <span>Section II: Triangle Meshes and Half-Edge Data Structure</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Part-3-Area-Weighted-Vertex-Normals">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Part 3: Area-Weighted Vertex Normals</span>
+        </a></li><li>
+        <a class="is-flex" href="#Part-4-Edge-Flip">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Part 4: Edge Flip</span>
+        </a></li><li>
+        <a class="is-flex" href="#Part-5-Edge-Split">
+        <span class="has-mr-6">1.2.3</span>
+        <span>Part 5: Edge Split</span>
+        </a></li><li>
+        <a class="is-flex" href="#Part-6-Loop-Subdivision-for-Mesh-Upsampling">
+        <span class="has-mr-6">1.2.4</span>
+        <span>Part 6: Loop Subdivision for Mesh Upsampling</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Learning/">
+            <span class="level-start">
+                <span class="level-item">Learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">64</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/projects/">
+            <span class="level-start">
+                <span class="level-item">projects</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="CS 184 Homework 2 Writeup" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2025
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>86.1k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
