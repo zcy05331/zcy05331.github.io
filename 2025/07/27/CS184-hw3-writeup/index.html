@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>CS 184 Homework 3 Writeup - little_sun&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="OverviewThis assignment implements a comprehensive path tracer that renders physically accurate images by simulating the behavior of light transport. The implementation progresses from basic ray traci">
+<meta name="keywords" content="Computer Graphics,Path Tracing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS 184 Homework 3 Writeup">
+<meta property="og:url" content="http://www.zcysky.com/2025/07/27/CS184-hw3-writeup/index.html">
+<meta property="og:site_name" content="little_sun&#39;s blog">
+<meta property="og:description" content="OverviewThis assignment implements a comprehensive path tracer that renders physically accurate images by simulating the behavior of light transport. The implementation progresses from basic ray traci">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBempty-before-task-3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-banana.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBempty-after-task-3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBspheres.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-banana-after-task4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBgems.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-building.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-cow-time-before-bvh.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-building-time-before-bvh.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-planck-time-before-bvh.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-cow-time-after-bvh.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-building-time-after-bvh.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-planck-time-after-bvh.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-maxplanck.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-blob.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-CBLucy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-wall-e.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBbunny_H_64_32.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBbunny_I_64_32.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_H_64_32.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_64_32.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_64.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_5_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_1024_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-bench.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-blob.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-dragon.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-wall-e.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-spheres_1024_16_5_indir.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-spheres_1024_16_1_dir.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_0_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_1_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_2_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_3_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_5_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_0_unaccum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_1_unaccum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_2_unaccum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_3_unaccum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_4_unaccum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_5_unaccum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_0_rr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_1_rr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_2_rr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_3_rr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_4_rr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_100_rr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_1_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_2_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_4_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_8_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_16_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_64_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_1024_4_4_accum.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-bunny.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-bunny_rate.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-spheres.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-spheres_rate.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-uniform-128.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-uniform-128-part.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-low_discrepancy-128.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-low_discrepancy-128-part.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-original-16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-bilateral-filter-16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-original-128.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-bilateral-filter-128.png">
+<meta property="og:updated_time" content="2025-07-28T04:14:21.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS 184 Homework 3 Writeup">
+<meta name="twitter:description" content="OverviewThis assignment implements a comprehensive path tracer that renders physically accurate images by simulating the behavior of light transport. The implementation progresses from basic ray traci">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBempty-before-task-3.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/images/logo.png" alt="CS 184 Homework 3 Writeup" height="28"> -->
+                <span class="navbar-title"> little_sun's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/friends">友链</a>
+                
+                <a class="navbar-item" href="/summary">Summary</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+        
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    CS 184 Homework 3 Writeup
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2025-07-28T04:09:08.000Z">
+                        2025-07-27
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/projects/">projects</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            7353 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This assignment implements a comprehensive path tracer that renders physically accurate images by simulating the behavior of light transport. The implementation progresses from basic ray tracing foundations to advanced global illumination techniques with performance optimizations.</p>
+<a id="more"></a>
+<p><strong>Part 1: Ray Generation and Scene Intersection</strong> - Establishes the fundamental ray tracing pipeline, including camera ray generation, anti-aliasing through pixel sampling, and primitive intersection algorithms for triangles and spheres using mathematically robust methods like Möller-Trumbore.</p>
+<p><strong>Part 2: Bounding Volume Hierarchy (BVH)</strong> - Implements spatial acceleration structures to dramatically improve rendering performance. Uses axis-aligned bounding boxes and hierarchical tree traversal to reduce intersection tests from O(n) to O(log n) complexity.</p>
+<p><strong>Part 3: Direct Illumination</strong> - Develops realistic lighting models through Bidirectional Scattering Distribution Functions (BSDFs) and Monte Carlo integration. Compares uniform hemisphere sampling against importance sampling techniques to achieve variance reduction and noise-free rendering.</p>
+<p><strong>Part 4: Global Illumination</strong> - Extends to full light transport simulation with recursive path tracing, implementing multi-bounce lighting effects, Russian Roulette optimization for unbiased path termination, and comprehensive analysis of direct vs. indirect illumination contributions.</p>
+<p><strong>Part 5: Adaptive Sampling</strong> - Introduces intelligent sampling optimization that concentrates computational effort where needed most. Uses statistical convergence analysis with 95% confidence intervals to achieve superior image quality with fewer samples through selective pixel-level adaptation.</p>
+<h2 id="AI-acknowledgements"><a href="#AI-acknowledgements" class="headerlink" title="AI acknowledgements"></a>AI acknowledgements</h2><p>This assignment was completed with assistance from GitHub Copilot (GPT-4), which provided:</p>
+<ol>
+<li><p><strong>Code implementation guidance</strong>: Assistance with implementing small code snippets, while the main algorithmic structure and logic were designed and coded by myself.</p>
+</li>
+<li><p><strong>Mathematical formulation</strong>: I use the AI to help clarify mathematical concepts and equations related to ray tracing, BVH construction, and Monte Carlo integration.</p>
+</li>
+<li><p><strong>Documentation and analysis</strong>: Same as above, the AI helped me to deeply understand the concepts, thus I could write the explanations and analyses in the writeup.</p>
+</li>
+<li><p><strong>Debugging and optimization</strong>: AI Assisted me with identifying and resolving implementation issues, particularly in complex areas like BVH construction and traversal.</p>
+</li>
+</ol>
+<p>All fundamental concepts, algorithmic understanding, and final implementation decisions were made by myself. The AI served as a coding assistant and conceptual guide, but the core intellectual work and design were my own.</p>
+<h2 id="Part-1-Ray-Generation-and-Scene-Intersection"><a href="#Part-1-Ray-Generation-and-Scene-Intersection" class="headerlink" title="Part 1: Ray Generation and Scene Intersection"></a>Part 1: Ray Generation and Scene Intersection</h2><h3 id="Ray-Generation-and-Primitive-Intersection-Pipeline"><a href="#Ray-Generation-and-Primitive-Intersection-Pipeline" class="headerlink" title="Ray Generation and Primitive Intersection Pipeline"></a>Ray Generation and Primitive Intersection Pipeline</h3><p>The rendering pipeline for ray generation and primitive intersection consists of several key stages that work together to determine what objects are visible at each pixel:</p>
+<h4 id="1-Pixel-Sampling-Stage-PathTracer-raytrace-pixel"><a href="#1-Pixel-Sampling-Stage-PathTracer-raytrace-pixel" class="headerlink" title="1. Pixel Sampling Stage (PathTracer::raytrace_pixel)"></a>1. <strong>Pixel Sampling Stage</strong> (<code>PathTracer::raytrace_pixel</code>)</h4><p>For each pixel in the image:</p>
+<ul>
+<li><strong>Input</strong>: Pixel coordinates $(x, y)$ in image space, where $(0,0)$ is at the bottom-left corner</li>
+<li><strong>Anti-aliasing</strong>: Generate multiple sample points within the pixel using a grid sampler</li>
+<li><strong>Coordinate transformation</strong>: Convert pixel coordinates to normalized coordinates $[0,1] \times [0,1]$ for the camera</li>
+<li><strong>Sample accumulation</strong>: Average the radiance values from all samples within the pixel</li>
+</ul>
+<p>The implementation generates <code>ns_aa</code> random samples within each pixel to reduce aliasing artifacts. Each sample point is obtained using <code>gridSampler-&gt;get_sample()</code> which provides uniform random samples in the unit square $[0,1) \times [0,1)$.</p>
+<h4 id="2-Camera-Ray-Generation-Stage-Camera-generate-ray"><a href="#2-Camera-Ray-Generation-Stage-Camera-generate-ray" class="headerlink" title="2. Camera Ray Generation Stage (Camera::generate_ray)"></a>2. <strong>Camera Ray Generation Stage</strong> (<code>Camera::generate_ray</code>)</h4><p>For each sample point:</p>
+<ul>
+<li><strong>Input</strong>: Normalized image coordinates $(x, y) \in [0,1] \times [0,1]$</li>
+<li><strong>Camera space transformation</strong>: Map image coordinates to the virtual sensor plane at $z = -1$</li>
+<li><strong>Ray direction calculation</strong>: Compute ray direction from camera origin through the sensor point</li>
+<li><strong>World space transformation</strong>: Transform the ray from camera space to world space using the camera-to-world matrix</li>
+<li><strong>Output</strong>: A ray with proper origin, direction, and clipping planes</li>
+</ul>
+<p>The camera space coordinate system has:</p>
+<ul>
+<li>Camera positioned at origin $(0,0,0)$</li>
+<li>Viewing direction along $-Z$ axis</li>
+<li>Sensor plane at $z = -1$</li>
+<li>Sensor bounds: bottom-left at $(-\tan(\frac{hFov}{2}), -\tan(\frac{vFov}{2}), -1)$ and top-right at $(\tan(\frac{hFov}{2}), \tan(\frac{vFov}{2}), -1)$</li>
+</ul>
+<p>After generating the ray, the results of rendering <code>sky/CBempty.dae</code> and <code>keenan/banana.dae</code> is shown in the provided images.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBempty-before-task-3.png" alt="CBempty"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-banana.png" alt="Banana"></p>
+<h4 id="3-Primitive-Intersection-Stage"><a href="#3-Primitive-Intersection-Stage" class="headerlink" title="3. Primitive Intersection Stage"></a>3. <strong>Primitive Intersection Stage</strong></h4><p>The primitive intersection normally have these stages:</p>
+<ul>
+<li><strong>Ray Generation</strong><br>Generate rays from the camera (or light) into the scene—each ray corresponds to a pixel (or a light sample).</li>
+<li><strong>Acceleration‐Structure Traversal</strong><br>Walk a spatial index (e.g. BVH/KD‑Tree) to quickly cull away large chunks of geometry that the ray cannot hit.</li>
+<li><strong>Primitive Intersection Test</strong><br>For the handful of remaining triangles (or other primitives), run a fast per‐primitive test (e.g. Möller–Trumbore) to compute if—and where—the ray intersects.</li>
+<li><strong>Closest‐Hit Selection</strong><br>Keep only the intersection with the smallest positive distance along the ray, discarding all others.</li>
+</ul>
+<p>This stage determines <em>where</em> a ray actually meets the scene geometry (if at all) and gathers the hit’s position, surface normal, UVs, etc. Those data are essential inputs for shading, shadow checks, reflections/refractions, and ultimately for computing the final color of each pixel.</p>
+<h3 id="Primitive-Intersection-Details"><a href="#Primitive-Intersection-Details" class="headerlink" title="Primitive Intersection Details"></a><strong>Primitive Intersection Details</strong></h3><h4 id="Triangle-Intersection-Algorithm-Moller-Trumbore"><a href="#Triangle-Intersection-Algorithm-Moller-Trumbore" class="headerlink" title="Triangle Intersection Algorithm (Möller-Trumbore):"></a><strong>Triangle Intersection Algorithm (Möller-Trumbore)</strong>:</h4><p>The triangle intersection implementation uses the Möller-Trumbore algorithm, which is an efficient method for computing ray-triangle intersections. Here’s how it works:</p>
+<ol>
+<li><strong>Setup</strong>: Given a triangle with vertices $\mathbf{p_1}, \mathbf{p_2}, \mathbf{p_3}$ and a ray with origin $\mathbf{O}$ and direction $\mathbf{D}$</li>
+<li><strong>Edge vectors</strong>: Compute $\mathbf{e_1} = \mathbf{p_2} - \mathbf{p_1}$ and $\mathbf{e_2} = \mathbf{p_3} - \mathbf{p_1}$</li>
+<li><strong>Determinant check</strong>: Calculate $\mathbf{h} = \mathbf{D} \times \mathbf{e_2}$ and $a = \mathbf{e_1} \cdot \mathbf{h}$<ul>
+<li>If $|a| &lt; \epsilon$, the ray is parallel to the triangle (no intersection)</li>
+</ul>
+</li>
+<li><strong>Barycentric coordinate u</strong>: Compute $\mathbf{s} = \mathbf{O} - \mathbf{p_1}$ and $u = \dfrac{\mathbf{s} \cdot \mathbf{h}}{a}$<ul>
+<li>If $u &lt; 0$ or $u &gt; 1$, the intersection point is outside the triangle</li>
+</ul>
+</li>
+<li><strong>Barycentric coordinate v</strong>: Compute $\mathbf{q} = \mathbf{s} \times \mathbf{e_1}$ and $v = \dfrac{\mathbf{D} \cdot \mathbf{q}}{a}$<ul>
+<li>If $v &lt; 0$ or $u + v &gt; 1$, the intersection point is outside the triangle</li>
+</ul>
+</li>
+<li><strong>Parameter t</strong>: Calculate $t = \dfrac{\mathbf{e_2} \cdot \mathbf{q}}{a}$<ul>
+<li>If $t \in [t_{min}, t_{max}]$, we have a valid intersection</li>
+</ul>
+</li>
+</ol>
+<p>The algorithm provides barycentric coordinates $(u, v, w)$ where $w = 1 - u - v$, which are used to interpolate vertex normals:</p>
+<ul>
+<li>Interpolated normal = $w \cdot \mathbf{n_1} + u \cdot \mathbf{n_2} + v \cdot \mathbf{n_3}$</li>
+</ul>
+<p>This method is both numerically stable and efficient, avoiding the need to compute the plane equation explicitly.</p>
+<h4 id="Sphere-Intersection"><a href="#Sphere-Intersection" class="headerlink" title="Sphere Intersection:"></a><strong>Sphere Intersection</strong>:</h4><p>For ray-sphere intersection, we solve a quadratic equation. Given a sphere with center $\mathbf{C}$ and radius $r$, and a ray $\mathbf{R}(t) = \mathbf{O} + t\mathbf{D}$</p>
+<p>The intersection occurs when $|\mathbf{R}(t) - \mathbf{C}|^2 = r^2$, which expands to:</p>
+<script type="math/tex; mode=display">
+|\mathbf{O} + t\mathbf{D} - \mathbf{C}|^2 = r^2</script><p>This gives us the quadratic equation: </p>
+<script type="math/tex; mode=display">
+at^2 + bt + c = 0</script><p>where:</p>
+<ul>
+<li>$a = \mathbf{D} \cdot \mathbf{D}$</li>
+<li>$b = 2\mathbf{D} \cdot (\mathbf{O} - \mathbf{C})$  </li>
+<li>$c = |\mathbf{O} - \mathbf{C}|^2 - r^2$</li>
+</ul>
+<p>The algorithm:</p>
+<ul>
+<li>Computes the discriminant $\Delta = b^2 - 4ac$</li>
+<li>If $\Delta &lt; 0$, no intersection exists</li>
+<li>Otherwise, solves for $t = \dfrac{-b \pm \sqrt{\Delta}}{2a}$</li>
+<li>Chooses the smaller positive $t$ value within $[t_{min}, t_{max}]$</li>
+<li>Computes surface normal as $\mathbf{n} = \dfrac{\mathbf{R}(t) - \mathbf{C}}{r}$</li>
+</ul>
+<h3 id="Task-1-Generating-Camera-Rays"><a href="#Task-1-Generating-Camera-Rays" class="headerlink" title="Task 1: Generating Camera Rays"></a>Task 1: Generating Camera Rays</h3><p>The camera ray generation transforms normalized screen coordinates to world-space rays through the camera’s virtual sensor plane.</p>
+<h3 id="Task-2-Generating-Pixel-Samples"><a href="#Task-2-Generating-Pixel-Samples" class="headerlink" title="Task 2: Generating Pixel Samples"></a>Task 2: Generating Pixel Samples</h3><p>The pixel sampling averaging multiple random samples within each pixel for anti-aliasing.</p>
+<h3 id="Task-3-Ray-Triangle-Intersection"><a href="#Task-3-Ray-Triangle-Intersection" class="headerlink" title="Task 3: Ray-Triangle Intersection"></a>Task 3: Ray-Triangle Intersection</h3><p>The ray-triangle intersection uses the Möller-Trumbore algorithm for efficient and robust intersection testing. After implementing this task, rendering <code>sky/CBempty.dae</code> produces normal-shaded geometry:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBempty-after-task-3.png" alt="CBempty with triangles"></p>
+<h3 id="Task-4-Ray-Sphere-Intersection"><a href="#Task-4-Ray-Sphere-Intersection" class="headerlink" title="Task 4: Ray-Sphere Intersection"></a>Task 4: Ray-Sphere Intersection</h3><p>The ray-sphere intersection implements the quadratic equation method described earlier. The implementation includes three functions:</p>
+<ol>
+<li><strong><code>test()</code></strong>: Core intersection algorithm that solves the quadratic equation and returns both intersection parameters $t_1$ and $t_2$</li>
+<li><strong><code>has_intersection()</code></strong>: Quick intersection test that checks if any valid intersection exists within the ray’s range and updates <code>max_t</code></li>
+<li><strong><code>intersect()</code></strong>: Complete intersection that computes intersection data and updates the ray’s <code>max_t</code></li>
+</ol>
+<p>After implementing this task, rendering <code>sky/CBspheres_lambertian.dae</code> produces sphere geometry with normal shading:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBspheres.png" alt="CBspheres"></p>
+<h3 id="Some-more-screenshots"><a href="#Some-more-screenshots" class="headerlink" title="Some more screenshots"></a>Some more screenshots</h3><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-banana-after-task4.png" alt="banana"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-CBgems.png" alt="CBgems"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part1-building.png" alt="Building"></p>
+<h2 id="Part-2-Bounding-Volume-Hierarchy"><a href="#Part-2-Bounding-Volume-Hierarchy" class="headerlink" title="Part 2: Bounding Volume Hierarchy"></a>Part 2: Bounding Volume Hierarchy</h2><h3 id="Task-1-BVH-Construction"><a href="#Task-1-BVH-Construction" class="headerlink" title="Task 1: BVH Construction"></a>Task 1: BVH Construction</h3><p>The Bounding Volume Hierarchy (BVH) is a tree data structure that hierarchically organizes geometric primitives to accelerate ray-primitive intersection tests. Our implementation uses the <strong>axis midpoint heuristic</strong> for constructing the BVH.</p>
+<h4 id="Algorithm-Overview"><a href="#Algorithm-Overview" class="headerlink" title="Algorithm Overview"></a>Algorithm Overview</h4><p>The BVH construction algorithm works recursively:</p>
+<ol>
+<li><strong>Base Case</strong>: If the number of primitives ≤ <code>max_leaf_size</code>, create a leaf node</li>
+<li><strong>Recursive Case</strong>:<ul>
+<li>Choose the longest axis of the bounding box</li>
+<li>Split primitives at the midpoint of that axis</li>
+<li>Recursively build left and right subtrees</li>
+</ul>
+</li>
+</ol>
+<h4 id="BVH-Construction-Mathematics"><a href="#BVH-Construction-Mathematics" class="headerlink" title="BVH Construction Mathematics"></a>BVH Construction Mathematics</h4><p>For a bounding box with extent $\mathbf{e} = (e_x, e_y, e_z)$, we choose the split axis as:</p>
+<script type="math/tex; mode=display">\text{split\_axis} = \arg\max_i e_i</script><p>The midpoint along the chosen axis is:</p>
+<script type="math/tex; mode=display">\text{midpoint} = \frac{\text{min}_{\text{axis}} + \text{max}_{\text{axis}}}{2}</script><p>Each primitive is assigned to the left or right subtree based on its centroid:</p>
+<script type="math/tex; mode=display">\text{centroid}_i = \frac{\mathbf{p}_{\text{min},i} + \mathbf{p}_{\text{max},i}}{2}</script><p>Where primitive $i$ goes to the left subtree if $\text{centroid}_i[\text{split_axis}] &lt; \text{midpoint}$.</p>
+<h4 id="Edge-Case-Handling"><a href="#Edge-Case-Handling" class="headerlink" title="Edge Case Handling"></a>Edge Case Handling</h4><p>To prevent degenerate splits where all primitives end up on one side, we implement a fallback mechanism that ensures both subtrees have at least one primitive by splitting at the median position when the midpoint heuristic fails.</p>
+<h3 id="Task-2-Bounding-Box-Intersection"><a href="#Task-2-Bounding-Box-Intersection" class="headerlink" title="Task 2: Bounding Box Intersection"></a>Task 2: Bounding Box Intersection</h3><p>For efficient BVH traversal, we need to implement ray-bounding box intersection. An axis-aligned bounding box (AABB) can be viewed as the intersection of three slabs, where each slab is defined by two parallel planes perpendicular to a coordinate axis.</p>
+<h4 id="Mathematical-Foundation"><a href="#Mathematical-Foundation" class="headerlink" title="Mathematical Foundation"></a>Mathematical Foundation</h4><p>For each axis $i \in \{x, y, z\}$, the bounding box is bounded by planes at coordinates $\text{min}_i$ and $\text{max}_i$. A ray $\mathbf{r}(t) = \mathbf{o} + t\mathbf{d}$ intersects these planes at times:</p>
+<script type="math/tex; mode=display">t_{\text{near}}^{(i)} = \frac{\text{min}_i - o_i}{d_i}, \quad t_{\text{far}}^{(i)} = \frac{\text{max}_i - o_i}{d_i}</script><p>where $\mathbf{o}$ is the ray origin and $\mathbf{d}$ is the ray direction.</p>
+<h4 id="Algorithm-Implementation"><a href="#Algorithm-Implementation" class="headerlink" title="Algorithm Implementation"></a>Algorithm Implementation</h4><ol>
+<li><strong>Initialize intervals</strong>: Start with the input time interval $[t_0, t_1]$</li>
+<li><strong>Process each axis</strong>: For each coordinate axis $i$:<ul>
+<li>If $|d_i| &lt; \epsilon$ (ray parallel to slab):<ul>
+<li>Check if $o_i \in [\text{min}_i, \text{max}_i]$</li>
+<li>If outside, return false (no intersection)</li>
+</ul>
+</li>
+<li>Otherwise:<ul>
+<li>Compute $t_{\text{near}}^{(i)}$ and $t_{\text{far}}^{(i)}$</li>
+<li>Ensure $t_{\text{near}}^{(i)} \leq t_{\text{far}}^{(i)}$ (swap if necessary)</li>
+<li>Update interval: $t_{\text{min}} = \max(t_{\text{min}}, t_{\text{near}}^{(i)})$, $t_{\text{max}} = \min(t_{\text{max}}, t_{\text{far}}^{(i)})$</li>
+<li>Early exit if $t_{\text{min}} &gt; t_{\text{max}}$ (empty intersection)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Final intersection</strong>: The ray intersects the box in interval $[t_{\text{min}}, t_{\text{max}}]$</li>
+</ol>
+<p>The final intersection interval is:</p>
+<script type="math/tex; mode=display">[t_{\text{intersect}}, t_{\text{exit}}] = \left[\max_i t_{\text{near}}^{(i)}, \min_i t_{\text{far}}^{(i)}\right]</script><p>This method is highly efficient with $O(1)$ complexity and handles all edge cases including parallel rays and negative ray directions.</p>
+<h3 id="Task-2-3-BVH-Traversal"><a href="#Task-2-3-BVH-Traversal" class="headerlink" title="Task 2.3: BVH Traversal"></a>Task 2.3: BVH Traversal</h3><p>With bounding box intersection implemented, we can now perform efficient BVH traversal. The BVH acceleration structure uses recursive traversal to quickly eliminate large portions of the scene that don’t intersect with a ray.</p>
+<h4 id="Algorithm-Overview-1"><a href="#Algorithm-Overview-1" class="headerlink" title="Algorithm Overview"></a>Algorithm Overview</h4><p>The BVH traversal algorithm works as follows:</p>
+<ol>
+<li><strong>Bounding Box Test</strong>: First test if the ray intersects the current node’s bounding box</li>
+<li><strong>Leaf Node Processing</strong>: If it’s a leaf node, test intersection with all primitives in the node</li>
+<li><strong>Internal Node Processing</strong>: If it’s an internal node, recursively traverse both children</li>
+</ol>
+<h4 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h4><p><strong><code>has_intersection()</code> function:</strong></p>
+<ul>
+<li>Provides early termination optimization - returns <code>true</code> as soon as any intersection is found</li>
+<li>Used for shadow ray testing where we only need to know if there’s any blocker</li>
+<li>Updates intersection statistics but doesn’t need to find the closest hit</li>
+</ul>
+<p><strong><code>intersect()</code> function:</strong></p>
+<ul>
+<li>Must find the closest intersection along the ray</li>
+<li>Updates the ray’s <code>max_t</code> parameter to ensure subsequent tests only consider nearer intersections</li>
+<li>Returns complete intersection information including surface normal, UV coordinates, and material</li>
+</ul>
+<h4 id="BVH-Traversal-Efficiency"><a href="#BVH-Traversal-Efficiency" class="headerlink" title="BVH Traversal Efficiency"></a>BVH Traversal Efficiency</h4><p>For a ray $\mathbf{r}(t) = \mathbf{o} + t\mathbf{d}$, the BVH traversal maintains the invariant that any intersection at parameter $t’$ satisfies $t_{\text{min}} \leq t’ \leq t_{\text{max}}$ where $[t_{\text{min}}, t_{\text{max}}]$ is the current search interval.</p>
+<p>The algorithm’s efficiency comes from the hierarchical culling:</p>
+<ul>
+<li>If a ray doesn’t intersect a node’s bounding box, it cannot intersect any primitives within that subtree</li>
+<li>This provides $O(\log n)$ expected complexity instead of $O(n)$ for naive intersection testing</li>
+</ul>
+<h3 id="Time-Comparison"><a href="#Time-Comparison" class="headerlink" title="Time Comparison"></a>Time Comparison</h3><p>To evaluate the performance of the ray tracer with and without a bounding volume hierarchy (BVH), we conducted timing experiments on scenes with varying complexity.</p>
+<p>The cow scene rendered without BVH took approximately 18 seconds:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-cow-time-before-bvh.png" alt="Cow without BVH"></p>
+<p>The <code>keenan/building.dae</code> scene rendered without BVH took approximately 170 seconds:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-building-time-before-bvh.png" alt="Building without BVH"></p>
+<p>The <code>meshedit/maxplanck.dae</code> scene rendered without BVH took approximately 350 seconds:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-planck-time-before-bvh.png" alt="Max Planck without BVH"></p>
+<p>Rendering the cow scene with BVH took approximately 0.05 seconds:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-cow-time-after-bvh.png" alt="Cow with BVH"></p>
+<p>Rendering the building scene with BVH took approximately 0.1 seconds:<br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-building-time-after-bvh.png" alt="Building with BVH"></p>
+<p>Rendering the Max Planck scene with BVH took approximately 0.06 seconds:</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-planck-time-after-bvh.png" alt="Max Planck with BVH"></p>
+<p>As the result shown, the BVH significantly accelerates ray-primitive intersection tests, reducing rendering times from minutes to fractions of a second for complex scenes. This demonstrates the effectiveness of spatial acceleration structures in ray tracing.</p>
+<h3 id="Results-showcase"><a href="#Results-showcase" class="headerlink" title="Results showcase"></a>Results showcase</h3><p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-maxplanck.png" alt="Max Planck"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-blob.png" alt="Blob"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-CBLucy.png" alt="CBLucy"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part2-wall-e.png" alt="WALL-E"></p>
+<h2 id="Part-3-Direct-Illumination"><a href="#Part-3-Direct-Illumination" class="headerlink" title="Part 3: Direct Illumination"></a>Part 3: Direct Illumination</h2><h3 id="Task-1-Diffuse-BSDF"><a href="#Task-1-Diffuse-BSDF" class="headerlink" title="Task 1: Diffuse BSDF"></a>Task 1: Diffuse BSDF</h3><p>The Bidirectional Scattering Distribution Function (BSDF) describes how light interacts with surfaces. For diffuse materials, we implement the <strong>Lambertian reflection model</strong>, which assumes that reflected light is scattered uniformly in all directions according to Lambert’s cosine law.</p>
+<h4 id="BSDF-Mathematical-Model"><a href="#BSDF-Mathematical-Model" class="headerlink" title="BSDF Mathematical Model"></a>BSDF Mathematical Model</h4><p>For a Lambertian surface, the BSDF is constant for all outgoing directions and is given by:</p>
+<script type="math/tex; mode=display">f_r(\omega_o, \omega_i) = \frac{\rho}{\pi}</script><p>where:</p>
+<ul>
+<li>$\rho$ is the <strong>reflectance</strong> (albedo) of the surface, representing the fraction of incident light that is reflected</li>
+<li>$\pi$ is the normalization factor ensuring energy conservation</li>
+<li>$\omega_o$ is the outgoing (viewing) direction</li>
+<li>$\omega_i$ is the incoming (light) direction</li>
+</ul>
+<h4 id="BSDF-Implementation"><a href="#BSDF-Implementation" class="headerlink" title="BSDF Implementation"></a>BSDF Implementation</h4><p><strong><code>f()</code> function:</strong><br>Returns the BSDF value for any pair of incident and outgoing directions. For diffuse materials, this is simply <code>reflectance / π</code>.</p>
+<h4 id="Cosine-Weighted-Sampling"><a href="#Cosine-Weighted-Sampling" class="headerlink" title="Cosine-Weighted Sampling"></a>Cosine-Weighted Sampling</h4><p>The cosine-weighted hemisphere sampler generates directions according to the distribution:</p>
+<script type="math/tex; mode=display">p(\omega) = \frac{\cos\theta}{\pi}</script><p>where $\theta$ is the angle between the sampled direction and the surface normal. This distribution naturally accounts for Lambert’s cosine law, making it an efficient sampling strategy for diffuse materials.</p>
+<h3 id="Task-2-Zero-bounce-Illumination"><a href="#Task-2-Zero-bounce-Illumination" class="headerlink" title="Task 2: Zero-bounce Illumination"></a>Task 2: Zero-bounce Illumination</h3><p>The zero-bounce illumination function computes the emitted light from surfaces that are directly visible to the camera without any bounces. This is particularly important for emissive materials, such as light sources.</p>
+<p>The implementation simply returns <code>isect.bsdf-&gt;get_emission()</code>, which represents the intrinsic light emission of the intersected surface.</p>
+<h3 id="Task-3-Direct-Lighting-with-Uniform-Hemisphere-Sampling"><a href="#Task-3-Direct-Lighting-with-Uniform-Hemisphere-Sampling" class="headerlink" title="Task 3: Direct Lighting with Uniform Hemisphere Sampling"></a>Task 3: Direct Lighting with Uniform Hemisphere Sampling</h3><p>This task implements direct illumination using Monte Carlo integration with uniform hemisphere sampling. The goal is to estimate how much light arrives at a surface point from all directions in the hemisphere above the surface.</p>
+<h4 id="Direct-Lighting-Algorithm"><a href="#Direct-Lighting-Algorithm" class="headerlink" title="Direct Lighting Algorithm"></a>Direct Lighting Algorithm</h4><p>The direct lighting estimation follows these steps:</p>
+<ol>
+<li><strong>Hemisphere Sampling</strong>: For each sample, use <code>UniformHemisphereSampler3D::get_sample()</code> to generate a random direction in the local coordinate system</li>
+<li><strong>World Space Transformation</strong>: Transform the sampled direction from object space to world space using the <code>o2w</code> matrix</li>
+<li><strong>Shadow Ray Casting</strong>: Create a shadow ray from the hit point in the sampled direction with <code>min_t = EPS_F</code> to avoid self-intersection</li>
+<li><strong>Light Source Detection</strong>: Check if the shadow ray intersects a light source by testing if <code>emission.norm() &gt; 0</code></li>
+<li><strong>BSDF Evaluation</strong>: Compute the BSDF value using <code>isect.bsdf-&gt;f(w_out, w_in_local)</code></li>
+<li><strong>Monte Carlo Integration</strong>: Apply the reflection equation with proper normalization</li>
+</ol>
+<h4 id="Hemisphere-Sampling-Mathematics"><a href="#Hemisphere-Sampling-Mathematics" class="headerlink" title="Hemisphere Sampling Mathematics"></a>Hemisphere Sampling Mathematics</h4><p>The Monte Carlo estimator for the reflection equation is:</p>
+<script type="math/tex; mode=display">L_o(p, \omega_o) = \frac{1}{N} \sum_{i=1}^{N} \frac{f_r(p, \omega_i, \omega_o) L_i(p, \omega_i) \cos\theta_i}{p(\omega_i)}</script><p>For uniform hemisphere sampling:</p>
+<ul>
+<li>Probability density function: $p(\omega) = \frac{1}{2\pi}$  </li>
+<li>Cosine term: $\cos\theta_i = \omega_i \cdot \mathbf{n} = w_{i,z}$ (in local coordinates where normal is $(0,0,1)$)</li>
+</ul>
+<h3 id="Task-4-Direct-Lighting-by-Importance-Sampling-Lights"><a href="#Task-4-Direct-Lighting-by-Importance-Sampling-Lights" class="headerlink" title="Task 4: Direct Lighting by Importance Sampling Lights"></a>Task 4: Direct Lighting by Importance Sampling Lights</h3><p>While hemisphere sampling works correctly, it can be quite noisy and inefficient. <strong>Importance sampling</strong> directly samples the light sources instead of random hemisphere directions, which significantly reduces variance and enables rendering of point light sources.</p>
+<h4 id="Importance-Sampling-Strategy"><a href="#Importance-Sampling-Strategy" class="headerlink" title="Importance Sampling Strategy"></a>Importance Sampling Strategy</h4><p>Instead of sampling random directions and hoping to hit light sources, importance sampling works by:</p>
+<ol>
+<li><strong>Light Source Iteration</strong>: Loop through each light in the scene</li>
+<li><strong>Light Sampling</strong>: For each light, use <code>SceneLight::sample_L()</code> to generate samples pointing toward the light</li>
+<li><strong>Shadow Ray Testing</strong>: Cast shadow rays to check for occlusion between the surface and light</li>
+<li><strong>BSDF Evaluation</strong>: Apply the reflection equation using the light samples</li>
+</ol>
+<h4 id="Light-Sampling-Implementation"><a href="#Light-Sampling-Implementation" class="headerlink" title="Light Sampling Implementation"></a>Light Sampling Implementation</h4><p><strong>Point Light Optimization:</strong></p>
+<ul>
+<li>Point lights (<code>is_delta_light() == true</code>) only need <strong>one sample</strong> since all samples produce identical results</li>
+<li>Area lights require multiple samples (<code>ns_area_light</code>) to capture the light’s spatial extent</li>
+</ul>
+<p><strong>Shadow Ray Setup:</strong></p>
+<ul>
+<li><strong>Origin</strong>: Surface hit point with <code>min_t = EPS_F</code> offset</li>
+<li><strong>Direction</strong>: Toward the light source (from <code>sample_L</code>)</li>
+<li><strong>Max distance</strong>: <code>distToLight - EPS_F</code> to avoid intersecting the light itself</li>
+<li><strong>Occlusion test</strong>: If shadow ray intersects any geometry, the point is in shadow</li>
+</ul>
+<h4 id="Importance-Sampling-Mathematics"><a href="#Importance-Sampling-Mathematics" class="headerlink" title="Importance Sampling Mathematics"></a>Importance Sampling Mathematics</h4><p>The importance sampling estimator becomes:</p>
+<script type="math/tex; mode=display">L_o(p, \omega_o) = \sum_{\text{lights}} \frac{1}{N_{\text{light}}} \sum_{i=1}^{N_{\text{light}}} \frac{f_r(p, \omega_i, \omega_o) L_i(p, \omega_i) \cos\theta_i}{p_{\text{light}}(\omega_i)} \cdot V(p, \omega_i)</script><p>where:</p>
+<ul>
+<li>$N_{\text{light}}$ is the number of samples per light source</li>
+<li>$p_{\text{light}}(\omega_i)$ is the probability density function provided by the light source</li>
+<li>$V(p, \omega_i)$ is the visibility function (1 if unoccluded, 0 if in shadow)</li>
+</ul>
+<h3 id="Image-Comparison"><a href="#Image-Comparison" class="headerlink" title="Image Comparison"></a>Image Comparison</h3><p>To compare the results of uniform hemisphere sampling and importance sampling, we rendered the same scene using both methods. The images below illustrate the difference in noise levels and convergence speed.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBbunny_H_64_32.png" alt="CBBunny Hemisphere Sampling"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBbunny_I_64_32.png" alt="CBBunny Importance Sampling"></p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_H_64_32.png" alt="CBspheres Hemisphere Sampling"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_64_32.png" alt="CBspheres Importance Sampling"></p>
+<p>The following image sequence demonstrates how increasing light ray count (<code>-l</code> flag) progressively reduces noise in soft shadow regions. Higher light ray counts produce smoother, more natural-looking shadows with less noise, while lower counts result in speckled, grainy shadow boundaries. This occurs because soft shadows are created by area lights, and more light samples better capture the partial occlusion effects across the light’s spatial extent, reducing Monte Carlo variance.</p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_1.png" alt="CBspheres 1 Light Ray"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_4.png" alt="CBspheres 4 Light Rays"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_16.png" alt="CBspheres 16 Light Rays"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part3-CBspheres_lambertian_I_1_64.png" alt="CBspheres 64 Light Rays"></p>
+<h3 id="Analysis-Hemisphere-Sampling-vs-Importance-Sampling"><a href="#Analysis-Hemisphere-Sampling-vs-Importance-Sampling" class="headerlink" title="Analysis: Hemisphere Sampling vs. Importance Sampling"></a>Analysis: Hemisphere Sampling vs. Importance Sampling</h3><p>The comparison between uniform hemisphere sampling and importance sampling reveals significant differences in both image quality and computational efficiency. Hemisphere sampling produces noticeably noisier images, particularly in shadow regions and areas with indirect lighting, due to the many wasted samples that don’t contribute to illumination when random directions fail to hit light sources. In contrast, importance sampling generates much cleaner images with smoother gradients and more accurate shadow boundaries by directly sampling light sources, ensuring that every sample contributes meaningful illumination information. The noise reduction is especially pronounced in soft shadow regions where hemisphere sampling struggles with variance, while importance sampling’s direct light-to-surface sampling provides consistent, low-variance estimates. Additionally, importance sampling enables rendering of point light sources, which hemisphere sampling cannot handle effectively since the probability of randomly hitting a zero-area point light is negligible. Overall, importance sampling achieves superior image quality with fewer samples, demonstrating the critical role of variance reduction techniques in Monte Carlo rendering and making it the preferred method for direct illumination in production ray tracers.</p>
+<h2 id="Part-4-Global-Illumination"><a href="#Part-4-Global-Illumination" class="headerlink" title="Part 4: Global Illumination"></a>Part 4: Global Illumination</h2><h3 id="Task-1-Sampling-with-Diffuse-BSDF"><a href="#Task-1-Sampling-with-Diffuse-BSDF" class="headerlink" title="Task 1: Sampling with Diffuse BSDF"></a>Task 1: Sampling with Diffuse BSDF</h3><p><strong><code>sample_f()</code> function:</strong></p>
+<ul>
+<li>Samples an outgoing direction $\omega_i$ using <strong>cosine-weighted hemisphere sampling</strong></li>
+<li>Returns the BSDF evaluation for the sampled direction</li>
+<li>Updates the probability density function (PDF) for importance sampling</li>
+</ul>
+<h3 id="Task-2-Global-Illumination-with-up-to-N-Bounces-of-Light"><a href="#Task-2-Global-Illumination-with-up-to-N-Bounces-of-Light" class="headerlink" title="Task 2: Global Illumination with up to N Bounces of Light"></a>Task 2: Global Illumination with up to N Bounces of Light</h3><p>The global illumination implementation extends direct lighting to include indirect lighting through multiple light bounces. This creates realistic color bleeding, soft shadows, and ambient lighting effects that make rendered images more visually convincing.</p>
+<h4 id="Implementation-Overview"><a href="#Implementation-Overview" class="headerlink" title="Implementation Overview"></a>Implementation Overview</h4><p>The core function <code>at_least_one_bounce_radiance()</code> implements recursive path tracing to calculate both direct and indirect illumination. The algorithm follows these key steps:</p>
+<ol>
+<li><strong>Direct Lighting Calculation</strong>: Always include one-bounce (direct) lighting from light sources</li>
+<li><strong>BSDF Sampling</strong>: Sample outgoing directions using the material’s BSDF for importance sampling</li>
+<li><strong>Recursive Ray Tracing</strong>: Cast secondary rays and recursively calculate lighting</li>
+<li><strong>Monte Carlo Integration</strong>: Apply the rendering equation with proper normalization</li>
+</ol>
+<h4 id="Rendering-Equation-Foundation"><a href="#Rendering-Equation-Foundation" class="headerlink" title="Rendering Equation Foundation"></a>Rendering Equation Foundation</h4><p>The rendering equation for global illumination is:</p>
+<script type="math/tex; mode=display">L_o(p, \omega_o) = L_e(p, \omega_o) + \int_{\Omega} f_r(p, \omega_i, \omega_o) L_i(p, \omega_i) \cos\theta_i \, d\omega_i</script><p>Where:</p>
+<ul>
+<li>$L_o(p, \omega_o)$ is the outgoing radiance at point $p$ in direction $\omega_o$</li>
+<li>$L_e(p, \omega_o)$ is the emitted radiance (handled by <code>zero_bounce_radiance</code>)</li>
+<li>$f_r(p, \omega_i, \omega_o)$ is the BSDF value</li>
+<li>$L_i(p, \omega_i)$ is the incoming radiance (calculated recursively)</li>
+<li>$\cos\theta_i$ is the cosine of the angle between incident direction and surface normal</li>
+</ul>
+<h4 id="Detailed-Algorithm-Implementation"><a href="#Detailed-Algorithm-Implementation" class="headerlink" title="Detailed Algorithm Implementation"></a><strong>Detailed Algorithm Implementation</strong></h4><p><strong>Accumulation Mode Handling:</strong></p>
+<p>The implementation supports two modes controlled by the <code>isAccumBounces</code> parameter:</p>
+<ol>
+<li><p><strong>Accumulation Mode (<code>isAccumBounces = true</code>)</strong>:</p>
+<ul>
+<li>Accumulates all bounces from 1 to <code>max_ray_depth</code></li>
+<li>Always includes direct lighting</li>
+<li>Recursively adds all indirect contributions</li>
+</ul>
+</li>
+<li><p><strong>Specific Bounce Mode (<code>isAccumBounces = false</code>)</strong>:</p>
+<ul>
+<li>Returns only the light from the <code>max_ray_depth</code>-th bounce</li>
+<li>Traces through intermediate bounces without accumulating them</li>
+<li>Used for analyzing individual bounce contributions</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (isAccumBounces) </span><br><span class="line">    L_out += one_bounce_radiance(r, isect);  <span class="hljs-comment">// Always include direct lighting</span></span><br><span class="line"><span class="hljs-keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> current_bounce = max_ray_depth - r.depth + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (current_bounce == max_ray_depth) </span><br><span class="line">        L_out += one_bounce_radiance(r, isect);  <span class="hljs-comment">// Only at target bounce</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Indirect Lighting Calculation:</strong></p>
+<p>For each intersection point, the algorithm samples the BSDF to determine the next ray direction:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector3D w_in;</span><br><span class="line"><span class="hljs-keyword">double</span> pdf;</span><br><span class="line">Vector3D bsdf_sample = isect.bsdf-&gt;sample_f(w_out, &amp;w_in, &amp;pdf);</span><br></pre></td></tr></table></figure>
+<p>The <code>sample_f</code> function uses cosine-weighted hemisphere sampling for diffuse materials, which provides importance sampling that naturally accounts for Lambert’s cosine law.</p>
+<p><strong>Ray Continuation:</strong></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector3D w_in_world = o2w * w_in;  <span class="hljs-comment">// Transform to world coordinates</span></span><br><span class="line"><span class="hljs-function">Ray <span class="hljs-title">new_ray</span><span class="hljs-params">(hit_p, w_in_world, r.depth - <span class="hljs-number">1</span>)</span></span>;  <span class="hljs-comment">// Create secondary ray</span></span><br><span class="line">new_ray.<span class="hljs-keyword">min_t</span> = EPS_F;  <span class="hljs-comment">// Avoid self-intersection</span></span><br></pre></td></tr></table></figure>
+<p><strong>Recursive Integration:</strong></p>
+<p>The Monte Carlo estimator for the rendering equation becomes:</p>
+<script type="math/tex; mode=display">L_o(p, \omega_o) \approx L_{direct} + \frac{f_r(p, \omega_i, \omega_o) \cos\theta_i L_i(p, \omega_i)}{p(\omega_i)}</script><p>Where $p(\omega_i)$ is the probability density function from BSDF sampling.</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (bvh-&gt;intersect(new_ray, &amp;new_isect)) </span><br><span class="line">&#123;</span><br><span class="line">    Vector3D indirect_L = at_least_one_bounce_radiance(new_ray, new_isect);</span><br><span class="line">    <span class="hljs-keyword">double</span> cos_theta = w_in.z;  <span class="hljs-comment">// Cosine with normal (0,0,1) in local space</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (cos_theta &gt; <span class="hljs-number">0</span> &amp;&amp; pdf &gt; <span class="hljs-number">0</span>) </span><br><span class="line">        L_out += bsdf_sample * cos_theta * indirect_L / pdf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Task-3-Global-Illumination-with-Russian-Roulette"><a href="#Task-3-Global-Illumination-with-Russian-Roulette" class="headerlink" title="Task 3: Global Illumination with Russian Roulette"></a>Task 3: Global Illumination with Russian Roulette</h3><p>To optimize the path tracing process and reduce computation time, we implement <strong>Russian Roulette</strong> to probabilistically terminate light paths.</p>
+<p>Russian Roulette is a variance reduction technique that randomly terminates ray paths while maintaining an unbiased Monte Carlo estimator. Instead of always tracing rays to a fixed maximum depth, we probabilistically decide whether to continue or terminate each path based on a continuation probability.</p>
+<h4 id="Implementation-Process"><a href="#Implementation-Process" class="headerlink" title="Implementation Process"></a>Implementation Process</h4><p>The Russian Roulette implementation follows these key steps:</p>
+<ol>
+<li><p><strong>Termination Probability</strong>: We use a termination probability of <code>0.35</code>, meaning there’s a 35% chance to terminate the path at each bounce (continuation probability = 0.65)</p>
+</li>
+<li><p><strong>Random Decision</strong>: At each bounce level (when <code>r.depth &gt; 1</code>), we use the <code>coin_flip(termination_prob)</code> function to randomly decide whether to terminate the path</p>
+</li>
+<li><p><strong>Unbiased Compensation</strong>: When we continue tracing (path not terminated), we scale the contribution by <code>1/continuation_prob</code> to maintain an unbiased estimator</p>
+</li>
+</ol>
+<h4 id="Mathematical-Foundation-1"><a href="#Mathematical-Foundation-1" class="headerlink" title="Mathematical Foundation"></a>Mathematical Foundation</h4><p>For an unbiased estimator, when we terminate with probability $p$ and continue with probability $(1-p)$, the contribution must be scaled by $\dfrac{1}{1-p}$ when the path continues:</p>
+<script type="math/tex; mode=display">E[\text{Contribution}] = (1-p) \cdot \frac{L}{1-p} + p \cdot 0 = L</script><p>This maintains the correct expected radiance while reducing computational cost by terminating some paths early.</p>
+<h3 id="Global-Illumination-Results"><a href="#Global-Illumination-Results" class="headerlink" title="Global Illumination Results"></a>Global Illumination Results</h3><p>Here are some results showcasing the effects of global illumination. </p>
+<p><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_5_accum.png" alt="CBbunny Global Illumination"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_1024_4_4_accum.png" alt="CBspheres Global Illumination"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-bench.png" alt="Bench Global Illumination"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-blob.png" alt="Blob Global Illumination"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-dragon.png" alt="dragon Global Illumination"><br><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-wall-e.png" alt="wall-e Global Illumination"></p>
+<h3 id="Direct-Indirect-Illumination-Comparison"><a href="#Direct-Indirect-Illumination-Comparison" class="headerlink" title="Direct / Indirect Illumination Comparison"></a>Direct / Indirect Illumination Comparison</h3><p>The following images demonstrate the difference between direct illumination only and indirect illumination only for CBbunny.dae using 1024 samples per pixel:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Direct Illumination Only (m=1)</th>
+<th>Indirect Illumination Only (m=5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CBbunny</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-spheres_1024_16_5_indir.png" alt="CBbunny Direct Only"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-spheres_1024_16_1_dir.png" alt="CBbunny Indirect Only"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Direct illumination</strong> shows only the light that arrives directly from light sources to surfaces, creating sharp shadows and clear lighting boundaries. <strong>Indirect illumination</strong> captures the subtle color bleeding, soft ambient lighting, and inter-reflections that occur when light bounces between surfaces, filling in the harsh shadows with realistic ambient lighting effects.</p>
+<h3 id="Accumulated-and-Unaccumulated-CBBunny"><a href="#Accumulated-and-Unaccumulated-CBBunny" class="headerlink" title="Accumulated and Unaccumulated CBBunny"></a>Accumulated and Unaccumulated CBBunny</h3><p>The following images compare accumulated vs unaccumulated bounces for CBbunny.dae with different max ray depths using 1024 samples per pixel.</p>
+<h4 id="Accumulated-Bounces-isAccumBounces-true"><a href="#Accumulated-Bounces-isAccumBounces-true" class="headerlink" title="Accumulated Bounces (isAccumBounces=true)"></a>Accumulated Bounces (isAccumBounces=true)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Max Ray Depth 0</th>
+<th>Max Ray Depth 1</th>
+<th>Max Ray Depth 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_0_accum.png" alt="CBbunny Accum Depth 0"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_1_accum.png" alt="CBbunny Accum Depth 1"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_2_accum.png" alt="CBbunny Accum Depth 2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Max Ray Depth 3</th>
+<th>Max Ray Depth 4</th>
+<th>Max Ray Depth 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_3_accum.png" alt="CBbunny Accum Depth 3"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_4_accum.png" alt="CBbunny Accum Depth 4"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_5_accum.png" alt="CBbunny Accum Depth 5"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Unaccumulated-Bounces-isAccumBounces-false"><a href="#Unaccumulated-Bounces-isAccumBounces-false" class="headerlink" title="Unaccumulated Bounces (isAccumBounces=false)"></a>Unaccumulated Bounces (isAccumBounces=false)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Max Ray Depth 0</th>
+<th>Max Ray Depth 1</th>
+<th>Max Ray Depth 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_0_unaccum.png" alt="CBbunny Unaccum Depth 0"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_1_unaccum.png" alt="CBbunny Unaccum Depth 1"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_2_unaccum.png" alt="CBbunny Unaccum Depth 2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Max Ray Depth 3</th>
+<th>Max Ray Depth 4</th>
+<th>Max Ray Depth 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_3_unaccum.png" alt="CBbunny Unaccum Depth 3"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_4_unaccum.png" alt="CBbunny Unaccum Depth 4"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_5_unaccum.png" alt="CBbunny Unaccum Depth 5"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>‣ 2‑bounce image (one indirect bounce)</strong></p>
+<ul>
+<li>Scene is still fairly bright because light has only scattered once after the first surface hit.</li>
+<li>Clear <strong>red bleed on the left</strong> and <strong>blue bleed on the right</strong> where wall colours are reflected onto the bunny and floor.</li>
+<li>Shadows already soften; large dark areas are replaced by gentle gradients.</li>
+</ul>
+<p><strong>‣ 3‑bounce image (two indirect bounces)</strong></p>
+<ul>
+<li>Overall luminance drops sharply.</li>
+<li>Colour bleeding is still present but subtler; instead you notice a faint “fill light” in recesses and room corners that were darker in the 2‑bounce image.</li>
+<li>Looks a bit noisier because far fewer sampled paths survive.</li>
+</ul>
+<p><strong>VS. rasterization</strong><br>Rasterization normally captures <strong>direct light only</strong>; any global‑illumination effects (colour bleeding, soft indirect shadows, corner darkening) must be faked with ambient terms, SSAO, light‑maps, etc. In contrast, Path tracing’s extra bounces <strong>physically simulate</strong> those effects:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Effect</th>
+<th>Achieved by 2nd bounce</th>
+<th>Refined by 3rd‑plus bounces</th>
+<th>Rasterization counterpart</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colour bleeding</td>
+<td>Provides the majority of visible tinting</td>
+<td>Adds faint, wider‑area tints</td>
+<td>Requires baked light‑maps or screen‑space GI</td>
+</tr>
+<tr>
+<td>Soft shadow penumbrae</td>
+<td>Already visible</td>
+<td>Further smooths deep crevices</td>
+<td>Shadow‑maps + blur</td>
+</tr>
+<tr>
+<td>Ambient fill / corner fall‑off</td>
+<td>Begins to appear</td>
+<td>Removes last unrealistically black pockets</td>
+<td>Ambient term / SSAO</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Thus, each additional bounce brings the rendered frame closer to a physically correct global‑illumination solution.</p>
+<h3 id="Russian-Roulette-CBBunny"><a href="#Russian-Roulette-CBBunny" class="headerlink" title="Russian Roulette CBBunny"></a>Russian Roulette CBBunny</h3><p>The following images demonstrate different max ray depths with Russian Roulette enabled on rendering quality and performance. Use 1024 samples per pixel.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Max Ray Depth 0</th>
+<th>Max Ray Depth 1</th>
+<th>Max Ray Depth 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_0_rr.png" alt="Russian Roulette Depth 0"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_1_rr.png" alt="Russian Roulette Depth 1"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_2_rr.png" alt="Russian Roulette Depth 2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Max Ray Depth 3</th>
+<th>Max Ray Depth 4</th>
+<th>Max Ray Depth 100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_3_rr.png" alt="Russian Roulette Depth 3"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_4_rr.png" alt="Russian Roulette Depth 4"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBbunny_1024_16_100_rr.png" alt="Russian Roulette Depth 100"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The key benefit of Russian Roulette is that it allows for potentially infinite bounces while maintaining finite expected computation time. The termination probability of 0.35 provides a good balance between performance and quality.</p>
+<h3 id="Various-spp-Showcase"><a href="#Various-spp-Showcase" class="headerlink" title="Various spp Showcase"></a>Various spp Showcase</h3><p>The following images demonstrate the effect of different sample-per-pixel rates on rendering quality for CBspheres scene. Use 4 light rays.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1 spp</th>
+<th>2 spp</th>
+<th>4 spp</th>
+<th>8 spp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_1_4_4_accum.png" alt="CBspheres 1 spp"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_2_4_4_accum.png" alt="CBspheres 2 spp"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_4_4_4_accum.png" alt="CBspheres 4 spp"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_8_4_4_accum.png" alt="CBspheres 8 spp"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>16 spp</th>
+<th>64 spp</th>
+<th>1024 spp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_16_4_4_accum.png" alt="CBspheres 16 spp"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_64_4_4_accum.png" alt="CBspheres 64 spp"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part4-CBspheres_1024_4_4_accum.png" alt="CBspheres 1024 spp"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Part-5-Adaptive-Sampling"><a href="#Part-5-Adaptive-Sampling" class="headerlink" title="Part 5: Adaptive Sampling"></a>Part 5: Adaptive Sampling</h2><h3 id="Adaptive-Sampling-Overview"><a href="#Adaptive-Sampling-Overview" class="headerlink" title="Adaptive Sampling Overview"></a>Adaptive Sampling Overview</h3><p>Adaptive sampling is an optimization technique that concentrates computational effort where it’s needed most, rather than using a fixed number of samples per pixel uniformly across the entire image. Some pixels converge to a stable color value with relatively few samples, while others require many more samples to eliminate noise effectively.</p>
+<h3 id="Adaptive-Sampling-Algorithm"><a href="#Adaptive-Sampling-Algorithm" class="headerlink" title="Adaptive Sampling Algorithm"></a>Adaptive Sampling Algorithm</h3><p>The adaptive sampling algorithm works by monitoring the convergence of each pixel individually using statistical analysis. For each pixel, we track two running statistics:</p>
+<ul>
+<li>$s_1 = \sum_{k=1}^{n} x_k$ (sum of illuminance values)  </li>
+<li>$s_2 = \sum_{k=1}^{n} x_k^2$ (sum of squared illuminance values)</li>
+</ul>
+<p>Where $x_k$ is the illuminance of the $k$-th sample, calculated using <code>Vector3D::illum()</code>.</p>
+<p>From these statistics, we compute the mean and variance:</p>
+<ul>
+<li>Mean: $\mu = \frac{s_1}{n}$</li>
+<li>Variance: $\sigma^2 = \frac{1}{n-1} \cdot \left(s_2 - \frac{s_1^2}{n}\right)$</li>
+</ul>
+<p>The convergence measure is defined as:</p>
+<script type="math/tex; mode=display">I = 1.96 \cdot \frac{\sigma}{\sqrt{n}}</script><p>This represents a 95% confidence interval for the pixel’s true average illuminance. The pixel is considered converged when:</p>
+<script type="math/tex; mode=display">I \leq \text{maxTolerance} \times \mu</script><h3 id="Adaptive-Sampling-Implementation"><a href="#Adaptive-Sampling-Implementation" class="headerlink" title="Adaptive Sampling Implementation"></a>Adaptive Sampling Implementation</h3><ol>
+<li><strong>Sample Generation</strong>: Generate camera rays and estimate radiance as usual</li>
+<li><strong>Statistics Tracking</strong>: For each sample, update $s_1$ and $s_2$ with the sample’s illuminance</li>
+<li><strong>Batch Processing</strong>: Check convergence every <code>samplesPerBatch</code> samples to avoid excessive computation</li>
+<li><strong>Convergence Testing</strong>: Calculate $I$ and compare against the tolerance threshold</li>
+<li><strong>Early Termination</strong>: Stop sampling if the pixel converges before reaching maximum samples</li>
+<li><strong>Sample Count Recording</strong>: Update <code>sampleCountBuffer</code> with the actual number of samples used</li>
+</ol>
+<h3 id="Adaptive-Sampling-Results"><a href="#Adaptive-Sampling-Results" class="headerlink" title="Adaptive Sampling Results"></a>Adaptive Sampling Results</h3><p>The following images demonstrate adaptive sampling with different scenes and parameters:</p>
+<h4 id="CBbunny-Scene-Adaptive-Sampling"><a href="#CBbunny-Scene-Adaptive-Sampling" class="headerlink" title="CBbunny Scene - Adaptive Sampling"></a>CBbunny Scene - Adaptive Sampling</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Rendered Image</strong></th>
+<th><strong>Sampling Rate Image</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-bunny.png" alt="CBbunny Adaptive"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-bunny_rate.png" alt="CBbunny Sampling Rate"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Parameters</strong>: 2048 max samples, batch size = 64, tolerance = 0.05, 1 sample per light, max ray depth = 5</p>
+<h4 id="CBspheres-Scene-Adaptive-Sampling"><a href="#CBspheres-Scene-Adaptive-Sampling" class="headerlink" title="CBspheres Scene - Adaptive Sampling"></a>CBspheres Scene - Adaptive Sampling</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Rendered Image</strong></th>
+<th><strong>Sampling Rate Image</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-spheres.png" alt="CBspheres Adaptive"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/part5-spheres_rate.png" alt="CBspheres Sampling Rate"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Parameters</strong>: 2048 max samples, batch size = 64, tolerance = 0.05, 1 sample per light, max ray depth = 5</p>
+<h2 id="Extra-Credit"><a href="#Extra-Credit" class="headerlink" title="Extra Credit"></a>Extra Credit</h2><h3 id="Part-1-Low-Discrepancy-Sampling"><a href="#Part-1-Low-Discrepancy-Sampling" class="headerlink" title="Part 1: Low Discrepancy Sampling"></a>Part 1: Low Discrepancy Sampling</h3><p>Low discrepancy sampling, such as Halton or Hammersley sequences, provides more uniform coverage of the sample space compared to purely random sampling, leading to faster convergence and reduced noise in Monte Carlo integration.</p>
+<h4 id="Low-Discrepancy-Algorithm"><a href="#Low-Discrepancy-Algorithm" class="headerlink" title="Low Discrepancy Algorithm"></a>Low Discrepancy Algorithm</h4><p>The low discrepancy sampler uses the <strong>Halton sequence</strong> with prime bases 2 and 3 for generating 2D samples:</p>
+<ul>
+<li><strong>Base 2 (x-coordinate)</strong>: Provides binary digit reversal sequence</li>
+<li><strong>Base 3 (y-coordinate)</strong>: Provides ternary digit reversal sequence  </li>
+<li><strong>Sample generation</strong>: <code>(halton(i, 2), halton(i, 3))</code> for the i-th sample</li>
+</ul>
+<p>The Halton sequence ensures better stratification across the unit square compared to random sampling.</p>
+<h4 id="Comparison-Results"><a href="#Comparison-Results" class="headerlink" title="Comparison Results"></a>Comparison Results</h4><p>The following images compare uniform random sampling vs. low discrepancy sampling with 128 samples per pixel:</p>
+<p><strong>Command</strong>: <code>./Release/pathtracer -t 32 -s 128 -l 4 -m 10 -r 480 360 -f result.png dae/sky/CBspheres_lambertian.dae</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Sampling Method</strong></th>
+<th><strong>Full Image</strong></th>
+<th><strong>Zoomed Detail</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Uniform Random Sampling</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-uniform-128.png" alt="Uniform Sampling"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-uniform-128-part.png" alt="Uniform Sampling Part"></td>
+</tr>
+<tr>
+<td><strong>Low Discrepancy Sampling</strong></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-low_discrepancy-128.png" alt="Low Discrepancy Sampling"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-low_discrepancy-128-part.png" alt="Low Discrepancy Sampling Part"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The low discrepancy sampling produces slightly fewer aliasing artifacts and smoother gradients, particularly in areas with complex lighting.</p>
+<h3 id="Part-2-Surface-Area-Heuristic"><a href="#Part-2-Surface-Area-Heuristic" class="headerlink" title="Part 2: Surface Area Heuristic"></a>Part 2: Surface Area Heuristic</h3><p>The Surface Area Heuristic (SAH) is a method for optimizing BVH construction by minimizing the expected cost of ray-primitive intersection tests. It evaluates potential splits based on the surface area of bounding boxes and the distribution of primitives.</p>
+<h4 id="SAH-Algorithm-Implementation"><a href="#SAH-Algorithm-Implementation" class="headerlink" title="SAH Algorithm Implementation"></a>SAH Algorithm Implementation</h4><p>The SAH cost function for a split is defined as:</p>
+<script type="math/tex; mode=display">\text{Cost}(\text{cell}) = C_{trav} + SA(L) \times \text{TriCount}(L) + SA(R) \times \text{TriCount}(R)</script><p>Where:</p>
+<ul>
+<li>$C_{trav}$ is the cost of traversing a BVH node (set to 1.0)</li>
+<li>$C_{isect}$ is the cost of ray-primitive intersection (set to 1.5, optimized ratio 1:1.5)</li>
+<li>$SA(L)$, $SA(R)$ are surface areas of left and right bounding boxes</li>
+<li>$\text{TriCount}(L)$, $\text{TriCount}(R)$ are the number of triangles in left and right partitions</li>
+</ul>
+<p><strong>Algorithm Steps:</strong></p>
+<ol>
+<li><strong>Multi-axis evaluation</strong>: Test splits along all three coordinate axes (x, y, z)</li>
+<li><strong>Bucket-based sampling</strong>: For each axis, evaluate 12 different split positions</li>
+<li><strong>Cost calculation</strong>: Compute SAH cost for each split candidate</li>
+<li><strong>Optimal selection</strong>: Choose the split with minimum cost</li>
+<li><strong>Fallback mechanism</strong>: Use midpoint heuristic if SAH fails (e.g., zero surface area)</li>
+</ol>
+<p><strong>Implementation Details:</strong></p>
+<ul>
+<li><strong>Primitive sorting</strong>: Sort primitives by centroid along each axis for split evaluation</li>
+<li><strong>Bounding box computation</strong>: Calculate tight bounding boxes for left and right partitions</li>
+<li><strong>Degenerate split handling</strong>: Skip splits that would create empty partitions</li>
+<li><strong>Cost optimization</strong>: Select split that minimizes expected ray traversal cost</li>
+</ul>
+<h4 id="Performance-Comparison"><a href="#Performance-Comparison" class="headerlink" title="Performance Comparison"></a>Performance Comparison</h4><p><strong>Command</strong>: <code>./pathtracer -t 8 -s 2048 -a 64 0.05 -l 1 -m 5 -r 480 360 -f bunny.png ../dae/sky/CBbunny.dae</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>Original BVH (Midpoint)</strong></th>
+<th><strong>SAH-Optimized BVH</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Construction Time</strong></td>
+<td>0.0086 seconds</td>
+<td>0.4203 seconds</td>
+</tr>
+<tr>
+<td><strong>Rendering Time</strong></td>
+<td>161.3689 seconds</td>
+<td>92.7042 seconds</td>
+</tr>
+<tr>
+<td><strong>Average Speed</strong></td>
+<td>3.0270 million rays/sec</td>
+<td>5.0912 million rays/sec</td>
+</tr>
+<tr>
+<td><strong>Intersection Tests/Ray</strong></td>
+<td>6.209629</td>
+<td>3.525061</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Performance-Analysis"><a href="#Performance-Analysis" class="headerlink" title="Performance Analysis"></a>Performance Analysis</h4><p>The SAH-optimized BVH demonstrates significant performance improvements over the midpoint heuristic. The dramatic reduction in intersection tests per ray demonstrates the effectiveness of SAH’s cost-based optimization. By intelligently partitioning primitives based on surface area and primitive distribution, the SAH creates more balanced trees that minimize the expected number of ray-primitive intersection tests during traversal.</p>
+<h3 id="Part-3-Bilateral-Blurring"><a href="#Part-3-Bilateral-Blurring" class="headerlink" title="Part 3: Bilateral Blurring"></a>Part 3: Bilateral Blurring</h3><p>Bilateral filtering is an edge-preserving smoothing filter that reduces noise while maintaining sharp boundaries between different objects or regions in the rendered image. Unlike traditional Gaussian blur that treats all pixels equally, bilateral filtering considers both spatial distance and color similarity when determining filter weights.</p>
+<h4 id="Bilateral-Filter-Algorithm"><a href="#Bilateral-Filter-Algorithm" class="headerlink" title="Bilateral Filter Algorithm"></a>Bilateral Filter Algorithm</h4><p>The bilateral filter combines two Gaussian kernels:</p>
+<ol>
+<li><strong>Spatial Kernel</strong>: Based on Euclidean distance between pixels</li>
+<li><strong>Range Kernel</strong>: Based on color difference between pixels</li>
+</ol>
+<p>The filter weight for each neighboring pixel is computed as:</p>
+<script type="math/tex; mode=display">
+w(i,j,k,l) = \exp\left(-\frac{(i-k)^2 + (j-l)^2}{2\sigma_s^2}\right) \times \exp\left(-\frac{\|I(i,j) - I(k,l)\|^2}{2\sigma_r^2}\right)</script><p>Where:</p>
+<ul>
+<li>$(i,j)$ is the center pixel position</li>
+<li>$(k,l)$ is the neighboring pixel position  </li>
+<li>$\sigma_s$ is the spatial standard deviation (controls spatial smoothing)</li>
+<li>$\sigma_r$ is the range standard deviation (controls color similarity threshold)</li>
+<li>$I(i,j)$ represents the color value at pixel position</li>
+</ul>
+<h4 id="Algorithm-Implementation-Details"><a href="#Algorithm-Implementation-Details" class="headerlink" title="Algorithm Implementation Details"></a>Algorithm Implementation Details</h4><p><strong>Mathematical Foundation:</strong></p>
+<p>The bilateral filter output for pixel $(x,y)$ is computed as:</p>
+<script type="math/tex; mode=display">
+I_{D}(x,y) = \frac{\sum_{\mathrm dx,\mathrm dy} w(x,y,x+\mathrm dx,y+\mathrm dy) \cdot I(x+\mathrm dx,y+\mathrm dy)}{\sum_{\mathrm dx,\mathrm dy} w(x,y,x+\mathrm dx,y+\mathrm dy)}</script><h4 id="Integration-with-Rendering-Pipeline"><a href="#Integration-with-Rendering-Pipeline" class="headerlink" title="Integration with Rendering Pipeline"></a>Integration with Rendering Pipeline</h4><p>The bilateral filter is integrated into the rendering pipeline as a post-processing step that occurs after all path tracing computations are completed but before the final image is saved. This placement ensures that the filter operates on the final accumulated radiance values, applying noise reduction without affecting the underlying path tracing algorithm, so that the filtered result with enhanced visual quality is what gets written to the output image file.</p>
+<h4 id="Comparison-Results-1"><a href="#Comparison-Results-1" class="headerlink" title="Comparison Results"></a>Comparison Results</h4><p>The following images demonstrate the effect of bilateral filtering on a noisy path-traced image:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>spp</th>
+<th><strong>Without Bilateral Filter</strong></th>
+<th><strong>With Bilateral Filter</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16</td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-original-16.png" alt="No Filter"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-bilateral-filter-16.png" alt="With Filter"></td>
+</tr>
+<tr>
+<td>128</td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-original-128.png" alt="No Filter"></td>
+<td><img src="https://raw.githubusercontent.com/zcy05331/image-saver/refs/heads/main/cs184-hw3-result/extra-bilateral-filter-128.png" alt="With Filter"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The comparison shows that the bilateral filter effectively reduces noise while preserving important edges and details in the image, resulting in a cleaner and more visually appealing final render.</p>
+<h4 id="Benefits-of-Bilateral-Filtering-in-Path-Tracing"><a href="#Benefits-of-Bilateral-Filtering-in-Path-Tracing" class="headerlink" title="Benefits of Bilateral Filtering in Path Tracing"></a>Benefits of Bilateral Filtering in Path Tracing</h4><ol>
+<li><strong>Noise Reduction</strong>: Significantly reduces Monte Carlo noise, especially in low-sample renders</li>
+<li><strong>Edge Preservation</strong>: Maintains sharp boundaries between objects and materials</li>
+<li><strong>Detail Retention</strong>: Preserves fine geometric and lighting details while smoothing noise</li>
+<li><strong>Visual Quality</strong>: Produces cleaner, more professional-looking final images</li>
+<li><strong>Sample Efficiency</strong>: Allows for acceptable image quality with fewer samples per pixel</li>
+</ol>
+<p>The bilateral filter serves as an intelligent post-processing step that enhances the final image quality by leveraging both spatial and perceptual information to selectively smooth noise while preserving important image features.</p>
+<h3 id="Part-4-Iterative-BVH-Implementation"><a href="#Part-4-Iterative-BVH-Implementation" class="headerlink" title="Part 4: Iterative BVH Implementation"></a>Part 4: Iterative BVH Implementation</h3><p>To improve performance for large scenes, we implemented an <strong>iterative BVH system</strong> using explicit stacks instead of recursion. This addresses stack overflow issues in deep trees (&gt;10k primitives) and improves cache locality through better memory access patterns.</p>
+<h4 id="Algorithm-Design"><a href="#Algorithm-Design" class="headerlink" title="Algorithm Design"></a>Algorithm Design</h4><p>The iterative approach replaces recursive function calls with explicit stack management:</p>
+<ul>
+<li><strong>Construction</strong>: Uses <code>std::stack&lt;ConstructionStackFrame&gt;</code> with depth-first processing while maintaining SAH optimization</li>
+<li><strong>Traversal</strong>: Implements stack-based <code>has_intersection_iterative()</code> and <code>intersect_iterative()</code> methods</li>
+<li><strong>Automatic Selection</strong>: Chooses iterative methods for construction (&gt;10k primitives) and traversal (&gt;5k primitives)</li>
+</ul>
+<h4 id="Key-Benefits"><a href="#Key-Benefits" class="headerlink" title="Key Benefits"></a>Key Benefits</h4><ol>
+<li><strong>Performance</strong>: Better cache locality and reduced function call overhead  </li>
+<li><strong>Flexibility</strong>: Manual method selection available for debugging</li>
+</ol>
+<p>This optimization provides significant performance improvements for large scenes while maintaining the same intersection accuracy as the recursive implementation.</p>
+<h4 id="Performance-Comparison-1"><a href="#Performance-Comparison-1" class="headerlink" title="Performance Comparison"></a>Performance Comparison</h4><p><strong>Command</strong>: <code>./Release/pathtracer -t 32 -s 2048 -a 64 0.05 -l 4 -m 5 -r 480 360 -f bunny.png ../dae/sky/CBbunny.dae</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>Recursive BVH</strong></th>
+<th><strong>Iterative BVH</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BVH Construction Time</strong></td>
+<td>0.3944 seconds</td>
+<td>0.3893 seconds</td>
+</tr>
+<tr>
+<td><strong>Rendering Time</strong></td>
+<td>171.0142 seconds</td>
+<td>143.4334 seconds</td>
+</tr>
+<tr>
+<td><strong>Average Speed</strong></td>
+<td>4.9297 million rays/sec</td>
+<td>4.9389 million rays/sec</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Analysis</strong>: The iterative BVH implementation shows an improvement in rendering time, demonstrating better cache performance and reduced function call overhead. While it performs slightly more intersection tests per ray, the overall efficiency gains from better memory access patterns result in faster rendering for complex scenes.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/Computer-Graphics/">Computer Graphics</a>, <a class="my-post-tag has-link-grey -link" href="/tags/Path-Tracing/">Path Tracing</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2025/07/18/CS184-hw2-writeup/">
+                <span class="level-item">CS 184 Homework 2 Writeup</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'a3s1QVgWfNVMxcHITq0cHWf1-gzGzoHsz',
+        app_key: 'VX1mp6MKCsSid6Nb7Kua5fis',
+        placeholder: 'qwq'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="my-id-sidebar-profile">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="little_sun">
+                    
+                    <p class="is-size-4 is-block">
+                        little_sun
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        80
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        70
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/zcy05331">
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/zcy05331">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="邮箱" href="mailto:2939533969@qq.com">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="知乎" href="https://www.zhihu.com/people/littlesun-65-87/activities">
+                
+                <i class="fab fa-stack-overflow"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2939533969">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Codeforces" href="https://codeforces.com/profile/little_sun">
+                
+                <i class="fas fa-code"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Overview">
+        <span class="has-mr-6">1</span>
+        <span>Overview</span>
+        </a></li><li>
+        <a class="is-flex" href="#AI-acknowledgements">
+        <span class="has-mr-6">2</span>
+        <span>AI acknowledgements</span>
+        </a></li><li>
+        <a class="is-flex" href="#Part-1-Ray-Generation-and-Scene-Intersection">
+        <span class="has-mr-6">3</span>
+        <span>Part 1: Ray Generation and Scene Intersection</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Ray-Generation-and-Primitive-Intersection-Pipeline">
+        <span class="has-mr-6">3.1</span>
+        <span>Ray Generation and Primitive Intersection Pipeline</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-Pixel-Sampling-Stage-PathTracer-raytrace-pixel">
+        <span class="has-mr-6">3.1.1</span>
+        <span>1. Pixel Sampling Stage (PathTracer::raytrace_pixel)</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-Camera-Ray-Generation-Stage-Camera-generate-ray">
+        <span class="has-mr-6">3.1.2</span>
+        <span>2. Camera Ray Generation Stage (Camera::generate_ray)</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-Primitive-Intersection-Stage">
+        <span class="has-mr-6">3.1.3</span>
+        <span>3. Primitive Intersection Stage</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Primitive-Intersection-Details">
+        <span class="has-mr-6">3.2</span>
+        <span>Primitive Intersection Details</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Triangle-Intersection-Algorithm-Moller-Trumbore">
+        <span class="has-mr-6">3.2.1</span>
+        <span>Triangle Intersection Algorithm (Möller-Trumbore):</span>
+        </a></li><li>
+        <a class="is-flex" href="#Sphere-Intersection">
+        <span class="has-mr-6">3.2.2</span>
+        <span>Sphere Intersection:</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-1-Generating-Camera-Rays">
+        <span class="has-mr-6">3.3</span>
+        <span>Task 1: Generating Camera Rays</span>
+        </a></li><li>
+        <a class="is-flex" href="#Task-2-Generating-Pixel-Samples">
+        <span class="has-mr-6">3.4</span>
+        <span>Task 2: Generating Pixel Samples</span>
+        </a></li><li>
+        <a class="is-flex" href="#Task-3-Ray-Triangle-Intersection">
+        <span class="has-mr-6">3.5</span>
+        <span>Task 3: Ray-Triangle Intersection</span>
+        </a></li><li>
+        <a class="is-flex" href="#Task-4-Ray-Sphere-Intersection">
+        <span class="has-mr-6">3.6</span>
+        <span>Task 4: Ray-Sphere Intersection</span>
+        </a></li><li>
+        <a class="is-flex" href="#Some-more-screenshots">
+        <span class="has-mr-6">3.7</span>
+        <span>Some more screenshots</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-2-Bounding-Volume-Hierarchy">
+        <span class="has-mr-6">4</span>
+        <span>Part 2: Bounding Volume Hierarchy</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Task-1-BVH-Construction">
+        <span class="has-mr-6">4.1</span>
+        <span>Task 1: BVH Construction</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Algorithm-Overview">
+        <span class="has-mr-6">4.1.1</span>
+        <span>Algorithm Overview</span>
+        </a></li><li>
+        <a class="is-flex" href="#BVH-Construction-Mathematics">
+        <span class="has-mr-6">4.1.2</span>
+        <span>BVH Construction Mathematics</span>
+        </a></li><li>
+        <a class="is-flex" href="#Edge-Case-Handling">
+        <span class="has-mr-6">4.1.3</span>
+        <span>Edge Case Handling</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-2-Bounding-Box-Intersection">
+        <span class="has-mr-6">4.2</span>
+        <span>Task 2: Bounding Box Intersection</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Mathematical-Foundation">
+        <span class="has-mr-6">4.2.1</span>
+        <span>Mathematical Foundation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Algorithm-Implementation">
+        <span class="has-mr-6">4.2.2</span>
+        <span>Algorithm Implementation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-2-3-BVH-Traversal">
+        <span class="has-mr-6">4.3</span>
+        <span>Task 2.3: BVH Traversal</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Algorithm-Overview-1">
+        <span class="has-mr-6">4.3.1</span>
+        <span>Algorithm Overview</span>
+        </a></li><li>
+        <a class="is-flex" href="#Implementation-Details">
+        <span class="has-mr-6">4.3.2</span>
+        <span>Implementation Details</span>
+        </a></li><li>
+        <a class="is-flex" href="#BVH-Traversal-Efficiency">
+        <span class="has-mr-6">4.3.3</span>
+        <span>BVH Traversal Efficiency</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Time-Comparison">
+        <span class="has-mr-6">4.4</span>
+        <span>Time Comparison</span>
+        </a></li><li>
+        <a class="is-flex" href="#Results-showcase">
+        <span class="has-mr-6">4.5</span>
+        <span>Results showcase</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-3-Direct-Illumination">
+        <span class="has-mr-6">5</span>
+        <span>Part 3: Direct Illumination</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Task-1-Diffuse-BSDF">
+        <span class="has-mr-6">5.1</span>
+        <span>Task 1: Diffuse BSDF</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#BSDF-Mathematical-Model">
+        <span class="has-mr-6">5.1.1</span>
+        <span>BSDF Mathematical Model</span>
+        </a></li><li>
+        <a class="is-flex" href="#BSDF-Implementation">
+        <span class="has-mr-6">5.1.2</span>
+        <span>BSDF Implementation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Cosine-Weighted-Sampling">
+        <span class="has-mr-6">5.1.3</span>
+        <span>Cosine-Weighted Sampling</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-2-Zero-bounce-Illumination">
+        <span class="has-mr-6">5.2</span>
+        <span>Task 2: Zero-bounce Illumination</span>
+        </a></li><li>
+        <a class="is-flex" href="#Task-3-Direct-Lighting-with-Uniform-Hemisphere-Sampling">
+        <span class="has-mr-6">5.3</span>
+        <span>Task 3: Direct Lighting with Uniform Hemisphere Sampling</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Direct-Lighting-Algorithm">
+        <span class="has-mr-6">5.3.1</span>
+        <span>Direct Lighting Algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hemisphere-Sampling-Mathematics">
+        <span class="has-mr-6">5.3.2</span>
+        <span>Hemisphere Sampling Mathematics</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-4-Direct-Lighting-by-Importance-Sampling-Lights">
+        <span class="has-mr-6">5.4</span>
+        <span>Task 4: Direct Lighting by Importance Sampling Lights</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Importance-Sampling-Strategy">
+        <span class="has-mr-6">5.4.1</span>
+        <span>Importance Sampling Strategy</span>
+        </a></li><li>
+        <a class="is-flex" href="#Light-Sampling-Implementation">
+        <span class="has-mr-6">5.4.2</span>
+        <span>Light Sampling Implementation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Importance-Sampling-Mathematics">
+        <span class="has-mr-6">5.4.3</span>
+        <span>Importance Sampling Mathematics</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Image-Comparison">
+        <span class="has-mr-6">5.5</span>
+        <span>Image Comparison</span>
+        </a></li><li>
+        <a class="is-flex" href="#Analysis-Hemisphere-Sampling-vs-Importance-Sampling">
+        <span class="has-mr-6">5.6</span>
+        <span>Analysis: Hemisphere Sampling vs. Importance Sampling</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-4-Global-Illumination">
+        <span class="has-mr-6">6</span>
+        <span>Part 4: Global Illumination</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Task-1-Sampling-with-Diffuse-BSDF">
+        <span class="has-mr-6">6.1</span>
+        <span>Task 1: Sampling with Diffuse BSDF</span>
+        </a></li><li>
+        <a class="is-flex" href="#Task-2-Global-Illumination-with-up-to-N-Bounces-of-Light">
+        <span class="has-mr-6">6.2</span>
+        <span>Task 2: Global Illumination with up to N Bounces of Light</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Implementation-Overview">
+        <span class="has-mr-6">6.2.1</span>
+        <span>Implementation Overview</span>
+        </a></li><li>
+        <a class="is-flex" href="#Rendering-Equation-Foundation">
+        <span class="has-mr-6">6.2.2</span>
+        <span>Rendering Equation Foundation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Detailed-Algorithm-Implementation">
+        <span class="has-mr-6">6.2.3</span>
+        <span>Detailed Algorithm Implementation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Task-3-Global-Illumination-with-Russian-Roulette">
+        <span class="has-mr-6">6.3</span>
+        <span>Task 3: Global Illumination with Russian Roulette</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Implementation-Process">
+        <span class="has-mr-6">6.3.1</span>
+        <span>Implementation Process</span>
+        </a></li><li>
+        <a class="is-flex" href="#Mathematical-Foundation-1">
+        <span class="has-mr-6">6.3.2</span>
+        <span>Mathematical Foundation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Global-Illumination-Results">
+        <span class="has-mr-6">6.4</span>
+        <span>Global Illumination Results</span>
+        </a></li><li>
+        <a class="is-flex" href="#Direct-Indirect-Illumination-Comparison">
+        <span class="has-mr-6">6.5</span>
+        <span>Direct / Indirect Illumination Comparison</span>
+        </a></li><li>
+        <a class="is-flex" href="#Accumulated-and-Unaccumulated-CBBunny">
+        <span class="has-mr-6">6.6</span>
+        <span>Accumulated and Unaccumulated CBBunny</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Accumulated-Bounces-isAccumBounces-true">
+        <span class="has-mr-6">6.6.1</span>
+        <span>Accumulated Bounces (isAccumBounces=true)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Unaccumulated-Bounces-isAccumBounces-false">
+        <span class="has-mr-6">6.6.2</span>
+        <span>Unaccumulated Bounces (isAccumBounces=false)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Russian-Roulette-CBBunny">
+        <span class="has-mr-6">6.7</span>
+        <span>Russian Roulette CBBunny</span>
+        </a></li><li>
+        <a class="is-flex" href="#Various-spp-Showcase">
+        <span class="has-mr-6">6.8</span>
+        <span>Various spp Showcase</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-5-Adaptive-Sampling">
+        <span class="has-mr-6">7</span>
+        <span>Part 5: Adaptive Sampling</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Adaptive-Sampling-Overview">
+        <span class="has-mr-6">7.1</span>
+        <span>Adaptive Sampling Overview</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adaptive-Sampling-Algorithm">
+        <span class="has-mr-6">7.2</span>
+        <span>Adaptive Sampling Algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adaptive-Sampling-Implementation">
+        <span class="has-mr-6">7.3</span>
+        <span>Adaptive Sampling Implementation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adaptive-Sampling-Results">
+        <span class="has-mr-6">7.4</span>
+        <span>Adaptive Sampling Results</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#CBbunny-Scene-Adaptive-Sampling">
+        <span class="has-mr-6">7.4.1</span>
+        <span>CBbunny Scene - Adaptive Sampling</span>
+        </a></li><li>
+        <a class="is-flex" href="#CBspheres-Scene-Adaptive-Sampling">
+        <span class="has-mr-6">7.4.2</span>
+        <span>CBspheres Scene - Adaptive Sampling</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#Extra-Credit">
+        <span class="has-mr-6">8</span>
+        <span>Extra Credit</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Part-1-Low-Discrepancy-Sampling">
+        <span class="has-mr-6">8.1</span>
+        <span>Part 1: Low Discrepancy Sampling</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Low-Discrepancy-Algorithm">
+        <span class="has-mr-6">8.1.1</span>
+        <span>Low Discrepancy Algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#Comparison-Results">
+        <span class="has-mr-6">8.1.2</span>
+        <span>Comparison Results</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-2-Surface-Area-Heuristic">
+        <span class="has-mr-6">8.2</span>
+        <span>Part 2: Surface Area Heuristic</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#SAH-Algorithm-Implementation">
+        <span class="has-mr-6">8.2.1</span>
+        <span>SAH Algorithm Implementation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Performance-Comparison">
+        <span class="has-mr-6">8.2.2</span>
+        <span>Performance Comparison</span>
+        </a></li><li>
+        <a class="is-flex" href="#Performance-Analysis">
+        <span class="has-mr-6">8.2.3</span>
+        <span>Performance Analysis</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-3-Bilateral-Blurring">
+        <span class="has-mr-6">8.3</span>
+        <span>Part 3: Bilateral Blurring</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Bilateral-Filter-Algorithm">
+        <span class="has-mr-6">8.3.1</span>
+        <span>Bilateral Filter Algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#Algorithm-Implementation-Details">
+        <span class="has-mr-6">8.3.2</span>
+        <span>Algorithm Implementation Details</span>
+        </a></li><li>
+        <a class="is-flex" href="#Integration-with-Rendering-Pipeline">
+        <span class="has-mr-6">8.3.3</span>
+        <span>Integration with Rendering Pipeline</span>
+        </a></li><li>
+        <a class="is-flex" href="#Comparison-Results-1">
+        <span class="has-mr-6">8.3.4</span>
+        <span>Comparison Results</span>
+        </a></li><li>
+        <a class="is-flex" href="#Benefits-of-Bilateral-Filtering-in-Path-Tracing">
+        <span class="has-mr-6">8.3.5</span>
+        <span>Benefits of Bilateral Filtering in Path Tracing</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Part-4-Iterative-BVH-Implementation">
+        <span class="has-mr-6">8.4</span>
+        <span>Part 4: Iterative BVH Implementation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Algorithm-Design">
+        <span class="has-mr-6">8.4.1</span>
+        <span>Algorithm Design</span>
+        </a></li><li>
+        <a class="is-flex" href="#Key-Benefits">
+        <span class="has-mr-6">8.4.2</span>
+        <span>Key Benefits</span>
+        </a></li><li>
+        <a class="is-flex" href="#Performance-Comparison-1">
+        <span class="has-mr-6">8.4.3</span>
+        <span>Performance Comparison</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+function myHideElement(name) {
+    document.getElementById(name).style.display = 'none';
+}
+</script> -->
+
+    
+        	
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Contest/">
+            <span class="level-start">
+                <span class="level-item">Contest</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Learning/">
+            <span class="level-start">
+                <span class="level-item">Learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Notes/">
+            <span class="level-start">
+                <span class="level-item">Notes</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Solution/">
+            <span class="level-start">
+                <span class="level-item">Solution</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">64</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Template/">
+            <span class="level-start">
+                <span class="level-item">Template</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/projects/">
+            <span class="level-start">
+                <span class="level-item">projects</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                <!-- 
+                    <img src="/images/logo.png" alt="CS 184 Homework 3 Writeup" height="28">
+                    memset0's blog
+                 -->
+                </a>
+                <p class="is-size-7">
+                    &copy; 2019 - 2025
+                    <i class="fa fa-heart"></i>
+                    little_sun
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <p class="is-size-7">
+                    <span>
+                        <span>92.4k</span> Words
+                    </span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    </span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+                <p class="is-size-7">
+                    Powered by little_sun
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
